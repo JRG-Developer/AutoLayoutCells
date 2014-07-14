@@ -32,6 +32,7 @@
 #import <AutoLayoutCells/ALImageCell.h>
 
 // Constants
+#import <AutoLayoutCells/ALCellConstants.h>
 #import <AutoLayoutCells/ALImageCellConstants.h>
 
 // Factories
