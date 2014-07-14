@@ -1,0 +1,764 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4427F1131970590A00C3019E /* ALBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1061970590A00C3019E /* ALBaseCell.m */; };
+		4427F1141970590A00C3019E /* ALImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1081970590A00C3019E /* ALImageCell.m */; };
+		4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F10A1970590A00C3019E /* ALBooleanCell.m */; };
+		4427F1161970590A00C3019E /* ALCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F10C1970590A00C3019E /* ALCell.m */; };
+		4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F10E1970590A00C3019E /* ALLeftLabelCell.m */; };
+		4427F1181970590A00C3019E /* ALTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1101970590A00C3019E /* ALTextCell.m */; };
+		4427F1191970590A00C3019E /* ALTextOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1121970590A00C3019E /* ALTextOnlyCell.m */; };
+		4427F1231970591E00C3019E /* ALCellConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F11C1970591E00C3019E /* ALCellConstants.m */; };
+		4427F1241970591E00C3019E /* ALImageCellConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F11E1970591E00C3019E /* ALImageCellConstants.m */; };
+		4427F1251970591E00C3019E /* ALLeftLabelCellConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1201970591E00C3019E /* ALLeftLabelCellConstants.m */; };
+		4427F1261970591E00C3019E /* ALTextCellConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1221970591E00C3019E /* ALTextCellConstants.m */; };
+		4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1291970592E00C3019E /* ALTableViewCellFactory.m */; };
+		4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F12B1970592E00C3019E /* ALTableViewCellNibFactory.m */; };
+		4427F1371970594D00C3019E /* ALTextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1361970594D00C3019E /* ALTextViewHelper.m */; };
+		4427F140197059A000C3019E /* ALBooleanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F139197059A000C3019E /* ALBooleanCell.xib */; };
+		4427F141197059A000C3019E /* ALCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13A197059A000C3019E /* ALCell.xib */; };
+		4427F142197059A000C3019E /* ALGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13B197059A000C3019E /* ALGalleryCell.xib */; };
+		4427F143197059A000C3019E /* ALLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13C197059A000C3019E /* ALLeftLabelCell.xib */; };
+		4427F144197059A000C3019E /* ALMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13D197059A000C3019E /* ALMenuCell.xib */; };
+		4427F145197059A000C3019E /* ALTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13E197059A000C3019E /* ALTextCell.xib */; };
+		4427F146197059A000C3019E /* ALTextOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427F13F197059A000C3019E /* ALTextOnlyCell.xib */; };
+		4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F147197062D700C3019E /* ALBaseCellTests.m */; };
+		4427F156197062D800C3019E /* ALImageCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F148197062D700C3019E /* ALImageCellTests.m */; };
+		4427F157197062D800C3019E /* ALBooleanCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F149197062D700C3019E /* ALBooleanCellTests.m */; };
+		4427F159197062D800C3019E /* ALCellFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F14B197062D800C3019E /* ALCellFactoryTests.m */; };
+		4427F15A197062D800C3019E /* ALCellNibFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */; };
+		4427F15B197062D800C3019E /* ALCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F14D197062D800C3019E /* ALCellTests.m */; };
+		4427F15C197062D800C3019E /* ALGalleryCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F14E197062D800C3019E /* ALGalleryCellTests.m */; };
+		4427F15D197062D800C3019E /* ALLeftLabelCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */; };
+		4427F15E197062D800C3019E /* ALMenuCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F150197062D800C3019E /* ALMenuCellTests.m */; };
+		4427F15F197062D800C3019E /* ALTextCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F151197062D800C3019E /* ALTextCellTests.m */; };
+		4427F160197062D800C3019E /* ALTextOnlyCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F152197062D800C3019E /* ALTextOnlyCellTests.m */; };
+		4427F161197062D800C3019E /* ALTextViewHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F153197062D800C3019E /* ALTextViewHelperTests.m */; };
+		4427F16A197062FD00C3019E /* Test_ALTableViewCellNibFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F168197062FD00C3019E /* Test_ALTableViewCellNibFactory.m */; };
+		44759AA31970B1A000C66599 /* test_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 44759AA21970B1A000C66599 /* test_image.png */; };
+		44BBB97E197049C200AB4596 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BBB97D197049C200AB4596 /* XCTest.framework */; };
+		44BBB984197049C200AB4596 /* libAutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BBB96C197049C200AB4596 /* libAutoLayoutCells.a */; };
+		44BBB98A197049C200AB4596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BBB988197049C200AB4596 /* InfoPlist.strings */; };
+		44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */; };
+		44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */; };
+		9EED687E134A458AAD877799 /* libPods-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */; };
+		A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44BBB982197049C200AB4596 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44BBB964197049C200AB4596 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44BBB96B197049C200AB4596;
+			remoteInfo = AutoLayoutCells;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		44BBB96A197049C200AB4596 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4427F1051970590A00C3019E /* ALBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALBaseCell.h; sourceTree = "<group>"; };
+		4427F1061970590A00C3019E /* ALBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBaseCell.m; sourceTree = "<group>"; };
+		4427F1071970590A00C3019E /* ALImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCell.h; sourceTree = "<group>"; };
+		4427F1081970590A00C3019E /* ALImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCell.m; sourceTree = "<group>"; };
+		4427F1091970590A00C3019E /* ALBooleanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALBooleanCell.h; sourceTree = "<group>"; };
+		4427F10A1970590A00C3019E /* ALBooleanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBooleanCell.m; sourceTree = "<group>"; };
+		4427F10B1970590A00C3019E /* ALCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCell.h; sourceTree = "<group>"; };
+		4427F10C1970590A00C3019E /* ALCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCell.m; sourceTree = "<group>"; };
+		4427F10D1970590A00C3019E /* ALLeftLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALLeftLabelCell.h; sourceTree = "<group>"; };
+		4427F10E1970590A00C3019E /* ALLeftLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLeftLabelCell.m; sourceTree = "<group>"; };
+		4427F10F1970590A00C3019E /* ALTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextCell.h; sourceTree = "<group>"; };
+		4427F1101970590A00C3019E /* ALTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCell.m; sourceTree = "<group>"; };
+		4427F1111970590A00C3019E /* ALTextOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextOnlyCell.h; sourceTree = "<group>"; };
+		4427F1121970590A00C3019E /* ALTextOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextOnlyCell.m; sourceTree = "<group>"; };
+		4427F11B1970591E00C3019E /* ALCellConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCellConstants.h; sourceTree = "<group>"; };
+		4427F11C1970591E00C3019E /* ALCellConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCellConstants.m; sourceTree = "<group>"; };
+		4427F11D1970591E00C3019E /* ALImageCellConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCellConstants.h; sourceTree = "<group>"; };
+		4427F11E1970591E00C3019E /* ALImageCellConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCellConstants.m; sourceTree = "<group>"; };
+		4427F11F1970591E00C3019E /* ALLeftLabelCellConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALLeftLabelCellConstants.h; sourceTree = "<group>"; };
+		4427F1201970591E00C3019E /* ALLeftLabelCellConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLeftLabelCellConstants.m; sourceTree = "<group>"; };
+		4427F1211970591E00C3019E /* ALTextCellConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextCellConstants.h; sourceTree = "<group>"; };
+		4427F1221970591E00C3019E /* ALTextCellConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCellConstants.m; sourceTree = "<group>"; };
+		4427F1281970592E00C3019E /* ALTableViewCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewCellFactory.h; sourceTree = "<group>"; };
+		4427F1291970592E00C3019E /* ALTableViewCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewCellFactory.m; sourceTree = "<group>"; };
+		4427F12A1970592E00C3019E /* ALTableViewCellNibFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewCellNibFactory.h; sourceTree = "<group>"; };
+		4427F12B1970592E00C3019E /* ALTableViewCellNibFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewCellNibFactory.m; sourceTree = "<group>"; };
+		4427F12F1970593F00C3019E /* ALCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALCellDelegate.h; sourceTree = "<group>"; };
+		4427F1301970593F00C3019E /* ALTableViewCellFactoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTableViewCellFactoryDelegate.h; sourceTree = "<group>"; };
+		4427F1321970593F00C3019E /* ALTextCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTextCellDelegate.h; sourceTree = "<group>"; };
+		4427F1331970593F00C3019E /* ALTextViewHelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTextViewHelperDelegate.h; sourceTree = "<group>"; };
+		4427F1351970594D00C3019E /* ALTextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextViewHelper.h; sourceTree = "<group>"; };
+		4427F1361970594D00C3019E /* ALTextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextViewHelper.m; sourceTree = "<group>"; };
+		4427F139197059A000C3019E /* ALBooleanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALBooleanCell.xib; sourceTree = "<group>"; };
+		4427F13A197059A000C3019E /* ALCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALCell.xib; sourceTree = "<group>"; };
+		4427F13B197059A000C3019E /* ALGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALGalleryCell.xib; sourceTree = "<group>"; };
+		4427F13C197059A000C3019E /* ALLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALLeftLabelCell.xib; sourceTree = "<group>"; };
+		4427F13D197059A000C3019E /* ALMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALMenuCell.xib; sourceTree = "<group>"; };
+		4427F13E197059A000C3019E /* ALTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextCell.xib; sourceTree = "<group>"; };
+		4427F13F197059A000C3019E /* ALTextOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextOnlyCell.xib; sourceTree = "<group>"; };
+		4427F147197062D700C3019E /* ALBaseCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBaseCellTests.m; sourceTree = "<group>"; };
+		4427F148197062D700C3019E /* ALImageCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCellTests.m; sourceTree = "<group>"; };
+		4427F149197062D700C3019E /* ALBooleanCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBooleanCellTests.m; sourceTree = "<group>"; };
+		4427F14B197062D800C3019E /* ALCellFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCellFactoryTests.m; sourceTree = "<group>"; };
+		4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCellNibFactoryTests.m; sourceTree = "<group>"; };
+		4427F14D197062D800C3019E /* ALCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCellTests.m; sourceTree = "<group>"; };
+		4427F14E197062D800C3019E /* ALGalleryCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALGalleryCellTests.m; sourceTree = "<group>"; };
+		4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLeftLabelCellTests.m; sourceTree = "<group>"; };
+		4427F150197062D800C3019E /* ALMenuCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALMenuCellTests.m; sourceTree = "<group>"; };
+		4427F151197062D800C3019E /* ALTextCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCellTests.m; sourceTree = "<group>"; };
+		4427F152197062D800C3019E /* ALTextOnlyCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextOnlyCellTests.m; sourceTree = "<group>"; };
+		4427F153197062D800C3019E /* ALTextViewHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextViewHelperTests.m; sourceTree = "<group>"; };
+		4427F167197062FD00C3019E /* Test_ALTableViewCellNibFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALTableViewCellNibFactory.h; sourceTree = "<group>"; };
+		4427F168197062FD00C3019E /* Test_ALTableViewCellNibFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALTableViewCellNibFactory.m; sourceTree = "<group>"; };
+		443F387A1973AD8D0029B05C /* ALAllTableViewCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALAllTableViewCells.h; sourceTree = "<group>"; };
+		443F387B1973AE9F0029B05C /* ALTableViewCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTableViewCells.h; sourceTree = "<group>"; };
+		44759AA21970B1A000C66599 /* test_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_image.png; sourceTree = "<group>"; };
+		44BBB96C197049C200AB4596 /* libAutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAutoLayoutCells.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BBB973197049C200AB4596 /* AutoLayoutCells-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoLayoutCells-Prefix.pch"; sourceTree = "<group>"; };
+		44BBB97C197049C200AB4596 /* AutoLayoutCellsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoLayoutCellsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BBB97D197049C200AB4596 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		44BBB987197049C200AB4596 /* AutoLayoutCellsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoLayoutCellsTests-Info.plist"; sourceTree = "<group>"; };
+		44BBB989197049C200AB4596 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ALTableViewCellsBundle.h"; sourceTree = "<group>"; };
+		44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundle.m"; sourceTree = "<group>"; };
+		44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundleTests.m"; sourceTree = "<group>"; };
+		793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCellsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8258F2FD0ADD4C139724F8AC /* Pods-AutoLayoutCells.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.xcconfig"; path = "Pods/Pods-AutoLayoutCells.xcconfig"; sourceTree = "<group>"; };
+		930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D34EB6816A704EAD93B48A28 /* Pods-AutoLayoutCellsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.xcconfig"; path = "Pods/Pods-AutoLayoutCellsTests.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44BBB969197049C200AB4596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BBB979197049C200AB4596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BBB984197049C200AB4596 /* libAutoLayoutCells.a in Frameworks */,
+				9EED687E134A458AAD877799 /* libPods-AutoLayoutCellsTests.a in Frameworks */,
+				44BBB97E197049C200AB4596 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4427F11A1970591600C3019E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4427F11B1970591E00C3019E /* ALCellConstants.h */,
+				4427F11C1970591E00C3019E /* ALCellConstants.m */,
+				4427F11D1970591E00C3019E /* ALImageCellConstants.h */,
+				4427F11E1970591E00C3019E /* ALImageCellConstants.m */,
+				4427F11F1970591E00C3019E /* ALLeftLabelCellConstants.h */,
+				4427F1201970591E00C3019E /* ALLeftLabelCellConstants.m */,
+				4427F1211970591E00C3019E /* ALTextCellConstants.h */,
+				4427F1221970591E00C3019E /* ALTextCellConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		4427F1271970592200C3019E /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				4427F1281970592E00C3019E /* ALTableViewCellFactory.h */,
+				4427F1291970592E00C3019E /* ALTableViewCellFactory.m */,
+				4427F12A1970592E00C3019E /* ALTableViewCellNibFactory.h */,
+				4427F12B1970592E00C3019E /* ALTableViewCellNibFactory.m */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		4427F12E1970593300C3019E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4427F12F1970593F00C3019E /* ALCellDelegate.h */,
+				4427F1301970593F00C3019E /* ALTableViewCellFactoryDelegate.h */,
+				4427F1321970593F00C3019E /* ALTextCellDelegate.h */,
+				4427F1331970593F00C3019E /* ALTextViewHelperDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		4427F1341970594400C3019E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4427F1351970594D00C3019E /* ALTextViewHelper.h */,
+				4427F1361970594D00C3019E /* ALTextViewHelper.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		4427F1381970597A00C3019E /* ResourcesBundle */ = {
+			isa = PBXGroup;
+			children = (
+				4427F139197059A000C3019E /* ALBooleanCell.xib */,
+				4427F13A197059A000C3019E /* ALCell.xib */,
+				4427F13B197059A000C3019E /* ALGalleryCell.xib */,
+				4427F13C197059A000C3019E /* ALLeftLabelCell.xib */,
+				4427F13D197059A000C3019E /* ALMenuCell.xib */,
+				4427F13E197059A000C3019E /* ALTextCell.xib */,
+				4427F13F197059A000C3019E /* ALTextOnlyCell.xib */,
+			);
+			path = ResourcesBundle;
+			sourceTree = "<group>";
+		};
+		4427F163197062E500C3019E /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				4427F147197062D700C3019E /* ALBaseCellTests.m */,
+				4427F149197062D700C3019E /* ALBooleanCellTests.m */,
+				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
+				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
+				4427F14D197062D800C3019E /* ALCellTests.m */,
+				4427F14E197062D800C3019E /* ALGalleryCellTests.m */,
+				4427F148197062D700C3019E /* ALImageCellTests.m */,
+				4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */,
+				4427F150197062D800C3019E /* ALMenuCellTests.m */,
+				4427F151197062D800C3019E /* ALTextCellTests.m */,
+				4427F152197062D800C3019E /* ALTextOnlyCellTests.m */,
+				4427F153197062D800C3019E /* ALTextViewHelperTests.m */,
+				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
+			);
+			name = Cases;
+			sourceTree = "<group>";
+		};
+		4427F164197062EC00C3019E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4427F167197062FD00C3019E /* Test_ALTableViewCellNibFactory.h */,
+				4427F168197062FD00C3019E /* Test_ALTableViewCellNibFactory.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		44BBB963197049C200AB4596 = {
+			isa = PBXGroup;
+			children = (
+				44BBB971197049C200AB4596 /* AutoLayoutCells */,
+				44BBB985197049C200AB4596 /* AutoLayoutCellsTests */,
+				44BBB96E197049C200AB4596 /* Frameworks */,
+				44BBB96D197049C200AB4596 /* Products */,
+				D34EB6816A704EAD93B48A28 /* Pods-AutoLayoutCellsTests.xcconfig */,
+				8258F2FD0ADD4C139724F8AC /* Pods-AutoLayoutCells.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		44BBB96D197049C200AB4596 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB96C197049C200AB4596 /* libAutoLayoutCells.a */,
+				44BBB97C197049C200AB4596 /* AutoLayoutCellsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44BBB96E197049C200AB4596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB97D197049C200AB4596 /* XCTest.framework */,
+				793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */,
+				930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44BBB971197049C200AB4596 /* AutoLayoutCells */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB99519704A9200AB4596 /* TableViewCells */,
+				44BBB972197049C200AB4596 /* Supporting Files */,
+			);
+			path = AutoLayoutCells;
+			sourceTree = "<group>";
+		};
+		44BBB972197049C200AB4596 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB973197049C200AB4596 /* AutoLayoutCells-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44BBB985197049C200AB4596 /* AutoLayoutCellsTests */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB9A6197051DF00AB4596 /* TableViewCellTests */,
+				44BBB986197049C200AB4596 /* Supporting Files */,
+			);
+			path = AutoLayoutCellsTests;
+			sourceTree = "<group>";
+		};
+		44BBB986197049C200AB4596 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44759AA21970B1A000C66599 /* test_image.png */,
+				44BBB987197049C200AB4596 /* AutoLayoutCellsTests-Info.plist */,
+				44BBB988197049C200AB4596 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44BBB99519704A9200AB4596 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				443F387A1973AD8D0029B05C /* ALAllTableViewCells.h */,
+				443F387B1973AE9F0029B05C /* ALTableViewCells.h */,
+				44BBB99B19704B6D00AB4596 /* Categories */,
+				44BBB99919704B1C00AB4596 /* Cells */,
+				4427F11A1970591600C3019E /* Constants */,
+				4427F1271970592200C3019E /* Factories */,
+				4427F12E1970593300C3019E /* Protocols */,
+				4427F1381970597A00C3019E /* ResourcesBundle */,
+				4427F1341970594400C3019E /* Utilities */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		44BBB99919704B1C00AB4596 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4427F1051970590A00C3019E /* ALBaseCell.h */,
+				4427F1061970590A00C3019E /* ALBaseCell.m */,
+				4427F1091970590A00C3019E /* ALBooleanCell.h */,
+				4427F10A1970590A00C3019E /* ALBooleanCell.m */,
+				4427F10B1970590A00C3019E /* ALCell.h */,
+				4427F10C1970590A00C3019E /* ALCell.m */,
+				4427F1071970590A00C3019E /* ALImageCell.h */,
+				4427F1081970590A00C3019E /* ALImageCell.m */,
+				4427F10D1970590A00C3019E /* ALLeftLabelCell.h */,
+				4427F10E1970590A00C3019E /* ALLeftLabelCell.m */,
+				4427F10F1970590A00C3019E /* ALTextCell.h */,
+				4427F1101970590A00C3019E /* ALTextCell.m */,
+				4427F1111970590A00C3019E /* ALTextOnlyCell.h */,
+				4427F1121970590A00C3019E /* ALTextOnlyCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		44BBB99B19704B6D00AB4596 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */,
+				44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		44BBB9A6197051DF00AB4596 /* TableViewCellTests */ = {
+			isa = PBXGroup;
+			children = (
+				4427F163197062E500C3019E /* Cases */,
+				4427F164197062EC00C3019E /* Classes */,
+			);
+			path = TableViewCellTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44BBB96B197049C200AB4596 /* AutoLayoutCells */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44BBB98F197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCells" */;
+			buildPhases = (
+				122C52F3C898440EB919562F /* Check Pods Manifest.lock */,
+				44BBB968197049C200AB4596 /* Sources */,
+				44BBB969197049C200AB4596 /* Frameworks */,
+				44BBB96A197049C200AB4596 /* CopyFiles */,
+				936B14247D0A43B8BCF103D5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoLayoutCells;
+			productName = AutoLayoutCells;
+			productReference = 44BBB96C197049C200AB4596 /* libAutoLayoutCells.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		44BBB97B197049C200AB4596 /* AutoLayoutCellsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44BBB992197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCellsTests" */;
+			buildPhases = (
+				8C83EA13EE61494D9A7A6B70 /* Check Pods Manifest.lock */,
+				44BBB978197049C200AB4596 /* Sources */,
+				44BBB979197049C200AB4596 /* Frameworks */,
+				44BBB97A197049C200AB4596 /* Resources */,
+				3A0007203828412AA660B64C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44BBB983197049C200AB4596 /* PBXTargetDependency */,
+			);
+			name = AutoLayoutCellsTests;
+			productName = AutoLayoutCellsTests;
+			productReference = 44BBB97C197049C200AB4596 /* AutoLayoutCellsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44BBB964197049C200AB4596 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AL;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = 44BBB967197049C200AB4596 /* Build configuration list for PBXProject "AutoLayoutCells" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 44BBB963197049C200AB4596;
+			productRefGroup = 44BBB96D197049C200AB4596 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44BBB96B197049C200AB4596 /* AutoLayoutCells */,
+				44BBB97B197049C200AB4596 /* AutoLayoutCellsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44BBB97A197049C200AB4596 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4427F144197059A000C3019E /* ALMenuCell.xib in Resources */,
+				4427F143197059A000C3019E /* ALLeftLabelCell.xib in Resources */,
+				4427F146197059A000C3019E /* ALTextOnlyCell.xib in Resources */,
+				4427F140197059A000C3019E /* ALBooleanCell.xib in Resources */,
+				44BBB98A197049C200AB4596 /* InfoPlist.strings in Resources */,
+				4427F142197059A000C3019E /* ALGalleryCell.xib in Resources */,
+				44759AA31970B1A000C66599 /* test_image.png in Resources */,
+				4427F145197059A000C3019E /* ALTextCell.xib in Resources */,
+				4427F141197059A000C3019E /* ALCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		122C52F3C898440EB919562F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3A0007203828412AA660B64C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-AutoLayoutCellsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C83EA13EE61494D9A7A6B70 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		936B14247D0A43B8BCF103D5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-AutoLayoutCells-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44BBB968197049C200AB4596 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
+				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,
+				4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */,
+				4427F1191970590A00C3019E /* ALTextOnlyCell.m in Sources */,
+				4427F1131970590A00C3019E /* ALBaseCell.m in Sources */,
+				4427F1251970591E00C3019E /* ALLeftLabelCellConstants.m in Sources */,
+				4427F1181970590A00C3019E /* ALTextCell.m in Sources */,
+				4427F1141970590A00C3019E /* ALImageCell.m in Sources */,
+				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
+				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
+				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
+				4427F1161970590A00C3019E /* ALCell.m in Sources */,
+				4427F1371970594D00C3019E /* ALTextViewHelper.m in Sources */,
+				4427F1241970591E00C3019E /* ALImageCellConstants.m in Sources */,
+				4427F1261970591E00C3019E /* ALTextCellConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BBB978197049C200AB4596 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4427F160197062D800C3019E /* ALTextOnlyCellTests.m in Sources */,
+				4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */,
+				4427F15D197062D800C3019E /* ALLeftLabelCellTests.m in Sources */,
+				4427F16A197062FD00C3019E /* Test_ALTableViewCellNibFactory.m in Sources */,
+				4427F15A197062D800C3019E /* ALCellNibFactoryTests.m in Sources */,
+				4427F15B197062D800C3019E /* ALCellTests.m in Sources */,
+				4427F156197062D800C3019E /* ALImageCellTests.m in Sources */,
+				4427F161197062D800C3019E /* ALTextViewHelperTests.m in Sources */,
+				4427F157197062D800C3019E /* ALBooleanCellTests.m in Sources */,
+				4427F15C197062D800C3019E /* ALGalleryCellTests.m in Sources */,
+				4427F15F197062D800C3019E /* ALTextCellTests.m in Sources */,
+				4427F159197062D800C3019E /* ALCellFactoryTests.m in Sources */,
+				4427F15E197062D800C3019E /* ALMenuCellTests.m in Sources */,
+				44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44BBB983197049C200AB4596 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44BBB96B197049C200AB4596 /* AutoLayoutCells */;
+			targetProxy = 44BBB982197049C200AB4596 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		44BBB988197049C200AB4596 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44BBB989197049C200AB4596 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		44BBB98D197049C200AB4596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		44BBB98E197049C200AB4596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44BBB990197049C200AB4596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8258F2FD0ADD4C139724F8AC /* Pods-AutoLayoutCells.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/AutoLayoutCells.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		44BBB991197049C200AB4596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8258F2FD0ADD4C139724F8AC /* Pods-AutoLayoutCells.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/AutoLayoutCells.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		44BBB993197049C200AB4596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D34EB6816A704EAD93B48A28 /* Pods-AutoLayoutCellsTests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AutoLayoutCellsTests/AutoLayoutCellsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		44BBB994197049C200AB4596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D34EB6816A704EAD93B48A28 /* Pods-AutoLayoutCellsTests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
+				INFOPLIST_FILE = "AutoLayoutCellsTests/AutoLayoutCellsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44BBB967197049C200AB4596 /* Build configuration list for PBXProject "AutoLayoutCells" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BBB98D197049C200AB4596 /* Debug */,
+				44BBB98E197049C200AB4596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44BBB98F197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCells" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BBB990197049C200AB4596 /* Debug */,
+				44BBB991197049C200AB4596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44BBB992197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCellsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BBB993197049C200AB4596 /* Debug */,
+				44BBB994197049C200AB4596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 44BBB964197049C200AB4596 /* Project object */;
+}

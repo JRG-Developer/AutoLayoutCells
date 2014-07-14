@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9iD-f3-xdL" customClass="ALLeftLabelCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9iD-f3-xdL" id="c2Q-eu-oa0">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="990" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="990" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="194" placeholderIntrinsicHeight="21" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="k30-rd-Vup" customClass="AOLabel">
+                        <rect key="frame" x="70" y="10" width="240" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="990" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="990" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="194" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="3lN-W5-zMf" customClass="AOLabel">
+                        <rect key="frame" x="70" y="33" width="240" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Left Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="555-wP-6rs" customClass="AOLabel">
+                        <rect key="frame" x="10" y="10" width="52" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="k30-rd-Vup" firstAttribute="top" secondItem="c2Q-eu-oa0" secondAttribute="top" constant="10" id="7bW-Ed-YNJ"/>
+                    <constraint firstItem="555-wP-6rs" firstAttribute="top" secondItem="c2Q-eu-oa0" secondAttribute="top" constant="10" id="AUQ-ed-oAo"/>
+                    <constraint firstItem="3lN-W5-zMf" firstAttribute="leading" secondItem="k30-rd-Vup" secondAttribute="leading" id="EDQ-Df-nr2"/>
+                    <constraint firstItem="3lN-W5-zMf" firstAttribute="trailing" secondItem="k30-rd-Vup" secondAttribute="trailing" id="LdZ-mW-JNJ"/>
+                    <constraint firstAttribute="trailing" secondItem="k30-rd-Vup" secondAttribute="trailing" constant="10" id="Nb7-22-COC"/>
+                    <constraint firstItem="k30-rd-Vup" firstAttribute="leading" secondItem="555-wP-6rs" secondAttribute="trailing" constant="8" id="Pb0-an-8YJ"/>
+                    <constraint firstItem="555-wP-6rs" firstAttribute="leading" secondItem="c2Q-eu-oa0" secondAttribute="leading" constant="10" id="SV5-iP-cre"/>
+                    <constraint firstItem="3lN-W5-zMf" firstAttribute="top" secondItem="k30-rd-Vup" secondAttribute="bottom" constant="2" id="rEa-Xc-wK8"/>
+                    <constraint firstAttribute="bottom" secondItem="3lN-W5-zMf" secondAttribute="bottom" constant="10" id="zCd-6b-XK2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="leftLabel" destination="555-wP-6rs" id="Rbm-L4-k86"/>
+                <outlet property="subtitleLabel" destination="3lN-W5-zMf" id="JUi-dg-PZS"/>
+                <outlet property="titleLabel" destination="k30-rd-Vup" id="2Zj-IT-4yF"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
