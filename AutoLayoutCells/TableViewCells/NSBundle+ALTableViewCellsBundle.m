@@ -24,7 +24,7 @@
 
 #import "NSBundle+ALTableViewCellsBundle.h"
 
-NSString * const ALTableViewCellsBundleName = @"ALTableViewCellsBundle";
+NSString * const ALTableViewCellsBundleName = @"ALTableViewCellsBundle.bundle";
 static NSBundle *_ALTableViewCellsBundle;
 
 @implementation NSBundle (ALTableViewCellsBundle)
