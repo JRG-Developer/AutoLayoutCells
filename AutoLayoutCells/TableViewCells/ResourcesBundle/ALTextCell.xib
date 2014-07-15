@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="134" placeholderIntrinsicHeight="23" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dz-DU-6Mz" userLabel="textView" customClass="ALAutoResizingTextView">
-                        <rect key="frame" x="166" y="10" width="134" height="23"/>
+                        <rect key="frame" x="166" y="10" width="144" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +64,7 @@
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T8e-ka-4u9" secondAttribute="bottom" priority="990" constant="10" id="QxV-VF-hqJ"/>
                     <constraint firstItem="CSX-FE-jJM" firstAttribute="leading" secondItem="Aba-yf-KQ3" secondAttribute="leading" id="Vcv-Cx-d1K"/>
                     <constraint firstItem="Aba-yf-KQ3" firstAttribute="top" secondItem="T8e-ka-4u9" secondAttribute="top" id="dmk-tr-psZ"/>
-                    <constraint firstAttribute="trailing" secondItem="7Dz-DU-6Mz" secondAttribute="trailing" constant="20" id="gWC-ET-uAW"/>
+                    <constraint firstAttribute="trailing" secondItem="7Dz-DU-6Mz" secondAttribute="trailing" constant="10" id="gWC-ET-uAW"/>
                     <constraint firstItem="CSX-FE-jJM" firstAttribute="trailing" secondItem="Aba-yf-KQ3" secondAttribute="trailing" id="jeB-Bd-yko"/>
                     <constraint firstItem="T8e-ka-4u9" firstAttribute="leading" secondItem="O5d-ZN-GSy" secondAttribute="leading" constant="10" id="mJ6-Lh-oMD"/>
                     <constraint firstItem="7Dz-DU-6Mz" firstAttribute="leading" secondItem="Aba-yf-KQ3" secondAttribute="trailing" constant="8" symbolic="YES" id="n0o-j3-y6I"/>
