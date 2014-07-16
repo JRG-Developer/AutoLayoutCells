@@ -28,8 +28,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" placeholderIntrinsicWidth="173" placeholderIntrinsicHeight="15" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="173" translatesAutoresizingMaskIntoConstraints="NO" id="7q9-Vd-M49" userLabel="subtitleLabel" customClass="ALLabel">
-                        <rect key="frame" x="58" y="31" width="173" height="15"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" placeholderIntrinsicWidth="173" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="173" translatesAutoresizingMaskIntoConstraints="NO" id="7q9-Vd-M49" userLabel="subtitleLabel" customClass="ALLabel">
+                        <rect key="frame" x="58" y="31" width="173" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,11 +44,13 @@
                     <constraint firstItem="Wl4-tV-nbe" firstAttribute="leading" secondItem="dsV-qu-afH" secondAttribute="trailing" constant="20" id="0Y4-8O-G73"/>
                     <constraint firstItem="QMr-BW-FpX" firstAttribute="leading" secondItem="07U-c8-rdB" secondAttribute="leading" constant="10" id="8Rt-Eg-m2I"/>
                     <constraint firstItem="QMr-BW-FpX" firstAttribute="top" secondItem="07U-c8-rdB" secondAttribute="top" constant="10" id="H2e-SE-0V0"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wl4-tV-nbe" secondAttribute="bottom" constant="10" id="Plf-12-qfY"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wl4-tV-nbe" secondAttribute="bottom" priority="990" constant="10" id="Plf-12-qfY"/>
                     <constraint firstItem="Wl4-tV-nbe" firstAttribute="top" secondItem="07U-c8-rdB" secondAttribute="top" constant="10" id="Too-Ng-P7I"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7q9-Vd-M49" secondAttribute="bottom" constant="10" id="UmQ-v5-x3h"/>
                     <constraint firstItem="dsV-qu-afH" firstAttribute="top" secondItem="07U-c8-rdB" secondAttribute="top" constant="10" id="YRk-0L-Tv6"/>
+                    <constraint firstItem="dsV-qu-afH" firstAttribute="trailing" secondItem="7q9-Vd-M49" secondAttribute="trailing" id="eh6-s1-Ao4"/>
                     <constraint firstAttribute="trailing" secondItem="Wl4-tV-nbe" secondAttribute="trailing" constant="20" id="h8P-Oe-s1d"/>
-                    <constraint firstItem="Wl4-tV-nbe" firstAttribute="leading" secondItem="7q9-Vd-M49" secondAttribute="trailing" constant="20" id="smp-dz-Xf6"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QMr-BW-FpX" secondAttribute="bottom" priority="990" constant="10" id="kET-nR-VIK"/>
                     <constraint firstItem="dsV-qu-afH" firstAttribute="leading" secondItem="7q9-Vd-M49" secondAttribute="leading" id="vwQ-ZQ-aDP"/>
                     <constraint firstItem="dsV-qu-afH" firstAttribute="leading" secondItem="QMr-BW-FpX" secondAttribute="trailing" constant="8" symbolic="YES" id="wNM-9R-5dl"/>
                     <constraint firstItem="7q9-Vd-M49" firstAttribute="top" secondItem="dsV-qu-afH" secondAttribute="bottom" id="wia-ti-9fP"/>

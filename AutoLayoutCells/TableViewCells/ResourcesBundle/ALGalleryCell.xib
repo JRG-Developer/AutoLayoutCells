@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="258" id="Rvr-dr-Mpo" customClass="ALImageCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="258"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rvr-dr-Mpo" id="pg5-0d-rQi">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="23" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Gyz-iY-KBa" userLabel="titleLabel" customClass="ALLabel">
@@ -22,8 +22,8 @@
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="24" text="Subtitle" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="5rI-Bb-0sk" userLabel="subtitleLabel" customClass="ALLabel">
-                        <rect key="frame" x="10" y="223" width="300" height="24"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="26" text="Subtitle" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="5rI-Bb-0sk" userLabel="subtitleLabel" customClass="ALLabel">
+                        <rect key="frame" x="10" y="221" width="300" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +47,7 @@
                     <constraint firstItem="Gyz-iY-KBa" firstAttribute="top" secondItem="51I-To-9DE" secondAttribute="bottom" constant="8" id="LgJ-mL-aC6"/>
                     <constraint firstAttribute="bottom" secondItem="5rI-Bb-0sk" secondAttribute="bottom" constant="10" id="Yq5-kt-eCw"/>
                     <constraint firstItem="5rI-Bb-0sk" firstAttribute="leading" secondItem="pg5-0d-rQi" secondAttribute="leading" constant="10" id="bV1-LJ-Gir"/>
-                    <constraint firstItem="5rI-Bb-0sk" firstAttribute="top" secondItem="Gyz-iY-KBa" secondAttribute="bottom" constant="2" id="gIa-ki-bbi"/>
+                    <constraint firstItem="5rI-Bb-0sk" firstAttribute="top" secondItem="Gyz-iY-KBa" secondAttribute="bottom" id="gIa-ki-bbi"/>
                     <constraint firstAttribute="centerX" secondItem="51I-To-9DE" secondAttribute="centerX" id="nfg-uq-mjF"/>
                     <constraint firstAttribute="trailing" secondItem="5rI-Bb-0sk" secondAttribute="trailing" constant="10" id="qzy-3P-HHq"/>
                 </constraints>
