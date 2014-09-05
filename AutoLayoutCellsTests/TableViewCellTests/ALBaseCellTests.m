@@ -37,8 +37,6 @@
 
 #import <OCMock/OCMock.h>
 
-const char ALBaseCellCommonInitKey;
-
 @interface ALBaseCell (Test_Methods)
 @end
 

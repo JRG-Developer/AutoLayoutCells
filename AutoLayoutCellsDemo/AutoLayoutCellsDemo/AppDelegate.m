@@ -1,8 +1,8 @@
 //
-//  ALAllTableViewCells.h
-//  AutoLayoutCells
+//  AppDelegate.m
+//  AutoLayoutCellsExample
 //
-//  Created by Joshua Greene on 7/13/14.
+//  Created by Joshua Greene on 9/5/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- *  In general, you should import `ALTableViewCells.h` *instead of* this header and then import whichever specific cell you need. However, if you really do need *all* of the table view cells and related classes, you can import this header.
- */
+#import "AppDelegate.h"
+#import "TableViewController.h"
 
-// Cells
-#import <AutoLayoutCells/ALBooleanCell.h>
-#import <AutoLayoutCells/ALCell.h>
-#import <AutoLayoutCells/ALImageCell.h>
-#import <AutoLayoutCells/ALLeftLabelCell.h>
-#import <AutoLayoutCells/ALTextCell.h>
-#import <AutoLayoutCells/ALTextOnlyCell.h>
+@implementation AppDelegate
 
-// Constants
-#import <AutoLayoutCells/ALCellConstants.h>
-#import <AutoLayoutCells/ALImageCellConstants.h>
-#import <AutoLayoutCells/ALLeftLabelCellConstants.h>
-#import <AutoLayoutCells/ALTextCellConstants.h>
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  [self configureTableViewController];
+  
+  return YES;
+}
 
-// Factories
-#import <AutoLayoutCells/ALTableViewCellFactory.h>
-#import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+- (void)configureTableViewController
+{
+  UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+  TableViewController *tableViewController = [navController.viewControllers firstObject];
+  
+  [tableViewController setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
+}
 
-// Protocols
-#import <AutoLayoutCells/ALCellDelegate.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
-#import <AutoLayoutCells/ALTextCellDelegate.h>
+@end

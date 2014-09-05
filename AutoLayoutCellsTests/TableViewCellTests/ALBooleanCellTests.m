@@ -105,6 +105,11 @@
   expect(sut.mainImageViewWidthConstraint).toNot.beNil();
 }
 
+- (void)test_has___mainImageViewHeightConstraint
+{
+  expect(sut.mainImageViewHeightConstraint).toNot.beNil();
+}
+
 - (void)test_doesNotHave___secondaryImageView
 {
   expect(sut.secondaryImageView).to.beNil();

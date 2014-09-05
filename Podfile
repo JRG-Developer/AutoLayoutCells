@@ -11,5 +11,4 @@ target "AutoLayoutCellsTests" do
   pod 'AOTestCase', '~> 1.0'
   pod 'Expecta', '~> 0.3'
   pod 'OCMock', '~> 3.0'
-  pod 'OCMockito', '~> 1.3'
 end

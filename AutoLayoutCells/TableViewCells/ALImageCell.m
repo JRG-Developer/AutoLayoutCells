@@ -31,15 +31,19 @@
 @property (assign, nonatomic) CGFloat mainImageViewLeadingConstraintConstant;
 @property (assign, nonatomic) CGFloat mainImageViewTrailingConstraintConstant;
 @property (assign, nonatomic) CGFloat mainImageViewWidthConstraintConstant;
+@property (assign, nonatomic) CGFloat mainImageViewHeightConstraintConstant;
 
 @property (assign, nonatomic) CGFloat secondaryImageViewLeadingConstraintConstant;
 @property (assign, nonatomic) CGFloat secondaryImageViewTrailingConstraintConstant;
 @property (assign, nonatomic) CGFloat secondaryImageViewWidthConstraintConstant;
+@property (assign, nonatomic) CGFloat secondaryImageViewHeightConstraintConstant;
 @end
 
 @implementation ALImageCell
 
 #pragma mark - Custom Accessors
+
+#pragma mark - Main Image View Constraints
 
 - (void)setMainImageViewLeadingConstraint:(NSLayoutConstraint *)constraint
 {
@@ -71,6 +75,18 @@
   self.mainImageViewWidthConstraintConstant = constraint.constant;
 }
 
+- (void)setMainImageViewHeightConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_mainImageViewHeightConstraint == constraint) {
+    return;
+  }
+  
+  _mainImageViewHeightConstraint = constraint;
+  self.mainImageViewHeightConstraintConstant = constraint.constant;
+}
+
+#pragma mark - Secondardy Image View Constraints
+
 - (void)setSecondaryImageViewLeadingConstraint:(NSLayoutConstraint *)constraint
 {
   if (_secondaryImageViewLeadingConstraint == constraint) {
@@ -99,6 +115,16 @@
   
   _secondaryImageViewWidthConstraint = constraint;
   self.secondaryImageViewWidthConstraintConstant = constraint.constant;
+}
+
+- (void)setSecondaryImageViewHeightConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_secondaryImageViewHeightConstraint == constraint) {
+    return;
+  }
+  
+  _secondaryImageViewHeightConstraint = constraint;
+  self.secondaryImageViewHeightConstraintConstant = constraint.constant;
 }
 
 #pragma mark - Public
@@ -162,13 +188,15 @@
   self.mainImageViewLeadingConstraint.constant = self.mainImageViewLeadingConstraintConstant;
   self.mainImageViewTrailingConstraint.constant = self.mainImageViewTrailingConstraintConstant;
   self.mainImageViewWidthConstraint.constant = self.mainImageViewWidthConstraintConstant;
+  self.mainImageViewHeightConstraint.constant = self.mainImageViewHeightConstraintConstant;
 }
 
 - (void)setMainImageViewConstraintsToZero
 {
-  self.mainImageViewLeadingConstraint.constant = 0;
-  self.mainImageViewTrailingConstraint.constant = 0;
-  self.mainImageViewWidthConstraint.constant = 0;
+  self.mainImageViewLeadingConstraint.constant = 0.0f;
+  self.mainImageViewTrailingConstraint.constant = 0.0f;
+  self.mainImageViewWidthConstraint.constant = 0.0f;
+  self.mainImageViewHeightConstraint.constant = 0.0f;
 }
 
 #pragma mark - setSecondaryImageViewFromDictionary:
@@ -203,13 +231,15 @@
   self.secondaryImageViewLeadingConstraint.constant = self.secondaryImageViewLeadingConstraintConstant;
   self.secondaryImageViewTrailingConstraint.constant = self.secondaryImageViewTrailingConstraintConstant;
   self.secondaryImageViewWidthConstraint.constant = self.secondaryImageViewWidthConstraintConstant;
+  self.secondaryImageViewHeightConstraint.constant = self.secondaryImageViewHeightConstraintConstant;
 }
 
 - (void)setSecondaryImageViewConstraintsToZero
 {
-  self.secondaryImageViewLeadingConstraint.constant = 0;
-  self.secondaryImageViewTrailingConstraint.constant = 0;
-  self.secondaryImageViewWidthConstraint.constant = 0;
+  self.secondaryImageViewLeadingConstraint.constant = 0.0f;
+  self.secondaryImageViewTrailingConstraint.constant = 0.0f;
+  self.secondaryImageViewWidthConstraint.constant = 0.0f;
+  self.secondaryImageViewHeightConstraint.constant = 0.0f;
 }
 
 #pragma mark - setImageFromURL: onImageView: placeholderImage:

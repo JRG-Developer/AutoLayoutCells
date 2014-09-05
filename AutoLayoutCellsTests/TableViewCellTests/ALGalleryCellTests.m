@@ -74,6 +74,16 @@
   expect(sut.mainImageView).toNot.beNil();
 }
 
+- (void)test_has___mainImageViewWidthConstraint_outlet_set
+{
+  expect(sut.mainImageViewWidthConstraint).toNot.beNil();
+}
+
+- (void)test_has___mainImageViewHeightConstraint_outlet_set
+{
+  expect(sut.mainImageViewHeightConstraint).toNot.beNil();
+}
+
 - (void)test_doesNotHave___secondaryImageView_outlet_set
 {
   expect(sut.secondaryImageView).to.beNil();
@@ -87,11 +97,6 @@
 - (void)test_doesNotHave___mainImageViewTrailingConstraint_outlet_set
 {
   expect(sut.mainImageViewTrailingConstraint).to.beNil();
-}
-
-- (void)test_doesNotHave___mainImageViewWidthConstraint_outlet_set
-{
-  expect(sut.mainImageViewWidthConstraint).to.beNil();
 }
 
 @end

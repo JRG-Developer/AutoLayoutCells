@@ -22,6 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "ALCellConstants.h"
+
 /**
  *  Subclasses of `ALImageCell` use these keys to set the relevant text/values on their subviews.
  */

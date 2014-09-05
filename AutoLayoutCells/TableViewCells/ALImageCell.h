@@ -88,6 +88,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewTrailingConstraint;
 
 /**
+ *  The height constraint on the `mainImageView`
+ *
+ *  @note Setting this outlet is *optional*
+ *
+ *  @discussion This outlet is used to remove (if a "main" image isn't set) or set (if a "main" image is set) the height of the `mainImageView`.
+ *
+ *  If you always want to show a constant height for the `mainImageView`, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewHeightConstraint;
+
+/**
  *  The width constraint on the `mainImageView`
  *
  *  @note Setting this outlet is *optional*
@@ -132,6 +143,17 @@
  *  If you always want to show trailing space, you should *not* set this outlet.
  */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewTrailingConstraint;
+
+/**
+ *  The height constraint on the `secondaryImageView`
+ *
+ *  @note Setting this outlet is *optional*
+ *
+ *  @discussion This outlet is used to remove (if a "secondary" image isn't set) or set (if a "secondary" image is set) the height of the `secondaryImageView`.
+ *
+ *  If you always want to show a constant height for the `secondaryImageView`, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewHeightConstraint;
 
 /**
  *  The width constraint on the `secondaryImageView`

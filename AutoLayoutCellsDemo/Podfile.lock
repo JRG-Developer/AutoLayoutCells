@@ -1,0 +1,51 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking+ImageActivityIndicator (1.0.0):
+    - AFNetworking (~> 2.0)
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - ALLabel (1.0.0)
+  - AutoLayoutCells (0.1.0):
+    - AutoLayoutCells/TableViewCells
+  - AutoLayoutCells/TableViewCells (0.1.0):
+    - AFNetworking+ImageActivityIndicator (~> 1.0)
+    - ALLabel (~> 1.0)
+    - AutoLayoutTextViews (~> 1.0)
+    - UIView+AORefreshFont (~> 1.0)
+  - AutoLayoutTextViews (1.1.0)
+  - UIView+AORefreshFont (1.0.2)
+
+DEPENDENCIES:
+  - AutoLayoutCells (from `../`)
+
+EXTERNAL SOURCES:
+  AutoLayoutCells:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  AFNetworking+ImageActivityIndicator: c57c1b83395c9a9c03ff247cea8fcd7a2656fcd6
+  ALLabel: 22df54ababe890d6a458490e480d93ba0e17986a
+  AutoLayoutCells: 3775c4c8e285528cc76a956f40006b2978c5fd71
+  AutoLayoutTextViews: 9b6ed8710466117db3396e683089b8edb9f48ba3
+  UIView+AORefreshFont: 5784113c8c078e76774a7cdf008102e2ef6d49a4
+
+COCOAPODS: 0.33.1

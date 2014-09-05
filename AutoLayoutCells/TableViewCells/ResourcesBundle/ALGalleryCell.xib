@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -54,6 +54,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="mainImageView" destination="51I-To-9DE" id="bJY-4U-aRD"/>
+                <outlet property="mainImageViewHeightConstraint" destination="hBE-uW-F6e" id="mNw-Ea-7hJ"/>
+                <outlet property="mainImageViewWidthConstraint" destination="R0T-my-ca9" id="h53-Jm-5ea"/>
                 <outlet property="subtitleLabel" destination="5rI-Bb-0sk" id="NDy-oL-CgX"/>
                 <outlet property="titleLabel" destination="Gyz-iY-KBa" id="9t9-Kq-fc5"/>
             </connections>

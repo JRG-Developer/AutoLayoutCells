@@ -240,6 +240,35 @@ static UIImage *image;
   [constraint verify];
 }
 
+- (void)test___setValuesDictionary___noImage_sets_mainImageViewHeightConstraint_to_zero
+{
+  // given
+  [self givenMockConstraintWithConstant:50.0f];
+  sut.mainImageViewHeightConstraint = constraint;
+  
+  // when
+  [sut setValuesDictionary:nil];
+  
+  // then
+  OCMVerify([constraint setConstant:0]);
+}
+
+- (void)test___setValuesDictionary___hasImage_sets_mainImageViewHeightConstraint_to_initialValue
+{
+  // given
+  [self givenMockConstraintWithExpecations:50.0f];
+  sut.mainImageViewHeightConstraint = constraint;
+  
+  [self givenTestImage];
+  NSDictionary *dict = @{ALImageCellMainImageKey: image};
+  
+  // when
+  [sut setValuesDictionary:dict];
+  
+  // then
+  [constraint verify];
+}
+
 #pragma mark - secondaryImageView Constraints - Tests
 
 - (void)test___setValuesDictionary___noImage_sets_secondaryImageViewLeadingConstraint_to_zero

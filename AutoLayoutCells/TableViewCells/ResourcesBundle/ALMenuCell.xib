@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -62,9 +62,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="mainImageView" destination="UMx-fO-tub" id="wAz-lo-ECd"/>
+                <outlet property="mainImageViewHeightConstraint" destination="TMT-DQ-xMq" id="CeU-Iz-IRZ"/>
                 <outlet property="mainImageViewTrailingConstraint" destination="JQd-NP-rEy" id="kko-OF-jbZ"/>
                 <outlet property="mainImageViewWidthConstraint" destination="7Bf-hp-y7y" id="tLL-ez-zsP"/>
                 <outlet property="secondaryImageView" destination="uKi-qM-YJX" id="Ebx-Yo-6I4"/>
+                <outlet property="secondaryImageViewHeightConstraint" destination="iNu-St-Poj" id="HPI-GW-BoS"/>
                 <outlet property="secondaryImageViewLeadingConstraint" destination="GbG-CN-L7o" id="1Cy-o5-AvO"/>
                 <outlet property="secondaryImageViewWidthConstraint" destination="4SD-0X-NPV" id="BZ3-3m-biN"/>
                 <outlet property="subtitleLabel" destination="tOC-yh-dSg" id="EJL-Sn-G5X"/>

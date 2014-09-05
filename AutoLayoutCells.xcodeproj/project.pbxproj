@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
+		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
 		4427F1131970590A00C3019E /* ALBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1061970590A00C3019E /* ALBaseCell.m */; };
 		4427F1141970590A00C3019E /* ALImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1081970590A00C3019E /* ALImageCell.m */; };
 		4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F10A1970590A00C3019E /* ALBooleanCell.m */; };
@@ -74,6 +76,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewTests.m; sourceTree = "<group>"; };
+		42FC099919BA725E0011D1FF /* ALTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableView.h; sourceTree = "<group>"; };
+		42FC099A19BA725E0011D1FF /* ALTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableView.m; sourceTree = "<group>"; };
 		4427F1051970590A00C3019E /* ALBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALBaseCell.h; sourceTree = "<group>"; };
 		4427F1061970590A00C3019E /* ALBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBaseCell.m; sourceTree = "<group>"; };
 		4427F1071970590A00C3019E /* ALImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCell.h; sourceTree = "<group>"; };
@@ -127,8 +132,8 @@
 		4427F153197062D800C3019E /* ALTextViewHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextViewHelperTests.m; sourceTree = "<group>"; };
 		4427F167197062FD00C3019E /* Test_ALTableViewCellNibFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALTableViewCellNibFactory.h; sourceTree = "<group>"; };
 		4427F168197062FD00C3019E /* Test_ALTableViewCellNibFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALTableViewCellNibFactory.m; sourceTree = "<group>"; };
-		443F387A1973AD8D0029B05C /* ALAllTableViewCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALAllTableViewCells.h; sourceTree = "<group>"; };
-		443F387B1973AE9F0029B05C /* ALTableViewCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTableViewCells.h; sourceTree = "<group>"; };
+		443F387A1973AD8D0029B05C /* AutoLayoutCellsEverything.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoLayoutCellsEverything.h; sourceTree = "<group>"; };
+		443F387B1973AE9F0029B05C /* AutoLayoutCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoLayoutCells.h; sourceTree = "<group>"; };
 		44759AA21970B1A000C66599 /* test_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_image.png; sourceTree = "<group>"; };
 		44BBB96C197049C200AB4596 /* libAutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAutoLayoutCells.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BBB973197049C200AB4596 /* AutoLayoutCells-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoLayoutCells-Prefix.pch"; sourceTree = "<group>"; };
@@ -167,6 +172,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42FC099819BA72450011D1FF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4427F1051970590A00C3019E /* ALBaseCell.h */,
+				4427F1061970590A00C3019E /* ALBaseCell.m */,
+				4427F1091970590A00C3019E /* ALBooleanCell.h */,
+				4427F10A1970590A00C3019E /* ALBooleanCell.m */,
+				4427F10B1970590A00C3019E /* ALCell.h */,
+				4427F10C1970590A00C3019E /* ALCell.m */,
+				4427F1071970590A00C3019E /* ALImageCell.h */,
+				4427F1081970590A00C3019E /* ALImageCell.m */,
+				4427F10D1970590A00C3019E /* ALLeftLabelCell.h */,
+				4427F10E1970590A00C3019E /* ALLeftLabelCell.m */,
+				4427F10F1970590A00C3019E /* ALTextCell.h */,
+				4427F1101970590A00C3019E /* ALTextCell.m */,
+				4427F1111970590A00C3019E /* ALTextOnlyCell.h */,
+				4427F1121970590A00C3019E /* ALTextOnlyCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		42FC099C19BA746B0011D1FF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4427F147197062D700C3019E /* ALBaseCellTests.m */,
+				4427F149197062D700C3019E /* ALBooleanCellTests.m */,
+				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
+				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
+				4427F14D197062D800C3019E /* ALCellTests.m */,
+				4427F14E197062D800C3019E /* ALGalleryCellTests.m */,
+				4427F148197062D700C3019E /* ALImageCellTests.m */,
+				4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */,
+				4427F150197062D800C3019E /* ALMenuCellTests.m */,
+				4427F151197062D800C3019E /* ALTextCellTests.m */,
+				4427F152197062D800C3019E /* ALTextOnlyCellTests.m */,
+				4427F153197062D800C3019E /* ALTextViewHelperTests.m */,
+				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		4427F11A1970591600C3019E /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,33 +273,22 @@
 			path = ResourcesBundle;
 			sourceTree = "<group>";
 		};
-		4427F163197062E500C3019E /* Cases */ = {
+		4427F163197062E500C3019E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4427F147197062D700C3019E /* ALBaseCellTests.m */,
-				4427F149197062D700C3019E /* ALBooleanCellTests.m */,
-				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
-				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
-				4427F14D197062D800C3019E /* ALCellTests.m */,
-				4427F14E197062D800C3019E /* ALGalleryCellTests.m */,
-				4427F148197062D700C3019E /* ALImageCellTests.m */,
-				4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */,
-				4427F150197062D800C3019E /* ALMenuCellTests.m */,
-				4427F151197062D800C3019E /* ALTextCellTests.m */,
-				4427F152197062D800C3019E /* ALTextOnlyCellTests.m */,
-				4427F153197062D800C3019E /* ALTextViewHelperTests.m */,
-				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
+				42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */,
+				42FC099C19BA746B0011D1FF /* Cells */,
 			);
-			name = Cases;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		4427F164197062EC00C3019E /* Classes */ = {
+		4427F164197062EC00C3019E /* Test Classes */ = {
 			isa = PBXGroup;
 			children = (
 				4427F167197062FD00C3019E /* Test_ALTableViewCellNibFactory.h */,
 				4427F168197062FD00C3019E /* Test_ALTableViewCellNibFactory.m */,
 			);
-			name = Classes;
+			name = "Test Classes";
 			sourceTree = "<group>";
 		};
 		44BBB963197049C200AB4596 = {
@@ -326,10 +361,10 @@
 		44BBB99519704A9200AB4596 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				443F387A1973AD8D0029B05C /* ALAllTableViewCells.h */,
-				443F387B1973AE9F0029B05C /* ALTableViewCells.h */,
+				443F387B1973AE9F0029B05C /* AutoLayoutCells.h */,
+				443F387A1973AD8D0029B05C /* AutoLayoutCellsEverything.h */,
 				44BBB99B19704B6D00AB4596 /* Categories */,
-				44BBB99919704B1C00AB4596 /* Cells */,
+				44BBB99919704B1C00AB4596 /* Views */,
 				4427F11A1970591600C3019E /* Constants */,
 				4427F1271970592200C3019E /* Factories */,
 				4427F12E1970593300C3019E /* Protocols */,
@@ -339,25 +374,14 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		44BBB99919704B1C00AB4596 /* Cells */ = {
+		44BBB99919704B1C00AB4596 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4427F1051970590A00C3019E /* ALBaseCell.h */,
-				4427F1061970590A00C3019E /* ALBaseCell.m */,
-				4427F1091970590A00C3019E /* ALBooleanCell.h */,
-				4427F10A1970590A00C3019E /* ALBooleanCell.m */,
-				4427F10B1970590A00C3019E /* ALCell.h */,
-				4427F10C1970590A00C3019E /* ALCell.m */,
-				4427F1071970590A00C3019E /* ALImageCell.h */,
-				4427F1081970590A00C3019E /* ALImageCell.m */,
-				4427F10D1970590A00C3019E /* ALLeftLabelCell.h */,
-				4427F10E1970590A00C3019E /* ALLeftLabelCell.m */,
-				4427F10F1970590A00C3019E /* ALTextCell.h */,
-				4427F1101970590A00C3019E /* ALTextCell.m */,
-				4427F1111970590A00C3019E /* ALTextOnlyCell.h */,
-				4427F1121970590A00C3019E /* ALTextOnlyCell.m */,
+				42FC099919BA725E0011D1FF /* ALTableView.h */,
+				42FC099A19BA725E0011D1FF /* ALTableView.m */,
+				42FC099819BA72450011D1FF /* Cells */,
 			);
-			name = Cells;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		44BBB99B19704B6D00AB4596 /* Categories */ = {
@@ -372,8 +396,8 @@
 		44BBB9A6197051DF00AB4596 /* TableViewCellTests */ = {
 			isa = PBXGroup;
 			children = (
-				4427F163197062E500C3019E /* Cases */,
-				4427F164197062EC00C3019E /* Classes */,
+				4427F163197062E500C3019E /* Views */,
+				4427F164197062EC00C3019E /* Test Classes */,
 			);
 			path = TableViewCellTests;
 			sourceTree = "<group>";
@@ -543,6 +567,7 @@
 				4427F1251970591E00C3019E /* ALLeftLabelCellConstants.m in Sources */,
 				4427F1181970590A00C3019E /* ALTextCell.m in Sources */,
 				4427F1141970590A00C3019E /* ALImageCell.m in Sources */,
+				42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */,
 				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
 				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
@@ -567,6 +592,7 @@
 				4427F161197062D800C3019E /* ALTextViewHelperTests.m in Sources */,
 				4427F157197062D800C3019E /* ALBooleanCellTests.m in Sources */,
 				4427F15C197062D800C3019E /* ALGalleryCellTests.m in Sources */,
+				42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */,
 				4427F15F197062D800C3019E /* ALTextCellTests.m in Sources */,
 				4427F159197062D800C3019E /* ALCellFactoryTests.m in Sources */,
 				4427F15E197062D800C3019E /* ALMenuCellTests.m in Sources */,

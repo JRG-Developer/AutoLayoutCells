@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>First Title</string>
+		<key>subtitle</key>
+		<string>Second Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon1</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Second Title</string>
+		<key>subtitle</key>
+		<string>Second Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon1</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Third Title</string>
+		<key>subtitle</key>
+		<string>Third Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon3</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Fourth Title</string>
+		<key>subtitle</key>
+		<string>Fourth Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon4</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Fifth Title</string>
+		<key>subtitle</key>
+		<string>Fifth Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon5</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Sixth Title</string>
+		<key>subtitle</key>
+		<string>Sixth Subtitle</string>
+		<key>secondaryImageName</key>
+		<string>red_icon6</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Seventh Title</string>
+		<key>subtitle</key>
+		<string>Seventh Subtitle</string>
+		<key>secondaryImageName</key>
+		<string>red_icon7</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Eighth Title</string>
+		<key>subtitle</key>
+		<string>Eighth Subtitle</string>
+		<key>secondaryImageName</key>
+		<string>red_icon8</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Ninth Title</string>
+		<key>subtitle</key>
+		<string>Ninth Subtitle</string>
+		<key>mainImageName</key>
+		<string>blue_icon9</string>
+		<key>secondaryImageName</key>
+		<string>red_icon9</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>This is a really long title to show how the tenth cell will resize to fit it</string>
+		<key>subtitle</key>
+		<string>This is a really long subtitle to show how the tenth cell will resize to fit it</string>
+		<key>mainImageName</key>
+		<string>blue_icon10</string>
+		<key>secondaryImageName</key>
+		<string>red_icon10</string>
+	</dict>
+</array>
+</plist>
