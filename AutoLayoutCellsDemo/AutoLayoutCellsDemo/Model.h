@@ -50,9 +50,19 @@
 @property (strong, nonatomic) UIImage *mainImage;
 
 /**
+ *  The main image URL
+ */
+@property (strong, nonatomic) NSURL *mainImageURL;
+
+/**
  *  The secondary image
  */
 @property (strong, nonatomic) UIImage *secondaryImage;
+
+/**
+ *  The secondary image URL
+ */
+@property (strong, nonatomic) NSURL *secondaryImageURL;
 
 ///--------------------------------------------------------------
 /// @name Class Methods

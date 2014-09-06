@@ -50,12 +50,16 @@
 {
   return [NSString stringWithFormat:@"Title: %@\n"
                                     @"Subtitle: %@\n"
-                                    @"Has Image Image: %@\n"
-                                    @"Has Secondary Image: %@\n",
+                                    @"Has Main Image: %@\n"
+                                    @"Has Main URL: %@\n"
+                                    @"Has Secondary Image: %@\n"
+                                    @"Has Secondary URL: %@\n",
                                     self.title,
                                     self.subtitle,
                                     self.mainImage ? @"Yes" : @"No",
-                                    self.secondaryImage ? @"Yes" : @"No"];
+                                    self.mainImageURL ? @"Yes" : @"No",
+                                    self.secondaryImage ? @"Yes" : @"No",
+                                    self.secondaryImageURL ? @"Yes" : @"No"];
 }
 
 #pragma mark - Instance Methods
@@ -65,7 +69,9 @@
   [self setTitleFromDictionary:dictionary];
   [self setSubtitleFromDictionary:dictionary];
   [self setMainImageFromDictionary:dictionary];
+  [self setMainImageURLFromDictionary:dictionary];
   [self setSecondaryImageFromDictionary:dictionary];
+  [self setSecondaryImageURLFromDictionary:dictionary];
 }
 
 - (void)setTitleFromDictionary:(NSDictionary *)dictionary
@@ -81,18 +87,32 @@
 - (void)setMainImageFromDictionary:(NSDictionary *)dictionary
 {
   NSString *name = dictionary[@"mainImageName"];
-
   if (name.length) {
     self.mainImage = [UIImage imageNamed:name];
+  }
+}
+
+- (void)setMainImageURLFromDictionary:(NSDictionary *)dictionary
+{
+  NSString *string = dictionary[@"mainImageURL"];
+  if (string.length) {
+    self.mainImageURL = [NSURL URLWithString:string];
   }
 }
 
 - (void)setSecondaryImageFromDictionary:(NSDictionary *)dictionary
 {
   NSString *name = dictionary[@"secondaryImageName"];
-  
   if (name.length) {
     self.secondaryImage = [UIImage imageNamed:name];
+  }
+}
+
+- (void)setSecondaryImageURLFromDictionary:(NSDictionary *)dictionary
+{
+  NSString *string = dictionary[@"secondaryImageURL"];
+  if (string.length) {
+    self.secondaryImageURL = [NSURL URLWithString:string];
   }
 }
 

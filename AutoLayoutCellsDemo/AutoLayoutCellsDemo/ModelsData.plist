@@ -4,85 +4,101 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>First Title</string>
+		<string>1st Title</string>
 		<key>subtitle</key>
-		<string>Second Subtitle</string>
+		<string>1st Subtitle</string>
 		<key>mainImageName</key>
 		<string>blue_icon1</string>
+		<key>secondaryImageURL</key>
+		<string>http://lorempixel.com/60/60/</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Second Title</string>
+		<string>2nd Title</string>
 		<key>subtitle</key>
-		<string>Second Subtitle</string>
+		<string>2nd Subtitle</string>
 		<key>mainImageName</key>
-		<string>blue_icon1</string>
+		<string>blue_icon2</string>
+		<key>secondaryImageURL</key>
+		<string>http://lorempixel.com/61/61/</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Third Title</string>
+		<string>3rd Title</string>
 		<key>subtitle</key>
-		<string>Third Subtitle</string>
+		<string>3rd Subtitle</string>
 		<key>mainImageName</key>
 		<string>blue_icon3</string>
+		<key>secondaryImageURL</key>
+		<string>http://lorempixel.com/62/62/</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Fourth Title</string>
+		<string>4th Title</string>
 		<key>subtitle</key>
-		<string>Fourth Subtitle</string>
+		<string>4th Subtitle</string>
 		<key>mainImageName</key>
 		<string>blue_icon4</string>
+		<key>secondaryImageURL</key>
+		<string>http://lorempixel.com/63/63/</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Fifth Title</string>
+		<string>5th Title</string>
 		<key>subtitle</key>
-		<string>Fifth Subtitle</string>
+		<string>5th Subtitle</string>
 		<key>mainImageName</key>
 		<string>blue_icon5</string>
+		<key>secondaryImageURL</key>
+		<string>http://lorempixel.com/64/64/</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Sixth Title</string>
+		<string>6th Title</string>
 		<key>subtitle</key>
-		<string>Sixth Subtitle</string>
+		<string>6th Subtitle</string>
+		<key>mainImageURL</key>
+		<string>http://lorempixel.com/65/65/</string>
 		<key>secondaryImageName</key>
 		<string>red_icon6</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Seventh Title</string>
+		<string>7th Title</string>
 		<key>subtitle</key>
-		<string>Seventh Subtitle</string>
+		<string>7th Subtitle</string>
+		<key>mainImageURL</key>
+		<string>http://lorempixel.com/66/66/</string>
 		<key>secondaryImageName</key>
 		<string>red_icon7</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Eighth Title</string>
+		<string>8th Title</string>
 		<key>subtitle</key>
-		<string>Eighth Subtitle</string>
+		<string>8th Subtitle</string>
+		<key>mainImageURL</key>
+		<string>http://lorempixel.com/67/67/</string>
 		<key>secondaryImageName</key>
 		<string>red_icon8</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Ninth Title</string>
+		<string>9th Title</string>
 		<key>subtitle</key>
-		<string>Ninth Subtitle</string>
-		<key>mainImageName</key>
-		<string>blue_icon9</string>
+		<string>9th Subtitle</string>
+		<key>mainImageURL</key>
+		<string>http://lorempixel.com/68/68/</string>
 		<key>secondaryImageName</key>
 		<string>red_icon9</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>This is a really long title to show how the tenth cell will resize to fit it</string>
+		<string>This is a really long title to show how the 10th cell will resize to fit it</string>
 		<key>subtitle</key>
-		<string>This is a really long subtitle to show how the tenth cell will resize to fit it</string>
-		<key>mainImageName</key>
-		<string>blue_icon10</string>
+		<string>This is a really long subtitle to show how the 10th cell will resize to fit it</string>
+		<key>mainImageURL</key>
+		<string>http://lorempixel.com/69/69/</string>
 		<key>secondaryImageName</key>
 		<string>red_icon10</string>
 	</dict>

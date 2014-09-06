@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 /**
  *  `ALTableViewCellFactoryDelegate` includes a required "configure" method to configure a cell prior to display/height calculation.

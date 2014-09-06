@@ -27,8 +27,6 @@
 #import "ALImageCellConstants.h"
 
 // Collaborators
-#import <AFNetworking+ImageActivityIndicator/AFNetworking+ImageActivityIndicator.h>
-
 #import "NSBundle+ALTableViewCellsBundle.h"
 #import "Test_ALTableViewCellNibFactory.h"
 
@@ -134,7 +132,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  expect(sut.mainPlaceholderImage).to.equal(image);
+  expect(sut.mainImagePlaceholder).to.equal(image);
 }
 
 - (void)test___setValuesDictionary___sets_secondaryPlaceholderImage
@@ -147,7 +145,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  expect(sut.secondaryPlaceholderImage).to.equal(image);
+  expect(sut.secondaryImagePlaceholder).to.equal(image);
 }
 
 #pragma mark - Set Constraint Constant - Tests
@@ -394,48 +392,6 @@ static UIImage *image;
   [self swap___imageNamed___methods];
 }
 
-- (void)test___setValuesDictionary___ALImageCellMainImageURLStringKey
-{
-  // given
-  [self givenMockMainImageView];
-  
-  NSString *urlString = @"http://example.com/image/01";
-  NSURL *url = [NSURL URLWithString:urlString];
-  
-  NSDictionary *dict = @{ALImageCellMainImageURLStringKey: urlString};
-  
-  // when
-  [sut setValuesDictionary:dict];
-  
-  // then
-  [[imageView verify] setImageWithURLRequest:[NSURLRequest requestWithURL:url]
-                            placeholderImage:sut.mainPlaceholderImage
-                 usingActivityIndicatorStyle:[sut activityIndicatorStyle]
-                                     success:nil
-                                     failure:nil];
-}
-
-- (void)test___setValuesDictionary___ALImageCellMainImageURLKey
-{
-  // given
-  [self givenMockMainImageView];
-  
-  NSString *urlString = @"http://example.com/image/01";
-  NSURL *url = [NSURL URLWithString:urlString];
-  
-  NSDictionary *dict = @{ALImageCellMainImageURLKey: url};
-  
-  // when
-  [sut setValuesDictionary:dict];
-  
-  // then
-  [[imageView verify] setImageWithURLRequest:[NSURLRequest requestWithURL:url]
-                            placeholderImage:sut.mainPlaceholderImage
-                 usingActivityIndicatorStyle:[sut activityIndicatorStyle]
-                                     success:nil
-                                     failure:nil];
-}
-
 #pragma mark - Set Secondary Image - Tests
 
 - (void)test___setValuesDictionary___ALImageCellSecondaryImageKey
@@ -469,48 +425,6 @@ static UIImage *image;
   
   // clean up
   [self swap___imageNamed___methods];
-}
-
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageURLStringKey
-{
-  // given
-  [self givenMockSecondaryImageView];
-  
-  NSString *urlString = @"http://example.com/image/01";
-  NSURL *url = [NSURL URLWithString:urlString];
-  
-  NSDictionary *dict = @{ALImageCellSecondaryImageURLStringKey: urlString};
-  
-  // when
-  [sut setValuesDictionary:dict];
-  
-  // then
-  [[imageView verify] setImageWithURLRequest:[NSURLRequest requestWithURL:url]
-                            placeholderImage:sut.mainPlaceholderImage
-                 usingActivityIndicatorStyle:[sut activityIndicatorStyle]
-                                     success:nil
-                                     failure:nil];
-}
-
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageURLKey
-{
-  // given
-  [self givenMockSecondaryImageView];
-  
-  NSString *urlString = @"http://example.com/image/01";
-  NSURL *url = [NSURL URLWithString:urlString];
-  
-  NSDictionary *dict = @{ALImageCellSecondaryImageURLKey: url};
-  
-  // when
-  [sut setValuesDictionary:dict];
-  
-  // then
-  [[imageView verify] setImageWithURLRequest:[NSURLRequest requestWithURL:url]
-                            placeholderImage:sut.mainPlaceholderImage
-                 usingActivityIndicatorStyle:[sut activityIndicatorStyle]
-                                     success:nil
-                                     failure:nil];
 }
 
 

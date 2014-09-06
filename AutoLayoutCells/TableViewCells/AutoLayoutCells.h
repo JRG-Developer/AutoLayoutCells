@@ -1,5 +1,5 @@
 //
-//  ALTableViewCells.h
+//  AutoLayoutCells.h
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 7/13/14.

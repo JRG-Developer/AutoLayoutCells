@@ -25,6 +25,8 @@
 #import "ALTableViewCellFactory.h"
 #import "ALTableViewCellFactoryDelegate.h"
 
+#import "ALBaseCell.h"
+
 @implementation ALTableViewCellFactory
 
 #pragma mark - Object Lifecycle
@@ -70,10 +72,11 @@
 
 - (UITableViewCell *)sizingCellForIdentifier:(NSString *)identifier
 {
-  UITableViewCell *sizingCell = self.sizingCellDict[identifier];
+  ALBaseCell *sizingCell = self.sizingCellDict[identifier];
   
   if (sizingCell == nil) {
     sizingCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    [sizingCell setIsSizingCell:YES];
     self.sizingCellDict[identifier] = sizingCell;
   }
   

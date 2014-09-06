@@ -49,6 +49,13 @@
  */
 @property (strong, nonatomic) NSDictionary *valuesDictionary;
 
+/**
+ *  Whether this cell should be treated as a sizing cell. The default value is `NO`.
+ *
+ *  @discussion Cell subclasses may treat sizing cells slightly differently than normal cells. In example, image loading from URL may be skipped.
+ */
+@property (assign, nonatomic) BOOL isSizingCell;
+
 ///--------------------------------------------------------------
 /// @name Instance Methods
 ///--------------------------------------------------------------

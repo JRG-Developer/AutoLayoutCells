@@ -36,21 +36,21 @@
 ///--------------------------------------------------------------
 
 /**
- *  Whether or not loading images from a URL should be disabled for this cell.
- *
- *  @discussion The default value is `NO`. This property is useful for "sizingCells", which should not load images from URLs.
- */
-@property (assign, nonatomic) BOOL disableLoadingFromImageURL;
-
-/**
  *  The placeholder image to show whenever the `mainImageView` is loading.
  */
-@property (strong, nonatomic) UIImage *mainPlaceholderImage;
+@property (strong, nonatomic) UIImage *mainImagePlaceholder UI_APPEARANCE_SELECTOR;
 
 /**
  *  The placeholder image to show whenever the `secondaryImageView` is loading
  */
-@property (strong, nonatomic) UIImage *secondaryPlaceholderImage;
+@property (strong, nonatomic) UIImage *secondaryImagePlaceholder UI_APPEARANCE_SELECTOR;
+
+/**
+ *  The style to be used to show a loading activity indicator.
+ *
+ *  @discussion This propert is set to `NSNotFound` by default, meaning a loading activity indicator shouldn't be shown.
+ */
+@property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle;
 
 ///--------------------------------------------------------------
 /// @name Main Image View Outlets
@@ -174,12 +174,16 @@
 @interface ALImageCell (Protected)
 
 /**
- *  This method is called to get the preferred activity indicator style to create the `activityIndicator`.
+ *  This method first sets the `placeholderImage` on the `imageView`, asynchronously loads the image from the given url, and sets it on the image view.
  *
- *  @discussion The default value is `UIActivityIndicatorViewStyleGray`. Subclasses may override this method to return a different style that works better for their specific use.
+ *  @discussion This method uses the `sharedImageDownloadSession` to create an `NSURLSessionDownloadTask` and associates it with the image view. Before setting the placeholder image, the associated download session is cancelled.
  *
- *  @return The preferred activity indicator style
+ *  @param url              The url to load the image from
+ *  @param imageView        The image view to set the loaded image on
+ *  @param placeholder      The placeholder image to set while loading
  */
-- (UIActivityIndicatorViewStyle)activityIndicatorStyle;
+- (void)setImageFromURL:(NSURL *)url
+            onImageView:(UIImageView *)imageView
+       placeholderImage:(UIImage *)placeholder;
 
 @end

@@ -23,9 +23,9 @@
 //  THE SOFTWARE.
 
 #import "ALImageCell.h"
-#import <AFNetworking+ImageActivityIndicator/AFNetworking+ImageActivityIndicator.h>
 
 #import "ALImageCellConstants.h"
+#import "UIImageView+AutoLayoutCells.h"
 
 @interface ALImageCell()
 @property (assign, nonatomic) CGFloat mainImageViewLeadingConstraintConstant;
@@ -40,6 +40,14 @@
 @end
 
 @implementation ALImageCell
+
+#pragma mark - Object Lifecyle
+
+- (void)commonInit
+{
+  [super commonInit];
+  _loadingActivityIndicatorStyle = NSNotFound;
+}
 
 #pragma mark - Custom Accessors
 
@@ -145,14 +153,14 @@
 - (void)setMainPlaceholderImageFromDictionary:(NSDictionary *)dictionary
 {
   if (dictionary[ALImageCellMainPlaceholderImageKey]) {
-    self.mainPlaceholderImage = dictionary[ALImageCellMainPlaceholderImageKey];
+    self.mainImagePlaceholder = dictionary[ALImageCellMainPlaceholderImageKey];
   }
 }
 
 - (void)setSecondaryPlaceholderImageFromDictionary:(NSDictionary *)dictionary
 {
   if (dictionary[ALImageCellSecondaryPlaceholderImageKey]) {
-    self.secondaryPlaceholderImage = dictionary[ALImageCellSecondaryPlaceholderImageKey];
+    self.secondaryImagePlaceholder = dictionary[ALImageCellSecondaryPlaceholderImageKey];
   }
 }
 
@@ -171,12 +179,12 @@
   } else if ([dictionary[ALImageCellMainImageURLStringKey] length]) {
     [self setImageFromURL:[NSURL URLWithString:dictionary[ALImageCellMainImageURLStringKey]]
               onImageView:self.mainImageView
-         placeholderImage:self.mainPlaceholderImage];
+         placeholderImage:self.mainImagePlaceholder];
     
   } else if (dictionary[ALImageCellMainImageURLKey]) {
     [self setImageFromURL:dictionary[ALImageCellMainImageURLKey]
               onImageView:self.mainImageView
-         placeholderImage:self.mainPlaceholderImage];
+         placeholderImage:self.mainImagePlaceholder];
     
   } else {
     [self setMainImageViewConstraintsToZero];
@@ -214,12 +222,12 @@
   } else if ([dictionary[ALImageCellSecondaryImageURLStringKey] length]) {
     [self setImageFromURL:[NSURL URLWithString:dictionary[ALImageCellSecondaryImageURLStringKey]]
               onImageView:self.secondaryImageView
-         placeholderImage:self.secondaryPlaceholderImage];
+         placeholderImage:self.secondaryImagePlaceholder];
     
   } else if (dictionary[ALImageCellSecondaryImageURLKey]) {
     [self setImageFromURL:dictionary[ALImageCellSecondaryImageURLKey]
               onImageView:self.secondaryImageView
-         placeholderImage:self.secondaryPlaceholderImage];
+         placeholderImage:self.secondaryImagePlaceholder];
     
   } else {
     [self setSecondaryImageViewConstraintsToZero];
@@ -246,28 +254,18 @@
 
 - (void)setImageFromURL:(NSURL *)url
             onImageView:(UIImageView *)imageView
-       placeholderImage:(UIImage *)placeholderImage
+       placeholderImage:(UIImage *)placeholder
 {
-  if (self.disableLoadingFromImageURL) {
+  if ([self isSizingCell]) {
     return;
   }
   
-  [imageView setImage:nil];
-  
-  if (!url) {
-    return;
+  if (self.loadingActivityIndicatorStyle != NSNotFound) {
+    [imageView AL_setImageWithURL:url activityIndicatorStyle:self.loadingActivityIndicatorStyle];
+    
+  } else {
+    [imageView AL_setImageWithURL:url placeholder:placeholder];
   }
-  
-  [imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url]
-                   placeholderImage:placeholderImage
-        usingActivityIndicatorStyle:[self activityIndicatorStyle]
-                            success:nil
-                            failure:nil];
-}
-
-- (UIActivityIndicatorViewStyle)activityIndicatorStyle
-{
-  return UIActivityIndicatorViewStyleGray;
 }
 
 @end

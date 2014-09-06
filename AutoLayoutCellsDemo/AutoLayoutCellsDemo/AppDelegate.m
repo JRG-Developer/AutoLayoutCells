@@ -23,6 +23,9 @@
 //  THE SOFTWARE.
 
 #import "AppDelegate.h"
+
+#import <AutoLayoutCells/ALImageCell.h>
+
 #import "TableViewController.h"
 
 @implementation AppDelegate
@@ -30,6 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [self configureTableViewController];
+  [self configureCells];
   
   return YES;
 }
@@ -40,6 +44,11 @@
   TableViewController *tableViewController = [navController.viewControllers firstObject];
   
   [tableViewController setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
+}
+
+- (void)configureCells
+{
+  [[ALImageCell appearance] setLoadingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 }
 
 @end

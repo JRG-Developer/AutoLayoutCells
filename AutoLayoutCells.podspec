@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.subspec 'TableViewCells' do |ss|
     ss.framework = "UIKit"
 
-    ss.dependency 'AFNetworking+ImageActivityIndicator', '~> 1.0'
     ss.dependency 'ALLabel', '~> 1.0'
     ss.dependency 'AutoLayoutTextViews', '~> 1.0'
     ss.dependency 'UIView+AORefreshFont', '~> 1.0'

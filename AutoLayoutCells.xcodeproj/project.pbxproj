@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42A53A7E19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A53A7D19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.m */; };
 		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
 		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
 		4427F1131970590A00C3019E /* ALBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427F1061970590A00C3019E /* ALBaseCell.m */; };
@@ -76,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42A53A7C19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AutoLayoutCells.h"; sourceTree = "<group>"; };
+		42A53A7D19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AutoLayoutCells.m"; sourceTree = "<group>"; };
 		42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewTests.m; sourceTree = "<group>"; };
 		42FC099919BA725E0011D1FF /* ALTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableView.h; sourceTree = "<group>"; };
 		42FC099A19BA725E0011D1FF /* ALTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableView.m; sourceTree = "<group>"; };
@@ -172,6 +175,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42A53A7919BAD9C10027ECA4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		42A53A7A19BAD9CF0027ECA4 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
+				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		42A53A7B19BADA100027ECA4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4427F153197062D800C3019E /* ALTextViewHelperTests.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		42FC099819BA72450011D1FF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,8 +226,6 @@
 			children = (
 				4427F147197062D700C3019E /* ALBaseCellTests.m */,
 				4427F149197062D700C3019E /* ALBooleanCellTests.m */,
-				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
-				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
 				4427F14D197062D800C3019E /* ALCellTests.m */,
 				4427F14E197062D800C3019E /* ALGalleryCellTests.m */,
 				4427F148197062D700C3019E /* ALImageCellTests.m */,
@@ -207,8 +233,6 @@
 				4427F150197062D800C3019E /* ALMenuCellTests.m */,
 				4427F151197062D800C3019E /* ALTextCellTests.m */,
 				4427F152197062D800C3019E /* ALTextOnlyCellTests.m */,
-				4427F153197062D800C3019E /* ALTextViewHelperTests.m */,
-				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -364,12 +388,12 @@
 				443F387B1973AE9F0029B05C /* AutoLayoutCells.h */,
 				443F387A1973AD8D0029B05C /* AutoLayoutCellsEverything.h */,
 				44BBB99B19704B6D00AB4596 /* Categories */,
-				44BBB99919704B1C00AB4596 /* Views */,
 				4427F11A1970591600C3019E /* Constants */,
 				4427F1271970592200C3019E /* Factories */,
 				4427F12E1970593300C3019E /* Protocols */,
 				4427F1381970597A00C3019E /* ResourcesBundle */,
 				4427F1341970594400C3019E /* Utilities */,
+				44BBB99919704B1C00AB4596 /* Views */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -389,6 +413,8 @@
 			children = (
 				44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */,
 				44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */,
+				42A53A7C19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.h */,
+				42A53A7D19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -396,8 +422,11 @@
 		44BBB9A6197051DF00AB4596 /* TableViewCellTests */ = {
 			isa = PBXGroup;
 			children = (
-				4427F163197062E500C3019E /* Views */,
+				42A53A7919BAD9C10027ECA4 /* Categories */,
+				42A53A7A19BAD9CF0027ECA4 /* Factories */,
 				4427F164197062EC00C3019E /* Test Classes */,
+				42A53A7B19BADA100027ECA4 /* Utilities */,
+				4427F163197062E500C3019E /* Views */,
 			);
 			path = TableViewCellTests;
 			sourceTree = "<group>";
@@ -568,6 +597,7 @@
 				4427F1181970590A00C3019E /* ALTextCell.m in Sources */,
 				4427F1141970590A00C3019E /* ALImageCell.m in Sources */,
 				42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */,
+				42A53A7E19BAED5F0027ECA4 /* UIImageView+AutoLayoutCells.m in Sources */,
 				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
 				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
