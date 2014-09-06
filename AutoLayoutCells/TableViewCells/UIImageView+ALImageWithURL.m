@@ -1,5 +1,5 @@
 //
-//  UIImageView+AutoLayoutCells.m
+//  UIImageView+ALImageWithURL.m
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 9/6/14.
@@ -22,13 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "UIImageView+AutoLayoutCells.h"
+#import "UIImageView+ALImageWithURL.h"
+
 #import <objc/runtime.h>
 
-char const ALImageCellKey;
-char const ALActivityIndicatorKey;
+#import "ALImageCache.h"
+#import "UIImageView+ALActivityIndicatorView.h"
 
-@implementation UIImageView (AutoLayoutCells)
+char const ALImageDownloadTaskKey;
+
+@implementation UIImageView (ALImageWithURL)
 
 #pragma mark - Class Methods
 
@@ -45,20 +48,13 @@ char const ALActivityIndicatorKey;
   return sharedImageDownloadSession;
 }
 
-+ (NSCache *)AL_imageDownloadCache
++ (ALImageCache *)AL_sharedImageDownloadCache
 {
-  static NSCache *sharedImageDownloadCache = nil;
+  static ALImageCache *sharedImageDownloadCache = nil;
   
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    sharedImageDownloadCache = [[NSCache alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidReceiveMemoryWarningNotification
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification * notification) {
-                                                    [sharedImageDownloadCache removeAllObjects];
-                                                  }];
+    sharedImageDownloadCache = [[ALImageCache alloc] init];
   });
   
   return sharedImageDownloadCache;
@@ -70,82 +66,34 @@ char const ALActivityIndicatorKey;
 
 - (NSURLSessionDownloadTask *)AL_downloadTask
 {
-  return objc_getAssociatedObject(self, &ALImageCellKey);
+  return objc_getAssociatedObject(self, &ALImageDownloadTaskKey);
 }
 
 - (void)AL_setDownloadTask:(NSURLSessionDownloadTask *)task
 {
-  NSURLSessionDownloadTask *currentTask = [self AL_downloadTask];
-  if (currentTask == task) {
-    return;
-  }
-  
-  [currentTask cancel];
-  objc_setAssociatedObject(self, &ALImageCellKey, task, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-#pragma mark - AL_activityIndicatorView
-
-- (UIActivityIndicatorView *)AL_activityIndicatorView
-{
-  return objc_getAssociatedObject(self, &ALActivityIndicatorKey);
-}
-
-- (UIActivityIndicatorView *)AL_activityIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style
-{
-  return objc_getAssociatedObject(self, &ALActivityIndicatorKey) ?: [self AL_setupActivityIndicatorWithStyle:style];
-}
-
-- (UIActivityIndicatorView *)AL_setupActivityIndicatorWithStyle:(UIActivityIndicatorViewStyle)style
-{
-  UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
-  activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin  | UIViewAutoresizingFlexibleBottomMargin |
-                                       UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-  activityIndicator.center = self.center;
-  activityIndicator.hidesWhenStopped = YES;
-  activityIndicator.userInteractionEnabled = NO;
-  
-  [self addSubview:activityIndicator];
-  objc_setAssociatedObject(self, &ALActivityIndicatorKey, activityIndicator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-  
-  return activityIndicator;
+  objc_setAssociatedObject(self, &ALImageDownloadTaskKey, task, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - Instance Methods
 
-- (void)AL_setImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder
+- (void)AL_setImageWithURL:(NSURL *)url
+               placeholder:(UIImage *)placeholder
+    activityIndicatorStyle:(UIActivityIndicatorViewStyle)style
 {
-  if (!url) {
+  [self.AL_downloadTask cancel];
+  
+  if (!url.absoluteString.length) {
     self.image = nil;
     return;
   }
   
-  @synchronized (self) {
-    
-    self.image = [self AL_cachedImageForURL:url];
-    
-    if (!self.image) {
-      self.image = placeholder;
-      [self AL_setImageDownloadTaskWithURL:url];
-    }
-  }
-}
-
-- (void)AL_setImageWithURL:(NSURL *)url activityIndicatorStyle:(UIActivityIndicatorViewStyle)style
-{
-  if (!url) {
-    self.image = nil;
-    return;
-  }
+  ALImageCache *cache = [[self class ] AL_sharedImageDownloadCache];
+  self.image = [cache cachedImageForURL:url];
   
-  @synchronized (self) {
-    
-    self.image = [self AL_cachedImageForURL:url];
-    
-    if (!self.image) {
-      [[self AL_activityIndicatorViewWithStyle:style] startAnimating];
-      [self AL_setImageDownloadTaskWithURL:url];
-    }
+  if (!self.image) {
+    self.image = placeholder;
+    [[self AL_addActivityIndicatorViewWithStyle:style] startAnimating];
+    [self AL_setImageDownloadTaskWithURL:url];
   }
 }
 
@@ -170,7 +118,9 @@ char const ALActivityIndicatorKey;
                                         
                                         NSData *data = [NSData dataWithContentsOfURL:location];
                                         UIImage *image = [UIImage imageWithData:data];
-                                        [strongSelf AL_cacheImage:image forURL:url];
+                                        
+                                        ALImageCache *cache = [[strongSelf class] AL_sharedImageDownloadCache];
+                                        [cache cacheImage:image forURL:url];
                                         
                                         strongSelf.image = image;
                                         [strongSelf setNeedsDisplay];
@@ -179,29 +129,6 @@ char const ALActivityIndicatorKey;
                                     }];
   [task resume];
   [self AL_setDownloadTask:task];
-}
-
-#pragma mark - Image Caching
-
-- (UIImage *)AL_cachedImageForURL:(NSURL *)url
-{
-  NSCache *cache = [[self class] AL_imageDownloadCache];
-  return [cache objectForKey:url.absoluteString];
-}
-
-- (void)AL_cacheImage:(UIImage *)image forURL:(NSURL *)url
-{
-  NSCache *cache = [[self class] AL_imageDownloadCache];
-  
-  if (!url.absoluteString.length) {
-    return;
-    
-  } else if (!image) {
-    [cache removeObjectForKey:url.absoluteString];
-    
-  } else {
-    [cache setObject:image forKey:url.absoluteString];
-  }
 }
 
 @end

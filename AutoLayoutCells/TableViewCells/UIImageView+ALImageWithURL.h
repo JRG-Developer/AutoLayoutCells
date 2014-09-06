@@ -1,5 +1,5 @@
 //
-//  UIImageView+AutoLayoutCells.h
+//  UIImageView+ALImageWithURL.h
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 9/6/14.
@@ -23,22 +23,26 @@
 //  THE SOFTWARE.
 
 @import UIKit;
+@class ALImageCache;
 
 /**
- *  `UIImageView+AutoLayoutCells` provides convenience methods for setting an image from a URL, including basic image caching.
+ *  `UIImageView+ALImageWithURL` provides a convenience methods for setting an image from a URL showing an optional placeholder and/or activity indicator view during loading. Basic image caching is provided too.
  */
-@interface UIImageView (AutoLayoutCells)
+@interface UIImageView (ALImageWithURL)
 
 ///--------------------------------------------------------------
 /// @name Associated Properties
 ///--------------------------------------------------------------
 
 /**
- *  The download session data task
- *
- *  @discussion Calling `AL_setImageWithURL:placeholder:` or `AL_setImageWithURLRequest:placeholder:` creates a new session download task and associates it with the image view.
+ *  The assocated download session data task
  */
 @property (strong, nonatomic, readonly) NSURLSessionDownloadTask *AL_downloadTask;
+
+/**
+ *  The associated activity indicator view
+ */
+@property (strong, nonatomic, readonly) UIActivityIndicatorView *AL_activityIndicatorView;
 
 ///--------------------------------------------------------------
 /// @name Class Methods
@@ -56,31 +60,27 @@
 /**
  *  This method returns the shared image download cache.
  *
- *  @discussion THis methods uses `dispatch_once` to create the shared image download cache.
+ *  @discussion This method uses `dispatch_once` to create the shared image download session.
  *
  *  @return The shared image download cache
  */
-+ (NSCache *)AL_imageDownloadCache;
++ (ALImageCache *)AL_sharedImageDownloadCache;
 
 ///--------------------------------------------------------------
 /// @name Instance Methods
 ///--------------------------------------------------------------
 
 /**
- *  Use this method to set the image from a given URL with an optional placeholder image.
+ *  Use this method to set the image from a given URL with an optional placeholder image and/or optional activity indicator.
  *
- *  @param url                  The url to set the image
- *  @param placeholder          The image placeholder to be set while the image is loading
- *  @param showLoadingIndicator Whether a loading activity indicator should be shown while the image is loading
- */
-- (void)AL_setImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder;
-
-/**
- *  Use this method to set the image from a given URL showing an activity indicator with the given style.
+ *  @discussion If you don't want to show a placeholder, pass `nil` for `placeholder`. If you don't want to show an activity indicator, pass `NSNotFound` for `activityIndicatorStyle`.
  *
- *  @param url   The url to set the image
- *  @param style THe activity indicator style
+ *  @param url         The url to set the image
+ *  @param placeholder The image placeholder to be set while the image is loading
+ *  @param style       The activity indicator style to use create the activity indicator
  */
-- (void)AL_setImageWithURL:(NSURL *)url activityIndicatorStyle:(UIActivityIndicatorViewStyle)style;
+- (void)AL_setImageWithURL:(NSURL *)url
+               placeholder:(UIImage *)placeholder
+    activityIndicatorStyle:(UIActivityIndicatorViewStyle)style;
 
 @end

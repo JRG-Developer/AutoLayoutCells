@@ -25,7 +25,7 @@
 #import "ALImageCell.h"
 
 #import "ALImageCellConstants.h"
-#import "UIImageView+AutoLayoutCells.h"
+#import "UIImageView+ALImageWithURL.h"
 
 @interface ALImageCell()
 @property (assign, nonatomic) CGFloat mainImageViewLeadingConstraintConstant;
@@ -260,12 +260,9 @@
     return;
   }
   
-  if (self.loadingActivityIndicatorStyle != NSNotFound) {
-    [imageView AL_setImageWithURL:url activityIndicatorStyle:self.loadingActivityIndicatorStyle];
-    
-  } else {
-    [imageView AL_setImageWithURL:url placeholder:placeholder];
-  }
+  [imageView AL_setImageWithURL:url
+                    placeholder:placeholder
+         activityIndicatorStyle:self.loadingActivityIndicatorStyle];
 }
 
 @end
