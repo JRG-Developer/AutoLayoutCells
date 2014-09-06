@@ -120,6 +120,11 @@
   expect(sut.toggle).toNot.beNil();
 }
 
+- (void)test_has___toggle_method_set
+{
+  expect([sut.toggle actionsForTarget:sut forControlEvent:UIControlEventValueChanged].count).to.beGreaterThan(0);
+}
+
 #pragma mark - Set Values Dictionary - Tests
 
 - (void)test___setValuesDictionary___setToggleValueToYES

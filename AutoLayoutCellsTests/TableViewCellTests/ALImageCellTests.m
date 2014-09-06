@@ -28,11 +28,13 @@
 
 // Collaborators
 #import <AFNetworking+ImageActivityIndicator/AFNetworking+ImageActivityIndicator.h>
+
 #import "NSBundle+ALTableViewCellsBundle.h"
+#import "Test_ALTableViewCellNibFactory.h"
 
 // Test Support
-#import <AOTestCase/AOTestCase.h>
-#import "Test_ALTableViewCellNibFactory.h"
+#import <XCTest/XCTestCase.h>
+#import <objc/runtime.h>
 
 #define EXP_SHORTHAND YES
 #import <Expecta/Expecta.h>
@@ -56,7 +58,7 @@ static UIImage *image;
 
 @end
 
-@interface ALImageCellTests : AOTestCase
+@interface ALImageCellTests : XCTestCase
 @end
 
 @implementation ALImageCellTests
@@ -72,7 +74,6 @@ static UIImage *image;
 - (void)setUp
 {
   [super setUp];
-  
   sut = [[ALImageCell alloc] init];
 }
 
@@ -116,9 +117,9 @@ static UIImage *image;
 
 - (void)swap___imageNamed___methods
 {
-  [self swapClassMethodsForClass:[UIImage class]
-                        selector:@selector(imageNamed:)
-                     andSelector:@selector(test_imageNamed:)];
+  Method m1 = class_getClassMethod([UIImage class], @selector(imageNamed:));
+  Method m2 = class_getClassMethod([UIImage class], @selector(test_imageNamed:));
+  method_exchangeImplementations(m1, m2);
 }
 
 #pragma mark - Placeholder Image - Tests

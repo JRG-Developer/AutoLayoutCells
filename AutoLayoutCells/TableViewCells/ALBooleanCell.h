@@ -34,6 +34,15 @@
  */
 @property (weak, nonatomic) IBOutlet UISwitch *toggle;
 
+/**
+ *  This method is called whenever the user toggles the `toggle`
+ *
+ *  @warning If you subclass `ALBooleanCell`, make sure you connect this `IBAction` to the `UIControlEventValueChanged` on `toggle`.
+ *
+ *  @param toggle The `toggle` which sent the event
+ */
+- (IBAction)didToggle:(UISwitch *)toggle;
+
 @end
 
 /**
@@ -48,12 +57,5 @@
  *  @param dictionary The dictionary to be set
  */
 - (void)setToggleValueFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method is called whenever the user toggles the `toggle`
- *
- *  @param toggle The `toggle` which sent the event
- */
-- (void)didToggle:(UISwitch *)toggle;
 
 @end

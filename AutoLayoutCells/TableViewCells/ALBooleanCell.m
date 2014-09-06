@@ -34,7 +34,6 @@
 - (void)awakeFromNib
 {
   [super awakeFromNib];
-  [self.toggle addTarget:self action:@selector(didToggle:) forControlEvents:UIControlEventValueChanged];
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 

@@ -29,8 +29,7 @@
 // Collaborators
 
 // Test Support
-#import <AOTestCase/AOTestCase.h>
-#import <objc/runtime.h>
+#import <XCTest/XCTestCase.h>
 
 #define EXP_SHORTHAND YES
 #import <Expecta/Expecta.h>
@@ -44,7 +43,7 @@
 
 @end
 
-@interface ALBaseCellTests : AOTestCase
+@interface ALBaseCellTests : XCTestCase
 @end
 
 @implementation ALBaseCellTests

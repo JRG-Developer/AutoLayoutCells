@@ -23,7 +23,6 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ALLabel (1.0.0)
-  - AOTestCase (1.0.3)
   - AutoLayoutTextViews (1.1.0)
   - Expecta (0.3.1)
   - OCMock (3.0.2)
@@ -32,7 +31,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking+ImageActivityIndicator (~> 1.0)
   - ALLabel (~> 1.0)
-  - AOTestCase (~> 1.0)
   - AutoLayoutTextViews (~> 1.0)
   - Expecta (~> 0.3)
   - OCMock (~> 3.0)
@@ -42,7 +40,6 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   AFNetworking+ImageActivityIndicator: c57c1b83395c9a9c03ff247cea8fcd7a2656fcd6
   ALLabel: 22df54ababe890d6a458490e480d93ba0e17986a
-  AOTestCase: 336f8b504960f8d3723e3ed9eecb4aafc2f7c00a
   AutoLayoutTextViews: 9b6ed8710466117db3396e683089b8edb9f48ba3
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   OCMock: b9836ab89d8d5e66cbe6333f93857037c310ee62
