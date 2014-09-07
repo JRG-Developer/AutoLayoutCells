@@ -48,6 +48,9 @@
   
   UIImage *image;
   NSURL *url;
+  
+  id mockTask;
+  id mockSession;
 }
 
 #pragma mark - Test Lifecycle
@@ -57,9 +60,58 @@
   [super setUp];
   
   sut = [[UIImageView alloc] init];
-  
   image = [[UIImage alloc] init];
   url = [NSURL URLWithString:@"http://example.com/image.jpg"];
+}
+
+- (void)tearDown
+{
+  [partialMock stopMocking];
+  [[UIImageView AL_sharedImageDownloadCache] removeAllObjects];
+  
+  [super tearDown];
+}
+
+#pragma mark - Given
+
+- (void)givenImageDownloadTaskCompletesImmediateWithLocation:(NSURL *)location
+                                                    response:(NSURLResponse *)response
+                                                       error:(NSError *)error
+{
+  partialMock = OCMPartialMock(sut);
+  [self givenMockSessionWithLocation:location response:response error:error];
+  OCMStub([partialMock AL_sharedImageDownloadSession]).andReturn(mockSession);
+}
+
+- (void)givenMockSessionWithLocation:(NSURL *)location
+                            response:(NSURLResponse *)response
+                               error:(NSError *)error
+{
+  mockTask = OCMClassMock([NSURLSessionDownloadTask class]);
+  mockSession = OCMClassMock([NSURLSession class]);
+  
+  OCMStub([mockSession downloadTaskWithURL:[OCMArg any]
+                         completionHandler:[OCMArg any]])
+  .andReturn(mockTask)
+  .andDo(^(NSInvocation *invocation) {
+    
+    void (^completion)(NSURL *, NSURLResponse *, NSError *);
+    [invocation getArgument:&completion atIndex:3];
+    completion(location, response, error);
+  });
+}
+
+- (NSURL *)locationForTestImage
+{
+  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  return [bundle URLForResource:@"test_image" withExtension:@"png"];
+}
+
+- (UIImage *)testImage
+{
+  NSURL *location = [self locationForTestImage];
+  NSData *data = [NSData dataWithContentsOfURL:location];
+  return [UIImage imageWithData:data];
 }
 
 #pragma mark - Class Methods - Tests
@@ -82,6 +134,36 @@
   
   // then
   expect(cache1).to.equal(cache2);
+}
+
+#pragma mark - Custom Accessor - Tests
+
+- (void)test___setImage___cancelsDownloadTask
+{
+  // given
+  mockTask = OCMClassMock([NSURLSessionDownloadTask class]);
+  objc_setAssociatedObject(sut, &ALImageDownloadTaskKey, mockTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  
+  OCMExpect([mockTask cancel]);
+  
+  // when
+  [sut setImage:image];
+  
+  // then
+  OCMVerifyAll(mockTask);
+}
+
+- (void)test___AL_downloadTask___returnsAssociatedTask
+{
+  // given
+  mockTask = OCMClassMock([NSURLSessionDownloadTask class]);
+  objc_setAssociatedObject(sut, &ALImageDownloadTaskKey, mockTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  
+  // when
+  NSURLSessionTask *actualTask = [sut AL_downloadTask];
+  
+  // then
+  expect(actualTask).to.equal(mockTask);
 }
 
 #pragma mark - Instance Methods - Tests
@@ -143,9 +225,9 @@
 - (void)test___setImageWithURL_placeholder_activityIndicatorStyle___addsActivityIndicator
 {
   // given
-  UIActivityIndicatorViewStyle style = UIActivityIndicatorViewStyleGray;
-  
   partialMock = OCMPartialMock(sut);
+  
+  UIActivityIndicatorViewStyle style = UIActivityIndicatorViewStyleGray;
   OCMExpect([partialMock AL_addActivityIndicatorViewWithStyle:style]);
   
   // when
@@ -163,6 +245,96 @@
   
   // then
   expect(task).toNot.beNil();
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionStopsIndicator
+{
+  // given
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:nil];
+  
+  id mockIndicator = OCMClassMock([UIActivityIndicatorView class]);
+  OCMStub([partialMock AL_activityIndicatorView]).andReturn(mockIndicator);
+  
+  OCMExpect([mockIndicator stopAnimating]);
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  OCMVerifyAllWithDelay(mockIndicator, 0.01);
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionNilsDownloadTask
+{
+  // given
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:nil];
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  expect(sut.AL_downloadTask).will.beNil();
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionCachesImage
+{
+  // given
+  image = [self testImage];
+  NSURL *location = [self locationForTestImage];
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:location response:nil error:nil];
+  
+  ALImageCache *cache = [UIImageView AL_sharedImageDownloadCache];
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  expect(UIImagePNGRepresentation([cache cachedImageForURL:url])).will.equal(UIImagePNGRepresentation(image));
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionSetsImageFromLocation
+{
+  // given
+  image = [self testImage];
+  NSURL *location = [self locationForTestImage];
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:location response:nil error:nil];
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  expect(UIImagePNGRepresentation(sut.image)).will.equal(UIImagePNGRepresentation(image));
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionErrorDoesNotSetImage
+{
+  // given
+  NSError *error = [NSError errorWithDomain:@"com.jrgdeveloper.ALImageWithURL" code:0 userInfo:nil];
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:error];
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  expect(sut.image).will.beNil();
+}
+
+- (void)test___AL_startImageDownloadTaskWithURL___completionErrorDoesNotCacheImage
+{
+  // given
+  NSError *error = [NSError errorWithDomain:@"com.jrgdeveloper.ALImageWithURL" code:0 userInfo:nil];
+  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:error];
+  
+  id mockCache = OCMClassMock([ALImageCache class]);
+  OCMStub([partialMock AL_sharedImageDownloadCache]).andReturn(mockCache);
+  
+  [[mockCache reject] cacheImage:[OCMArg any] forURL:[OCMArg any]];
+  
+  // when
+  [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
+  
+  // then
+  OCMVerifyAllWithDelay(mockCache, 0.01);
 }
 
 @end
