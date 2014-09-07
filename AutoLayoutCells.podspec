@@ -3,16 +3,21 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.name         = "AutoLayoutCells"
   s.version      = "0.1.0"
-  s.summary      = "AutoLayoutCells is a collection of cells that make it easy to support dynamic cell height using auto layout."
+  s.summary      = "AutoLayoutCells makes working with dynamic table view cells easy."
   s.homepage     = "https://github.com/JRG-Developer/AutoLayoutCells"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Joshua Greene" => "jrg.developer@gmail.com" }
   s.source   	   = { :git => "https://github.com/JRG-Developer/AutoLayoutCells.git",
                      :tag => "#{s.version}"}
   s.requires_arc = true
+  s.framework = "UIKit"
+  
+  s.subspec 'SharedCategories' do |ss|
+    ss.source_files = "AutoLayoutCells/SharedCategories/*{h,m}"
+  end
 
   s.subspec 'TableViewCells' do |ss|
-    ss.framework = "UIKit"
+    ss.dependency 'AutoLayoutCells/SharedCategories'
 
     ss.dependency 'ALLabel', '~> 1.0'
     ss.dependency 'AutoLayoutTextViews', '~> 1.0'

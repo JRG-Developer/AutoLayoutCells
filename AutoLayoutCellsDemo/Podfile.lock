@@ -1,9 +1,12 @@
 PODS:
   - ALLabel (1.0.0)
   - AutoLayoutCells (0.1.0):
+    - AutoLayoutCells/SharedCategories
     - AutoLayoutCells/TableViewCells
+  - AutoLayoutCells/SharedCategories (0.1.0)
   - AutoLayoutCells/TableViewCells (0.1.0):
     - ALLabel (~> 1.0)
+    - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.0)
     - UIView+AORefreshFont (~> 1.0)
   - AutoLayoutTextViews (1.1.0)
@@ -18,7 +21,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 22df54ababe890d6a458490e480d93ba0e17986a
-  AutoLayoutCells: 9810c9a9a960cb2a0834c51681fd1ca83dc45260
+  AutoLayoutCells: dc05a854eb39a0697ff04f5c87dd16c8ebce6ca6
   AutoLayoutTextViews: 9b6ed8710466117db3396e683089b8edb9f48ba3
   UIView+AORefreshFont: 5784113c8c078e76774a7cdf008102e2ef6d49a4
 
