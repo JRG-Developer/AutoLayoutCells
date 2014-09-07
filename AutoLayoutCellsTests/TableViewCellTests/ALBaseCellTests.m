@@ -102,17 +102,19 @@
 {
   // given
   [self givenPartialMock];
-  id notificationCenter = OCMClassMock([NSNotificationCenter class]);
-  OCMStub([partialMock notificationCenter]).andReturn(notificationCenter);
+  id mockCenter = OCMPartialMock([NSNotificationCenter defaultCenter]);
   
   // when
   [sut commonInit];
   
   // then
-  [[notificationCenter verify] addObserver:sut
+  [[mockCenter verify] addObserver:sut
                                   selector:@selector(contentSizeCategoryDidChange:)
                                       name:UIContentSizeCategoryDidChangeNotification
                                     object:nil];
+  
+  // clean up
+  [mockCenter stopMocking];
 }
 
 @end

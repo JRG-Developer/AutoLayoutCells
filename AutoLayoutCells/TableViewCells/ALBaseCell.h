@@ -82,15 +82,6 @@
 - (void)commonInit __attribute((objc_requires_super));
 
 /**
- *  This method is called to get the notification center object.
- *
- *  @discussion This method is exposed for unit testing only. Outside of unit testing, you should not need to override this method.
- *
- *  @return `[NSNotficationCenter defaultCenter`]
- */
-- (NSNotificationCenter *)notificationCenter;
-
-/**
  *  Subclasses should use this method to "reset" the font of any dynamic type text labels, text views, etc. This method is called whenever the`UIContentSizeCategoryDidChangeNotification` notification is received.
  *
  *  @discussion The default implementation of this method is empty (but this may change in the future).

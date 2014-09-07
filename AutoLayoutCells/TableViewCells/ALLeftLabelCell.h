@@ -33,6 +33,7 @@
  *  The left label (shown to the left of the title and subtitle labels)
  */
 @property (weak, nonatomic) IBOutlet ALLabel *leftLabel;
+
 @end
 
 /**

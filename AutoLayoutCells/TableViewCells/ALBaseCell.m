@@ -48,23 +48,18 @@
 
 - (void)commonInit
 {
-  [[self notificationCenter] addObserver:self
-                                selector:@selector(contentSizeCategoryDidChange:)
-                                    name:UIContentSizeCategoryDidChangeNotification
-                                  object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(contentSizeCategoryDidChange:)
+                                               name:UIContentSizeCategoryDidChangeNotification
+                                             object:nil];
 }
 
 - (void)dealloc
 {
-  [[self notificationCenter] removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Dynamic Type Text
-
-- (NSNotificationCenter *)notificationCenter
-{
-  return [NSNotificationCenter defaultCenter];
-}
 
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification
 {
