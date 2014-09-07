@@ -29,8 +29,6 @@
 #import "ALImageCache.h"
 #import "UIImageView+ALActivityIndicatorView.h"
 
-char const ALImageDownloadTaskKey;
-
 @implementation UIImageView (ALImageWithURL)
 
 #pragma mark - Class Methods
@@ -132,6 +130,8 @@ char const ALImageDownloadTaskKey;
 - (void)AL_startImageDownloadTaskWithURL:(NSURL *)url
 {
   __weak typeof(self) weakSelf = self;
+  
+#warning WIP: Needs Unit Testing
   
   NSURLSessionDownloadTask *task = [[[self class] AL_sharedImageDownloadSession]
                                     downloadTaskWithURL:url

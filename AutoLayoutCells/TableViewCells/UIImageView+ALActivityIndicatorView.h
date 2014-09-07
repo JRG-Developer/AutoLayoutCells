@@ -25,7 +25,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  The key used to associate the indicator view with the image view
+ *  The key used to associate the activity indicator view with the image view
  */
 char const ALActivityIndicatorKey;
 

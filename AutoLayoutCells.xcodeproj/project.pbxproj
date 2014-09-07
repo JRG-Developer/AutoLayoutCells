@@ -11,6 +11,7 @@
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
 		420DF89219BBC7000045CAA3 /* UIImageView+ALActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89119BBC7000045CAA3 /* UIImageView+ALActivityIndicatorView.m */; };
 		420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */; };
+		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
 		42A53A7E19BAED5F0027ECA4 /* UIImageView+ALImageWithURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A53A7D19BAED5F0027ECA4 /* UIImageView+ALImageWithURL.m */; };
 		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
 		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
@@ -87,6 +88,7 @@
 		420DF89019BBC7000045CAA3 /* UIImageView+ALActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALActivityIndicatorView.h"; sourceTree = "<group>"; };
 		420DF89119BBC7000045CAA3 /* UIImageView+ALActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALActivityIndicatorView.m"; sourceTree = "<group>"; };
 		420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALActivityIndicatorViewTests.m"; sourceTree = "<group>"; };
+		429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALImageWithURLTests.m"; sourceTree = "<group>"; };
 		42A53A7C19BAED5F0027ECA4 /* UIImageView+ALImageWithURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALImageWithURL.h"; sourceTree = "<group>"; };
 		42A53A7D19BAED5F0027ECA4 /* UIImageView+ALImageWithURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALImageWithURL.m"; sourceTree = "<group>"; };
 		42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewTests.m; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */,
 				420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */,
+				429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */,
 				4427F160197062D800C3019E /* ALTextOnlyCellTests.m in Sources */,
 				4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */,
+				429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */,
 				4427F15D197062D800C3019E /* ALLeftLabelCellTests.m in Sources */,
 				4427F16A197062FD00C3019E /* Test_ALTableViewCellNibFactory.m in Sources */,
 				4427F15A197062D800C3019E /* ALCellNibFactoryTests.m in Sources */,
