@@ -35,6 +35,31 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
 
 @implementation TableViewController
 
+#pragma mark - Object Lifecycle
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [self commonInit];
+  }
+  return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    [self commonInit];
+  }
+  return self;
+}
+
+- (void)commonInit
+{
+  [self setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
+}
+
 - (void)setModelsFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
 {
   NSString *path = [bundle pathForResource:name ofType:@"plist"];
@@ -51,7 +76,10 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
   }];
   
   self.modelsArray = models;
-  [self.tableView reloadData];
+  
+  if ([self isViewLoaded]) {
+    [self.tableView reloadData];
+  }
 }
 
 #pragma mark - View Lifecycle

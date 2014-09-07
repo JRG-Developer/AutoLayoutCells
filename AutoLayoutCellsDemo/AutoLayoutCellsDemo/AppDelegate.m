@@ -32,18 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [self configureTableViewController];
   [self configureCells];
-  
   return YES;
-}
-
-- (void)configureTableViewController
-{
-  UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-  TableViewController *tableViewController = [navController.viewControllers firstObject];
-  
-  [tableViewController setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
 }
 
 - (void)configureCells

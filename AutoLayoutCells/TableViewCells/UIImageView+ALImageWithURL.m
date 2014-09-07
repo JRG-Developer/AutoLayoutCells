@@ -35,6 +35,28 @@ char const ALImageDownloadTaskKey;
 
 #pragma mark - Class Methods
 
++ (void)initialize
+{
+  if (self == [UIImageView class]) {
+    [self AL_swizzleObserveValueForKeyPath];
+    [self AL_swizzleDealloc];
+  }
+}
+
++ (void)AL_swizzleObserveValueForKeyPath
+{
+  Method m1 = class_getInstanceMethod([self class], @selector(observeValueForKeyPath:ofObject:change:context:));
+  Method m2 = class_getInstanceMethod([self class], @selector(AL_observeValueForKeyPath:ofObject:change:context:));
+  method_exchangeImplementations(m1, m2);
+}
+
++ (void)AL_swizzleDealloc
+{
+  Method m1 = class_getInstanceMethod([self class], NSSelectorFromString(@"dealloc"));
+  Method m2 = class_getInstanceMethod([self class], @selector(AL_dealloc));
+  method_exchangeImplementations(m1, m2);
+}
+
 + (NSURLSession *)AL_sharedImageDownloadSession
 {
   static NSURLSession *sharedImageDownloadSession = nil;
@@ -58,6 +80,16 @@ char const ALImageDownloadTaskKey;
   });
   
   return sharedImageDownloadCache;
+}
+
+#pragma mark - Object Lifecycle
+
+- (void)AL_dealloc
+{
+  [self AL_stopObservingImageKeyPath];
+  
+  // This doesn't create a recursive loop because the method has been swizzled
+  [self AL_dealloc];
 }
 
 #pragma mark - Custom Accessors
@@ -93,11 +125,11 @@ char const ALImageDownloadTaskKey;
   if (!self.image) {
     self.image = placeholder;
     [[self AL_addActivityIndicatorViewWithStyle:style] startAnimating];
-    [self AL_setImageDownloadTaskWithURL:url];
+    [self AL_startImageDownloadTaskWithURL:url];
   }
 }
 
-- (void)AL_setImageDownloadTaskWithURL:(NSURL *)url
+- (void)AL_startImageDownloadTaskWithURL:(NSURL *)url
 {
   __weak typeof(self) weakSelf = self;
   
@@ -109,6 +141,7 @@ char const ALImageDownloadTaskKey;
                                       
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                         
+                                        [strongSelf AL_stopObservingImageKeyPath];
                                         [[strongSelf AL_activityIndicatorView] stopAnimating];
                                         [strongSelf AL_setDownloadTask:nil];
                                         
@@ -123,12 +156,46 @@ char const ALImageDownloadTaskKey;
                                         [cache cacheImage:image forURL:url];
                                         
                                         strongSelf.image = image;
-                                        [strongSelf setNeedsDisplay];
-                                        [strongSelf layoutIfNeeded];                                        
                                       });
                                     }];
   [task resume];
   [self AL_setDownloadTask:task];
+  [self AL_startObservingImageKeyPath];
+}
+
+/**
+ *  We observe the value for key path @"image" because it's possible the image view may have an image set on it
+ *  while it has a download task in progress. In such an event, the download task must be cancelled to prevent
+ *  it from setting the image to an old value (no longer desired downloaded image) on task completion.
+ */
+#pragma mark - KVO
+
+- (void)AL_startObservingImageKeyPath
+{
+  [self AL_stopObservingImageKeyPath];
+  [self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+- (void)AL_stopObservingImageKeyPath
+{
+  @try {
+    [self removeObserver:self forKeyPath:@"image"];
+  }
+  @catch (NSException * __unused exception) {
+    // don't care about catching the exception -- just means wasn't actually observing this
+  }
+}
+
+- (void)AL_observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+  if (![keyPath isEqualToString:@"image"]) {
+
+    // This doesn't create a recursive loop because the method has been swizzled
+    [self AL_observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+  }
+  
+  [[self AL_downloadTask] cancel];
+  [self AL_setDownloadTask:nil];
 }
 
 @end

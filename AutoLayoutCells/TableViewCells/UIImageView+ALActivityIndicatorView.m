@@ -27,6 +27,8 @@
 
 @implementation UIImageView (ALActivityIndicatorView)
 
+#pragma mark - Activity Indicator View
+
 - (UIActivityIndicatorView *)AL_activityIndicatorView;
 {
   return objc_getAssociatedObject(self, &ALActivityIndicatorKey);
@@ -45,6 +47,11 @@
     
   } else if (!indicator || indicator.activityIndicatorViewStyle != style) {
     indicator = [self AL_setupActivityIndicatorViewWithStyle:style];
+    
+    [self AL_performBlockOnMainThread:^{
+      [self addSubview:indicator];
+      objc_setAssociatedObject(self, &ALActivityIndicatorKey, indicator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }];
   }
   
   return indicator;
@@ -59,27 +66,38 @@
 
 - (void)AL_removeActivityIndicatorView
 {
-  [self.AL_activityIndicatorView removeFromSuperview];
-  objc_setAssociatedObject(self, &ALActivityIndicatorKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  [self AL_performBlockOnMainThread:^{
+    [self.AL_activityIndicatorView removeFromSuperview];
+    objc_setAssociatedObject(self, &ALActivityIndicatorKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  }];
 }
 
 - (UIActivityIndicatorView *)AL_setupActivityIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style
 {
-  UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
+  UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
 
-  activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin    |
-                                       UIViewAutoresizingFlexibleBottomMargin |
-                                       UIViewAutoresizingFlexibleLeftMargin   |
-                                       UIViewAutoresizingFlexibleRightMargin;
+  indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin    |
+                               UIViewAutoresizingFlexibleBottomMargin |
+                               UIViewAutoresizingFlexibleLeftMargin   |
+                               UIViewAutoresizingFlexibleRightMargin;
   
-  activityIndicator.center = self.center;
-  activityIndicator.hidesWhenStopped = YES;
-  activityIndicator.userInteractionEnabled = NO;
+  indicator.center = CGPointMake(CGRectGetWidth(self.frame)/2.0f, CGRectGetHeight(self.frame)/2.0f);
+  indicator.hidesWhenStopped = YES;
+  indicator.userInteractionEnabled = NO;
   
-  [self addSubview:activityIndicator];
-  objc_setAssociatedObject(self, &ALActivityIndicatorKey, activityIndicator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-  
-  return activityIndicator;
+  return indicator;
+}
+
+#pragma mark - Multithreading
+
+- (void)AL_performBlockOnMainThread:(void(^)())block
+{
+  if ([NSThread isMainThread]) {
+    block();
+    
+  } else {
+    dispatch_async(dispatch_get_main_queue(), block);
+  }
 }
 
 @end
