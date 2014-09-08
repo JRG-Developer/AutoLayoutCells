@@ -71,8 +71,8 @@
 
 + (UINib *)nibWithName:(NSString *)name
 {
-  UINib *nib = [UINib nibWithNibName:name bundle:[NSBundle ALTableViewCellsBundle]];
-  return nib;
+  NSBundle *bundle = [NSBundle ALTableViewCellsBundle] ?: [NSBundle mainBundle];
+  return [UINib nibWithNibName:name bundle:bundle];
 }
 
 @end
