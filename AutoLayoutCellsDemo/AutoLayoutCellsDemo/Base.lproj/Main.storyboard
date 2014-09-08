@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JHC-JU-SdA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JHC-JU-SdA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - AutoLayoutCells Demo-->
+        <!--AutoLayoutCells Demo-->
         <scene sceneID="t7X-Yz-ROu">
             <objects>
                 <tableViewController id="GoU-fV-op1" customClass="TableViewController" sceneMemberID="viewController">
@@ -17,7 +18,14 @@
                             <outlet property="delegate" destination="GoU-fV-op1" id="M2w-qf-IAW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="AutoLayoutCells Demo" id="NYJ-EV-vC7"/>
+                    <navigationItem key="navigationItem" title="AutoLayoutCells Demo" id="NYJ-EV-vC7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="T5T-Rg-APB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="GoU-fV-op1" id="GKo-Dj-KEh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcb-LH-xcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,6 +55,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
 </document>

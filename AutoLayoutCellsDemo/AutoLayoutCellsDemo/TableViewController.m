@@ -60,6 +60,8 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
   [self setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
 }
 
+#pragma mark - Instance Methods
+
 - (void)setModelsFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
 {
   NSString *path = [bundle pathForResource:name ofType:@"plist"];
@@ -80,6 +82,13 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
   if ([self isViewLoaded]) {
     [self.tableView reloadData];
   }
+}
+
+#pragma mark - Actions
+
+- (IBAction)refreshButtonPressed:(id)sender
+{
+  [self.tableView reloadData];
 }
 
 #pragma mark - View Lifecycle

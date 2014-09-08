@@ -36,6 +36,10 @@
  */
 @property (copy, nonatomic) NSArray *modelsArray;
 
+///--------------------------------------------------------------
+/// @name Instance Methods
+///--------------------------------------------------------------
+
 /**
  *  This is a convenience method for setting the `models` array from the given plist name and bundle.
  *
@@ -43,5 +47,18 @@
  *  @param bundle    The bundle containing the plist
  */
 - (void)setModelsFromPlistName:(NSString *)name bundle:(NSBundle *)bundle;
+
+///--------------------------------------------------------------
+/// @name Actions
+///--------------------------------------------------------------
+
+/**
+ *  This method is called whenever the user presses the "refresh" button.
+ *
+ *  @discussion This method simply calls `[self.tableView reloadData]`
+ *
+ *  @param sender The button that sent the event
+ */
+- (IBAction)refreshButtonPressed:(id)sender;
 
 @end

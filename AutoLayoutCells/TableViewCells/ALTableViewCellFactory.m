@@ -80,7 +80,8 @@
   ALBaseCell *sizingCell = self.sizingCellDict[identifier];
   
   if (sizingCell == nil) {
-    self.sizingCellDict[identifier] = [self makeSizingCellForIdentifier:identifier];
+    sizingCell = [self makeSizingCellForIdentifier:identifier];
+    self.sizingCellDict[identifier] = sizingCell;
   }
   
   return sizingCell;
@@ -90,7 +91,6 @@
 {
   UINib *nib = self.identifiersToNibsDictionary[identifier];
   ALBaseCell *cell = [[nib instantiateWithOwner:self options:nil] lastObject];
-  cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
   [cell setIsSizingCell:YES];
   return cell;
 }
