@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420DF88B19BBC1630045CAA3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88A19BBC1630045CAA3 /* ALImageCache.m */; };
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
 		420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */; };
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
@@ -57,6 +56,7 @@
 		44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */; };
 		9EED687E134A458AAD877799 /* libPods-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */; };
 		A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */; };
+		F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F903693419BDE5B80065AEB3 /* ALImageCache.m */; };
 		F95A786519BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */; };
 		F96C9CB919BD8683002B1873 /* UIView+ALRefreshFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F96C9CB819BD8683002B1873 /* UIView+ALRefreshFont.m */; };
 /* End PBXBuildFile section */
@@ -84,8 +84,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		420DF88919BBC1630045CAA3 /* ALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCache.h; sourceTree = "<group>"; };
-		420DF88A19BBC1630045CAA3 /* ALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCache.m; sourceTree = "<group>"; };
 		420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCacheTests.m; sourceTree = "<group>"; };
 		420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALActivityIndicatorViewTests.m"; path = "TableViewCellTests/UIImageView+ALActivityIndicatorViewTests.m"; sourceTree = "<group>"; };
 		429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALImageWithURLTests.m"; path = "TableViewCellTests/UIImageView+ALImageWithURLTests.m"; sourceTree = "<group>"; };
@@ -165,6 +163,8 @@
 		8258F2FD0ADD4C139724F8AC /* Pods-AutoLayoutCells.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.xcconfig"; path = "Pods/Pods-AutoLayoutCells.xcconfig"; sourceTree = "<group>"; };
 		930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34EB6816A704EAD93B48A28 /* Pods-AutoLayoutCellsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.xcconfig"; path = "Pods/Pods-AutoLayoutCellsTests.xcconfig"; sourceTree = "<group>"; };
+		F903693319BDE5B80065AEB3 /* ALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCache.h; sourceTree = "<group>"; };
+		F903693419BDE5B80065AEB3 /* ALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCache.m; sourceTree = "<group>"; };
 		F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ALCustomDynamicFont.h"; sourceTree = "<group>"; };
 		F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ALCustomDynamicFont.m"; sourceTree = "<group>"; };
 		F96C9CB719BD8683002B1873 /* UIView+ALRefreshFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ALRefreshFont.h"; sourceTree = "<group>"; };
@@ -193,15 +193,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		420DF88819BBC1530045CAA3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				420DF88919BBC1630045CAA3 /* ALImageCache.h */,
-				420DF88A19BBC1630045CAA3 /* ALImageCache.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		420DF88C19BBC2570045CAA3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +241,8 @@
 		42E30D4219BD1B8B00AD4DCA /* SharedCategories */ = {
 			isa = PBXGroup;
 			children = (
+				F903693319BDE5B80065AEB3 /* ALImageCache.h */,
+				F903693419BDE5B80065AEB3 /* ALImageCache.m */,
 				F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */,
 				F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */,
 				42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */,
@@ -454,7 +447,6 @@
 				44BBB99B19704B6D00AB4596 /* Categories */,
 				4427F11A1970591600C3019E /* Constants */,
 				4427F1271970592200C3019E /* Factories */,
-				420DF88819BBC1530045CAA3 /* Model */,
 				4427F12E1970593300C3019E /* Protocols */,
 				4427F1381970597A00C3019E /* ResourcesBundle */,
 				4427F1341970594400C3019E /* Utilities */,
@@ -665,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */,
 				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
 				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,
 				4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */,
@@ -683,7 +676,6 @@
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
 				4427F1161970590A00C3019E /* ALCell.m in Sources */,
 				4427F1371970594D00C3019E /* ALTextViewHelper.m in Sources */,
-				420DF88B19BBC1630045CAA3 /* ALImageCache.m in Sources */,
 				4427F1241970591E00C3019E /* ALImageCellConstants.m in Sources */,
 				4427F1261970591E00C3019E /* ALTextCellConstants.m in Sources */,
 			);
