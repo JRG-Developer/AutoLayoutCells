@@ -27,6 +27,7 @@
 #import "ALImageCellConstants.h"
 
 // Collaborators
+#import "ALImageCache.h"
 #import "NSBundle+ALTableViewCellsBundle.h"
 #import "Test_ALTableViewCellNibFactory.h"
 #import "UIImageView+ALImageWithURL.h"
@@ -63,6 +64,7 @@ static UIImage *image;
 @implementation ALImageCellTests
 {
   ALImageCell *sut;
+  id partialMock;
   
   id constraint;
   id imageView;
@@ -74,6 +76,17 @@ static UIImage *image;
 {
   [super setUp];
   sut = [[ALImageCell alloc] init];
+}
+
+- (void)tearDown
+{
+  [[UIImageView AL_sharedImageDownloadCache] removeAllObjects];
+  
+  [partialMock stopMocking];
+  [constraint stopMocking];
+  [imageView stopMocking];
+  
+  [super tearDown];
 }
 
 #pragma mark - Given
@@ -371,7 +384,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  [[imageView verify] setImage:image];
+  OCMVerify([imageView setImage:image]);
 }
 
 - (void)test___setValuesDictionary___ALImageCellMainImageNameKey
@@ -387,7 +400,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  [[imageView verify] setImage:image];
+  OCMVerify([imageView setImage:image]);
   
   // clean up
   [self swap___imageNamed___methods];
@@ -397,46 +410,53 @@ static UIImage *image;
 {
   // given
   [self givenMockMainImageView];
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
   
   NSString *urlString = @"http://example.com/image/01";
   NSURL *url = [NSURL URLWithString:urlString];
   
   NSDictionary *dict = @{ALImageCellMainImageURLStringKey: urlString};
   
+  OCMExpect([imageView AL_setImageWithURL:url
+                              placeholder:sut.mainImagePlaceholder
+                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  
   // when
   [sut setValuesDictionary:dict];
   
   // then
-  OCMVerify([imageView AL_setImageWithURL:url
-                              placeholder:sut.mainImagePlaceholder
-                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  OCMVerifyAll(imageView);
 }
 
 - (void)test___setValuesDictionary___ALImageCellMainImageURLKey
 {
   // given
   [self givenMockMainImageView];
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
   
   NSString *urlString = @"http://example.com/image/01";
   NSURL *url = [NSURL URLWithString:urlString];
   
   NSDictionary *dict = @{ALImageCellMainImageURLKey: url};
   
+  OCMExpect([imageView AL_setImageWithURL:url
+                              placeholder:sut.mainImagePlaceholder
+                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  
   // when
   [sut setValuesDictionary:dict];
   
   // then
-  OCMVerify([imageView AL_setImageWithURL:url
-                              placeholder:sut.mainImagePlaceholder
-                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  OCMVerifyAll(imageView);
 }
 
 - (void)test___setValuesDictionary___doesNotSetMainImageFromURLIfSizingCell
 {
   // given
-  sut.isSizingCell = YES;
-  
   [self givenMockMainImageView];
+  sut.isSizingCell = YES;
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
+  
   [[imageView reject] AL_setImageWithURL:[OCMArg any]
                              placeholder:[OCMArg any]
                   activityIndicatorStyle:NSNotFound];
@@ -466,7 +486,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  [[imageView verify] setImage:image];
+  OCMVerify([imageView setImage:image]);
 }
 
 - (void)test___setValuesDictionary___ALImageCellSecondaryImageNameKey
@@ -482,7 +502,7 @@ static UIImage *image;
   [sut setValuesDictionary:dict];
   
   // then
-  [[imageView verify] setImage:image];
+  OCMVerify([imageView setImage:image]);
   
   // clean up
   [self swap___imageNamed___methods];
@@ -492,46 +512,53 @@ static UIImage *image;
 {
   // given
   [self givenMockSecondaryImageView];
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
   
   NSString *urlString = @"http://example.com/image/01";
   NSURL *url = [NSURL URLWithString:urlString];
   
   NSDictionary *dict = @{ALImageCellSecondaryImageURLStringKey: urlString};
   
+  OCMExpect([imageView AL_setImageWithURL:url
+                              placeholder:sut.mainImagePlaceholder
+                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  
   // when
   [sut setValuesDictionary:dict];
   
   // then
-  OCMVerify([imageView AL_setImageWithURL:url
-                              placeholder:sut.mainImagePlaceholder
-                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  OCMVerifyAll(imageView);
 }
 
 - (void)test___setValuesDictionary___ALImageCellSecondaryImageURLKey
 {
   // given
   [self givenMockSecondaryImageView];
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
   
   NSString *urlString = @"http://example.com/image/01";
   NSURL *url = [NSURL URLWithString:urlString];
   
   NSDictionary *dict = @{ALImageCellSecondaryImageURLKey: url};
   
+  OCMExpect([imageView AL_setImageWithURL:url
+                              placeholder:sut.mainImagePlaceholder
+                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  
   // when
   [sut setValuesDictionary:dict];
   
   // then
-  OCMVerify([imageView AL_setImageWithURL:url
-                              placeholder:sut.mainImagePlaceholder
-                   activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
+  OCMVerifyAll(imageView);
 }
 
-- (void)test___setValuesDictionary___doesNotSetSecondaryImageFromURLIfSizingCell
+- (void)test___setValuesDictionary___doesNotSetMainSecondaryFromURLIfSizingCell
 {
   // given
-  sut.isSizingCell = YES;
-  
   [self givenMockSecondaryImageView];
+  sut.isSizingCell = YES;
+  sut.loadingActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
+  
   [[imageView reject] AL_setImageWithURL:[OCMArg any]
                              placeholder:[OCMArg any]
                   activityIndicatorStyle:NSNotFound];
