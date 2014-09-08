@@ -1,5 +1,5 @@
 PODS:
-  - ALLabel (1.0.0)
+  - ALLabel (1.0.1)
   - AutoLayoutCells (0.2.0):
     - AutoLayoutCells/SharedCategories
     - AutoLayoutCells/TableViewCells
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ALLabel: 22df54ababe890d6a458490e480d93ba0e17986a
+  ALLabel: 7c62a5f7864b1c7c01c42bbf1c32d815fd6d7700
   AutoLayoutCells: d2573d2617bcd09d66082bd51c7c5bb32d9a6f7f
   AutoLayoutTextViews: 9b6ed8710466117db3396e683089b8edb9f48ba3
 

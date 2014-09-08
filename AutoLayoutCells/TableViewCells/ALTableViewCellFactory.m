@@ -27,6 +27,10 @@
 
 #import "ALBaseCell.h"
 
+@interface ALTableViewCellFactory ()
+@property (strong, nonatomic) NSDictionary *identifiersToNibsDictionary;
+@end
+
 @implementation ALTableViewCellFactory
 
 #pragma mark - Object Lifecycle
@@ -37,6 +41,7 @@
   if (self) {
     _tableView = tableView;
     _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dict.count];
+    _identifiersToNibsDictionary = dict;
     [self registerCellsFromDictionary:dict];
   }
   return self;
@@ -75,12 +80,19 @@
   ALBaseCell *sizingCell = self.sizingCellDict[identifier];
   
   if (sizingCell == nil) {
-    sizingCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    [sizingCell setIsSizingCell:YES];
-    self.sizingCellDict[identifier] = sizingCell;
+    self.sizingCellDict[identifier] = [self makeSizingCellForIdentifier:identifier];
   }
   
   return sizingCell;
+}
+
+- (ALBaseCell *)makeSizingCellForIdentifier:(NSString *)identifier
+{
+  UINib *nib = self.identifiersToNibsDictionary[identifier];
+  ALBaseCell *cell = [[nib instantiateWithOwner:self options:nil] lastObject];
+  cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  [cell setIsSizingCell:YES];
+  return cell;
 }
 
 - (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell
