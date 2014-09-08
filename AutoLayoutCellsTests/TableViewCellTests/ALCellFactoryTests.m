@@ -103,8 +103,9 @@
 
 - (void)setUpNibs
 {
-  cellNib = [UINib nibWithNibName:@"ALCell" bundle:[NSBundle mainBundle]];
-  leftLabelCellNib = [UINib nibWithNibName:@"ALLeftLabelCell" bundle:[NSBundle mainBundle]];
+  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  cellNib = [UINib nibWithNibName:@"ALCell" bundle:bundle];
+  leftLabelCellNib = [UINib nibWithNibName:@"ALLeftLabelCell" bundle:bundle];
 }
 
 #pragma mark - Register Cells - Tests
