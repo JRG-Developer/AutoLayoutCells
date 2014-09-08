@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
 
     ss.dependency 'ALLabel', '~> 1.0'
     ss.dependency 'AutoLayoutTextViews', '~> 1.0'
-    ss.dependency 'UIView+AORefreshFont', '~> 1.0'
 
     ss.resource_bundles = {'ALTableViewCellsBundle' => ['AutoLayoutCells/TableViewCells/ResourcesBundle/*']}
     ss.source_files = "AutoLayoutCells/TableViewCells/*.{h,m}"

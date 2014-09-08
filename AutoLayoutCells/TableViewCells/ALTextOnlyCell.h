@@ -51,4 +51,13 @@
  */
 @property (weak, nonatomic) IBOutlet ALAutoResizingTextView *textView;
 
+/**
+ *  This method is called within `contentSizeCategoryDidChange:` to refresh the text view's font.
+ *
+ *  @discussion The default implementation simply calls `AL_refreshPreferredFont` on the `textView`.
+ *
+ *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
+ */
+- (void)refreshFonts;
+
 @end

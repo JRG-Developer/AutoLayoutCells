@@ -27,8 +27,8 @@
 #import "ALCellConstants.h"
 
 // Collaborators
-#import <UIView+AORefreshFont/UIView+AORefreshFont.h>
 #import "Test_ALTableViewCellNibFactory.h"
+#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -109,7 +109,7 @@
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AORefreshFont];
+  [[label verify] AL_refreshPreferredFont];
 }
 
 - (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___subtitleLabel
@@ -122,7 +122,7 @@
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AORefreshFont];
+  [[label verify] AL_refreshPreferredFont];
 }
 
 #pragma mark - Set Values Dictionary - Tests

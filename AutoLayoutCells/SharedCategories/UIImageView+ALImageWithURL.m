@@ -53,6 +53,7 @@
   
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     sharedImageDownloadSession = [NSURLSession sessionWithConfiguration:configuration];
   });
@@ -102,8 +103,6 @@
                placeholder:(UIImage *)placeholder
     activityIndicatorStyle:(UIActivityIndicatorViewStyle)style
 {
-  [self.AL_downloadTask cancel];
-  
   if (!url.absoluteString.length) {
     self.image = nil;
     return;
@@ -115,11 +114,11 @@
   if (!self.image) {
     self.image = placeholder;
     [[self AL_addActivityIndicatorViewWithStyle:style] startAnimating];
-    [self AL_startImageDownloadTaskWithURL:url];
+    [self AL_startImageDownloadTaskWithURL:url retryCount:0];
   }
 }
 
-- (void)AL_startImageDownloadTaskWithURL:(NSURL *)url
+- (void)AL_startImageDownloadTaskWithURL:(NSURL *)url retryCount:(NSUInteger)retryCount
 {
   __weak typeof(self) weakSelf = self;
   
@@ -133,7 +132,6 @@
                                       
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                         
-                                        [[strongSelf AL_activityIndicatorView] stopAnimating];
                                         [strongSelf AL_setDownloadTask:nil];
                                         
                                         if (error) {
@@ -141,11 +139,23 @@
                                         }
                                         
                                         NSData *data = [NSData dataWithContentsOfURL:location];
+                                        
+                                        if (!data) {
+                                          if (retryCount < 3) {
+                                            [strongSelf AL_startImageDownloadTaskWithURL:url
+                                                                              retryCount:(retryCount + 1)];
+                                          } else {
+                                            [[strongSelf AL_activityIndicatorView] stopAnimating];
+                                          }
+                                          return;
+                                        }
+                                        
                                         UIImage *image = [UIImage imageWithData:data];
                                         
                                         ALImageCache *cache = [[strongSelf class] AL_sharedImageDownloadCache];
                                         [cache cacheImage:image forURL:url];
                                         
+                                        [[strongSelf AL_activityIndicatorView] stopAnimating];
                                         strongSelf.image = image;
                                       });
                                     }];

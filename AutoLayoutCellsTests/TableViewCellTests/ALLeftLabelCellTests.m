@@ -28,7 +28,7 @@
 
 // Collaborators
 #import "Test_ALTableViewCellNibFactory.h"
-#import <UIView+AORefreshFont/UIView+AORefreshFont.h>
+#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -73,7 +73,7 @@
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AORefreshFont];
+  [[label verify] AL_refreshPreferredFont];
 }
 
 #pragma mark - Outlet - Tests

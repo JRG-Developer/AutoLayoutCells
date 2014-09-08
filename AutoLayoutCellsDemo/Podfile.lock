@@ -8,9 +8,7 @@ PODS:
     - ALLabel (~> 1.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.0)
-    - UIView+AORefreshFont (~> 1.0)
   - AutoLayoutTextViews (1.1.0)
-  - UIView+AORefreshFont (1.0.2)
 
 DEPENDENCIES:
   - AutoLayoutCells (from `../`)
@@ -21,8 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 22df54ababe890d6a458490e480d93ba0e17986a
-  AutoLayoutCells: dc05a854eb39a0697ff04f5c87dd16c8ebce6ca6
+  AutoLayoutCells: 1cee2626dde62605ca320267578da1d645fa58d1
   AutoLayoutTextViews: 9b6ed8710466117db3396e683089b8edb9f48ba3
-  UIView+AORefreshFont: 5784113c8c078e76774a7cdf008102e2ef6d49a4
 
 COCOAPODS: 0.33.1

@@ -25,10 +25,10 @@
 #import "ALTextOnlyCell.h"
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
-#import <UIView+AORefreshFont/UIView+AORefreshFont.h>
 
 #import "ALTextCellDelegate.h"
 #import "ALTextViewHelper.h"
+#import "UIView+ALRefreshFont.h"
 
 @implementation ALTextOnlyCell
 
@@ -64,7 +64,12 @@
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification
 {
   [super contentSizeCategoryDidChange:notification];
-  [self.textView AORefreshFont];
+  [self refreshFonts];
+}
+
+- (void)refreshFonts
+{
+  [self.textView AL_refreshPreferredFont];
 }
 
 #pragma mark - Set Values Dictionary

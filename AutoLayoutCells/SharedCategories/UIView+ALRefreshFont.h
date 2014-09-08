@@ -1,8 +1,8 @@
 //
-//  ALLeftLabelCell.m
+//  UIView+ALRefreshFont.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/7/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,46 +22,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALLeftLabelCell.h"
+#import <UIKit/UIKit.h>
 
-#import "ALLeftLabelCellConstants.h"
-#import "UIView+ALRefreshFont.h"
+/**
+ *  `UIView+ALRefreshFont` provides convenience methods for "refreshing" the font of a text-input (`UILabel`, `UITextView`, etc) view.
+ */
+@interface UIView (ALRefreshFont)
 
-@implementation ALLeftLabelCell
+/**
+ *  Use this method to refresh a text-input view whose font was created using Apple's `preferredFontForTextStyle:` method.
+ */
+- (void)AL_refreshPreferredFont;
 
-#pragma mark - Dynamic Type Text
-
-- (void)refreshFonts
-{
-  [super refreshFonts];
-  [self.leftLabel AL_refreshPreferredFont];
-}
-
-#pragma mark - Public Instance Methods
-
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
-{
-  [super setValuesDictionary:valuesDictionary];
-  [self setLeftLabelTextFromDictionary:valuesDictionary];
-}
-
-- (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary
-{
-  if (dictionary[ALLeftLabelAttributedTextKey]) {
-    [self setLeftLabelAttributedText:dictionary[ALLeftLabelAttributedTextKey]];
-  } else {
-    [self setLeftLabelText:dictionary[ALLeftLabelTextKey]];
-  }
-}
-
-- (void)setLeftLabelAttributedText:(NSAttributedString *)text
-{
-  self.leftLabel.attributedText = text.length ? text : nil;
-}
-
-- (void)setLeftLabelText:(NSString *)text
-{
-  self.leftLabel.text = text.length ? text : nil;
-}
+/**
+ *  Use this method to refresh a text-input view whose font was created using the `UIFont`'s category method `AL_fontWithName:textStyle:` or `fontWithName:size:` method.
+ *
+ *  @see `UIFont+ALCustomDynamicFont`, in particular the `AL_fontWithName:textStyle:`
+ *
+ *  @param textStyle The text style to use to determine the size of the font
+ */
+- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle;
 
 @end

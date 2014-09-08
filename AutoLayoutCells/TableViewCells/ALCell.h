@@ -40,6 +40,15 @@
  */
 @property (weak, nonatomic) IBOutlet ALLabel *subtitleLabel;
 
+/**
+ *  This method is called within `contentSizeCategoryDidChange:` to refresh the label's fonts.
+ *
+ *  @discussion The default implementation simply calls `AL_refreshPreferredFont` on the `titleLabel` and `subtitleLabel`.
+ *
+ *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
+ */
+- (void)refreshFonts;
+
 @end
 
 /**

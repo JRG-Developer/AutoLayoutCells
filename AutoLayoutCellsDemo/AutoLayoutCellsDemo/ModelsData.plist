@@ -10,7 +10,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon1</string>
 		<key>secondaryImageURL</key>
-		<string>http://lorempixel.com/60/60/</string>
+		<string>http://placecreature.com/100/100</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -20,7 +20,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon2</string>
 		<key>secondaryImageURL</key>
-		<string>http://lorempixel.com/61/61/</string>
+		<string>http://placecreature.com/150/150</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -30,7 +30,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon3</string>
 		<key>secondaryImageURL</key>
-		<string>http://lorempixel.com/62/62/</string>
+		<string>http://placecreature.com/200/200</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -40,7 +40,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon4</string>
 		<key>secondaryImageURL</key>
-		<string>http://lorempixel.com/63/63/</string>
+		<string>http://placecreature.com/300/300</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -50,7 +50,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon5</string>
 		<key>secondaryImageURL</key>
-		<string>http://lorempixel.com/64/64/</string>
+		<string>http://placecreature.com/101/101</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -58,7 +58,7 @@
 		<key>subtitle</key>
 		<string>6th Subtitle</string>
 		<key>mainImageURL</key>
-		<string>http://lorempixel.com/65/65/</string>
+		<string>http://placecreature.com/201/201</string>
 		<key>secondaryImageName</key>
 		<string>red_icon6</string>
 	</dict>
@@ -68,7 +68,7 @@
 		<key>subtitle</key>
 		<string>7th Subtitle</string>
 		<key>mainImageURL</key>
-		<string>http://lorempixel.com/66/66/</string>
+		<string>http://placecreature.com/301/301</string>
 		<key>secondaryImageName</key>
 		<string>red_icon7</string>
 	</dict>
@@ -78,7 +78,7 @@
 		<key>subtitle</key>
 		<string>8th Subtitle</string>
 		<key>mainImageURL</key>
-		<string>http://lorempixel.com/67/67/</string>
+		<string>http://placecreature.com/401/401</string>
 		<key>secondaryImageName</key>
 		<string>red_icon8</string>
 	</dict>
@@ -88,7 +88,7 @@
 		<key>subtitle</key>
 		<string>9th Subtitle</string>
 		<key>mainImageURL</key>
-		<string>http://lorempixel.com/68/68/</string>
+		<string>http://placecreature.com/102/102</string>
 		<key>secondaryImageName</key>
 		<string>red_icon9</string>
 	</dict>
@@ -98,7 +98,7 @@
 		<key>subtitle</key>
 		<string>This is a really long subtitle to show how the 10th cell will resize to fit it</string>
 		<key>mainImageURL</key>
-		<string>http://lorempixel.com/69/69/</string>
+		<string>http://placecreature.com/202/202</string>
 		<key>secondaryImageName</key>
 		<string>red_icon10</string>
 	</dict>

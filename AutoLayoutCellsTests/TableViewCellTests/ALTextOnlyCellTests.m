@@ -27,9 +27,9 @@
 
 // Collaborators
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
-#import <UIView+AORefreshFont/UIView+AORefreshFont.h>
 
 #import "ALTextCellDelegate.h"
+#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -92,7 +92,7 @@
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[textView verify] AORefreshFont];
+  [[textView verify] AL_refreshPreferredFont];
 }
 
 #pragma mark - Outlet Tests

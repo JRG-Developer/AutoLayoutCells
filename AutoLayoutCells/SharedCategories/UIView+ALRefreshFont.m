@@ -1,8 +1,8 @@
 //
-//  ALLeftLabelCell.m
+//  UIView+ALRefreshFont.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/7/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,46 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALLeftLabelCell.h"
-
-#import "ALLeftLabelCellConstants.h"
 #import "UIView+ALRefreshFont.h"
+#import "UIFont+ALCustomDynamicFont.h"
 
-@implementation ALLeftLabelCell
+@implementation UIView (ALRefreshFont)
 
-#pragma mark - Dynamic Type Text
-
-- (void)refreshFonts
+- (void)AL_refreshPreferredFont
 {
-  [super refreshFonts];
-  [self.leftLabel AL_refreshPreferredFont];
-}
-
-#pragma mark - Public Instance Methods
-
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
-{
-  [super setValuesDictionary:valuesDictionary];
-  [self setLeftLabelTextFromDictionary:valuesDictionary];
-}
-
-- (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary
-{
-  if (dictionary[ALLeftLabelAttributedTextKey]) {
-    [self setLeftLabelAttributedText:dictionary[ALLeftLabelAttributedTextKey]];
-  } else {
-    [self setLeftLabelText:dictionary[ALLeftLabelTextKey]];
+  if ([self respondsToSelector:@selector(font)]) {
+    UIFont *font = [(id)self font];
+    NSString *textStyle = font.fontDescriptor.fontAttributes[UIFontDescriptorTextStyleAttribute];
+    
+    font = [UIFont preferredFontForTextStyle:textStyle];
+    [(id)self setFont:font];
   }
 }
 
-- (void)setLeftLabelAttributedText:(NSAttributedString *)text
+- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle
 {
-  self.leftLabel.attributedText = text.length ? text : nil;
-}
-
-- (void)setLeftLabelText:(NSString *)text
-{
-  self.leftLabel.text = text.length ? text : nil;
+  if ([self respondsToSelector:@selector(font)]) {
+    UIFont *font = [(id)self font];
+    font = [UIFont AL_fontWithName:font.fontName textStyle:textStyle];
+  }
 }
 
 @end

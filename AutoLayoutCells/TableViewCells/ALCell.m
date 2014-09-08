@@ -24,9 +24,8 @@
 
 #import "ALCell.h"
 
-#import <UIView+AORefreshFont/UIView+AORefreshFont.h>
-
 #import "ALCellConstants.h"
+#import "UIView+ALRefreshFont.h"
 
 @implementation ALCell
 
@@ -35,8 +34,13 @@
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification
 {
   [super contentSizeCategoryDidChange:notification];
-  [self.titleLabel AORefreshFont];
-  [self.subtitleLabel AORefreshFont];
+  [self refreshFonts];
+}
+
+- (void)refreshFonts
+{
+  [self.titleLabel AL_refreshPreferredFont];
+  [self.subtitleLabel AL_refreshPreferredFont];
 }
 
 #pragma mark - Set Values Dictionary
