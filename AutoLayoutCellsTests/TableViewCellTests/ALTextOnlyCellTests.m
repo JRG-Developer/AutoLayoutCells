@@ -288,11 +288,13 @@
   [self givenMockDelegate];
   [self givenMockText];
   
+  OCMExpect([delegate cell:sut valueChanged:sut.textView.text]);
+  
   // when
   [sut textViewHelper:sut.textViewHelper textViewDidChange:sut.textView];
   
   // then
-  [[delegate verify] cell:sut valueChanged:sut.textView.text];
+  OCMVerifyAll(delegate);
 }
 
 - (void)test___textViewHelper___notifiesDelegateWhen___textViewDidEndEditing
@@ -301,11 +303,13 @@
   [self givenMockDelegate];
   [self givenMockText];
   
+  OCMExpect([delegate cell:sut didEndEditing:sut.textView.text]);
+  
   // when
   [sut textViewHelper:sut.textViewHelper textViewDidEndEditing:sut.textView];
   
   // then
-  [[delegate verify] cell:sut didEndEditing:sut.textView.text];
+  OCMVerifyAll(delegate);
 }
 
 #pragma mark - ALTextViewHelperDelegate - Height Changes - Tests
