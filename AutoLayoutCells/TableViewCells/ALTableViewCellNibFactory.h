@@ -72,6 +72,13 @@
 + (UINib *)textCellNib;
 
 /**
+ *  Use this method to get an `ALTextFieldCell` nib.
+ *
+ *  @return `ALTextFieldCell` nib
+ */
++ (UINib *)textFieldCellNib;
+
+/**
  *  Use this method to get an `ALTextOnlyCell` nib
  *
  *  @return `ALTextOnlyCell` nib

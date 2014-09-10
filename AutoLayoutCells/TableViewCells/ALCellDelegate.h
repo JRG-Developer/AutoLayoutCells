@@ -31,9 +31,9 @@
 @optional
 
 /**
- *  This method is called whenever a user did begin editing a cell's value.
+ *  This method is called whenever a user will begin editing a cell's value.
  *
- *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell` and `ALTextOnlyCell`) will call this method if their delegate implements it.
+ *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
  *
  *  @param cell The cell whose value will begin editing
  */

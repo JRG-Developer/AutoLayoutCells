@@ -22,14 +22,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+
+#import "ALCellConstants.h"
+
 /**
- *  `ALTextCell` and `ALTextOnlyCell` use these keys and enum to specify and format their `textView`.
+ *  `ALTextCell`, `ALTextOnlyCell`, and `ALTextFieldCell` use these keys and enum to specify and format their `textView` or `textField`, respectively.
  */
 
 /**
- *  Use a value from `ALTextViewType` to specify the desired formatting to be used on the `textView`.
+ *  Use a value from `ALTextCellType` to specify the desired formatting for the UITextView/UITextField.
  */
-typedef NS_ENUM(NSInteger, ALTextViewType) {
+typedef NS_ENUM(NSInteger, ALTextCellType) {
   
   /**
    *  `ALTextCellTypeDefault` is the default value used if no value is specified.
@@ -76,7 +79,7 @@ typedef NS_ENUM(NSInteger, ALTextViewType) {
 };
 
 /**
- *  Use this key to specify the `ALTextViewType` as an `NSNumber`
+ *  Use this key to specify the `ALTextCellType` as an `NSNumber`
  */
 extern NSString * const ALTextCellTypeKey;              // type
 

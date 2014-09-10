@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" id="NcJ-iK-aNT" customClass="ALTextFieldCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" tableViewCell="NcJ-iK-aNT" id="m8f-2I-a9c">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="42" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="PWA-pc-DQb" customClass="ALLabel">
+                        <rect key="frame" x="20" y="0.0" width="120" height="41"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDV-y0-O51">
+                        <rect key="frame" x="148" y="0.0" width="152" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="Ahv-vZ-3n9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PWA-pc-DQb" firstAttribute="top" secondItem="m8f-2I-a9c" secondAttribute="top" id="9iV-Vz-iwY"/>
+                    <constraint firstItem="gDV-y0-O51" firstAttribute="top" secondItem="m8f-2I-a9c" secondAttribute="top" id="CmU-K3-pqZ"/>
+                    <constraint firstAttribute="trailing" secondItem="gDV-y0-O51" secondAttribute="trailing" constant="20" symbolic="YES" id="YwP-91-Fz3"/>
+                    <constraint firstItem="PWA-pc-DQb" firstAttribute="leading" secondItem="m8f-2I-a9c" secondAttribute="leading" constant="20" symbolic="YES" id="k2o-ze-up0"/>
+                    <constraint firstAttribute="bottom" secondItem="PWA-pc-DQb" secondAttribute="bottom" id="mPI-cE-r4y"/>
+                    <constraint firstItem="gDV-y0-O51" firstAttribute="leading" secondItem="PWA-pc-DQb" secondAttribute="trailing" constant="8" symbolic="YES" id="qXu-eg-sVF"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gDV-y0-O51" secondAttribute="bottom" id="rSC-ae-HQK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="textField" destination="gDV-y0-O51" id="med-3i-cRx"/>
+                <outlet property="titleLabel" destination="PWA-pc-DQb" id="HOI-Os-5h1"/>
+            </connections>
+            <point key="canvasLocation" x="117" y="138"/>
+        </tableViewCell>
+    </objects>
+</document>

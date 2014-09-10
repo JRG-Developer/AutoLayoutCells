@@ -82,7 +82,7 @@
 
 + (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
 {
-  ALTextViewType type = [dictionary[ALTextCellTypeKey] intValue];
+  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
   
   switch (type)
   {

@@ -121,8 +121,7 @@
 {
   // given
   NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
-  NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"This is some text"
-                                                             attributes:attributes];
+  NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"This is some text" attributes:attributes];
   NSDictionary *dictionary = @{ALCellAttributedValueKey: text};
   
   // when

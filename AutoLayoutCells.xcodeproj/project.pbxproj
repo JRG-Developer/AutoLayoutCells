@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
 		420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */; };
+		42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */; };
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
+		42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */; };
 		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
+		42C77AE019C11C83007F2F14 /* ALTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C77ADC19C108AC007F2F14 /* ALTextFieldCell.xib */; };
 		42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */; };
 		42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */; };
 		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
@@ -86,8 +89,12 @@
 /* Begin PBXFileReference section */
 		420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCacheTests.m; sourceTree = "<group>"; };
 		420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALActivityIndicatorViewTests.m"; path = "TableViewCellTests/UIImageView+ALActivityIndicatorViewTests.m"; sourceTree = "<group>"; };
+		42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellTests.m; sourceTree = "<group>"; };
 		429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALImageWithURLTests.m"; path = "TableViewCellTests/UIImageView+ALImageWithURLTests.m"; sourceTree = "<group>"; };
+		42A478C519C0E3DC00EDD725 /* ALTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextFieldCell.h; sourceTree = "<group>"; };
+		42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCell.m; sourceTree = "<group>"; };
 		42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewTests.m; sourceTree = "<group>"; };
+		42C77ADC19C108AC007F2F14 /* ALTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextFieldCell.xib; sourceTree = "<group>"; };
 		42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALActivityIndicatorView.h"; sourceTree = "<group>"; };
 		42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALActivityIndicatorView.m"; sourceTree = "<group>"; };
 		42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALImageWithURL.h"; sourceTree = "<group>"; };
@@ -270,6 +277,8 @@
 				4427F10E1970590A00C3019E /* ALLeftLabelCell.m */,
 				4427F10F1970590A00C3019E /* ALTextCell.h */,
 				4427F1101970590A00C3019E /* ALTextCell.m */,
+				42A478C519C0E3DC00EDD725 /* ALTextFieldCell.h */,
+				42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */,
 				4427F1111970590A00C3019E /* ALTextOnlyCell.h */,
 				4427F1121970590A00C3019E /* ALTextOnlyCell.m */,
 			);
@@ -287,6 +296,7 @@
 				4427F14F197062D800C3019E /* ALLeftLabelCellTests.m */,
 				4427F150197062D800C3019E /* ALMenuCellTests.m */,
 				4427F151197062D800C3019E /* ALTextCellTests.m */,
+				42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */,
 				4427F152197062D800C3019E /* ALTextOnlyCellTests.m */,
 			);
 			name = Cells;
@@ -348,6 +358,7 @@
 				4427F13D197059A000C3019E /* ALMenuCell.xib */,
 				4427F13E197059A000C3019E /* ALTextCell.xib */,
 				4427F13F197059A000C3019E /* ALTextOnlyCell.xib */,
+				42C77ADC19C108AC007F2F14 /* ALTextFieldCell.xib */,
 			);
 			path = ResourcesBundle;
 			sourceTree = "<group>";
@@ -577,6 +588,7 @@
 			files = (
 				4427F144197059A000C3019E /* ALMenuCell.xib in Resources */,
 				4427F143197059A000C3019E /* ALLeftLabelCell.xib in Resources */,
+				42C77AE019C11C83007F2F14 /* ALTextFieldCell.xib in Resources */,
 				4427F146197059A000C3019E /* ALTextOnlyCell.xib in Resources */,
 				4427F140197059A000C3019E /* ALBooleanCell.xib in Resources */,
 				44BBB98A197049C200AB4596 /* InfoPlist.strings in Resources */,
@@ -659,6 +671,7 @@
 			files = (
 				F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */,
 				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
+				42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */,
 				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,
 				4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */,
 				4427F1191970590A00C3019E /* ALTextOnlyCell.m in Sources */,
@@ -700,6 +713,7 @@
 				4427F15C197062D800C3019E /* ALGalleryCellTests.m in Sources */,
 				42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */,
 				4427F15F197062D800C3019E /* ALTextCellTests.m in Sources */,
+				42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */,
 				4427F159197062D800C3019E /* ALCellFactoryTests.m in Sources */,
 				4427F15E197062D800C3019E /* ALMenuCellTests.m in Sources */,
 				44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */,
