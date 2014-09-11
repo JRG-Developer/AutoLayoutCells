@@ -12,7 +12,7 @@
 
 The easiest way to add `AutoLayoutCells` to your project is using <a href="http://cocoapods.org/">CocoaPods</a>. Simply add the following line to your `Podfile`:
 
-	pod 'AutoLayoutCells', '~> 0.2'
+	pod 'AutoLayoutCells', '~> 0.3'
 
 Then run `pod install` as you normally would.
 
