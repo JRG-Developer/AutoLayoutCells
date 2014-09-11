@@ -230,20 +230,42 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesDictionary___textCellType___defaultsTo___ALTextCellTypeDefault
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
 {
   // given
-  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  [self givenMockTextView];
+  NSDictionary *dict = nil;
+  
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
   
   // then
-  expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-  expect(textView.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
-  expect(textView.keyboardType).to.equal(UIKeyboardTypeDefault);
-  expect(textView.secureTextEntry).to.beFalsy();
-  expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+  OCMVerifyAll(mockTextView);
+}
+
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_invalidType_doesNotConfigureTextField
+{
+  // given
+  [self givenMockTextView];
+  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
+  
+  // when
+  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
+  
+  // then
+  OCMVerifyAll(mockTextView);
 }
 
 #pragma mark - UITextViewDelegate - Tests

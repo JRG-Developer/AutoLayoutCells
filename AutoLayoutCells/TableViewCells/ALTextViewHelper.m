@@ -82,10 +82,18 @@
 
 + (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
 {
+  if (!dictionary[ALTextCellTypeKey]) {
+    return;
+  }
+  
   ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
   
   switch (type)
   {
+    case ALTextCellTypeDefault:
+      [self setTextViewTypeDefault:textView];
+      break;
+      
     case ALTextCellTypeEmail:
       [self setTextViewTypeEmail:textView];
       break;
@@ -110,9 +118,7 @@
       [self setTextViewTypeNumber:textView];
       break;
       
-    case ALTextCellTypeDefault:
     default:
-      [self setTextViewTypeDefault:textView];
       break;
   }
 }

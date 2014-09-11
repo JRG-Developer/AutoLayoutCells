@@ -163,6 +163,22 @@
   OCMVerifyAll(mockTextField);
 }
 
+- (void)test___setValuesDictionary___textCellType___ALTextCellTypeDefault
+{
+  // given
+  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
+  
+  // when
+  [sut setValuesDictionary:dict];
+  
+  // then
+  expect(textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
+  expect(textField.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
+  expect(textField.keyboardType).to.equal(UIKeyboardTypeDefault);
+  expect(textField.secureTextEntry).to.beFalsy();
+  expect(textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+}
+
 - (void)test___setValuesDictionary___textCellType___ALTextCellTypeEmail
 {
   // given
@@ -243,22 +259,6 @@
   expect(textField.spellCheckingType).to.equal(UITextSpellCheckingTypeYes);
 }
 
-- (void)test___setValuesDictionary___textCellType___ALTextCellTypeDefault
-{
-  // given
-  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
-  
-  // when
-  [sut setValuesDictionary:dict];
-  
-  // then
-  expect(textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-  expect(textField.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
-  expect(textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-  expect(textField.secureTextEntry).to.beFalsy();
-  expect(textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
-}
-
 - (void)test___setValuesDictionary___textCellType___ALTextCellTypeNumber
 {
   // given
@@ -275,20 +275,42 @@
   expect(textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesDictionary___textCellType___defaultsTo___ALTextCellTypeDefault
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
 {
   // given
-  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  [self givenMockTextField];
+  NSDictionary *dict = nil;
+  
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
   
   // when
   [sut setValuesDictionary:dict];
   
   // then
-  expect(textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-  expect(textField.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
-  expect(textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-  expect(textField.secureTextEntry).to.beFalsy();
-  expect(textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+  OCMVerifyAll(mockTextField);
+}
+
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_invalidType_doesNotConfigureTextField
+{
+  // given
+  [self givenMockTextField];
+  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
+  
+  // when
+  [sut setValuesDictionary:dict];
+  
+  // then
+  OCMVerifyAll(mockTextField);
 }
 
 #pragma mark - Text Field Actions - Tests

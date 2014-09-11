@@ -90,10 +90,18 @@
 
 - (void)setTextInputStyleFromDictionary:(NSDictionary *)dictionary
 {
+  if (!dictionary[ALTextCellTypeKey]) {
+    return;
+  }
+  
   ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
   
   switch (type)
   {
+    case ALTextCellTypeDefault:
+      [self setTextFieldTypeDefault:self.textField];
+      break;
+      
     case ALTextCellTypeEmail:
       [self setTextFieldTypeEmail:self.textField];
       break;
@@ -118,9 +126,7 @@
       [self setTextFieldTypeNumber:self.textField];
       break;
       
-    case ALTextCellTypeDefault:
     default:
-      [self setTextFieldTypeDefault:self.textField];
       break;
   }
 }
