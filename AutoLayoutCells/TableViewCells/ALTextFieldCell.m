@@ -215,11 +215,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-  [textField resignFirstResponder];
-  
   if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
     [self.delegate cell:self willEndEditing:self.textField.text];
   }
+  
+  [textField resignFirstResponder];
   
   return NO;
 }
