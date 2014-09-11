@@ -101,7 +101,9 @@
   // given
   [self givenMockDelegate];
   
-  OCMExpect([mockTextField AL_refreshPreferredFont]);
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  
+  OCMExpect([mockTextField setFont:font]);
   
   // when
   [sut refreshFonts];

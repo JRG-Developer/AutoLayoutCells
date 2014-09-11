@@ -27,18 +27,7 @@
 
 @implementation UIView (ALRefreshFont)
 
-- (void)AL_refreshPreferredFont
-{
-  if ([self respondsToSelector:@selector(font)]) {
-    UIFont *font = [(id)self font];
-    NSString *textStyle = font.fontDescriptor.fontAttributes[UIFontDescriptorTextStyleAttribute];
-    
-    font = [UIFont preferredFontForTextStyle:textStyle];
-    [(id)self setFont:font];
-  }
-}
-
-- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle
+- (void)AL_preferredCustomFontWithTextStyle:(NSString *)textStyle
 {
   if ([self respondsToSelector:@selector(font)]) {
     UIFont *font = [(id)self font];

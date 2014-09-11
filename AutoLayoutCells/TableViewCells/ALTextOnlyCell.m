@@ -69,7 +69,7 @@
 
 - (void)refreshFonts
 {
-  [self.textView AL_refreshPreferredFont];
+  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 #pragma mark - Set Values Dictionary

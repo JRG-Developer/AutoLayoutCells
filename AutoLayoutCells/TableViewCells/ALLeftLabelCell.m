@@ -34,7 +34,7 @@
 - (void)refreshFonts
 {
   [super refreshFonts];
-  [self.leftLabel AL_refreshPreferredFont];
+  self.leftLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
 #pragma mark - Public Instance Methods

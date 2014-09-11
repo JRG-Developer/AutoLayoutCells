@@ -49,7 +49,7 @@
 - (void)refreshFonts
 {
   [super refreshFonts];
-  [self.textField AL_refreshPreferredFont];
+  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 #pragma mark - Set Values Dictionary

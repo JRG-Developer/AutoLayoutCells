@@ -30,17 +30,12 @@
 @interface UIView (ALRefreshFont)
 
 /**
- *  Use this method to refresh a text-input view whose font was created using Apple's `preferredFontForTextStyle:` method.
- */
-- (void)AL_refreshPreferredFont;
-
-/**
  *  Use this method to refresh a text-input view whose font was created using the `UIFont`'s category method `AL_fontWithName:textStyle:` or `fontWithName:size:` method.
  *
  *  @see `UIFont+ALCustomDynamicFont`, in particular the `AL_fontWithName:textStyle:`
  *
  *  @param textStyle The text style to use to determine the size of the font
  */
-- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle;
+- (void)AL_preferredCustomFontWithTextStyle:(NSString *)textStyle;
 
 @end

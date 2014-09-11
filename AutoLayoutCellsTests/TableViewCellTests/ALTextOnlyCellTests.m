@@ -88,11 +88,14 @@
   id textView = OCMClassMock([UITextView class]);
   sut.textView = textView;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  OCMExpect([textView setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[textView verify] AL_refreshPreferredFont];
+  OCMVerifyAll(textView);
 }
 
 #pragma mark - Outlet Tests

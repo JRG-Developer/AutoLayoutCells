@@ -39,8 +39,8 @@
 
 - (void)refreshFonts
 {
-  [self.titleLabel AL_refreshPreferredFont];
-  [self.subtitleLabel AL_refreshPreferredFont];
+  self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+  self.subtitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 #pragma mark - Set Values Dictionary
