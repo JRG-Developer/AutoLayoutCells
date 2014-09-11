@@ -27,7 +27,7 @@
 
 #import "Model+ALCellAdapter.h"
 
-static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
+static NSString *CellIdentifier = @"ALDemoCell";
 
 @interface TableViewController()
 @property (strong, nonatomic) ALTableViewCellFactory *cellFactory;
@@ -109,7 +109,7 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
 
 - (NSDictionary *)identifiersToNibsDictionary
 {
-  return @{ALImageCellIdentifier: [ALTableViewCellNibFactory menuCellNib]};
+  return @{CellIdentifier: [ALTableViewCellNibFactory menuCellNib]};
 }
 
 #pragma mark - ALTableViewCellFactoryDelegate
@@ -130,14 +130,14 @@ static NSString *ALImageCellIdentifier = @"ALImageCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [self.cellFactory cellWithIdentifier:ALImageCellIdentifier forIndexPath:indexPath];
+  return [self.cellFactory cellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [self.cellFactory cellHeightForIdentifier:ALImageCellIdentifier atIndexPath:indexPath];
+  return [self.cellFactory cellHeightForIdentifier:CellIdentifier atIndexPath:indexPath];
 }
 
 @end

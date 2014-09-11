@@ -28,7 +28,6 @@
 
 #import "ALTextCellDelegate.h"
 #import "ALTextViewHelper.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALTextCell
 
@@ -64,7 +63,7 @@
 - (void)refreshFonts
 {
   [super refreshFonts];
-  [self.textView AL_refreshPreferredFont];
+  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 #pragma mark - Set Values Dictionary
@@ -89,6 +88,13 @@
 {
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self valueChanged:textView.text];
+  }
+}
+
+- (void)textViewHelper:(ALTextViewHelper *)helper textViewWillEndEditing:(UITextView *)textView
+{
+  if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
+    [self.delegate cell:self willEndEditing:textView.text];
   }
 }
 

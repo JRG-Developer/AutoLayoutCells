@@ -28,7 +28,7 @@
 #import "ALBaseCell.h"
 
 @interface ALTableViewCellFactory ()
-@property (strong, nonatomic) NSDictionary *identifiersToNibsDictionary;
+@property (strong, nonatomic) NSMutableDictionary *identifiersToNibsDictionary;
 @end
 
 @implementation ALTableViewCellFactory
@@ -41,7 +41,7 @@
   if (self) {
     _tableView = tableView;
     _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dict.count];
-    _identifiersToNibsDictionary = dict;
+    _identifiersToNibsDictionary = [dict mutableCopy];
     [self registerCellsFromDictionary:dict];
   }
   return self;
@@ -58,14 +58,9 @@
 
 - (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [self findCellWithIdentifier:identifier forIndexPath:indexPath];
+  UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
   [self.delegate configureCell:cell atIndexPath:indexPath];
   return cell;
-}
-
-- (UITableViewCell *)findCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
-{
-  return [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
 }
 
 - (CGFloat)cellHeightForIdentifier:(NSString *)identifier atIndexPath:(NSIndexPath *)indexPath
@@ -77,9 +72,9 @@
 
 - (UITableViewCell *)sizingCellForIdentifier:(NSString *)identifier
 {
-  ALBaseCell *sizingCell = self.sizingCellDict[identifier];
+  UITableViewCell *sizingCell = self.sizingCellDict[identifier];
   
-  if (sizingCell == nil) {
+  if (!sizingCell) {
     sizingCell = [self makeSizingCellForIdentifier:identifier];
     self.sizingCellDict[identifier] = sizingCell;
   }
@@ -87,11 +82,22 @@
   return sizingCell;
 }
 
-- (ALBaseCell *)makeSizingCellForIdentifier:(NSString *)identifier
+- (UITableViewCell *)makeSizingCellForIdentifier:(NSString *)identifier
 {
   UINib *nib = self.identifiersToNibsDictionary[identifier];
-  ALBaseCell *cell = [[nib instantiateWithOwner:self options:nil] lastObject];
-  [cell setIsSizingCell:YES];
+  id cell = nil;
+  
+  if (!nib) {
+    cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    
+  } else {
+    cell = [[nib instantiateWithOwner:self options:nil] lastObject];
+  }
+  
+  if ([cell respondsToSelector:@selector(setIsSizingCell:)]) {
+    [cell setIsSizingCell:YES];
+  }
+  
   return cell;
 }
 

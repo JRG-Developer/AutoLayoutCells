@@ -25,8 +25,9 @@
 #import "ALBaseCell.h"
 #import "ALTextViewHelperDelegate.h"
 
+#import "ALTextCellDelegate.h"
+
 @class ALAutoResizingTextView;
-@protocol ALTextCellDelegate;
 
 /**
  *  `ALTextOnlyCell` shows just a text view to get input from the user.
@@ -37,7 +38,7 @@
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) id<ALCellDelegate, ALTextCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
 
 /**
  *  The text view helper, which takes care of configuring the text view

@@ -62,8 +62,8 @@
 + (void)textView:(UITextView *)textView setTextFromDictionary:(NSDictionary *)dictionary;
 
 /**
- *  This method configures the `textView` based on the type (`ALTextViewType`) from the dictionary.
- *  @see `ALTextCellConstants` for `ALTextViewType` enum
+ *  This method configures the `textView` based on the type (`ALTextCellType`) from the dictionary.
+ *  @see `ALTextCellConstants` for `ALTextCellType` enum
  *
  *  @param textView   The text view to be configured
  *  @param dictionary The dictionary containing the type value
@@ -98,49 +98,49 @@
 + (void)textView:(UITextView *)textView setTextString:(NSString *)text;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeEmail`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeEmail`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypeEmail:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeName`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeName`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypeName:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeNoChecking`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeNoChecking`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypeNoChecking:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypePassword`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypePassword`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypePassword:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeSentences`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeSentences`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypeSentences:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeNumber`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeNumber`
  *
  *  @param textView The text view
  */
 + (void)setTextViewTypeNumber:(UITextView *)textView;
 
 /**
- *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextViewTypeDefault`
+ *  This method is called within `textView:setTypeFromDictionary:` to configure the text view as `ALTextCellTypeDefault`
  *
  *  @param textView The text view
  */

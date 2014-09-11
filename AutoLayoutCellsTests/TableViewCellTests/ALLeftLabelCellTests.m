@@ -28,7 +28,6 @@
 
 // Collaborators
 #import "Test_ALTableViewCellNibFactory.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -69,11 +68,15 @@
   id label = OCMClassMock([ALLabel class]);
   sut.leftLabel = label;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+  
+  OCMExpect([label setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AL_refreshPreferredFont];
+  OCMVerifyAll(label);
 }
 
 #pragma mark - Outlet - Tests

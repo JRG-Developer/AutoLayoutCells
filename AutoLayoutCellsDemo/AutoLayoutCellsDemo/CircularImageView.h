@@ -1,8 +1,8 @@
 //
-//  UIView+ALRefreshFont.h
-//  AutoLayoutCells
+//  CircularImageView.h
+//  AutoLayoutCellsDemo
 //
-//  Created by Joshua Greene on 9/7/14.
+//  Created by Joshua Greene on 9/11/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,22 +25,8 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  `UIView+ALRefreshFont` provides convenience methods for "refreshing" the font of a text-input (`UILabel`, `UITextView`, etc) view.
+ *  CircularImageView subclasses `UIImageView` to create a circular image view.
  */
-@interface UIView (ALRefreshFont)
-
-/**
- *  Use this method to refresh a text-input view whose font was created using Apple's `preferredFontForTextStyle:` method.
- */
-- (void)AL_refreshPreferredFont;
-
-/**
- *  Use this method to refresh a text-input view whose font was created using the `UIFont`'s category method `AL_fontWithName:textStyle:` or `fontWithName:size:` method.
- *
- *  @see `UIFont+ALCustomDynamicFont`, in particular the `AL_fontWithName:textStyle:`
- *
- *  @param textStyle The text style to use to determine the size of the font
- */
-- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle;
+@interface CircularImageView : UIImageView
 
 @end

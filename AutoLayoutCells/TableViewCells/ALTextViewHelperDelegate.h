@@ -51,7 +51,15 @@
 - (void)textViewHelper:(ALTextViewHelper *)helper textViewDidChange:(UITextView *)textView;
 
 /**
- *  This method is called when the text view will end editing.
+ *  This method is called whenever the text view will end editing.
+ *
+ *  @param helper   The text view helper that manages the text view
+ *  @param textView The text view that did end editing
+ */
+- (void)textViewHelper:(ALTextViewHelper *)helper textViewWillEndEditing:(UITextView *)textView;
+
+/**
+ *  This method is called when the text view did end editing.
  *
  *  @param helper   The text view helper that manages the text view
  *  @param textView The text view that did end editing

@@ -57,6 +57,11 @@
   return [self nibWithName:@"ALTextCell"];
 }
 
++ (UINib *)textFieldCellNib
+{
+  return [self nibWithName:@"ALTextFieldCell"];
+}
+
 + (UINib *)textOnlyCellNib
 {
   return [self nibWithName:@"ALTextOnlyCell"];

@@ -57,50 +57,50 @@
 		<string>6th Title</string>
 		<key>subtitle</key>
 		<string>6th Subtitle</string>
-		<key>mainImageURL</key>
-		<string>http://placecreature.com/201/201</string>
-		<key>secondaryImageName</key>
+		<key>mainImageName</key>
 		<string>red_icon6</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/201/201</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>7th Title</string>
 		<key>subtitle</key>
 		<string>7th Subtitle</string>
-		<key>mainImageURL</key>
-		<string>http://placecreature.com/301/301</string>
-		<key>secondaryImageName</key>
+		<key>mainImageName</key>
 		<string>red_icon7</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/301/301</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>8th Title</string>
 		<key>subtitle</key>
 		<string>8th Subtitle</string>
-		<key>mainImageURL</key>
-		<string>http://placecreature.com/401/401</string>
-		<key>secondaryImageName</key>
+		<key>mainImageName</key>
 		<string>red_icon8</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/401/401</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>9th Title</string>
 		<key>subtitle</key>
 		<string>9th Subtitle</string>
-		<key>mainImageURL</key>
-		<string>http://placecreature.com/102/102</string>
-		<key>secondaryImageName</key>
+		<key>mainImageName</key>
 		<string>red_icon9</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/102/102</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>This is a really long title to show how the 10th cell will resize to fit it</string>
 		<key>subtitle</key>
 		<string>This is a really long subtitle to show how the 10th cell will resize to fit it</string>
-		<key>mainImageURL</key>
-		<string>http://placecreature.com/202/202</string>
-		<key>secondaryImageName</key>
+		<key>mainImageName</key>
 		<string>red_icon10</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/202/202</string>
 	</dict>
 </array>
 </plist>

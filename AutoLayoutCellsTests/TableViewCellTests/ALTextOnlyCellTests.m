@@ -29,7 +29,6 @@
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
 #import "ALTextCellDelegate.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -88,11 +87,14 @@
   id textView = OCMClassMock([UITextView class]);
   sut.textView = textView;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  OCMExpect([textView setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[textView verify] AL_refreshPreferredFont];
+  OCMVerifyAll(textView);
 }
 
 #pragma mark - Outlet Tests
@@ -121,8 +123,7 @@
 {
   // given
   NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:18.0f]};
-  NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"This is some text"
-                                                             attributes:attributes];
+  NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"This is some text" attributes:attributes];
   NSDictionary *dictionary = @{ALCellAttributedValueKey: text};
   
   // when
@@ -292,6 +293,21 @@
   
   // when
   [sut textViewHelper:sut.textViewHelper textViewDidChange:sut.textView];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
+- (void)test___textViewHelper___textViewWillEndEditing___notifiesDelegate
+{
+  // given
+  [self givenMockDelegate];
+  [self givenMockText];
+  
+  OCMExpect([delegate cell:sut willEndEditing:sut.textView.text]);
+  
+  // when
+  [sut textViewHelper:sut.textViewHelper textViewWillEndEditing:sut.textView];
   
   // then
   OCMVerifyAll(delegate);

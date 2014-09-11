@@ -28,7 +28,6 @@
 
 // Collaborators
 #import "Test_ALTableViewCellNibFactory.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -105,11 +104,14 @@
   id label = OCMClassMock([ALLabel class]);
   sut.titleLabel = label;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+  OCMExpect([label setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AL_refreshPreferredFont];
+  OCMVerifyAll(label);
 }
 
 - (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___subtitleLabel
@@ -118,11 +120,14 @@
   id label = OCMClassMock([ALLabel class]);
   sut.subtitleLabel = label;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  OCMExpect([label setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[label verify] AL_refreshPreferredFont];
+  OCMVerifyAll(label);
 }
 
 #pragma mark - Set Values Dictionary - Tests

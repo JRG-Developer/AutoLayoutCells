@@ -1,8 +1,8 @@
 //
-//  UIView+ALRefreshFont.m
-//  AutoLayoutCells
+//  CircularImageView.m
+//  AutoLayoutCellsDemo
 //
-//  Created by Joshua Greene on 9/7/14.
+//  Created by Joshua Greene on 9/11/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +22,52 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "UIView+ALRefreshFont.h"
-#import "UIFont+ALCustomDynamicFont.h"
+#import "CircularImageView.h"
 
-@implementation UIView (ALRefreshFont)
+@import QuartzCore;
 
-- (void)AL_refreshPreferredFont
+@implementation CircularImageView
+
+- (instancetype)initWithFrame:(CGRect)frame
 {
-  if ([self respondsToSelector:@selector(font)]) {
-    UIFont *font = [(id)self font];
-    NSString *textStyle = font.fontDescriptor.fontAttributes[UIFontDescriptorTextStyleAttribute];
-    
-    font = [UIFont preferredFontForTextStyle:textStyle];
-    [(id)self setFont:font];
+  self = [super initWithFrame:frame];
+  if (self) {
+    [self commonInit];
   }
+  return self;
 }
 
-- (void)AL_refreshCustomFontWithTextStyle:(NSString *)textStyle
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-  if ([self respondsToSelector:@selector(font)]) {
-    UIFont *font = [(id)self font];
-    font = [UIFont AL_fontWithName:font.fontName textStyle:textStyle];
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [self commonInit];
   }
+  return self;
+}
+
+- (instancetype)initWithImage:(UIImage *)image
+{
+  self = [super initWithImage:image];
+  if (self) {
+    
+  }
+  return self;
+}
+
+- (instancetype)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage
+{
+  self = [super initWithImage:image highlightedImage:highlightedImage];
+  if (self) {
+    [self commonInit];
+  }
+  return self;
+}
+
+- (void)commonInit
+{
+  self.clipsToBounds = YES;
+  self.layer.cornerRadius = CGRectGetWidth(self.frame) / 2.0f;
 }
 
 @end

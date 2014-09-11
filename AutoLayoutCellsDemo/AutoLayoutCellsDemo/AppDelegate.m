@@ -39,6 +39,7 @@
 - (void)configureCells
 {
   [[ALImageCell appearance] setLoadingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//  [[ALImageCell appearance] setSecondaryImagePlaceholder:[UIImage imageNamed:@"maneki_neko"]];
 }
 
 @end

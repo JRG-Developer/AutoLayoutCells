@@ -33,7 +33,6 @@
 #import "ALTextCellConstants.h"
 #import "ALTextViewHelper.h"
 #import "Test_ALTableViewCellNibFactory.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -96,11 +95,14 @@
   id textView = OCMClassMock([ALAutoResizingTextView class]);
   sut.textView = textView;
   
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  OCMExpect([textView setFont:font]);
+  
   // when
   [sut contentSizeCategoryDidChange:nil];
   
   // then
-  [[textView verify] AL_refreshPreferredFont];
+  OCMVerifyAll(textView);
 }
 
 #pragma mark - Outlet - Tests
@@ -334,6 +336,21 @@
   
   // when
   [sut textViewHelper:sut.textViewHelper textViewDidChange:sut.textView];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
+- (void)test___textViewHelper___textViewWillEndEditing___notifiesDelegate
+{
+  // given
+  [self givenMockDelegate];
+  [self givenMockText];
+  
+  OCMExpect([delegate cell:sut willEndEditing:sut.textView.text]);
+  
+  // when
+  [sut textViewHelper:sut.textViewHelper textViewWillEndEditing:sut.textView];
   
   // then
   OCMVerifyAll(delegate);

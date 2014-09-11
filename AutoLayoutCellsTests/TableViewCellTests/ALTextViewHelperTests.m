@@ -48,6 +48,8 @@
   id delegate;
   ALTextViewHelper *sut;
   ALAutoResizingTextView *textView;
+  
+  id mockTextView;
 }
 
 #pragma mark - Test Lifecycle
@@ -59,12 +61,17 @@
   textView = [[ALAutoResizingTextView alloc] init];
 }
 
-#pragma mark - Utilities
+#pragma mark - Given
 
 - (void)givenMockDelegate
 {
   delegate = OCMProtocolMock(@protocol(ALTextViewHelperDelegate));
   sut.delegate = delegate;
+}
+
+- (void)givenMockTextView
+{
+  mockTextView = OCMClassMock([UITextView class]);
 }
 
 #pragma mark - Set Value - Tests
@@ -223,20 +230,42 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesDictionary___textCellType___defaultsTo___ALTextCellTypeDefault
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
 {
   // given
-  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  [self givenMockTextView];
+  NSDictionary *dict = nil;
+  
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
   
   // then
-  expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-  expect(textView.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
-  expect(textView.keyboardType).to.equal(UIKeyboardTypeDefault);
-  expect(textView.secureTextEntry).to.beFalsy();
-  expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+  OCMVerifyAll(mockTextView);
+}
+
+- (void)test___setValuesDictionary___textCellType___ALTextCellType_invalidType_doesNotConfigureTextField
+{
+  // given
+  [self givenMockTextView];
+  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
+  
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
+  
+  // when
+  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
+  
+  // then
+  OCMVerifyAll(mockTextView);
 }
 
 #pragma mark - UITextViewDelegate - Tests
@@ -246,10 +275,25 @@
   expect(sut).to.conformTo(@protocol(UITextViewDelegate));
 }
 
+- (void)test_textViewReturnPressedCalls___notifiesDelegate___textViewHelper_textViewWillEndEditing
+{
+  // given
+  [self givenMockDelegate];
+  [self givenMockTextView];
+  
+  OCMExpect([delegate textViewHelper:sut textViewWillEndEditing:mockTextView]);
+  
+  // when
+  [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
 - (void)test_textViewReturnPressedCalls___resignsResponder
 {
   // given
-  id mockTextView = OCMClassMock([UITextView class]);
+  [self givenMockTextView];
   
   // when
   [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
@@ -258,10 +302,11 @@
   [[mockTextView verify] resignFirstResponder];
 }
 
+
 - (void)test_textViewDoesNotChangeTextOnReturn
 {
   // given
-  id mockTextView = OCMClassMock([UITextView class]);
+  [self givenMockTextView];
   
   // when
   BOOL shouldChange = [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];

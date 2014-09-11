@@ -30,7 +30,7 @@
 
 /**
  *  `ALTextCell` provides a means for text-input from the user. It shows a text view, title, subtitle, and optional image (depending on the nib).
- *
+ *  @see `ALTextCellConstants` for additional keys that may be specified in the `valuesDictionary`.
  *  @discussion The text view automatically resizes its height to fit the text input, and the cell notifies its `delegate` of such events so the table view can be updated appropriately.
  */
 @interface ALTextCell : ALImageCell <ALTextViewHelperDelegate>
@@ -39,7 +39,7 @@
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
 
 /**
  *  The text view helper, which takes care of configuring the text view

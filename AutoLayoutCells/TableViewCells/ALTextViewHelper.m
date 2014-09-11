@@ -82,10 +82,18 @@
 
 + (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
 {
-  ALTextViewType type = [dictionary[ALTextCellTypeKey] intValue];
+  if (!dictionary[ALTextCellTypeKey]) {
+    return;
+  }
+  
+  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
   
   switch (type)
   {
+    case ALTextCellTypeDefault:
+      [self setTextViewTypeDefault:textView];
+      break;
+      
     case ALTextCellTypeEmail:
       [self setTextViewTypeEmail:textView];
       break;
@@ -110,9 +118,7 @@
       [self setTextViewTypeNumber:textView];
       break;
       
-    case ALTextCellTypeDefault:
     default:
-      [self setTextViewTypeDefault:textView];
       break;
   }
 }
@@ -201,6 +207,11 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
   if ([text rangeOfString:@"\n"].location != NSNotFound) {
+    
+    if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewWillEndEditing:)]) {
+      [self.delegate textViewHelper:self textViewWillEndEditing:textView];
+    }
+
     [textView resignFirstResponder];
     return NO;
   }

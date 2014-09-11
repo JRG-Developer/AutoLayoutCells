@@ -25,7 +25,6 @@
 #import "ALLeftLabelCell.h"
 
 #import "ALLeftLabelCellConstants.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALLeftLabelCell
 
@@ -34,7 +33,7 @@
 - (void)refreshFonts
 {
   [super refreshFonts];
-  [self.leftLabel AL_refreshPreferredFont];
+  self.leftLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
 #pragma mark - Public Instance Methods
