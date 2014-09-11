@@ -115,11 +115,11 @@
   if (!self.image) {
     self.image = placeholder;
     [[self AL_addActivityIndicatorViewWithStyle:style] startAnimating];
-    [self AL_startImageDownloadTaskWithURL:url retryCount:0];
+    [self AL_startImageDownloadTaskWithURL:url];
   }
 }
 
-- (void)AL_startImageDownloadTaskWithURL:(NSURL *)url retryCount:(NSUInteger)retryCount
+- (void)AL_startImageDownloadTaskWithURL:(NSURL *)url
 {
   __weak typeof(self) weakSelf = self;
   
@@ -131,6 +131,9 @@
     [self AL_setDownloadTask:nil];
     
     if (error) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [[strongSelf AL_activityIndicatorView] stopAnimating];
+      });
       return;
     }
     
