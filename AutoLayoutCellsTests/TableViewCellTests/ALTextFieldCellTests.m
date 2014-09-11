@@ -83,7 +83,7 @@
   
   OCMExpect([mockTextField addTarget:sut
                           action:@selector(textFieldValueChanged:)
-                forControlEvents:UIControlEventValueChanged]);
+                forControlEvents:UIControlEventEditingChanged]);
   
   OCMExpect([mockTextField setDelegate:(id)sut]);
   
