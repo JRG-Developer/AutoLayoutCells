@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JHC-JU-SdA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JHC-JU-SdA">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--AutoLayoutCells Demo-->
@@ -13,6 +12,71 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ALDemoCell" rowHeight="65" id="twz-al-NNE" customClass="ALImageCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="twz-al-NNE" id="I3f-GH-Njt">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="Up1-Ef-zsU" customClass="ALLabel">
+                                            <rect key="frame" x="60" y="10" width="202" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="HYp-J9-Znv" customClass="ALLabel">
+                                            <rect key="frame" x="60" y="31" width="202" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="voH-eE-eom">
+                                            <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" priority="999" constant="40" id="LZg-TA-GlI"/>
+                                                <constraint firstAttribute="height" constant="40" id="p2L-ce-7gX"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F1Q-FE-eob" customClass="CircularImageView">
+                                            <rect key="frame" x="270" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" priority="999" constant="40" id="0wc-56-1yn"/>
+                                                <constraint firstAttribute="height" constant="40" id="RaH-fb-scj"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="F1Q-FE-eob" secondAttribute="bottom" constant="10" id="4Kz-OK-A7E"/>
+                                        <constraint firstItem="HYp-J9-Znv" firstAttribute="top" secondItem="Up1-Ef-zsU" secondAttribute="bottom" id="AdP-3A-oUV"/>
+                                        <constraint firstItem="voH-eE-eom" firstAttribute="top" secondItem="I3f-GH-Njt" secondAttribute="top" constant="10" id="Exk-f3-QLz"/>
+                                        <constraint firstItem="Up1-Ef-zsU" firstAttribute="leading" secondItem="voH-eE-eom" secondAttribute="trailing" constant="10" id="INm-rM-uPV"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HYp-J9-Znv" secondAttribute="bottom" constant="10" id="Ikd-VX-XfS"/>
+                                        <constraint firstItem="Up1-Ef-zsU" firstAttribute="top" secondItem="I3f-GH-Njt" secondAttribute="top" constant="10" id="Kx3-rG-bSf"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="voH-eE-eom" secondAttribute="bottom" constant="10" id="L7H-8z-1v3"/>
+                                        <constraint firstItem="voH-eE-eom" firstAttribute="leading" secondItem="I3f-GH-Njt" secondAttribute="leading" constant="10" id="LVn-AF-eMV"/>
+                                        <constraint firstItem="F1Q-FE-eob" firstAttribute="leading" secondItem="Up1-Ef-zsU" secondAttribute="trailing" constant="8" id="Npv-NE-DA7"/>
+                                        <constraint firstItem="Up1-Ef-zsU" firstAttribute="leading" secondItem="HYp-J9-Znv" secondAttribute="leading" id="OCe-eu-S3f"/>
+                                        <constraint firstItem="F1Q-FE-eob" firstAttribute="top" secondItem="I3f-GH-Njt" secondAttribute="top" constant="10" id="Q29-EB-4lT"/>
+                                        <constraint firstAttribute="trailing" secondItem="F1Q-FE-eob" secondAttribute="trailing" constant="10" id="vVb-LS-SJw"/>
+                                        <constraint firstItem="HYp-J9-Znv" firstAttribute="trailing" secondItem="Up1-Ef-zsU" secondAttribute="trailing" id="zny-3f-gpe"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mainImageView" destination="voH-eE-eom" id="6rG-EA-fV7"/>
+                                    <outlet property="mainImageViewHeightConstraint" destination="p2L-ce-7gX" id="8WV-TU-X7a"/>
+                                    <outlet property="mainImageViewTrailingConstraint" destination="INm-rM-uPV" id="mBe-QY-gr0"/>
+                                    <outlet property="mainImageViewWidthConstraint" destination="LZg-TA-GlI" id="dQ9-eM-K9T"/>
+                                    <outlet property="secondaryImageView" destination="F1Q-FE-eob" id="FOQ-LQ-dBY"/>
+                                    <outlet property="secondaryImageViewHeightConstraint" destination="RaH-fb-scj" id="oNa-N5-YDU"/>
+                                    <outlet property="secondaryImageViewLeadingConstraint" destination="Npv-NE-DA7" id="SQP-cu-zXc"/>
+                                    <outlet property="secondaryImageViewWidthConstraint" destination="0wc-56-1yn" id="drU-qk-SY4"/>
+                                    <outlet property="subtitleLabel" destination="HYp-J9-Znv" id="M13-L5-GBF"/>
+                                    <outlet property="titleLabel" destination="Up1-Ef-zsU" id="5Wa-Q4-LKw"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="GoU-fV-op1" id="ma4-u5-BSs"/>
                             <outlet property="delegate" destination="GoU-fV-op1" id="M2w-qf-IAW"/>
@@ -55,9 +119,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

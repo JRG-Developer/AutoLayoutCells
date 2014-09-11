@@ -29,7 +29,6 @@
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
 #import "ALTextCellDelegate.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>

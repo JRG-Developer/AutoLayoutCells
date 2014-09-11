@@ -33,7 +33,6 @@
 #import "ALTextCellConstants.h"
 #import "ALTextViewHelper.h"
 #import "Test_ALTableViewCellNibFactory.h"
-#import "UIView+ALRefreshFont.h"
 
 // Test Support
 #import <XCTest/XCTest.h>

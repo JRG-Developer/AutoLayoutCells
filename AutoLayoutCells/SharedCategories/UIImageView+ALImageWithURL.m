@@ -80,6 +80,7 @@
 - (void)AL_setImage:(UIImage *)image
 {
   [[self AL_downloadTask] cancel];
+  [[self AL_activityIndicatorView] stopAnimating];
   
   // This doesn't create a recursive loop because the method has been swizzled
   [self AL_setImage:image];
@@ -122,43 +123,28 @@
 {
   __weak typeof(self) weakSelf = self;
   
-  NSURLSessionDownloadTask *task = [[[self class] AL_sharedImageDownloadSession]
-                                    downloadTaskWithURL:url
-                                    completionHandler:^(NSURL *location,
-                                                        NSURLResponse *response,
-                                                        NSError *error) {
-                                      
-                                      __strong typeof(self) strongSelf = weakSelf;                                      
-                                      
-                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                        
-                                        [strongSelf AL_setDownloadTask:nil];
-                                        
-                                        if (error) {
-                                          return;
-                                        }
-                                        
-                                        NSData *data = [NSData dataWithContentsOfURL:location];
-                                        
-                                        if (!data) {
-                                          if (retryCount < 3) {
-                                            [strongSelf AL_startImageDownloadTaskWithURL:url
-                                                                              retryCount:(retryCount + 1)];
-                                          } else {
-                                            [[strongSelf AL_activityIndicatorView] stopAnimating];
-                                          }
-                                          return;
-                                        }
-                                        
-                                        UIImage *image = [UIImage imageWithData:data];
-                                        
-                                        ALImageCache *cache = [[strongSelf class] AL_sharedImageDownloadCache];
-                                        [cache cacheImage:image forURL:url];
-                                        
-                                        [[strongSelf AL_activityIndicatorView] stopAnimating];
-                                        strongSelf.image = image;
-                                      });
-                                    }];
+  NSURLSession *session = [[self class] AL_sharedImageDownloadSession];
+  NSURLSessionDownloadTask *task = [session downloadTaskWithURL:url completionHandler:^(NSURL *location,
+                                                                                        NSURLResponse *response,
+                                                                                        NSError *error) {
+    __strong typeof(self) strongSelf = weakSelf;
+    [self AL_setDownloadTask:nil];
+    
+    if (error) {
+      return;
+    }
+    
+    NSData *data = [NSData dataWithContentsOfURL:location];
+    UIImage *image = [UIImage imageWithData:data];
+    
+    ALImageCache *cache = [[strongSelf class] AL_sharedImageDownloadCache];
+    [cache cacheImage:image forURL:url];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      strongSelf.image = image;
+    });
+  }];
+  
   [task resume];
   [self AL_setDownloadTask:task];
 }

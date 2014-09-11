@@ -74,9 +74,9 @@
 
 #pragma mark - Given
 
-- (void)givenImageDownloadTaskCompletesImmediateWithLocation:(NSURL *)location
-                                                    response:(NSURLResponse *)response
-                                                       error:(NSError *)error
+- (void)givenImageDownloadTaskCompletesWithLocation:(NSURL *)location
+                                           response:(NSURLResponse *)response
+                                              error:(NSError *)error
 {
   partialMock = OCMPartialMock(sut);
   [self givenMockSessionWithLocation:location response:response error:error];
@@ -97,7 +97,10 @@
     
     void (^completion)(NSURL *, NSURLResponse *, NSError *);
     [invocation getArgument:&completion atIndex:3];
-    completion(location, response, error);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      completion(location, response, error);
+    });
   });
 }
 
@@ -250,7 +253,7 @@
 - (void)test___AL_startImageDownloadTaskWithURL___completionStopsIndicator
 {
   // given
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:nil];
+  [self givenImageDownloadTaskCompletesWithLocation:nil response:nil error:nil];
   
   id mockIndicator = OCMClassMock([UIActivityIndicatorView class]);
   OCMStub([partialMock AL_activityIndicatorView]).andReturn(mockIndicator);
@@ -267,8 +270,8 @@
 - (void)test___AL_startImageDownloadTaskWithURL___completionNilsDownloadTask
 {
   // given
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:nil];
-  
+  [self givenImageDownloadTaskCompletesWithLocation:nil response:nil error:nil];
+    
   // when
   [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
   
@@ -281,7 +284,7 @@
   // given
   image = [self testImage];
   NSURL *location = [self locationForTestImage];
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:location response:nil error:nil];
+  [self givenImageDownloadTaskCompletesWithLocation:location response:nil error:nil];
   
   ALImageCache *cache = [UIImageView AL_sharedImageDownloadCache];
   
@@ -297,7 +300,7 @@
   // given
   image = [self testImage];
   NSURL *location = [self locationForTestImage];
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:location response:nil error:nil];
+  [self givenImageDownloadTaskCompletesWithLocation:location response:nil error:nil];
   
   // when
   [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
@@ -310,7 +313,7 @@
 {
   // given
   NSError *error = [NSError errorWithDomain:@"com.jrgdeveloper.ALImageWithURL" code:0 userInfo:nil];
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:error];
+  [self givenImageDownloadTaskCompletesWithLocation:nil response:nil error:error];
   
   // when
   [sut AL_setImageWithURL:url placeholder:nil activityIndicatorStyle:NSNotFound];
@@ -323,7 +326,7 @@
 {
   // given
   NSError *error = [NSError errorWithDomain:@"com.jrgdeveloper.ALImageWithURL" code:0 userInfo:nil];
-  [self givenImageDownloadTaskCompletesImmediateWithLocation:nil response:nil error:error];
+  [self givenImageDownloadTaskCompletesWithLocation:nil response:nil error:error];
   
   id mockCache = OCMClassMock([ALImageCache class]);
   OCMStub([partialMock AL_sharedImageDownloadCache]).andReturn(mockCache);

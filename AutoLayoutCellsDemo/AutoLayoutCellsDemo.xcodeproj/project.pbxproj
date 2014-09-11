@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42C77AE319C2211F007F2F14 /* CircularImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C77AE219C2211F007F2F14 /* CircularImageView.m */; };
 		42FC095019BA3C4A0011D1FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC094F19BA3C4A0011D1FF /* Foundation.framework */; };
 		42FC095219BA3C4A0011D1FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC095119BA3C4A0011D1FF /* CoreGraphics.framework */; };
 		42FC095419BA3C4A0011D1FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC095319BA3C4A0011D1FF /* UIKit.framework */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42C77AE119C2211F007F2F14 /* CircularImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularImageView.h; sourceTree = "<group>"; };
+		42C77AE219C2211F007F2F14 /* CircularImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularImageView.m; sourceTree = "<group>"; };
 		42FC094C19BA3C4A0011D1FF /* AutoLayoutCellsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutCellsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FC094F19BA3C4A0011D1FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		42FC095119BA3C4A0011D1FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				42FC096119BA3C4A0011D1FF /* Main.storyboard */,
+				42C77AE119C2211F007F2F14 /* CircularImageView.h */,
+				42C77AE219C2211F007F2F14 /* CircularImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				42FC096619BA3C4A0011D1FF /* TableViewController.m in Sources */,
 				42FC096019BA3C4A0011D1FF /* AppDelegate.m in Sources */,
 				42FC099319BA63FC0011D1FF /* Model+ALCellAdapter.m in Sources */,
+				42C77AE319C2211F007F2F14 /* CircularImageView.m in Sources */,
 				42FC095C19BA3C4A0011D1FF /* main.m in Sources */,
 				42FC098F19BA62350011D1FF /* Model.m in Sources */,
 			);
