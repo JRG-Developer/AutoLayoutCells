@@ -40,7 +40,8 @@
 
 - (void)configureTextField
 {
-  [self.textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventValueChanged];
+  [self.textField addTarget:self action:@selector(textFieldValueChanged:)
+           forControlEvents:UIControlEventEditingChanged];
   self.textField.delegate = self;
 }
 

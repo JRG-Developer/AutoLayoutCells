@@ -133,7 +133,7 @@
 - (void)textFieldWillBeginEditing:(UITextField *)textField;
 
 /**
- *  This method is called for the control event `UIControlEventValueChanged` on `textField`.
+ *  This method is called for the control event `UIControlEventEditingChanged` on `textField`.
  *
  *  @discussion This method messages the `delegate` that `cell:valueChanged:`.
  *
