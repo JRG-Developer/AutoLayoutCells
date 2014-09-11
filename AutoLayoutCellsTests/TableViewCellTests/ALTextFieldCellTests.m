@@ -145,6 +145,22 @@
   OCMVerifyAll(mockTextField);
 }
 
+- (void)test___setValuesDictionary___setsTextField_ALTextCellPlaceholderTextKey
+{
+  // given
+  [self givenMockTextField];
+  NSString *placeholder = @"Placeholder";
+  NSDictionary *dict = @{ALTextCellPlaceholderTextKey: placeholder};
+  
+  OCMExpect([mockTextField setPlaceholder:placeholder]);
+  
+  // when
+  [sut setValuesDictionary:dict];
+  
+  // then
+  OCMVerifyAll(mockTextField);
+}
+
 - (void)test___setValuesDictionary___textCellType___ALTextCellTypeEmail
 {
   // given

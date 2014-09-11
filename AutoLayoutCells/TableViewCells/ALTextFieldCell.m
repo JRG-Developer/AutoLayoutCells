@@ -58,6 +58,7 @@
 {
   [super setValuesDictionary:valuesDictionary];
   [self setTextFromDictionary:valuesDictionary];
+  [self setTextPlaceholderFromDictionary:valuesDictionary];
   [self setTextInputStyleFromDictionary:valuesDictionary];
 }
 
@@ -80,6 +81,11 @@
 - (void)setTextFieldValueText:(NSString *)text
 {
   self.textField.text = text.length > 0 ? text : nil;
+}
+
+- (void)setTextPlaceholderFromDictionary:(NSDictionary *)dictionary
+{
+  self.textField.placeholder = dictionary[ALTextCellPlaceholderTextKey];
 }
 
 - (void)setTextInputStyleFromDictionary:(NSDictionary *)dictionary
@@ -200,17 +206,22 @@
   }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  [textField resignFirstResponder];
+  
+  if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
+    [self.delegate cell:self willEndEditing:self.textField.text];
+  }
+  
+  return NO;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
   if ([self.delegate respondsToSelector:@selector(cell:didEndEditing:)]) {
     [self.delegate cell:self didEndEditing:self.textField.text];
   }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-  [textField resignFirstResponder];
-  return NO;
 }
   
 

@@ -296,6 +296,21 @@
   OCMVerifyAll(delegate);
 }
 
+- (void)test___textViewHelper___textViewWillEndEditing___notifiesDelegate
+{
+  // given
+  [self givenMockDelegate];
+  [self givenMockText];
+  
+  OCMExpect([delegate cell:sut willEndEditing:sut.textView.text]);
+  
+  // when
+  [sut textViewHelper:sut.textViewHelper textViewWillEndEditing:sut.textView];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
 - (void)test___textViewHelper___notifiesDelegateWhen___textViewDidEndEditing
 {
   // given

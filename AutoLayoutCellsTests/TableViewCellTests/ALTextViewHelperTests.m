@@ -48,6 +48,8 @@
   id delegate;
   ALTextViewHelper *sut;
   ALAutoResizingTextView *textView;
+  
+  id mockTextView;
 }
 
 #pragma mark - Test Lifecycle
@@ -59,12 +61,17 @@
   textView = [[ALAutoResizingTextView alloc] init];
 }
 
-#pragma mark - Utilities
+#pragma mark - Given
 
 - (void)givenMockDelegate
 {
   delegate = OCMProtocolMock(@protocol(ALTextViewHelperDelegate));
   sut.delegate = delegate;
+}
+
+- (void)givenMockTextView
+{
+  mockTextView = OCMClassMock([UITextView class]);
 }
 
 #pragma mark - Set Value - Tests
@@ -246,10 +253,25 @@
   expect(sut).to.conformTo(@protocol(UITextViewDelegate));
 }
 
+- (void)test_textViewReturnPressedCalls___notifiesDelegate___textViewHelper_textViewWillEndEditing
+{
+  // given
+  [self givenMockDelegate];
+  [self givenMockTextView];
+  
+  OCMExpect([delegate textViewHelper:sut textViewWillEndEditing:mockTextView]);
+  
+  // when
+  [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
 - (void)test_textViewReturnPressedCalls___resignsResponder
 {
   // given
-  id mockTextView = OCMClassMock([UITextView class]);
+  [self givenMockTextView];
   
   // when
   [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
@@ -258,10 +280,11 @@
   [[mockTextView verify] resignFirstResponder];
 }
 
+
 - (void)test_textViewDoesNotChangeTextOnReturn
 {
   // given
-  id mockTextView = OCMClassMock([UITextView class]);
+  [self givenMockTextView];
   
   // when
   BOOL shouldChange = [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];

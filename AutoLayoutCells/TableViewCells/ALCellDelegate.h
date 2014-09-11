@@ -31,7 +31,7 @@
 @optional
 
 /**
- *  This method is called whenever a user will begin editing a cell's value.
+ *  This method is called whenever a cell will begin editing.
  *
  *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
  *
@@ -42,7 +42,7 @@
 /**
  *  This method is called whenever a cell's value has changed.
  *
- *  @note It's expected that the controller should know the type of value based on the cell.
+ *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
  *
  *  @param cell  The cell whose value has changed
  *  @param value The new cell value
@@ -50,9 +50,19 @@
 - (void)cell:(id)cell valueChanged:(id)value;
 
 /**
- *  This method is called whenever a user did end editing a cell's value.
+ *  This method is called when a cell will end editing.
  *
- *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell` and `ALTextOnlyCell`) will call this method if their delegate implements it.
+ *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
+ *
+ *  @param cell  The cell whose value has changed
+ *  @param value The new cell value
+ */
+- (void)cell:(id)cell willEndEditing:(id)value;
+
+/**
+ *  This method is called whenever a cell did end editing.
+ *
+ *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
  *
  *  @note It's expected that the controller should know the type of value based on the cell.
  *

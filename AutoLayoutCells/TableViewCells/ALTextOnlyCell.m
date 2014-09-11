@@ -98,6 +98,13 @@
   }
 }
 
+- (void)textViewHelper:(ALTextViewHelper *)helper textViewWillEndEditing:(UITextView *)textView
+{
+  if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
+    [self.delegate cell:self willEndEditing:textView.text];
+  }
+}
+
 - (void)textViewHelper:(ALTextViewHelper *)helper textViewDidEndEditing:(UITextView *)textView
 {
   if ([self.delegate respondsToSelector:@selector(cell:didEndEditing:)]) {

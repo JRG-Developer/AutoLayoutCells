@@ -47,12 +47,20 @@
 
 /**
  *  This method sets the `text` on the `textField` from the given dictionary.
- *
  *  @see `ALCellConstants` value keys
  *
  *  @param dictionary The dictionary containing the text value
  */
 - (void)setTextFromDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  This method sets the `placeholder` on the `textField` from the given dictionary.
+ *
+ *  @see `ALTextCellPlaceholderTextKey` key in `ALCellConstants`
+ *
+ *  @param dictionary The dictionary containing the placeholder value
+ */
+- (void)setTextPlaceholderFromDictionary:(NSDictionary *)dictionary;
 
 /**
  *  This method configures the `textField` based on the type (`ALTextCellType`) from the dictionary.

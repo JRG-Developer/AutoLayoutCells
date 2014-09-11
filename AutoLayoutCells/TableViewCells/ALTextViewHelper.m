@@ -201,6 +201,11 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
   if ([text rangeOfString:@"\n"].location != NSNotFound) {
+    
+    if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewWillEndEditing:)]) {
+      [self.delegate textViewHelper:self textViewWillEndEditing:textView];
+    }
+
     [textView resignFirstResponder];
     return NO;
   }
