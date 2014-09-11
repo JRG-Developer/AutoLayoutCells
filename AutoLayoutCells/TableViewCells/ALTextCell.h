@@ -39,7 +39,7 @@
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
 
 /**
  *  The text view helper, which takes care of configuring the text view

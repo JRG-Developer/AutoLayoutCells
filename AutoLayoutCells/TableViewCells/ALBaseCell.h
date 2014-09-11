@@ -41,7 +41,7 @@
  *  The delegated that should be notified of value-related events.
  *  @see `ALCellDelegate` for more details.
  */
-@property (weak, nonatomic) id<ALCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALCellDelegate>delegate;
 
 /**
  *  The `valuesDictionary` that should be used to set the cell labels, value, etc.
