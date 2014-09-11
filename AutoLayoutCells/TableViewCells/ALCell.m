@@ -25,7 +25,6 @@
 #import "ALCell.h"
 
 #import "ALCellConstants.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALCell
 

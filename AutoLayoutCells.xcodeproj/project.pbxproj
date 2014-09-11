@@ -61,7 +61,6 @@
 		A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */; };
 		F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F903693419BDE5B80065AEB3 /* ALImageCache.m */; };
 		F95A786519BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */; };
-		F96C9CB919BD8683002B1873 /* UIView+ALRefreshFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F96C9CB819BD8683002B1873 /* UIView+ALRefreshFont.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,8 +173,6 @@
 		F903693419BDE5B80065AEB3 /* ALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCache.m; sourceTree = "<group>"; };
 		F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ALCustomDynamicFont.h"; sourceTree = "<group>"; };
 		F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ALCustomDynamicFont.m"; sourceTree = "<group>"; };
-		F96C9CB719BD8683002B1873 /* UIView+ALRefreshFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ALRefreshFont.h"; sourceTree = "<group>"; };
-		F96C9CB819BD8683002B1873 /* UIView+ALRefreshFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ALRefreshFont.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,8 +253,6 @@
 				42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */,
 				42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */,
 				42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */,
-				F96C9CB719BD8683002B1873 /* UIView+ALRefreshFont.h */,
-				F96C9CB819BD8683002B1873 /* UIView+ALRefreshFont.m */,
 			);
 			path = SharedCategories;
 			sourceTree = "<group>";
@@ -683,7 +678,6 @@
 				42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */,
 				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
 				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
-				F96C9CB919BD8683002B1873 /* UIView+ALRefreshFont.m in Sources */,
 				42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */,
 				42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */,
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,

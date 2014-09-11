@@ -28,7 +28,6 @@
 
 #import "ALTextCellDelegate.h"
 #import "ALTextViewHelper.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALTextCell
 

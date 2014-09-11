@@ -26,7 +26,6 @@
 
 #import "ALTextCellConstants.h"
 #import "ALCellDelegate.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALTextFieldCell
 

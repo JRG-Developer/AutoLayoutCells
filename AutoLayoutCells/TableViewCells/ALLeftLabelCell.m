@@ -25,7 +25,6 @@
 #import "ALLeftLabelCell.h"
 
 #import "ALLeftLabelCellConstants.h"
-#import "UIView+ALRefreshFont.h"
 
 @implementation ALLeftLabelCell
 
