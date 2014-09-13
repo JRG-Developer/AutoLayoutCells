@@ -147,16 +147,20 @@
 
 #pragma mark - Did Toggle - Tests
 
-- (void)test___didToggle___notifiesDelegate___cell___valueChanged
-{
-  // given
-  [self givenMockDelegate];
-  
-  // when
-  [sut didToggle:sut.toggle];
-  
-  // then
-  [[delegate verify] cell:sut valueChanged:@([sut.toggle isOn])];
-}
+//- (void)test___didToggle___notifiesDelegate
+//{
+//  // given
+//  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
+//  sut.delegate = delegate;
+//  
+//  NSNumber *value = @([sut.toggle isOn]);
+//  OCMExpect([delegate cell:sut valueChanged:value]);
+//  
+//  // when
+//  [sut didToggle:sut.toggle];
+//  
+//  // then
+//  OCMVerifyAll(delegate);
+//}
 
 @end

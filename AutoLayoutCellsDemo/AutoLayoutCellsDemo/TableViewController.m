@@ -109,7 +109,7 @@ static NSString *CellIdentifier = @"ALDemoCell";
 
 - (NSDictionary *)identifiersToNibsDictionary
 {
-  return @{CellIdentifier: [ALTableViewCellNibFactory menuCellNib]};
+  return nil;
 }
 
 #pragma mark - ALTableViewCellFactoryDelegate

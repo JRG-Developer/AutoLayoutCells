@@ -1,5 +1,5 @@
 //
-//  ALTextViewHelperTests.m
+//  ALTextViewCellHelperTests.m
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 07/11/14.
@@ -23,12 +23,12 @@
 //  THE SOFTWARE.
 
 // Test Class
-#import "ALTextViewHelper.h"
+#import "ALTextViewCellHelper.h"
 #import "ALCellConstants.h"
 #import "ALTextCellConstants.h"
 
 // Collaborators
-#import "ALTextViewHelperDelegate.h"
+#import "ALTextCellDelegate.h"
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
@@ -40,15 +40,17 @@
 
 #import <OCMock/OCMock.h>
 
-@interface ALTextViewHelperTests : XCTestCase
+@interface ALTextViewCellHelperTests : XCTestCase
 @end
 
-@implementation ALTextViewHelperTests
+@implementation ALTextViewCellHelperTests
 {
-  id delegate;
-  ALTextViewHelper *sut;
-  ALAutoResizingTextView *textView;
+  ALTextViewCellHelper *sut;
   
+  UITableViewCell *cell;
+  ALAutoResizingTextView *textView;
+ 
+  id delegate;
   id mockTextView;
 }
 
@@ -57,15 +59,31 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [[ALTextViewHelper alloc] init];
+  
+  cell = [[UITableViewCell alloc] init];
+  sut = [[ALTextViewCellHelper alloc] initWithCell:cell];
+  
   textView = [[ALAutoResizingTextView alloc] init];
+}
+
+- (void)tearDown
+{
+  [delegate stopMocking];
+  [mockTextView stopMocking];
+  
+  [super tearDown];
 }
 
 #pragma mark - Given
 
+- (void)givenTextInput
+{
+  textView.text = @"Text";
+}
+
 - (void)givenMockDelegate
 {
-  delegate = OCMProtocolMock(@protocol(ALTextViewHelperDelegate));
+  delegate = OCMProtocolMock(@protocol(ALTextCellDelegate));
   sut.delegate = delegate;
 }
 
@@ -83,7 +101,7 @@
   NSDictionary *dictionary = @{ALTextCellPlaceholderTextKey: placeholder};
   
   // when
-  [ALTextViewHelper textView:textView setPlaceholderFromDictionary:dictionary];
+  [sut textView:textView setValuesFromDictionary:dictionary];
   
   // then
   expect(textView.placeholder).to.equal(placeholder);
@@ -96,7 +114,7 @@
   NSDictionary *dictionary = @{ALCellValueKey: text};
   
   // when
-  [ALTextViewHelper textView:textView setTextFromDictionary:dictionary];
+  [sut textView:textView setValuesFromDictionary:dictionary];
   
   // then
   expect(textView.text).to.equal(text);
@@ -112,7 +130,7 @@
   NSDictionary *dictionary = @{ALCellAttributedValueKey: text};
   
   // when
-  [ALTextViewHelper textView:textView setTextFromDictionary:dictionary];
+  [sut textView:textView setValuesFromDictionary:dictionary];
   
   // then
   expect(textView.attributedText).to.equal(text);
@@ -124,7 +142,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeEmail)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
@@ -140,7 +158,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeName)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeWords);
@@ -156,7 +174,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNoChecking)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
@@ -172,7 +190,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypePassword)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
@@ -188,7 +206,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeSentences)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
@@ -204,7 +222,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
@@ -220,7 +238,7 @@
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNumber)};
   
   // when
-  [ALTextViewHelper textView:textView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
@@ -243,7 +261,7 @@
   [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
   
   // when
-  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(mockTextView);
@@ -262,7 +280,7 @@
   [[[mockTextView reject] ignoringNonObjectArgs] setSpellCheckingType:0];
   
   // when
-  [ALTextViewHelper textView:mockTextView setTypeFromDictionary:dict];
+  [sut textView:textView setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(mockTextView);
@@ -275,84 +293,85 @@
   expect(sut).to.conformTo(@protocol(UITextViewDelegate));
 }
 
-- (void)test_textViewReturnPressedCalls___notifiesDelegate___textViewHelper_textViewWillEndEditing
+- (void)test___textView_shouldChangeTextInRange_replacementText___notifiesDelegate
 {
   // given
+  [self givenTextInput];
   [self givenMockDelegate];
-  [self givenMockTextView];
   
-  OCMExpect([delegate textViewHelper:sut textViewWillEndEditing:mockTextView]);
+  OCMExpect([delegate cell:cell willEndEditing:textView.text]);
   
   // when
-  [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
+  [sut textView:textView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
   
   // then
   OCMVerifyAll(delegate);
 }
 
-- (void)test_textViewReturnPressedCalls___resignsResponder
+- (void)test___textView_shouldChangeTextInRange_replacementText___resignsResponderOnReturn
 {
   // given
   [self givenMockTextView];
+  OCMExpect([mockTextView resignFirstResponder]);
   
   // when
   [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
   
   // then
-  [[mockTextView verify] resignFirstResponder];
+  OCMVerifyAll(mockTextView);
 }
 
-
-- (void)test_textViewDoesNotChangeTextOnReturn
+- (void)test___textView_shouldChangeTextInRange_replacementText___returnDoesNotChangeText
 {
-  // given
-  [self givenMockTextView];
-  
   // when
-  BOOL shouldChange = [sut textView:mockTextView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
+  BOOL shouldChange = [sut textView:textView shouldChangeTextInRange:NSMakeRange(0, 3) replacementText:@"\n"];
   
   // then
   expect(shouldChange).to.beFalsy();
 }
 
-- (void)test_notifiesDelegateWhen___textViewShouldBeginEditing
-{
-  // given
-  [self givenMockDelegate];
-  
-  // when
-  [sut textViewShouldBeginEditing:textView];
-  
-  // then
-  [[delegate verify] textViewHelper:sut
-           textViewWillBeginEditing:textView];
-}
-
-- (void)test_notifiesDelegateWhen___textViewDidChange
-{
-  // given
-  [self givenMockDelegate];
-  
-  // when
-  [sut textViewDidChange:textView];
-  
-  // then
-  [[delegate verify] textViewHelper:sut
-                  textViewDidChange:textView];
-}
-
-
-- (void)test_notifiesDelegateWhen___textViewDidEndEditing
-{
-  // given
-  [self givenMockDelegate];
-  
-  // when
-  [sut textViewDidEndEditing:textView];
-  
-  // then
-  [[delegate verify] textViewHelper:sut
-              textViewDidEndEditing:textView];
-}
+//- (void)test___textViewShouldBeginEditing___notifiesDelegate
+//{
+//  // given
+//  [self givenMockDelegate];
+//  
+//  OCMExpect([delegate cellWillBeginEditing:cell]);
+//  
+//  // when
+//  [sut textViewShouldBeginEditing:textView];
+//  
+//  // then
+//  OCMVerifyAll(delegate);
+//}
+//
+//- (void)test___textViewDidChange___notifiesDelegate
+//{
+//  // given
+//  [self givenTextInput];
+//  [self givenMockDelegate];
+//  
+//  OCMExpect([delegate cell:cell valueChanged:textView.text]);
+//  
+//  // when
+//  [sut textViewDidChange:textView];
+//  
+//  // then
+//  OCMVerifyAll(delegate);
+//}
+//
+//- (void)test___textViewDidEndEditing___notifiesDelegate
+//{
+//  // given
+//  [self givenTextInput];
+//  [self givenMockDelegate];
+//  
+//  OCMExpect([delegate cell:cell didEndEditing:textView.text]);
+//  
+//  // when
+//  [sut textViewDidEndEditing:textView];
+//  
+//  // then
+//  OCMVerifyAll(delegate);
+//}
 
 @end

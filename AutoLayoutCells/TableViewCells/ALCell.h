@@ -27,6 +27,9 @@
 
 /**
  *  `ALCell` shows a title and subtitle. It is also the base class for most of the cells within `AutoLayoutCells`.
+ *
+ *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly. 
+ *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
  */
 @interface ALCell : ALBaseCell
 

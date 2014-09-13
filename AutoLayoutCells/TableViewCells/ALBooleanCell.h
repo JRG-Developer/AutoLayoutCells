@@ -26,6 +26,9 @@
 
 /**
  *  `ALBooleanCell` shows a title, subtitle, toggle, and optional image (depending on the nib) to represent a `boolean` value.
+ *
+ *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
+ *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
  */
 @interface ALBooleanCell : ALImageCell
 

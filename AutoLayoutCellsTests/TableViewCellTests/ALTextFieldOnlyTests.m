@@ -1,8 +1,9 @@
 //
-//  ALTextFieldCell.m
+//  ALTextFieldOnlyTests.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 9/10/14.
+//  Created by Joshua Greene on 9/11/14.
+//  Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,39 +23,52 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+// Test Class
 #import "ALTextFieldCell.h"
+// Collaborators
 
-#import "ALTextFieldCellHelper.h"
+// Test Support
+#import <XCTest/XCTest.h>
+#import "Test_ALTableViewCellNibFactory.h"
 
-@interface ALTextFieldCell()
-@property (strong, nonatomic, readwrite) ALTextFieldCellHelper *textFieldHelper;
+#define EXP_SHORTHAND YES
+#import <Expecta/Expecta.h>
+
+#import <OCMock/OCMock.h>
+
+
+@interface ALTextFieldOnlyTests : XCTestCase
 @end
 
-@implementation ALTextFieldCell
-
-#pragma mark - Object Lifecycle
-
-- (void)awakeFromNib
+@implementation ALTextFieldOnlyTests
 {
-  [super awakeFromNib];
-  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-  self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+  ALTextFieldCell *sut;
+  id partialMock;
 }
 
-#pragma mark - Dynamic Type Text
+#pragma mark - Test Lifecycle
 
-- (void)refreshFonts
+- (void)setUp
 {
-  [super refreshFonts];
-  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  [super setUp];
+  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldOnlyCell" owner:self];
 }
 
-#pragma mark - Set Values Dictionary
+#pragma mark - Outlets - Tests
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)test_has___textField
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self.textFieldHelper setValuesFromDictionary:valuesDictionary];
+  expect(sut.textField).toNot.beNil();
+}
+
+- (void)test_doesNotHave___titleLabel
+{
+  expect(sut.titleLabel).to.beNil();
+}
+
+- (void)test_doesNotHave___subtitleLabel
+{
+  expect(sut.subtitleLabel).to.beNil();
 }
 
 @end

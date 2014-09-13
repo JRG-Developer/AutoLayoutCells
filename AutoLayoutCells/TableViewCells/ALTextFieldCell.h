@@ -23,142 +23,27 @@
 //  THE SOFTWARE.
 
 #import "ALCell.h"
+@class ALTextFieldCellHelper;
 
 /**
  *  `ALTextFieldCell` shows a `title`, `subtitle`, and `textField` to get input from the user.
+ *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined `valuesDictionary` keys.
  */
-@interface ALTextFieldCell : ALCell <UITextFieldDelegate>
+@interface ALTextFieldCell : ALCell
+
+///--------------------------------------------------------------
+/// @name Instance Properties
+///--------------------------------------------------------------
+
+@property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
+
+///--------------------------------------------------------------
+/// @name Outlets
+///--------------------------------------------------------------
 
 /**
  *  The text field
  */
 @property (nonatomic, weak) IBOutlet UITextField *textField;
-
-@end
-
-/**
- *  These methods should be considered "protected" and should only be called by this class/subclass or unit testing.
- */
-@interface ALTextFieldCell (Protected)
-
-///--------------------------------------------------------------
-/// @name Set Values Dictionary
-///--------------------------------------------------------------
-
-/**
- *  This method sets the `text` on the `textField` from the given dictionary.
- *  @see `ALCellConstants` value keys
- *
- *  @param dictionary The dictionary containing the text value
- */
-- (void)setTextFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method sets the `placeholder` on the `textField` from the given dictionary.
- *
- *  @see `ALTextCellPlaceholderTextKey` key in `ALCellConstants`
- *
- *  @param dictionary The dictionary containing the placeholder value
- */
-- (void)setTextPlaceholderFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method configures the `textField` based on the type (`ALTextCellType`) from the dictionary.
- *  @see `ALTextCellConstants` for `ALTextCellType` enum
- *
- *  @param dictionary The dictionary containing the type value
- */
-- (void)setTextInputStyleFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeEmail`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeEmail:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeName`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeName:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeNoChecking`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeNoChecking:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypePassword`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypePassword:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeSentences`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeSentences:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeNumber`
- *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeNumber:(UITextField *)textField;
-
-/**
- *  This method is called by `setTextInputStyleFromDictionary:` to configure the text field as `ALTextCellTypeDefault`
- * *
- *  @param textField  The text field to be configured.
- */
-- (void)setTextFieldTypeDefault:(UITextField *)textField;
-
-///--------------------------------------------------------------
-/// @name Text Field Actions
-///--------------------------------------------------------------
-
-/**
- *  This method is part of `UITextFieldDelegate`. It's provided here to indicate that `ALTextFieldCell` implements it.
- *
- *  @discussion This method messages the `delegate` that `cellWillBeginEditing`.
- *
- *  @param textField The text field that send the event
- */
-- (void)textFieldWillBeginEditing:(UITextField *)textField;
-
-/**
- *  This method is called for the control event `UIControlEventEditingChanged` on `textField`.
- *
- *  @discussion This method messages the `delegate` that `cell:valueChanged:`.
- *
- *  @param textField The text field that send the event
- */
-- (void)textFieldValueChanged:(UITextField *)textField;
-
-/**
- *  This method is part of `UITextFieldDelegate`. It's provided here to indicate that `ALTextFieldCell` implements it.
- *
- *  @discussion This method messages the `delegate` that `cell:didEndEditing:`.
- *
- *  @param textField The text field that send the event
- */
-- (void)textFieldDidEndEditing:(UITextField *)textField;
-
-/**
- *  This method is part of `UITextFieldDelegate`. It's provided here to indicate that `ALTextFieldCell` implements it.
- *
- *  @discussion This method sends `resignFirstResponder` to the text field and returns `NO`.
- *
- *  @param textField The text field that send the event
- *
- *  @return Always returns `NO`
- */
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end

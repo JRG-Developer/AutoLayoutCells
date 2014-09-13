@@ -26,6 +26,9 @@
 
 /**
  *  `ALLeftLabelCell` shows a title, subtitle, and "left" label.
+ *
+ *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
+ *  @see `ALCellConstants` and `ALLeftLabelCellConstants` for predefined `valuesDictionary` keys.
  */
 @interface ALLeftLabelCell : ALCell
 

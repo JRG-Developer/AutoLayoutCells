@@ -51,20 +51,24 @@
 {
   return [self nibWithName:@"ALMenuCell"];
 }
-
-+ (UINib *)textCellNib
-{
-  return [self nibWithName:@"ALTextCell"];
-}
-
 + (UINib *)textFieldCellNib
 {
   return [self nibWithName:@"ALTextFieldCell"];
 }
 
-+ (UINib *)textOnlyCellNib
++ (UINib *)textFieldOnlyCellNib
 {
-  return [self nibWithName:@"ALTextOnlyCell"];
+  return [self nibWithName:@"ALTextFieldOnlyCell"];
+}
+
++ (UINib *)textViewCellNib
+{
+  return [self nibWithName:@"ALTextViewCell"];
+}
+
++ (UINib *)textViewOnlyCellNib
+{
+  return [self nibWithName:@"ALTextViewOnlyCell"];
 }
 
 + (id)cellWithName:(NSString *)name owner:(id)owner

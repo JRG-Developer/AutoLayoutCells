@@ -1,8 +1,8 @@
 //
-//  ALTextFieldCell.m
+//  ALTextViewOnlyCell.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 9/10/14.
+//  Created by Joshua Greene on 07/11/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,66 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALTextFieldCell.h"
+#import "ALTextViewOnlyCell.h"
 
-#import "ALTextFieldCellHelper.h"
+#import "ALTextViewCellHelper.h"
 
-@interface ALTextFieldCell()
-@property (strong, nonatomic, readwrite) ALTextFieldCellHelper *textFieldHelper;
+@interface ALTextViewOnlyCell ()
+@property (strong, nonatomic, readwrite) ALTextViewCellHelper *textViewHelper;
 @end
 
-@implementation ALTextFieldCell
+@implementation ALTextViewOnlyCell
 
 #pragma mark - Object Lifecycle
+
+- (void)commonInit
+{
+  [super commonInit];
+  [self configureSelf];
+  
+  _textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self];
+}
+
+- (void)configureSelf
+{
+  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
 
 - (void)awakeFromNib
 {
   [super awakeFromNib];
-  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-  self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+  [self configureTextView];
+}
+
+- (void)configureTextView
+{
+  self.textView.delegate = self.textViewHelper;
+  [self.textViewHelper configureTextView:self.textView];
 }
 
 #pragma mark - Dynamic Type Text
 
+- (void)contentSizeCategoryDidChange:(NSNotification *)notification
+{
+  [super contentSizeCategoryDidChange:notification];
+  [self refreshFonts];
+}
+
 - (void)refreshFonts
 {
-  [super refreshFonts];
-  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setDelegate:(id<ALTextCellDelegate>)delegate
+{
+  self.textViewHelper.delegate = delegate;
+}
+
+- (id<ALTextCellDelegate>)delegate
+{
+  return self.textViewHelper.delegate;
 }
 
 #pragma mark - Set Values Dictionary
@@ -54,7 +89,7 @@
 - (void)setValuesDictionary:(NSDictionary *)valuesDictionary
 {
   [super setValuesDictionary:valuesDictionary];
-  [self.textFieldHelper setValuesFromDictionary:valuesDictionary];
+  [self.textViewHelper textView:self.textView setValuesFromDictionary:valuesDictionary];
 }
 
 @end

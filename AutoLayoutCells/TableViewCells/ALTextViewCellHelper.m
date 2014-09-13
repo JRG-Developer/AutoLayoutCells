@@ -1,5 +1,5 @@
 //
-//  ALTextViewHelper.m
+//  ALTextViewCellHelper.m
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 07/11/14.
@@ -22,28 +22,48 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALTextViewHelper.h"
+#import "ALTextViewCellHelper.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 #import "ALCellConstants.h"
 #import "ALTextCellConstants.h"
-#import "ALTextViewHelperDelegate.h"
+#import "ALTextCellDelegate.h"
 
-@implementation ALTextViewHelper
+@implementation ALTextViewCellHelper
 
-#pragma mark - Configuration
+#pragma mark - Object Lifecycle
 
-+ (void)configureTextView:(UITextView *)textView
+- (instancetype)initWithCell:(UITableViewCell *)cell
+{
+  self = [super init];
+  if (self) {
+    _cell = cell;
+  }
+  return self;
+}
+
+#pragma mark - Instance Methods
+
+- (void)configureTextView:(UITextView *)textView
 {
   CGColorRef colorRef = [[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor];
   [textView.layer setBorderColor:colorRef];
   [textView.layer setBorderWidth:2.0f];
 }
 
+#pragma mark - Values Dictionary
+
+- (void)textView:(ALPlaceholderTextView *)textView setValuesFromDictionary:(NSDictionary *)valuesDictionary
+{
+  [self textView:textView setPlaceholderFromDictionary:valuesDictionary];
+  [self textView:textView setTextFromDictionary:valuesDictionary];
+  [self textView:textView setTypeFromDictionary:valuesDictionary];
+}
+
 #pragma mark - Placeholder
 
-+ (void)textView:(ALAutoResizingTextView *)textView setPlaceholderFromDictionary:(NSDictionary *)dictionary
+- (void)textView:(ALPlaceholderTextView *)textView setPlaceholderFromDictionary:(NSDictionary *)dictionary
 {
   if (![textView respondsToSelector:@selector(setPlaceholder:)]) {
     return;
@@ -52,35 +72,36 @@
   [self textView:textView setPlaceholderTextString:dictionary[ALTextCellPlaceholderTextKey]];
 }
 
-+ (void)textView:(ALAutoResizingTextView *)textView setPlaceholderTextString:(NSString *)text
+- (void)textView:(ALPlaceholderTextView *)textView setPlaceholderTextString:(NSString *)text
 {
   [textView setPlaceholder:text];
 }
 
 #pragma mark - Text
 
-+ (void)textView:(UITextView *)textView setTextFromDictionary:(NSDictionary *)dictionary
+- (void)textView:(UITextView *)textView setTextFromDictionary:(NSDictionary *)dictionary
 {
   if (dictionary[ALCellAttributedValueKey]) {
     [self textView:textView setAttributedTextString:dictionary[ALCellAttributedValueKey]];
+    
   } else {
     [self textView:textView setTextString:dictionary[ALCellValueKey]];
   }
 }
 
-+ (void)textView:(UITextView *)textView setAttributedTextString:(NSAttributedString *)attributedText
+- (void)textView:(UITextView *)textView setAttributedTextString:(NSAttributedString *)attributedText
 {
   textView.attributedText = attributedText;
 }
 
-+ (void)textView:(UITextView *)textView setTextString:(NSString *)text
+- (void)textView:(UITextView *)textView setTextString:(NSString *)text
 {
   textView.text = text;
 }
 
 #pragma mark - Type
 
-+ (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
+- (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
 {
   if (!dictionary[ALTextCellTypeKey]) {
     return;
@@ -123,7 +144,7 @@
   }
 }
 
-+ (void)setTextViewTypeEmail:(UITextView *)textView
+- (void)setTextViewTypeEmail:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
   textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -132,7 +153,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-+ (void)setTextViewTypeName:(UITextView *)textView
+- (void)setTextViewTypeName:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeWords;
   textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -141,7 +162,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-+ (void)setTextViewTypeNoChecking:(UITextView *)textView
+- (void)setTextViewTypeNoChecking:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
   textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -150,7 +171,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-+ (void)setTextViewTypePassword:(UITextView *)textView
+- (void)setTextViewTypePassword:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeNone;;
   textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -159,7 +180,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-+ (void)setTextViewTypeSentences:(UITextView *)textView
+- (void)setTextViewTypeSentences:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
   textView.autocorrectionType = UITextAutocorrectionTypeYes;
@@ -168,7 +189,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeYes;
 }
 
-+ (void)setTextViewTypeNumber:(UITextView *)textView
+- (void)setTextViewTypeNumber:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
   textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -177,7 +198,7 @@
   textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-+ (void)setTextViewTypeDefault:(UITextView *)textView
+- (void)setTextViewTypeDefault:(UITextView *)textView
 {
   textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
   textView.autocorrectionType = UITextAutocorrectionTypeDefault;
@@ -190,15 +211,15 @@
 
 - (void)textView:(ALAutoResizingTextView *)textView willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(textViewHelper:textView:willChangeFromHeight:toHeight:)]) {
-    [self.delegate textViewHelper:self textView:textView willChangeFromHeight:oldHeight toHeight:newHeight];
+  if ([self.delegate respondsToSelector:@selector(cell:textView:willChangeFromHeight:toHeight:)]) {
+    [self.delegate cell:self.cell textView:textView willChangeFromHeight:oldHeight toHeight:newHeight];
   }
 }
 
 - (void)textView:(ALAutoResizingTextView *)textView didChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(textViewHelper:textView:didChangeFromHeight:toHeight:)]) {
-    [self.delegate textViewHelper:self textView:textView didChangeFromHeight:oldHeight toHeight:newHeight];
+  if ([self.delegate respondsToSelector:@selector(cell:textView:didChangeFromHeight:toHeight:)]) {
+    [self.delegate cell:self textView:textView didChangeFromHeight:oldHeight toHeight:newHeight];
   }
 }
 
@@ -208,8 +229,8 @@
 {
   if ([text rangeOfString:@"\n"].location != NSNotFound) {
     
-    if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewWillEndEditing:)]) {
-      [self.delegate textViewHelper:self textViewWillEndEditing:textView];
+    if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
+      [self.delegate cell:self.cell willEndEditing:textView.text];
     }
 
     [textView resignFirstResponder];
@@ -221,8 +242,8 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-  if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewWillBeginEditing:)]) {
-    [self.delegate textViewHelper:self textViewWillBeginEditing:textView];
+  if ([self.delegate respondsToSelector:@selector(cellWillBeginEditing:)]) {
+    [self.delegate cellWillBeginEditing:self.cell];
   }
   
   return YES;
@@ -230,15 +251,15 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-  if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewDidChange:)]) {
-    [self.delegate textViewHelper:self textViewDidChange:textView];
+  if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
+    [self.delegate cell:self.cell valueChanged:textView.text];
   }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-  if ([self.delegate respondsToSelector:@selector(textViewHelper:textViewDidEndEditing:)]) {
-    [self.delegate textViewHelper:self textViewDidEndEditing:textView];
+  if ([self.delegate respondsToSelector:@selector(cell:didEndEditing:)]) {
+    [self.delegate cell:self.cell didEndEditing:textView.text];
   }
 }
 

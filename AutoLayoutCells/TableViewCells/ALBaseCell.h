@@ -30,6 +30,7 @@
  *  This is the base cell class for all table view cells within `AutoLayoutCells`.
  *
  *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
+ *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
  */
 @interface ALBaseCell : UITableViewCell
 
@@ -45,7 +46,7 @@
 
 /**
  *  The `valuesDictionary` that should be used to set the cell labels, value, etc.
- *  @see `ALCellConstants.h` and related files for keys you can use.
+ *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
  */
 @property (strong, nonatomic) NSDictionary *valuesDictionary;
 

@@ -65,13 +65,6 @@
 + (UINib *)menuCellNib;
 
 /**
- *  Use this method to get an `ALTextCell` nib
- *
- *  @return `ALTextCell` nib
- */
-+ (UINib *)textCellNib;
-
-/**
  *  Use this method to get an `ALTextFieldCell` nib.
  *
  *  @return `ALTextFieldCell` nib
@@ -79,11 +72,25 @@
 + (UINib *)textFieldCellNib;
 
 /**
- *  Use this method to get an `ALTextOnlyCell` nib
+ *  Use this method to get an `ALTextFieldOnlyCell` nib.
+ *
+ *  @return `ALTextFieldOnlyCell` nib
+ */
++ (UINib *)textFieldOnlyCellNib;
+
+/**
+ *  Use this method to get an `ALTextViewCell` nib
+ *
+ *  @return `ALTextCell` nib
+ */
++ (UINib *)textViewCellNib;
+
+/**
+ *  Use this method to get an `ALTextViewOnlyCell` nib
  *
  *  @return `ALTextOnlyCell` nib
  */
-+ (UINib *)textOnlyCellNib;
++ (UINib *)textViewOnlyCellNib;
 
 /**
  *  Use this method to get an table view cell instance

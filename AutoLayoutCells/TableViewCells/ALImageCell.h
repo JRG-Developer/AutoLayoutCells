@@ -26,8 +26,9 @@
 
 /**
  *  `ALImageCell` shows a title, subtitle, and optional "main" and "secondary" images.
- *  @see `ALImageCellConstants` for keys you can use to set the cell's values.
- *  @discussion It's highly recommended that you set the cell's values via `setValuesDictionary` instead of each property directly.
+ *
+ *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
+ *  @see `ALCellConstants` and `ALImageCellConstants`  for predefined `valuesDictionary` keys.
  */
 @interface ALImageCell : ALCell
 

@@ -1,5 +1,5 @@
 //
-//  ALTextOnlyCell.h
+//  ALTextViewOnlyCell.h
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 07/11/14.
@@ -23,16 +23,34 @@
 //  THE SOFTWARE.
 
 #import "ALBaseCell.h"
-#import "ALTextViewHelperDelegate.h"
-
 #import "ALTextCellDelegate.h"
 
 @class ALAutoResizingTextView;
+@class ALTextViewCellHelper;
 
 /**
- *  `ALTextOnlyCell` shows just a text view to get input from the user.
+ *  `ALTextViewOnlyCell` shows just a text view to get input from the user.
+ *
+ *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
+ *  @see `ALTextCellConstants` for additional keys that may be specified in the `valuesDictionary`.
+ *
+ *  @note The text view automatically resizes its height to fit the text input, and the cell notifies its `delegate` of such events so the table view can be updated appropriately.
+ *  @see `ALTextCellDelegate` for more info.
  */
-@interface ALTextOnlyCell : ALBaseCell <ALTextViewHelperDelegate>
+@interface ALTextViewOnlyCell : ALBaseCell
+
+///--------------------------------------------------------------
+/// @name Instance Preoperties
+///--------------------------------------------------------------
+
+/**
+ *  The text view helper, which encapsulates commmon text view configuration, delegate handling, etc
+ */
+@property (strong, nonatomic, readonly) ALTextViewCellHelper *textViewHelper;
+
+///--------------------------------------------------------------
+/// @name Outlets
+///--------------------------------------------------------------
 
 /**
  *  The delegate to be notified of text view height changes and value-related events.
@@ -41,16 +59,14 @@
 @property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
 
 /**
- *  The text view helper, which takes care of configuring the text view
- *  @see `ALTextViewHelper` for more details
- */
-@property (strong, nonatomic) ALTextViewHelper *textViewHelper;
-
-/**
  *  The text view, which accepts user input and resizes itself as needed
  *  @see `ALAutoResizingTextView` in `AutoLayoutTextViews` pod for more details
  */
 @property (weak, nonatomic) IBOutlet ALAutoResizingTextView *textView;
+
+///--------------------------------------------------------------
+/// @name Dynamic Type Font
+///--------------------------------------------------------------
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the text view's font.
