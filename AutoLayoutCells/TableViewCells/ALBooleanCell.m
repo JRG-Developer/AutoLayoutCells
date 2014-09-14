@@ -31,24 +31,31 @@
 
 #pragma mark - Object Lifecycle
 
-- (void)awakeFromNib
+- (void)commonInit
 {
-  [super awakeFromNib];
+  [super commonInit];
+  [self configureSelf];
+}
+
+- (void)configureSelf
+{
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
-- (void)didToggle:(UISwitch *)toggle
+#pragma mark - Actions
+
+- (IBAction)didToggle:(UISwitch *)toggle
 {
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self valueChanged:@([toggle isOn])];
   }
 }
 
-#pragma mark - Set Values Dictionary
+#pragma mark - Set Values From Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)dictionary
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:dictionary];
+  [super setSetValuesFromDictionary:dictionary];
   [self setToggleValueFromDictionary:dictionary];
 }
 

@@ -24,8 +24,10 @@
 //  THE SOFTWARE.
 
 // Test Class
-#import "ALTextFieldCell.h"
+#import "ALTextFieldOnlyCell.h"
+
 // Collaborators
+#import "ALTextFieldCellHelper.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -42,8 +44,11 @@
 
 @implementation ALTextFieldOnlyTests
 {
-  ALTextFieldCell *sut;
+  ALTextFieldOnlyCell *sut;
   id partialMock;
+  
+  id textField;
+  id textFieldHelper;
 }
 
 #pragma mark - Test Lifecycle
@@ -54,6 +59,13 @@
   sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldOnlyCell" owner:self];
 }
 
+#pragma mark - Given
+
+- (void)givenMockTextFieldHelper
+{
+  textFieldHelper = OCMPartialMock(sut.textFieldHelper);
+}
+
 #pragma mark - Outlets - Tests
 
 - (void)test_has___textField
@@ -61,14 +73,66 @@
   expect(sut.textField).toNot.beNil();
 }
 
-- (void)test_doesNotHave___titleLabel
+#pragma mark - Object Lifecycle - Tests
+
+- (void)test___commonInit___configuresCell
 {
-  expect(sut.titleLabel).to.beNil();
+  // given
+  sut = [[ALTextFieldOnlyCell alloc] init];
+  
+  // then
+  expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
 }
 
-- (void)test_doesNotHave___subtitleLabel
+#pragma mark - Custom Accessor - Tests
+
+- (void)test___setTextField___setsTextFieldHelper
 {
-  expect(sut.subtitleLabel).to.beNil();
+  // given
+  textField = [[UITextField alloc] init];
+  
+  sut = [[ALTextFieldOnlyCell alloc] init];
+  expect(sut.textFieldHelper).to.beNil();
+  
+  // when
+  sut.textField = textField;
+  
+  // then
+  expect(sut.textFieldHelper).toNot.beNil();
+  expect(sut.textFieldHelper.cell).to.equal(sut);
+  expect(sut.textFieldHelper.textField).to.equal(textField);
+}
+
+#pragma mark - Dynamic Type Text - Tests
+
+- (void)test___contentSizeCategoryDidChange___calls_refreshFonts
+{
+  // given
+  partialMock = OCMPartialMock(sut);
+  OCMExpect([partialMock refreshFonts]);
+  
+  // when
+  [sut contentSizeCategoryDidChange:nil];
+  
+  // then
+  OCMVerifyAll(partialMock);
+}
+
+#pragma mark - Set Values Dictionary - Tests
+
+- (void)test___setValuesFromDictionary___calls_textViewHelper___textView_setValuesFromDictionary
+{
+  // given
+  [self givenMockTextFieldHelper];
+  NSDictionary *dict = @{};
+  
+  OCMExpect([textFieldHelper setValuesFromDictionary:dict]);
+  
+  // when
+  [sut setSetValuesFromDictionary:dict];
+  
+  // then
+  OCMVerifyAll(textFieldHelper);
 }
 
 @end

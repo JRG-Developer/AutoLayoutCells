@@ -34,42 +34,45 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)initWithCell:(UITableViewCell *)cell
+- (instancetype)initWithCell:(UITableViewCell *)cell textView:(ALAutoResizingTextView *)textView
 {
   self = [super init];
   if (self) {
     _cell = cell;
+    _textView = textView;
+    
+    [self configureTextView];
   }
   return self;
 }
 
-#pragma mark - Instance Methods
-
-- (void)configureTextView:(UITextView *)textView
+- (void)configureTextView
 {
   CGColorRef colorRef = [[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor];
-  [textView.layer setBorderColor:colorRef];
-  [textView.layer setBorderWidth:2.0f];
+  [self.textView.layer setBorderColor:colorRef];
+  [self.textView.layer setBorderWidth:2.0f];
+  
+  [self.textView setDelegate:self];
 }
 
 #pragma mark - Values Dictionary
 
-- (void)textView:(ALPlaceholderTextView *)textView setValuesFromDictionary:(NSDictionary *)valuesDictionary
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary;
 {
-  [self textView:textView setPlaceholderFromDictionary:valuesDictionary];
-  [self textView:textView setTextFromDictionary:valuesDictionary];
-  [self textView:textView setTypeFromDictionary:valuesDictionary];
+  [self setPlaceholderFromDictionary:dictionary];
+  [self setTextFromDictionary:dictionary];
+  [self setTypeFromDictionary:dictionary];
 }
 
 #pragma mark - Placeholder
 
-- (void)textView:(ALPlaceholderTextView *)textView setPlaceholderFromDictionary:(NSDictionary *)dictionary
+- (void)setPlaceholderFromDictionary:(NSDictionary *)dictionary
 {
-  if (![textView respondsToSelector:@selector(setPlaceholder:)]) {
+  if (![self.textView respondsToSelector:@selector(setPlaceholder:)]) {
     return;
   }
   
-  [self textView:textView setPlaceholderTextString:dictionary[ALTextCellPlaceholderTextKey]];
+  [self textView:self.textView setPlaceholderTextString:dictionary[ALTextCellPlaceholderTextKey]];
 }
 
 - (void)textView:(ALPlaceholderTextView *)textView setPlaceholderTextString:(NSString *)text
@@ -79,29 +82,29 @@
 
 #pragma mark - Text
 
-- (void)textView:(UITextView *)textView setTextFromDictionary:(NSDictionary *)dictionary
+- (void)setTextFromDictionary:(NSDictionary *)dictionary
 {
   if (dictionary[ALCellAttributedValueKey]) {
-    [self textView:textView setAttributedTextString:dictionary[ALCellAttributedValueKey]];
+    [self setAttributedTextString:dictionary[ALCellAttributedValueKey]];
     
   } else {
-    [self textView:textView setTextString:dictionary[ALCellValueKey]];
+    [self setTextString:dictionary[ALCellValueKey]];
   }
 }
 
-- (void)textView:(UITextView *)textView setAttributedTextString:(NSAttributedString *)attributedText
+- (void)setAttributedTextString:(NSAttributedString *)attributedText
 {
-  textView.attributedText = attributedText;
+  self.textView.attributedText = attributedText;
 }
 
-- (void)textView:(UITextView *)textView setTextString:(NSString *)text
+- (void)setTextString:(NSString *)text
 {
-  textView.text = text;
+  self.textView.text = text.length > 0 ? text : nil;
 }
 
 #pragma mark - Type
 
-- (void)textView:(UITextView *)textView setTypeFromDictionary:(NSDictionary *)dictionary
+- (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
   if (!dictionary[ALTextCellTypeKey]) {
     return;
@@ -112,31 +115,31 @@
   switch (type)
   {
     case ALTextCellTypeDefault:
-      [self setTextViewTypeDefault:textView];
+      [self setTextViewTypeDefault];
       break;
       
     case ALTextCellTypeEmail:
-      [self setTextViewTypeEmail:textView];
+      [self setTextViewTypeEmail];
       break;
       
     case ALTextCellTypeName:
-      [self setTextViewTypeName:textView];
+      [self setTextViewTypeName];
       break;
       
     case ALTextCellTypeNoChecking:
-      [self setTextViewTypeNoChecking:textView];
-      break;
-      
-    case ALTextCellTypePassword:
-      [self setTextViewTypePassword:textView];
-      break;
-      
-    case ALTextCellTypeSentences:
-      [self setTextViewTypeSentences:textView];
+      [self setTextViewTypeNoChecking];
       break;
       
     case ALTextCellTypeNumber:
-      [self setTextViewTypeNumber:textView];
+      [self setTextViewTypeNumber];
+      break;
+      
+    case ALTextCellTypePassword:
+      [self setTextViewTypePassword];
+      break;
+      
+    case ALTextCellTypeSentences:
+      [self setTextViewTypeSentences];
       break;
       
     default:
@@ -144,82 +147,82 @@
   }
 }
 
-- (void)setTextViewTypeEmail:(UITextView *)textView
+- (void)setTextViewTypeDefault
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textView.autocorrectionType = UITextAutocorrectionTypeNo;
-  textView.keyboardType = UIKeyboardTypeEmailAddress;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeDefault;
+  self.textView.keyboardType = UIKeyboardTypeDefault;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeDefault;
 }
 
-- (void)setTextViewTypeName:(UITextView *)textView
+- (void)setTextViewTypeEmail
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeWords;
-  textView.autocorrectionType = UITextAutocorrectionTypeNo;
-  textView.keyboardType = UIKeyboardTypeDefault;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textView.keyboardType = UIKeyboardTypeEmailAddress;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-- (void)setTextViewTypeNoChecking:(UITextView *)textView
+- (void)setTextViewTypeName
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textView.autocorrectionType = UITextAutocorrectionTypeNo;
-  textView.keyboardType = UIKeyboardTypeDefault;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeWords;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textView.keyboardType = UIKeyboardTypeDefault;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-- (void)setTextViewTypePassword:(UITextView *)textView
+- (void)setTextViewTypeNoChecking
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;;
-  textView.autocorrectionType = UITextAutocorrectionTypeNo;
-  textView.keyboardType = UIKeyboardTypeDefault;
-  textView.secureTextEntry = YES;
-  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textView.keyboardType = UIKeyboardTypeDefault;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-- (void)setTextViewTypeSentences:(UITextView *)textView
+- (void)setTextViewTypeNumber
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-  textView.autocorrectionType = UITextAutocorrectionTypeYes;
-  textView.keyboardType = UIKeyboardTypeDefault;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeYes;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textView.keyboardType = UIKeyboardTypeNumberPad;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-- (void)setTextViewTypeNumber:(UITextView *)textView
+- (void)setTextViewTypePassword
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textView.autocorrectionType = UITextAutocorrectionTypeNo;
-  textView.keyboardType = UIKeyboardTypeNumberPad;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeNone;;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textView.keyboardType = UIKeyboardTypeDefault;
+  self.textView.secureTextEntry = YES;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
-- (void)setTextViewTypeDefault:(UITextView *)textView
+- (void)setTextViewTypeSentences
 {
-  textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-  textView.autocorrectionType = UITextAutocorrectionTypeDefault;
-  textView.keyboardType = UIKeyboardTypeDefault;
-  textView.secureTextEntry = NO;
-  textView.spellCheckingType = UITextSpellCheckingTypeDefault;
+  self.textView.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+  self.textView.autocorrectionType = UITextAutocorrectionTypeYes;
+  self.textView.keyboardType = UIKeyboardTypeDefault;
+  self.textView.secureTextEntry = NO;
+  self.textView.spellCheckingType = UITextSpellCheckingTypeYes;
 }
 
-#pragma mark - ALSizingTextViewDelegate
+#pragma mark - ALAutoResizingTextViewDelegate
 
 - (void)textView:(ALAutoResizingTextView *)textView willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cell:textView:willChangeFromHeight:toHeight:)]) {
-    [self.delegate cell:self.cell textView:textView willChangeFromHeight:oldHeight toHeight:newHeight];
+  if ([self.delegate respondsToSelector:@selector(cellHeightWillChange:)]) {
+    [self.delegate cellHeightWillChange:self.cell];
   }
 }
 
 - (void)textView:(ALAutoResizingTextView *)textView didChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cell:textView:didChangeFromHeight:toHeight:)]) {
-    [self.delegate cell:self textView:textView didChangeFromHeight:oldHeight toHeight:newHeight];
+  if ([self.delegate respondsToSelector:@selector(cellHeightDidChange:)]) {
+    [self.delegate cellHeightDidChange:self.cell];
   }
 }
 

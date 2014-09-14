@@ -35,12 +35,12 @@
  *  The delegate that performs cell configuration
  *  @see `ALTableViewCellFactoryDelegate` for more details
  */
-@property (nonatomic, weak) id<ALTableViewCellFactoryDelegate> delegate;
+@property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
 
 /**
  *  The table view that displays all of the cells
  */
-@property (nonatomic, weak) UITableView *tableView;
+@property (weak, nonatomic) UITableView *tableView;
 
 /**
  *  A dictionary of sizing cells (keys are cell identifiers, values are sizing cells)

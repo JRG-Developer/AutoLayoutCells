@@ -27,8 +27,8 @@
 /**
  *  `ALLeftLabelCell` shows a title, subtitle, and "left" label.
  *
- *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
- *  @see `ALCellConstants` and `ALLeftLabelCellConstants` for predefined `valuesDictionary` keys.
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALCellConstants` and `ALLeftLabelCellConstants` for predefined dictionary value keys.
  */
 @interface ALLeftLabelCell : ALCell
 
@@ -36,34 +36,5 @@
  *  The left label (shown to the left of the title and subtitle labels)
  */
 @property (weak, nonatomic) IBOutlet ALLabel *leftLabel;
-
-@end
-
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
-@interface ALLeftLabelCell (Protected)
-
-/**
- *  This method is called within `setValuesDictionary:` to set the left label text value.
- *  @see `ALLeftLabelCellConstants` left keys
- *
- *  @param dictionary The dictionary to be set
- */
-- (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method is called within `setLeftLabelTextFromDictionary:` to set the attributed left label text (if present within the dictionary).
- *
- *  @param text The attributed text to be set on the left label
- */
-- (void)setLeftLabelAttributedText:(NSAttributedString *)text;
-
-/**
- *  This method is called within `setLeftLabelTextFromDictionary:` to set the left label text (if present within the dictionary without an attributed left label text)
- *
- *  @param text The text to be set on the left label
- */
-- (void)setLeftLabelText:(NSString *)text;
 
 @end

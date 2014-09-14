@@ -42,13 +42,13 @@
   self.subtitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
-#pragma mark - Set Values Dictionary
+#pragma mark - Set Values From Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self setTitleFromDictionary:valuesDictionary];
-  [self setSubtitleFromDictionary:valuesDictionary];
+  [super setSetValuesFromDictionary:dictionary];
+  [self setTitleFromDictionary:dictionary];
+  [self setSubtitleFromDictionary:dictionary];
 }
 
 - (void)setTitleFromDictionary:(NSDictionary *)dictionary

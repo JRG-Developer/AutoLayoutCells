@@ -28,6 +28,7 @@
 // Collaborators
 #import "ALTextCellConstants.h"
 #import "ALCellDelegate.h"
+#import "ALTextFieldCellHelper.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -46,8 +47,8 @@
 {
   ALTextFieldCell *sut;
 
-  id mockTextField;
-  id mockDelegate;
+  id textField;
+  id textFieldHelper;
 }
 
 #pragma mark - Test Lifecycle
@@ -62,14 +63,13 @@
 
 - (void)givenMockTextField
 {
-  mockTextField = OCMClassMock([UITextField class]);
-  sut.textField = mockTextField;
+  textField = OCMClassMock([UITextField class]);
+  sut.textField = textField;
 }
 
-- (void)givenMockDelegate
+- (void)givenMockTextFieldHelper
 {
-  mockDelegate = OCMProtocolMock(@protocol(ALCellDelegate));
-  sut.delegate = mockDelegate;
+  textFieldHelper = OCMPartialMock(sut.textFieldHelper);
 }
 
 #pragma mark - Outlet - Tests
@@ -84,273 +84,70 @@
   expect(sut.textField).toNot.beNil();
 }
 
-#pragma mark - Dynamic Type Text
+#pragma mark - Object Lifecycle - Tests
 
-- (void)test___refreshFonts___refresh_textField
+- (void)test___commonInit___configuresCell
 {
   // given
-  [self givenMockDelegate];
+  sut = [[ALTextFieldCell alloc] init];
+  
+  // then
+  expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
+}
+
+#pragma mark - Custom Accessor - Tests
+
+- (void)test___setTextField___setsTextFieldHelper
+{
+  // given
+  textField = [[UITextField alloc] init];
+  
+  sut = [[ALTextFieldCell alloc] init];
+  expect(sut.textFieldHelper).to.beNil();
+  
+  // when
+  sut.textField = textField;
+  
+  // then
+  expect(sut.textFieldHelper).toNot.beNil();
+  expect(sut.textFieldHelper.cell).to.equal(sut);
+  expect(sut.textFieldHelper.textField).to.equal(textField);
+}
+
+#pragma mark - Dynamic Type Text
+
+- (void)test___refreshFonts___refreshes_textField
+{
+  // given
+  [self givenMockTextField];
   
   UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
   
-  OCMExpect([mockTextField setFont:font]);
+  OCMExpect([textField setFont:font]);
   
   // when
   [sut refreshFonts];
   
   // then
-  OCMVerifyAll(mockTextField);
+  OCMVerifyAll(textField);
 }
 
 #pragma mark - Set Values Dictionary - Tests
 
-//- (void)test___setValuesDictionary___setsTextField_ALCellAttributedValueKey
-//{
-//  // given
-//  [self givenMockTextField];
-//  
-//  NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"String" attributes:nil];
-//  NSDictionary *dict = @{ALCellAttributedValueKey: text};
-//  
-//  OCMExpect([mockTextField setAttributedText:text]);
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  OCMVerifyAll(mockTextField);
-//}
-//
-//- (void)test___setValuesDictionary___setsTextField_ALCellValueKey
-//{
-//  // given
-//  [self givenMockTextField];
-//  
-//  NSString *text = @"String";
-//  NSDictionary *dict = @{ALCellValueKey: text};
-//  OCMExpect([mockTextField setText:text]);
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  OCMVerifyAll(mockTextField);
-//}
-//
-//- (void)test___setValuesDictionary___setsTextField_ALTextCellPlaceholderTextKey
-//{
-//  // given
-//  [self givenMockTextField];
-//  NSString *placeholder = @"Placeholder";
-//  NSDictionary *dict = @{ALTextCellPlaceholderTextKey: placeholder};
-//  
-//  OCMExpect([mockTextField setPlaceholder:placeholder]);
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  OCMVerifyAll(mockTextField);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeDefault
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeEmail
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeEmail)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeEmailAddress);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeName
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeName)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeWords);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeNoChecking
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNoChecking)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypePassword
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypePassword)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-//  expect(sut.textField.secureTextEntry).to.beTruthy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeSentences
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeSentences)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeYes);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeYes);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellTypeNumber
-//{
-//  // given
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNumber)};
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
-//  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
-//  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeNumberPad);
-//  expect(sut.textField.secureTextEntry).to.beFalsy();
-//  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
-//{
-//  // given
-//  [self givenMockTextField];
-//  NSDictionary *dict = nil;
-//  
-//  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  OCMVerifyAll(mockTextField);
-//}
-//
-//- (void)test___setValuesDictionary___textCellType___ALTextCellType_invalidType_doesNotConfigureTextField
-//{
-//  // given
-//  [self givenMockTextField];
-//  NSDictionary *dict = @{ALTextCellTypeKey: @(NSIntegerMax)};
-//  
-//  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
-//  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
-//  
-//  // when
-//  [sut setValuesDictionary:dict];
-//  
-//  // then
-//  OCMVerifyAll(mockTextField);
-//}
-//
-//#pragma mark - Text Field Actions - Tests
-//
-//- (void)test___textFieldShouldBeginEditing___notifiesDelegate___cellWillBeginEditing
-//{
-//  // given
-//  [self givenMockDelegate];
-//  OCMExpect([mockDelegate cellWillBeginEditing:sut]);
-//  
-//  // when
-//  [sut textFieldShouldBeginEditing:sut.textField];
-//  
-//  // then
-//  OCMVerifyAll(mockDelegate);
-//}
-//
-//- (void)test___textFieldShouldBeginEditing___returns_YES
-//{
-//  expect([sut textFieldShouldBeginEditing:sut.textField]).to.beTruthy();
-//}
-//
-//- (void)test___textFieldValueChanged___notifiesDelegate___cell_valueChanged
-//{
-//  // given
-//  [self givenMockDelegate];
-//  
-//  sut.textField.text = @"Text";
-//  OCMExpect([mockDelegate cell:sut valueChanged:sut.textField.text]);
-//  
-//  // when
-//  [sut textFieldValueChanged:sut.textField];
-//  
-//  // then
-//  OCMVerifyAll(mockDelegate);
-//}
-//
-//- (void)test___textFieldDidEndEditing___notifiesDelegate___cell_didEndEditing
-//{
-//  // given
-//  [self givenMockDelegate];
-//  
-//  sut.textField.text = @"Text";
-//  OCMExpect([mockDelegate cell:sut didEndEditing:sut.textField.text]);
-//  
-//  // when
-//  [sut textFieldDidEndEditing:sut.textField];
-//  
-//  // then
-//  OCMVerifyAll(mockDelegate);
-//}
+- (void)test___setValuesFromDictionary___calls_textViewHelper___textView_setValuesFromDictionary
+{
+  // given
+  [self givenMockTextFieldHelper];
+  NSDictionary *dict = @{};
+  
+  OCMExpect([textFieldHelper setValuesFromDictionary:dict]);
+  
+  // when
+  [sut setSetValuesFromDictionary:dict];
+  
+  // then
+  OCMVerifyAll(textFieldHelper);
+}
+
 
 @end

@@ -34,10 +34,26 @@
 
 #pragma mark - Object Lifecycle
 
-- (void)awakeFromNib
+- (void)commonInit
 {
-  [super awakeFromNib];
+  [super commonInit];
+  [self configureSelf];
+}
+
+- (void)configureSelf
+{
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setTextField:(UITextField *)textField
+{
+  if (_textField == textField) {
+    return;
+  }
+  
+  _textField = textField;
   self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
 }
 
@@ -51,10 +67,10 @@
 
 #pragma mark - Set Values Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self.textFieldHelper setValuesFromDictionary:valuesDictionary];
+  [super setSetValuesFromDictionary:dictionary];
+  [self.textFieldHelper setValuesFromDictionary:dictionary];
 }
 
 @end

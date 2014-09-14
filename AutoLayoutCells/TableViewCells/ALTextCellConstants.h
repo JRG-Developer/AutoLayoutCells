@@ -26,7 +26,7 @@
 #import "ALCellConstants.h"
 
 /**
- *  `ALTextCell`, `ALTextOnlyCell`, and `ALTextFieldCell` use these keys and enum to specify and format their `textView` or `textField`, respectively.
+ *  `ALTextCell`, `ALTextFieldCell`, etc use these keys and enum to specify and format their `textView` or `textField`, respectively.
  */
 
 /**
@@ -60,6 +60,12 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
   ALTextCellTypeNoChecking,
   
   /**
+   *  Use `ALTextCellTypeNumber` to specify that the expected input is a number.
+   *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "number pad", and turns off spell checking.
+   */
+  ALTextCellTypeNumber,
+  
+  /**
    *  Use `ALTextCellTypePassword` to specify that the expected input is a password.
    *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "default", turns off spell checking, and turns on secure text entry.
    */
@@ -69,13 +75,7 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
    *  Use `ALTextCellTypeSentences` to specify that the expected input is sentences.
    *  @discussion This sets auto capitalization to "sentences", turns on auto correction, sets the keyboard to "default", and turns on spell checking.
    */
-  ALTextCellTypeSentences,
-  
-  /**
-   *  Use `ALTextCellTypeNumber` to specify that the expected input is a number.
-   *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "number pad", and turns off spell checking.
-   */
-  ALTextCellTypeNumber
+  ALTextCellTypeSentences
 };
 
 /**

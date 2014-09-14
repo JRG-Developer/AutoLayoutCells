@@ -1,8 +1,8 @@
 //
-//  ALBooleanCell.h
+//  ALTextFieldOnlyCell.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,39 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALImageCell.h"
+#import "ALBaseCell.h"
+@class ALTextFieldCellHelper;
 
 /**
- *  `ALBooleanCell` shows a title, subtitle, toggle, and optional image (depending on the nib) to represent a `boolean` value.
- *
- *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
- *  @see `ALCellConstants` for predefined dictionary value keys.
+ *  `ALTextFieldCell` shows just a `textField` to get input from the user.
+ *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined dictionary keys.
  */
-@interface ALBooleanCell : ALImageCell
+@interface ALTextFieldOnlyCell : ALBaseCell
+
+///--------------------------------------------------------------
+/// @name Instance Properties
+///--------------------------------------------------------------
+
+@property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
 
 ///--------------------------------------------------------------
 /// @name Outlets
 ///--------------------------------------------------------------
 
 /**
- *  The toggle, representing the `boolean` value
+ *  The text field
  */
-@property (weak, nonatomic) IBOutlet UISwitch *toggle;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 ///--------------------------------------------------------------
-/// @name Actions
+/// @name Dynamic Type Font
 ///--------------------------------------------------------------
 
 /**
- *  This method is called whenever the user toggles the `toggle`
+ *  This method is called within `contentSizeCategoryDidChange:` to refresh the text field's font.
  *
- *  @warning If you subclass `ALBooleanCell`, make sure you connect this `IBAction` to the `UIControlEventValueChanged` on `toggle`.
- *
- *  @param toggle The `toggle` which sent the event
+ *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
  */
-- (IBAction)didToggle:(UISwitch *)toggle;
+- (void)refreshFonts;
 
 @end

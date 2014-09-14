@@ -1,8 +1,8 @@
 //
-//  ALLeftLabelCell.m
+//  Test_ALCellDelegate.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,45 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALLeftLabelCell.h"
+#import "ALCellDelegate.h"
 
-#import "ALLeftLabelCellConstants.h"
+@interface Test_ALCellDelegate : NSObject <ALCellDelegate>
 
-@implementation ALLeftLabelCell
-
-#pragma mark - Dynamic Type Text
-
-- (void)refreshFonts
-{
-  [super refreshFonts];
-  self.leftLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-}
-
-#pragma mark - Set Values Dictionary
-
-- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
-{
-  [super setSetValuesFromDictionary:dictionary];
-  [self setLeftLabelTextFromDictionary:dictionary];
-}
-
-- (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary
-{
-  if (dictionary[ALLeftLabelAttributedTextKey]) {
-    [self setLeftLabelAttributedText:dictionary[ALLeftLabelAttributedTextKey]];
-  } else {
-    [self setLeftLabelText:dictionary[ALLeftLabelTextKey]];
-  }
-}
-
-- (void)setLeftLabelAttributedText:(NSAttributedString *)text
-{
-  self.leftLabel.attributedText = text.length ? text : nil;
-}
-
-- (void)setLeftLabelText:(NSString *)text
-{
-  self.leftLabel.text = text.length ? text : nil;
-}
+- (void)cellWillBeginEditing:(id)cell;
+- (void)cell:(id)cell valueChanged:(id)value;
+- (void)cell:(id)cell willEndEditing:(id)value;
+- (void)cell:(id)cell didEndEditing:(id)value;
 
 @end

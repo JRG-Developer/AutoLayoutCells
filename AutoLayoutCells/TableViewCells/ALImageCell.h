@@ -27,8 +27,8 @@
 /**
  *  `ALImageCell` shows a title, subtitle, and optional "main" and "secondary" images.
  *
- *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
- *  @see `ALCellConstants` and `ALImageCellConstants`  for predefined `valuesDictionary` keys.
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALCellConstants` and `ALImageCellConstants`  for predefined dictionary value keys.
  */
 @interface ALImageCell : ALCell
 
@@ -169,10 +169,11 @@
 
 @end
 
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
 @interface ALImageCell (Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
 
 /**
  *  This method first sets the `placeholderImage` on the `imageView`, asynchronously loads the image from the given url, and sets it on the image view.

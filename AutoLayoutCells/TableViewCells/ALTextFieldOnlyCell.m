@@ -1,8 +1,8 @@
 //
-//  ALTextViewOnlyCell.m
+//  ALTextFieldOnlyCell.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,15 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALTextViewOnlyCell.h"
+#import "ALTextFieldOnlyCell.h"
 
-#import "ALTextViewCellHelper.h"
+#import "ALTextFieldCellHelper.h"
 
-@interface ALTextViewOnlyCell ()
-@property (strong, nonatomic, readwrite) ALTextViewCellHelper *textViewHelper;
+@interface ALTextFieldOnlyCell()
+@property (strong, nonatomic, readwrite) ALTextFieldCellHelper *textFieldHelper;
 @end
 
-@implementation ALTextViewOnlyCell
+@implementation ALTextFieldOnlyCell
 
 #pragma mark - Object Lifecycle
 
@@ -45,6 +45,18 @@
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
+#pragma mark - Custom Accessors
+
+- (void)setTextField:(UITextField *)textField
+{
+  if (_textField == textField) {
+    return;
+  }
+  
+  _textField = textField;
+  self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+}
+
 #pragma mark - Dynamic Type Text
 
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification
@@ -55,37 +67,15 @@
 
 - (void)refreshFonts
 {
-  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
-#pragma mark - Custom Accessors
-
-- (void)setDelegate:(id<ALTextCellDelegate>)delegate
-{
-  self.textViewHelper.delegate = delegate;
-}
-
-- (id<ALTextCellDelegate>)delegate
-{
-  return self.textViewHelper.delegate;
-}
-
-- (void)setTextView:(ALAutoResizingTextView *)textView
-{
-  if (_textView == textView) {
-    return;
-  }
-  
-  _textView = textView;
-  self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
-}
-
-#pragma mark - Set Values Dictionary
+#pragma mark - Set Values From Dictionary
 
 - (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
   [super setSetValuesFromDictionary:dictionary];
-  [self.textViewHelper setValuesFromDictionary:dictionary];
+  [self.textFieldHelper setValuesFromDictionary:dictionary];
 }
 
 @end

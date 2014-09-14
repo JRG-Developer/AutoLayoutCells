@@ -29,8 +29,8 @@
 /**
  *  This is the base cell class for all table view cells within `AutoLayoutCells`.
  *
- *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
- *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALCellConstants` for predefined dictionary value keys.
  */
 @interface ALBaseCell : UITableViewCell
 
@@ -45,12 +45,6 @@
 @property (weak, nonatomic) IBOutlet id<ALCellDelegate>delegate;
 
 /**
- *  The `valuesDictionary` that should be used to set the cell labels, value, etc.
- *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
- */
-@property (strong, nonatomic) NSDictionary *valuesDictionary;
-
-/**
  *  Whether this cell should be treated as a sizing cell. The default value is `NO`.
  *
  *  @discussion Cell subclasses may treat sizing cells slightly differently than normal cells. In example, image loading from URL may be skipped.
@@ -62,18 +56,20 @@
 ///--------------------------------------------------------------
 
 /**
- *  This is the setter for the `valuesDictionary` property. It's redudantly defined to add `__attribute((objc_requires_super))` so that subclasses of `ALBaseCell` will know to call the `super` implementation for this method.
+ *  Use this method to set the cell's values from the given dictionary using pre-defined keys.
+ *  @see `ALCellConstants` for predefined dictionary value keys.
  *
- *  @param valuesDictionary The dictionary to be set
+ *  @param dictionary The dictionary containing the values to be set on the cell.
  */
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary __attribute((objc_requires_super));
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super));
 
 @end
 
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
 @interface ALBaseCell (Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
 
 /**
  *  Subclasses should use this method for common setup (`init`) code.

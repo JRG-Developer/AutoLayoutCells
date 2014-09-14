@@ -26,10 +26,14 @@
 @protocol ALTextCellDelegate;
 
 /**
- *  `ALTextViewCellHelper` encapsulates text view tasks common to `ALTextViewCell` and `ALTextViewOnlyCell`, such as text view configuration and setting text view values from a `valuesDictionary` using pre-defined keys.
+ *  `ALTextViewCellHelper` encapsulates text view tasks common to `ALTextViewCell` and `ALTextViewOnlyCell`, such as text view configuration and setting text view values from a dictionary using pre-defined keys.
  *  @see `ALCellConstants` and `ALTextCellConstants` for pre-defined dictionary keys.
  */
 @interface ALTextViewCellHelper : NSObject <ALAutoResizingTextViewDelegate>
+
+///--------------------------------------------------------------
+/// @name Instance Properties
+///--------------------------------------------------------------
 
 /**
  *  The cell that owns this text view helper (for transparently `ALTextCellDelegate` messages)
@@ -40,7 +44,12 @@
  *  The delegate to inform of height change and value-related events
  *  @see `ALTextViewCellHelperDelegate` for more details
  */
-@property (nonatomic, weak) id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) id<ALTextCellDelegate>delegate;
+
+/**
+ *  The text view that should be configured, set values of, delegated for, etc
+ */
+@property (weak, nonatomic) ALAutoResizingTextView *textView;
 
 ///--------------------------------------------------------------
 /// @name Object Lifecycle
@@ -49,30 +58,22 @@
 /**
  *  This is the designated intializer.
  *
- *  @param cell The cell that owns this object (for transparently messaging the `delegate)
+ *  @param cell The cell that owns this object (for transparently messaging the `delegate`)
  *
  *  @return A new instance of `ALTextViewCellHelper`
  */
-- (instancetype)initWithCell:(UITableViewCell *)cell;
+- (instancetype)initWithCell:(UITableViewCell *)cell textView:(ALAutoResizingTextView *)textView;
 
 ///--------------------------------------------------------------
 /// @name Instance Methods
 ///--------------------------------------------------------------
 
 /**
- *  This method configures the appearance of the `textView`.
- *
- *  @param textView The text view to be configured
- */
-- (void)configureTextView:(ALPlaceholderTextView *)textView;
-
-/**
- *  Use this method to set the `textView` values given a `valuesDictionary`.
+ *  Use this method to set the `textView` values a dictionary.
  *  @see `ALCellConstants` and `ALTextCellConstants` for pre-defined dictionary keys.
  *
- *  @param textView         The text view whose values will be set
- *  @param valuesDictionary The dictionary containing the text view values
+ *  @param dictionary The dictionary containing the text view values
  */
-- (void)textView:(ALPlaceholderTextView *)textView setValuesFromDictionary:(NSDictionary *)valuesDictionary;
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary;
 
 @end

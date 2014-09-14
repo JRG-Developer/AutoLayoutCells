@@ -26,7 +26,7 @@
 @protocol ALCellDelegate;
 
 /**
- *  `ALTextFieldCellHelper` encapsulates text field tasks common to `ALTextFieldCell` and `ALTextFieldOnlyCell`, such as text field configuration and setting text field values from a `valuesDictionary` using pre-defined keys.
+ *  `ALTextFieldCellHelper` encapsulates text field tasks common to `ALTextFieldCell` and `ALTextFieldOnlyCell`, such as text field configuration and setting text field values from a dictionary using pre-defined keys.
  *  @see `ALCellConstants` and `ALTextCellConstants` for pre-defined dictionary keys.
  */
 @interface ALTextFieldCellHelper : NSObject <UITextFieldDelegate>
@@ -45,7 +45,7 @@
  *  The delegate to inform of height change and value-related events
  *  @see `ALTextViewCellHelperDelegate` for more details
  */
-@property (nonatomic, weak) id<ALCellDelegate>delegate;
+@property (weak, nonatomic) id<ALCellDelegate>delegate;
 
 ///--------------------------------------------------------------
 /// @name Object Lifecycle
@@ -66,11 +66,26 @@
 ///--------------------------------------------------------------
 
 /**
- *  Use this method to set the `textView` values given a `valuesDictionary`.
+ *  Use this method to set the `textView` values from a dictionary.
  *  @see `ALCellConstants` and `ALTextCellConstants` for pre-defined dictionary keys.
  *
- *  @param valuesDictionary The dictionary containing the text field values
+ *  @param dictionary The dictionary containing the text field values
  */
-- (void)setValuesFromDictionary:(NSDictionary *)valuesDictionary;
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary;
+
+@end
+
+@interface ALTextFieldCellHelper (Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
+
+/**
+*  This method is called whenever the text field receives the control event `UIControlEventEditingChanged`.
+*
+*  @param textField The text field
+*/
+- (void)textFieldDidChange:(UITextField *)textField;
 
 @end

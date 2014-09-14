@@ -101,52 +101,13 @@
 
 #pragma mark - Object Lifecycle - Tests
 
-- (void)test___commonInit___sets_textViewHelper
-{
-  // given
-  sut = [[ALTextViewOnlyCell alloc] init];
-  
-  // then
-  expect(sut.textViewHelper).toNot.beNil();
-  expect(sut.textViewHelper.cell).to.equal(sut);
-}
-
-- (void)test___commonInit___sets_selectionStyle
+- (void)test___commonInit___configuresCell
 {
   // given
   sut = [[ALTextViewOnlyCell alloc] init];
   
   // then
   expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
-}
-
-- (void)test___awakeFromNib___calls_textViewHelper_configureTextView
-{
-  // given
-  [self givenMockTextViewHelper];
-  
-  OCMExpect([textViewHelper configureTextView:sut.textView]);
-  
-  // when
-  [sut awakeFromNib];
-  
-  // then
-  OCMVerifyAll(textViewHelper);
-}
-
-- (void)test___awakeFromNib___setsTextViewDelegate
-{
-  // given
-  id mockTextView = OCMClassMock([UITextView class]);
-  sut.textView = mockTextView;
-  
-  OCMExpect([mockTextView setDelegate:(id)sut.textViewHelper]);
-  
-  // when
-  [sut awakeFromNib];
-  
-  // then
-  OCMVerifyAll(mockTextView);
 }
 
 #pragma mark - Dynamic Type Text - Tests
@@ -198,28 +159,49 @@
   OCMVerifyAll(textViewHelper);
 }
 
-//- (void)test___delegate___returns_textViewHelper_delegate
-//{
-//  // given
-//  [self givenMockDelegate];
-//  sut.textViewHelper.delegate = delegate;
-//  
-//  // then
-//  expect([sut delegate]).to.equal(delegate);
-//}
+- (void)test___delegate___returns_textViewHelper_delegate
+{
+  // given
+  [self givenMockTextViewHelper];
+  [self givenMockDelegate];
+  
+  OCMStub([textViewHelper delegate]).andReturn(delegate);
+  
+  // when
+  id actual = [sut delegate];
+  
+  // then
+  XCTAssertEqual(actual, delegate);
+}
+
+- (void)test___setTextField___setsTextFieldHelper
+{
+  // given
+  textView = [[ALAutoResizingTextView alloc] init];
+  
+  sut = [[ALTextViewOnlyCell alloc] init];
+  expect(sut.textViewHelper).to.beNil();
+  
+  // when
+  sut.textView = textView;
+  
+  // then
+  expect(sut.textViewHelper.cell).to.equal(sut);
+  expect(sut.textViewHelper.textView).to.equal(textView);
+}
 
 #pragma mark - Set Values Dictionary - Tests
 
-- (void)test___setValuesDictionary___calls_textViewHelper___textView_setValuesFromDictionary
+- (void)test___setValuesFromDictionary___calls_textViewHelper___textView_setValuesFromDictionary
 {
   // given
   [self givenMockTextViewHelper];
   NSDictionary *dict = @{};
   
-  OCMExpect([textViewHelper textView:sut.textView setValuesFromDictionary:dict]);
+  OCMExpect([textViewHelper setValuesFromDictionary:dict]);
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setSetValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(textViewHelper);

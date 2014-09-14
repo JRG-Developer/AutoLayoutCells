@@ -27,7 +27,6 @@
 #import "ALCellConstants.h"
 
 // Collaborators
-#import "ALCellDelegate.h"
 #import "Test_ALTableViewCellNibFactory.h"
 
 // Test Support
@@ -35,8 +34,9 @@
 
 #define EXP_SHORTHAND YES
 #import <Expecta/Expecta.h>
-
 #import <OCMock/OCMock.h>
+
+#import "Test_ALCellDelegate.h"
 
 @interface ALBooleanCellTests : XCTestCase
 @end
@@ -59,7 +59,7 @@
 
 - (void)givenMockDelegate
 {
-  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
+  delegate = OCMClassMock([Test_ALCellDelegate class]);
   sut.delegate = delegate;
 }
 
@@ -68,7 +68,7 @@
 - (void)whenSetValuesWithToggleDictionaryValue:(BOOL)value
 {
   NSDictionary *dictionary = @{ALCellValueKey: @(value)};
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
 }
 
 #pragma mark - Class - Tests
@@ -125,9 +125,20 @@
   expect([sut.toggle actionsForTarget:sut forControlEvent:UIControlEventValueChanged].count).to.beGreaterThan(0);
 }
 
-#pragma mark - Set Values Dictionary - Tests
+#pragma mark - Object Lifecycle - Tests
 
-- (void)test___setValuesDictionary___setToggleValueToYES
+- (void)test___commonInit___configureCell
+{
+  // given
+  sut = [[ALBooleanCell alloc] init];
+  
+  // then
+  expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
+}
+
+#pragma mark - Set Values From Dictionary - Tests
+
+- (void)test___setValuesFromDictionary___setToggleValueToYES
 {
   // when
   [self whenSetValuesWithToggleDictionaryValue:YES];
@@ -136,7 +147,7 @@
   expect([sut.toggle isOn]).to.beTruthy();
 }
 
-- (void)test___setValuesDictionary___setToggleValueToNO
+- (void)test___setValuesFromDictionary___setToggleValueToNO
 {
   // when
   [self whenSetValuesWithToggleDictionaryValue:NO];
@@ -145,22 +156,22 @@
   expect([sut.toggle isOn]).to.beFalsy();
 }
 
-#pragma mark - Did Toggle - Tests
+#pragma mark - Actions - Tests
 
-//- (void)test___didToggle___notifiesDelegate
-//{
-//  // given
-//  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
-//  sut.delegate = delegate;
-//  
-//  NSNumber *value = @([sut.toggle isOn]);
-//  OCMExpect([delegate cell:sut valueChanged:value]);
-//  
-//  // when
-//  [sut didToggle:sut.toggle];
-//  
-//  // then
-//  OCMVerifyAll(delegate);
-//}
+- (void)test___didToggle___notifiesDelegate
+{
+  // given
+  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
+  sut.delegate = delegate;
+  
+  NSNumber *value = @([sut.toggle isOn]);
+  OCMExpect([delegate cell:sut valueChanged:value]);
+  
+  // when
+  [sut didToggle:sut.toggle];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
 
 @end

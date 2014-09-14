@@ -135,11 +135,11 @@
   self.secondaryImageViewHeightConstraintConstant = constraint.constant;
 }
 
-#pragma mark - Public
+#pragma mark - Set Values From Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)dictionary
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:dictionary];
+  [super setSetValuesFromDictionary:dictionary];
 
   [self setMainPlaceholderImageFromDictionary:dictionary];
   [self setSecondaryPlaceholderImageFromDictionary:dictionary];
@@ -148,7 +148,7 @@
   [self setSecondaryImageViewFromDictionary:dictionary];
 }
 
-#pragma mark - Protected
+#pragma mark - Set Placeholder Images
 
 - (void)setMainPlaceholderImageFromDictionary:(NSDictionary *)dictionary
 {
@@ -164,7 +164,7 @@
   }
 }
 
-#pragma mark - setMainImageViewFromDictionary:
+#pragma mark - Set Main Image
 
 - (void)setMainImageViewFromDictionary:(NSDictionary *)dictionary
 {
@@ -207,7 +207,7 @@
   self.mainImageViewHeightConstraint.constant = 0.0f;
 }
 
-#pragma mark - setSecondaryImageViewFromDictionary:
+#pragma mark - Set Secondary Image
 
 - (void)setSecondaryImageViewFromDictionary:(NSDictionary *)dictionary
 {
@@ -250,7 +250,7 @@
   self.secondaryImageViewHeightConstraint.constant = 0.0f;
 }
 
-#pragma mark - setImageFromURL: onImageView: placeholderImage:
+#pragma mark - Set Image From URL
 
 - (void)setImageFromURL:(NSURL *)url
             onImageView:(UIImageView *)imageView

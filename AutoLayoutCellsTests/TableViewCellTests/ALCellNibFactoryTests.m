@@ -30,8 +30,9 @@
 #import "ALBooleanCell.h"
 #import "ALImageCell.h"
 #import "ALLeftLabelCell.h"
-#import "ALTextViewCell.h"
 #import "ALTextFieldCell.h"
+#import "ALTextFieldOnlyCell.h"
+#import "ALTextViewCell.h"
 #import "ALTextViewOnlyCell.h"
 
 // Test Support
@@ -102,6 +103,11 @@
 - (void)test___textFieldCellNib___returnsCorrectNib
 {
   [self verifySelector:@selector(textFieldCellNib) givesCellClass:[ALTextFieldCell class]];
+}
+
+- (void)test___textFieldOnlyCellNib___returnsCorrectNib
+{
+  [self verifySelector:@selector(textFieldOnlyCellNib) givesCellClass:[ALTextFieldOnlyCell class]];
 }
 
 - (void)test___textViewCellNib___returnsCorrectNib

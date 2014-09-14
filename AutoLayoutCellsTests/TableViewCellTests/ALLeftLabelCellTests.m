@@ -98,20 +98,20 @@
 
 #pragma mark - Set Values Dictionary - Tests
 
-- (void)test___setValuesDictionary___leftText
+- (void)test___setValuesFromDictionary___leftText
 {
   // given
   NSString *text = @"Some Test Text";
   NSDictionary *dict = @{ALLeftLabelTextKey: text};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setSetValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.text).to.equal(text);
 }
 
-- (void)test___setValuesDictionary___attribtedLeftText
+- (void)test___setValuesFromDictionary___attribtedLeftText
 {
   // given
   NSString *text = @"Some Test Text";
@@ -119,26 +119,26 @@
   NSDictionary *dict = @{ALLeftLabelAttributedTextKey: attributedText};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setSetValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.attributedText).to.equal(attributedText);
 }
 
-- (void)test___setValuesDictionary___emptyLeftLabelTextSets___leftLabel___textTonil
+- (void)test___setValuesFromDictionary___emptyLeftLabelTextSets___leftLabel___textTonil
 {
   // given
   NSString *text = @"";
   NSDictionary *dict = @{ALLeftLabelTextKey: text};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setSetValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.text).to.beNil();
 }
 
-- (void)test___setValuesDictionary___emptyAttributedLeftLabelTextSets___leftLabel___attributedTextToNil
+- (void)test___setValuesFromDictionary___emptyAttributedLeftLabelTextSets___leftLabel___attributedTextToNil
 {
   // given
   NSString *text = @"";
@@ -146,7 +146,7 @@
   NSDictionary *dict = @{ALLeftLabelAttributedTextKey: attributedText};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setSetValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.attributedText).to.beNil();

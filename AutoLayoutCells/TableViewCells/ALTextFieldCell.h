@@ -27,7 +27,7 @@
 
 /**
  *  `ALTextFieldCell` shows a `title`, `subtitle`, and `textField` to get input from the user.
- *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined `valuesDictionary` keys.
+ *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined dictionary value keys.
  */
 @interface ALTextFieldCell : ALCell
 
@@ -44,6 +44,6 @@
 /**
  *  The text field
  */
-@property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end

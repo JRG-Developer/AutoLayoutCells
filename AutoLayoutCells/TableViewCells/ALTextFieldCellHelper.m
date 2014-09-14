@@ -25,8 +25,8 @@
 #import "ALTextFieldCellHelper.h"
 
 #import "ALCellConstants.h"
+#import "ALCellDelegate.h"
 #import "ALTextCellConstants.h"
-#import "ALTextCellDelegate.h"
 
 @implementation ALTextFieldCellHelper
 
@@ -51,18 +51,16 @@
   [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
-#pragma mark - Instance Methods
+#pragma mark - Set Values From Dictionary
 
-#pragma mark - textField: setValuesFromDictionary
-
-- (void)setValuesFromDictionary:(NSDictionary *)valuesDictionary
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [self setPlaceholderFromDictionary:valuesDictionary];
-  [self setTextFromDictionary:valuesDictionary];
-  [self setTypeFromDictionary:valuesDictionary];
+  [self setPlaceholderFromDictionary:dictionary];
+  [self setTextFromDictionary:dictionary];
+  [self setTypeFromDictionary:dictionary];
 }
 
-#pragma mark - textField: setPlaceholderFromDictionary:
+#pragma mark - Placeholder
 
 - (void)setPlaceholderFromDictionary:(NSDictionary *)dictionary
 {
@@ -78,7 +76,7 @@
   [self.textField setPlaceholder:text];
 }
 
-#pragma mark - textField: setTextFromDictionary:
+#pragma mark - Text
 
 - (void)setTextFromDictionary:(NSDictionary *)dictionary
 {
@@ -100,7 +98,7 @@
   self.textField.text = text;
 }
 
-#pragma mark - textField: setTypeFromDictionary:
+#pragma mark - Type
 
 - (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
@@ -128,6 +126,10 @@
       [self setTextFieldTypeNoChecking];
       break;
       
+    case ALTextCellTypeNumber:
+      [self setTextFieldTypeNumber];
+      break;
+      
     case ALTextCellTypePassword:
       [self setTextFieldTypePassword];
       break;
@@ -136,8 +138,7 @@
       [self setTextFieldTypeSentences];
       break;
       
-    case ALTextCellTypeNumber:
-      [self setTextFieldTypeNumber];
+    default:
       break;
   }
 }
@@ -178,6 +179,16 @@
   self.textField.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
+- (void)setTextFieldTypeNumber
+{
+  self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+  self.textField.keyboardType = UIKeyboardTypeNumberPad;
+  self.textField.secureTextEntry = NO;
+  self.textField.spellCheckingType = UITextSpellCheckingTypeNo;
+}
+
+
 - (void)setTextFieldTypePassword
 {
   self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;;
@@ -196,20 +207,11 @@
   self.textField.spellCheckingType = UITextSpellCheckingTypeYes;
 }
 
-- (void)setTextFieldTypeNumber
-{
-  self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  self.textField.keyboardType = UIKeyboardTypeNumberPad;
-  self.textField.secureTextEntry = NO;
-  self.textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-  if ([text rangeOfString:@"\n"].location != NSNotFound) {
+  if ([string rangeOfString:@"\n"].location != NSNotFound) {
     
     if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
       [self.delegate cell:self.cell willEndEditing:textField.text];

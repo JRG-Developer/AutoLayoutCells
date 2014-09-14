@@ -28,8 +28,8 @@
 /**
  *  `ALCell` shows a title and subtitle. It is also the base class for most of the cells within `AutoLayoutCells`.
  *
- *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly. 
- *  @see `ALCellConstants` for predefined `valuesDictionary` keys.
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly. 
+ *  @see `ALCellConstants` for predefined dictionary value keys.
  */
 @interface ALCell : ALBaseCell
 
@@ -46,61 +46,10 @@
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the label's fonts.
  *
- *  @discussion The default implementation simply calls `AL_refreshPreferredFont` on the `titleLabel` and `subtitleLabel`.
+ *  @discussion The default implementation refreshes the `titleLabel` and `subtitleLabel` fonts.
  *
  *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
  */
 - (void)refreshFonts;
-
-@end
-
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
-@interface ALCell (Protected)
-
-/**
- *  This method is called within `setValuesDictionary:` to set the `titleLabel` text value.
- *  @see `ALCellConstants.h` title keys
- *
- *  @param dictionary The dictionary to be set
- */
-- (void)setTitleFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method is called within `setTitleFromDictionary:` to set the `titleLabel` attributed text (if present in the dictionary).
- *
- *  @param title The attributed title string to be set on `titleLabel`
- */
-- (void)setAttributedTitleString:(NSAttributedString *)title;
-
-/**
- *  This method is called within `setTitleFromDictionary:` to set the `titleLabel` text (if present in the dictionary without an attributed title).
- *
- *  @param title The title string to be set on `titleLabel`
- */
-- (void)setTitleString:(NSString *)title;
-
-/**
- *  This method is called within `setValuesDictionary:` to set the `subtitleLabel` text value.
- *  @see `ALCellConstants.h` subtitle keys
- *
- *  @param dictionary The dictionary to be set
- */
-- (void)setSubtitleFromDictionary:(NSDictionary *)dictionary;
-
-/**
- *  This method is called within `setSubtitleFromDictionary:` to set the `subtitleLabel` attributed text (if present in the dictionary).
- *
- *  @param subtitle The attributed subtitle string to be set on `subtitleLabel`
- */
-- (void)setAttributedSubtitleString:(NSAttributedString *)subtitle;
-
-/**
- *  This method is called within `setSubtitleFromDictionary:` to set the `subtitleLabel` text (if present in the dictionary withou an attributed subtitle).
- *
- *  @param subtitle The subtitle string to be set on `subtitleLabel`
- */
-- (void)setSubtitleString:(NSString *)subtitle;
 
 @end

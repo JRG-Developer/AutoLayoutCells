@@ -28,11 +28,13 @@
 @class ALAutoResizingTextView;
 @class ALTextViewCellHelper;
 
+@protocol ALTextCellDelegate;
+
 /**
  *  `ALTextViewOnlyCell` shows just a text view to get input from the user.
  *
- *  @discussion You should set the cell's values via `setValuesDictionary` instead of each property directly.
- *  @see `ALTextCellConstants` for additional keys that may be specified in the `valuesDictionary`.
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALTextCellConstants` for additional keys that may be specified in the dictionary.
  *
  *  @note The text view automatically resizes its height to fit the text input, and the cell notifies its `delegate` of such events so the table view can be updated appropriately.
  *  @see `ALTextCellDelegate` for more info.
@@ -70,8 +72,6 @@
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the text view's font.
- *
- *  @discussion The default implementation simply calls `AL_refreshPreferredFont` on the `textView`.
  *
  *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
  */

@@ -38,24 +38,11 @@
 {
   [super commonInit];
   [self configureSelf];
-  _textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self];
 }
 
 - (void)configureSelf
 {
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-}
-
-- (void)awakeFromNib
-{
-  [super awakeFromNib];
-  [self configureTextView];
-}
-
-- (void)configureTextView
-{
-  self.textView.delegate = self.textViewHelper;
-  [self.textViewHelper configureTextView:self.textView];
 }
 
 #pragma mark - Dynamic Type Text
@@ -75,15 +62,25 @@
 
 - (id<ALTextCellDelegate>)delegate
 {
-  return self.textViewHelper.delegate;
+  return [self.textViewHelper delegate];
+}
+
+- (void)setTextView:(ALAutoResizingTextView *)textView
+{
+  if (_textView == textView) {
+    return;
+  }
+  
+  _textView = textView;
+  self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
 }
 
 #pragma mark - Set Values Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self.textViewHelper textView:self.textView setValuesFromDictionary:valuesDictionary];
+  [super setSetValuesFromDictionary:dictionary];
+  [self.textViewHelper setValuesFromDictionary:dictionary];
 }
 
 @end

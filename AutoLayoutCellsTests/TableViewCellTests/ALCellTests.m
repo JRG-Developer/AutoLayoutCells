@@ -132,46 +132,46 @@
 
 #pragma mark - Set Values Dictionary - Tests
 
-- (void)test___setValuesDictionary___titleString
+- (void)test___setValuesFromDictionary___titleString
 {
   // given
   NSDictionary *dictionary = [self valuesDictionary];
   NSString *title = dictionary[ALCellTitleKey];
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.text).to.equal(title);
 }
 
-- (void)test___setValuesDictionary___attributedTitleString
+- (void)test___setValuesFromDictionary___attributedTitleString
 {
   // given
   NSDictionary *dictionary = [self attributedValuesDictionary];
   NSAttributedString *title = dictionary[ALCellAttributedTitleKey];
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.attributedText).to.equal(title);
 }
 
-- (void)test___setValuesDictionary___titleString_setsNilIfTitleStringIsEmpty
+- (void)test___setValuesFromDictionary___titleString_setsNilIfTitleStringIsEmpty
 {
   // given
   sut.titleLabel.text = @"Some existing title string";
   NSDictionary *dictionary = @{ALCellTitleKey: @""};
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.text).to.beNil();
 }
 
-- (void)test___setValuesDictionary____titleString_setsEmptyStringIfAttributedTitleStringIsEmpty
+- (void)test___setValuesFromDictionary____titleString_setsEmptyStringIfAttributedTitleStringIsEmpty
 {
   // given
   NSString *string = @"Some existing title string";
@@ -179,52 +179,52 @@
   NSDictionary *dictionary = @{ALCellAttributedTitleKey: @""};
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.attributedText).to.beNil();
 }
 
-- (void)test___setValuesDictionary___subtitleString
+- (void)test___setValuesFromDictionary___subtitleString
 {
   // given
   NSDictionary *dictionary = [self valuesDictionary];
   NSString *subtitle = dictionary[ALCellSubtitleKey];
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.text).to.equal(subtitle);
 }
 
-- (void)test___setValuesDictionary___attributedSubtitleString
+- (void)test___setValuesFromDictionary___attributedSubtitleString
 {
   // given
   NSDictionary *dictionary = [self attributedValuesDictionary];
   NSAttributedString *subtitle = dictionary[ALCellAttributedSubtitleKey];
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.attributedText).to.equal(subtitle);
 }
 
-- (void)test___setValuesDictionary___subtitleString_setsNilIfSubtitleStringIsEmpty
+- (void)test___setValuesFromDictionary___subtitleString_setsNilIfSubtitleStringIsEmpty
 {
   // given
   sut.subtitleLabel.text = @"Some existing title string";
   NSDictionary *dictionary = @{ALCellSubtitleKey: @""};
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.text).to.beNil();
 }
 
-- (void)test___setValuesDictionary___subtitleString_setsEmptyStringIfAttributedSubtitleStringIsEmpty
+- (void)test___setValuesFromDictionary___subtitleString_setsEmptyStringIfAttributedSubtitleStringIsEmpty
 {
   // given
   NSString *string = @"Some existing title string";
@@ -232,7 +232,7 @@
   NSDictionary *dictionary = @{ALCellAttributedSubtitleKey: @""};
   
   // when
-  [sut setValuesDictionary:dictionary];
+  [sut setSetValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.attributedText).to.beNil();
