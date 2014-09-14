@@ -117,8 +117,8 @@ static NSString *CellIdentifier = @"ALDemoCell";
 - (void)configureCell:(ALImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
   Model *model = self.modelsArray[indexPath.row];
-  NSDictionary *dict = [model valuesDictionary];
-  [cell setValuesDictionary:dict];
+  NSDictionary *dictionary = [model valuesDictionary];
+  [cell setValuesFromDictionary:dictionary];
 }
 
 #pragma mark - UITableViewDataSource

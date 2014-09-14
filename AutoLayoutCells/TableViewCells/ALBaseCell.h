@@ -61,7 +61,7 @@
  *
  *  @param dictionary The dictionary containing the values to be set on the cell.
  */
-- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super));
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super));
 
 @end
 

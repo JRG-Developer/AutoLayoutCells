@@ -61,7 +61,7 @@
 
 #pragma mark - Set Values From Dictionary
 
-- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super))
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super))
 {
   // Intentionally left empty
 }

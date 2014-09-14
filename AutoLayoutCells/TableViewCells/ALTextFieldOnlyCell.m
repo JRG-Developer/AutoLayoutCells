@@ -72,9 +72,9 @@
 
 #pragma mark - Set Values From Dictionary
 
-- (void)setSetValuesFromDictionary:(NSDictionary *)dictionary
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setSetValuesFromDictionary:dictionary];
+  [super setValuesFromDictionary:dictionary];
   [self.textFieldHelper setValuesFromDictionary:dictionary];
 }
 
