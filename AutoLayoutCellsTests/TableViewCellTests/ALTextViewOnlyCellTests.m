@@ -201,7 +201,7 @@
   OCMExpect([textViewHelper setValuesFromDictionary:dict]);
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(textViewHelper);

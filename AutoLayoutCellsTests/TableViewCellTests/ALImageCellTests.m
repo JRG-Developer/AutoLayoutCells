@@ -143,7 +143,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainPlaceholderImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.mainImagePlaceholder).to.equal(image);
@@ -156,7 +156,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryPlaceholderImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.secondaryImagePlaceholder).to.equal(image);
@@ -173,7 +173,7 @@ static UIImage *image;
   sut.mainImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   [[constraint verify] setConstant:0];
@@ -189,7 +189,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -202,7 +202,7 @@ static UIImage *image;
   sut.mainImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -218,7 +218,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -231,7 +231,7 @@ static UIImage *image;
   sut.mainImageViewWidthConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -247,7 +247,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -260,7 +260,7 @@ static UIImage *image;
   sut.mainImageViewHeightConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -276,7 +276,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -291,7 +291,7 @@ static UIImage *image;
   sut.secondaryImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -307,7 +307,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -320,7 +320,7 @@ static UIImage *image;
   sut.secondaryImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -336,7 +336,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -349,7 +349,7 @@ static UIImage *image;
   sut.secondaryImageViewWidthConstraint = constraint;
   
   // when
-  [sut setSetValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -365,7 +365,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
@@ -381,7 +381,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -397,7 +397,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageNameKey: @"test_image"};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -422,7 +422,7 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
@@ -444,7 +444,7 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
@@ -467,7 +467,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageURLKey: url};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
@@ -483,7 +483,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -499,7 +499,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageNameKey: @"test_image"};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -524,7 +524,7 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
@@ -546,7 +546,7 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
@@ -569,7 +569,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageURLKey: url};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);

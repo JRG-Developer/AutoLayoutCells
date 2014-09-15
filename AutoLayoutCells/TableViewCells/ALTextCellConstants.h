@@ -79,7 +79,9 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
 };
 
 /**
- *  Use this key to specify the `ALTextCellType` as an `NSNumber`
+ *  Use this key to specify the `ALTextCellType` as an `NSNumber`.
+ *
+ *  @discussion The `NSNumber` object should have an integer value corresponding to a value within the `ALTextCellType` enum.
  */
 extern NSString * const ALTextCellTypeKey;              // type
 

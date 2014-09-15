@@ -68,7 +68,7 @@
 - (void)whenSetValuesWithToggleDictionaryValue:(BOOL)value
 {
   NSDictionary *dictionary = @{ALCellValueKey: @(value)};
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
 }
 
 #pragma mark - Class - Tests

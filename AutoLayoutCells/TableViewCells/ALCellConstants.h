@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 /**
- *  `ALCell` and all subclasses look for these keys in order to set the relevant text/values on their cell subviews.
+ *  `ALCell` and subclasses look for these keys in order to set the relevant text/values on their cell subviews.
  */
 
 /**
@@ -49,13 +49,13 @@ extern NSString * const ALCellAttributedSubtitleKey;    // attrSubtitle
 /**
  *  Use this key to specify the value to be set on the cell.
  *
- *  @discussion Each cell type uses this value differently. In example, `ALBooleanCell` looks for an `NSNumber` with a `boolean` value to set its `toggle` boolean value, and `ALTextCell` looks for a string value to set its `textView` text value. Some cells, such as `ALCell`, don't consider this value at all.
+ *  @discussion Each cell type uses this value differently. In example, `ALBooleanCell` looks for an `NSNumber` with a `boolean` value to set its `toggle` boolean value, and `ALTextViewCell` looks for a string value to set its `textView` text value. Some cells, such as `ALCell`, don't even use this value at all.
  */
 extern NSString * const ALCellValueKey;                 // input
 
 /**
  *  Use this key to specify the attributed value to be set on the cell.
  *
- *  @discussion Each cell type uses this value differently, and many cells don't consider it. In example, `ALTextCell` looks for an attributed string value to set its `textView` attributed text value, yet `ALBooleanCell` doesn't consider this value at all. If in doubt, use `ALCellValueKey` to set the value of a cell instead of this key.
+ *  @discussion Each cell type uses this value differently. In example, `ALTextViewCell` looks for an attributed string value to set its `textView` attributed text value, yet `ALBooleanCell` doesn't consider this value at all. If in doubt, use `ALCellValueKey` to set the value of a cell instead of this key.
  */
 extern NSString * const ALCellAttributedValueKey;       // attrInput

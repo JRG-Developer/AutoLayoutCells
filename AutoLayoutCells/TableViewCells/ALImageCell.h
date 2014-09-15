@@ -49,9 +49,9 @@
 /**
  *  The style to be used to show a loading activity indicator.
  *
- *  @discussion This propert is set to `NSNotFound` by default, meaning a loading activity indicator shouldn't be shown.
+ *  @discussion This property is set to `NSNotFound` by default, meaning a loading activity indicator shouldn't be shown.
  */
-@property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle;
+@property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle UI_APPEARANCE_SELECTOR;
 
 ///--------------------------------------------------------------
 /// @name Main Image View Outlets

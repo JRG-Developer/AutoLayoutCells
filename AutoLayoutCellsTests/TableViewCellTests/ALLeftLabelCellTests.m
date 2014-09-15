@@ -105,7 +105,7 @@
   NSDictionary *dict = @{ALLeftLabelTextKey: text};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.text).to.equal(text);
@@ -119,7 +119,7 @@
   NSDictionary *dict = @{ALLeftLabelAttributedTextKey: attributedText};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.attributedText).to.equal(attributedText);
@@ -132,7 +132,7 @@
   NSDictionary *dict = @{ALLeftLabelTextKey: text};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.text).to.beNil();
@@ -146,7 +146,7 @@
   NSDictionary *dict = @{ALLeftLabelAttributedTextKey: attributedText};
   
   // when
-  [sut setSetValuesFromDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.leftLabel.attributedText).to.beNil();

@@ -40,12 +40,11 @@ extern NSString * const ALTableViewCellsBundleName;
 
 @end
 
-/**
- *  These methods should be considered "protected" and should *not* be used outside this class category, except for unit testing.
- *
- *  @discussion These methods are exposed for unit testing.
- */
 @interface NSBundle (ALTableViewCellsBundle_Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
 
 /**
  *  This method sets the `ALTableViewCellsBundle` using the given `path`.

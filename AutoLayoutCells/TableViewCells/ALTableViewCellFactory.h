@@ -27,7 +27,7 @@
 @protocol ALTableViewCellFactoryDelegate;
 
 /**
- *  `ALTableViewCellFactory` encapsulates common cell creation and height calculation tasks.
+ *  `ALTableViewCellFactory` encapsulates common cell creation/dequeuing and cell height calculation tasks.
  */
 @interface ALTableViewCellFactory : NSObject
 
@@ -50,7 +50,7 @@
 /**
  *  This is the designated initializer
  *
- *  @param tableView The table view that will display all of the cells
+ *  @param tableView The table view to use for displaying/dequeuing cells.
  *  @param dictionary A dictionary with cell identifiers as keys and cell nibs as values
  *
  *  @return A new `ALTableViewCellFactory` instance
@@ -76,12 +76,14 @@
  *  @return The height of the configured cell at the index path (based on a sizing cell)
  */
 - (CGFloat)cellHeightForIdentifier:(NSString *)identifier atIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
-/**
- *  These methods should be considered "protected" and should only be called by this class/subclasses.
- */
 @interface ALTableViewCellFactory (Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
 
 /**
  *  This method is called to get the "sizingCell" from the `sizingCellDictionary` for the given cell identifier. If a sizing cell doesn't already exist within the `sizingCellDictionary`, one will be created and inserted into the dictionary.

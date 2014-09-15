@@ -139,7 +139,7 @@
   NSString *title = dictionary[ALCellTitleKey];
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.text).to.equal(title);
@@ -152,7 +152,7 @@
   NSAttributedString *title = dictionary[ALCellAttributedTitleKey];
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.attributedText).to.equal(title);
@@ -165,7 +165,7 @@
   NSDictionary *dictionary = @{ALCellTitleKey: @""};
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.text).to.beNil();
@@ -179,7 +179,7 @@
   NSDictionary *dictionary = @{ALCellAttributedTitleKey: @""};
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.titleLabel.attributedText).to.beNil();
@@ -192,7 +192,7 @@
   NSString *subtitle = dictionary[ALCellSubtitleKey];
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.text).to.equal(subtitle);
@@ -205,7 +205,7 @@
   NSAttributedString *subtitle = dictionary[ALCellAttributedSubtitleKey];
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.attributedText).to.equal(subtitle);
@@ -218,7 +218,7 @@
   NSDictionary *dictionary = @{ALCellSubtitleKey: @""};
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.text).to.beNil();
@@ -232,7 +232,7 @@
   NSDictionary *dictionary = @{ALCellAttributedSubtitleKey: @""};
   
   // when
-  [sut setSetValuesFromDictionary:dictionary];
+  [sut setValuesFromDictionary:dictionary];
   
   // then
   expect(sut.subtitleLabel.attributedText).to.beNil();

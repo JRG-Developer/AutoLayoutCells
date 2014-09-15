@@ -25,7 +25,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  `UIFont+ALCustomDynamicFont` provides methods to get the point size for a given font text style.
+ *  `UIFont+ALCustomDynamicFont` provides methods to get the point size for a given font text style or font given a font name and text style.
  */
 @interface UIFont (ALCustomDynamicFont)
 
@@ -34,7 +34,7 @@
 ///--------------------------------------------------------------
 
 /**
- *  Use this method for creating a font with the font name sized according to the text style.
+ *  Use this method to create a font with the font name sized according to the text style.
  *
  *  @param fontName      The font name
  *  @param textStyle     The font text style
@@ -44,7 +44,7 @@
 + (UIFont *)AL_fontWithName:(NSString *)fontName textStyle:(NSString *)textStyle;
 
 /**
- *  Use this method for getting the font point size from the text style.
+ *  Use this method for getting the font point size from a given text style.
  *
  *  @warning Font size actually depends on text style and the value of `[[UIApplication sharedApplication] preferredContentSizeCategory]`. Be warned that this value *will* change if the user changes the preferred content sizes via the settings app!
  *
@@ -68,7 +68,7 @@
 + (NSDictionary *)AL_fontSizeTable;
 
 /**
- *  Use this method to set (using an existing text style) or add (using a new text style) a text-style/content-size dictionary key-pair to the font size table.
+ *  Use this method to set (using an existing text style key) or add (using a new text style key) a text-style/content-size dictionary key-pair to the font size table.
  *
  *  @warning This method throws a runtime exception if either `textStyle` or `contentSizeDictionary` is `nil`.
  *
