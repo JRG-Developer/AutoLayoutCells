@@ -45,16 +45,16 @@
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
-#pragma mark - Custom Accessors
-
-- (void)setTextField:(UITextField *)textField
+- (void)awakeFromNib
 {
-  if (_textField == textField) {
-    return;
-  }
-  
-  _textField = textField;
+  [super awakeFromNib];
+  [self setupTextFieldHelper];
+}
+
+- (void)setupTextFieldHelper
+{
   self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+  self.textFieldHelper.delegate = self.delegate;
 }
 
 #pragma mark - Dynamic Type Text
@@ -69,6 +69,15 @@
 {
   self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
+
+#pragma mark - Custom Accessors
+
+- (void)setDelegate:(id<ALCellDelegate>)delegate
+{
+  [super setDelegate:delegate];
+  self.textFieldHelper.delegate = delegate;
+}
+
 
 #pragma mark - Set Values From Dictionary
 

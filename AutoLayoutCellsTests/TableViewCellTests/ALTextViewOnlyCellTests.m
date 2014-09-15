@@ -110,6 +110,20 @@
   expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
 }
 
+- (void)test___awakeFromNib___setsUpTextViewHelper
+{
+  // given
+  [self givenMockDelegate];
+  
+  // when
+  [sut awakeFromNib];
+  
+  // then
+  expect(sut.textViewHelper.cell).to.equal(sut);
+  expect(sut.textViewHelper.textView).to.equal(sut.textView);
+  expect(sut.textViewHelper.delegate).to.equal(sut.delegate);
+}
+
 #pragma mark - Dynamic Type Text - Tests
 
 - (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___textView
@@ -144,21 +158,6 @@
 
 #pragma mark - Custom Accessors
 
-- (void)test___setDelegate___sets_textViewHelper_delegate
-{
-  // given
-  [self givenMockTextViewHelper];
-  [self givenMockDelegate];
-  
-  OCMExpect([textViewHelper setDelegate:delegate]);
-  
-  // when
-  [sut setDelegate:delegate];
-  
-  // then
-  OCMVerifyAll(textViewHelper);
-}
-
 - (void)test___delegate___returns_textViewHelper_delegate
 {
   // given
@@ -172,22 +171,6 @@
   
   // then
   XCTAssertEqual(actual, delegate);
-}
-
-- (void)test___setTextField___setsTextFieldHelper
-{
-  // given
-  textView = [[ALAutoResizingTextView alloc] init];
-  
-  sut = [[ALTextViewOnlyCell alloc] init];
-  expect(sut.textViewHelper).to.beNil();
-  
-  // when
-  sut.textView = textView;
-  
-  // then
-  expect(sut.textViewHelper.cell).to.equal(sut);
-  expect(sut.textViewHelper.textView).to.equal(textView);
 }
 
 #pragma mark - Set Values Dictionary - Tests

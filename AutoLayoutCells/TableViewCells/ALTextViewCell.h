@@ -27,7 +27,7 @@
 @class ALAutoResizingTextView;
 @class ALTextViewCellHelper;
 
-@protocol ALTextViewCellDelegate;
+@protocol ALTextCellDelegate;
 
 /**
  *  `ALTextCell` provides a means for text-input from the user. It shows a text view, title, subtitle, and optional image (depending on the nib).
@@ -57,7 +57,7 @@
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) IBOutlet id<ALTextViewCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
 
 /**
  *  The text view, which accepts user input and resizes itself as needed

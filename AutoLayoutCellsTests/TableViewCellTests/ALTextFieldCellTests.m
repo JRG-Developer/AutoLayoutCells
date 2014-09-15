@@ -47,6 +47,7 @@
 {
   ALTextFieldCell *sut;
 
+  id delegate;
   id textField;
   id textFieldHelper;
 }
@@ -72,6 +73,12 @@
   textFieldHelper = OCMPartialMock(sut.textFieldHelper);
 }
 
+- (void)givenMockDelegate
+{
+  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
+  sut.delegate = delegate;
+}
+
 #pragma mark - Outlet - Tests
 
 - (void)test_has___titleLabel
@@ -95,23 +102,35 @@
   expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
 }
 
-#pragma mark - Custom Accessor - Tests
-
-- (void)test___setTextField___setsTextFieldHelper
+- (void)test___awakeFromNib___setsUpTextFieldHelper
 {
   // given
-  textField = [[UITextField alloc] init];
-  
-  sut = [[ALTextFieldCell alloc] init];
-  expect(sut.textFieldHelper).to.beNil();
+  [self givenMockDelegate];
   
   // when
-  sut.textField = textField;
+  [sut awakeFromNib];
   
   // then
-  expect(sut.textFieldHelper).toNot.beNil();
   expect(sut.textFieldHelper.cell).to.equal(sut);
-  expect(sut.textFieldHelper.textField).to.equal(textField);
+  expect(sut.textFieldHelper.textField).to.equal(sut.textField);
+  expect(sut.textFieldHelper.delegate).to.equal(sut.delegate);
+}
+
+#pragma mark - Custom Accessor - Tests
+
+- (void)test___setDelegate___sets_textFieldHelper_delegate
+{
+  // given
+  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
+  
+  [self givenMockTextFieldHelper];
+  OCMExpect([textFieldHelper setDelegate:delegate]);
+  
+  // when
+  sut.delegate = delegate;
+  
+  // then
+  OCMVerifyAll(textFieldHelper);
 }
 
 #pragma mark - Dynamic Type Text

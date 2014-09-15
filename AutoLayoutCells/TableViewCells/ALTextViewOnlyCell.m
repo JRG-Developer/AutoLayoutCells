@@ -31,6 +31,7 @@
 @end
 
 @implementation ALTextViewOnlyCell
+@synthesize delegate = _delegate;
 
 #pragma mark - Object Lifecycle
 
@@ -43,6 +44,18 @@
 - (void)configureSelf
 {
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
+
+- (void)awakeFromNib
+{
+  [super awakeFromNib];
+  [self setupTextViewHelper];
+}
+
+- (void)setupTextViewHelper
+{
+  self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
+  self.textViewHelper.delegate = self.delegate;
 }
 
 #pragma mark - Dynamic Type Text
@@ -62,22 +75,11 @@
 
 - (void)setDelegate:(id<ALTextCellDelegate>)delegate
 {
-  self.textViewHelper.delegate = delegate;
-}
-
-- (id<ALTextCellDelegate>)delegate
-{
-  return self.textViewHelper.delegate;
-}
-
-- (void)setTextView:(ALAutoResizingTextView *)textView
-{
-  if (_textView == textView) {
+  if (_delegate == delegate) {
     return;
   }
-  
-  _textView = textView;
-  self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
+  _delegate = delegate;
+  self.textViewHelper.delegate = delegate;
 }
 
 #pragma mark - Set Values Dictionary
