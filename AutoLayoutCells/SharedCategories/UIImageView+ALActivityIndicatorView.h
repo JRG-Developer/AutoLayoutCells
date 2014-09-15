@@ -44,7 +44,7 @@ char const ALActivityIndicatorKey;
 - (UIActivityIndicatorView *)AL_activityIndicatorView;;
 
 /**
- *  If an associated activity indicator view already exists with the same style, this method simply returns it. Otherwise, it creates and associated a new activity indicator view with the given style.
+ *  If an associated activity indicator view already exists with the same style, this method simply returns it. Otherwise, it creates and associates a new activity indicator view with the given style.
  *
  *  @warning If the style is *not* valid, the existing activity indicator view will be removed and `nil` will be returned.
  *

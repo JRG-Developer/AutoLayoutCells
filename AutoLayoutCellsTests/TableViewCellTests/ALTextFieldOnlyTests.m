@@ -1,8 +1,9 @@
 //
-//  ALTextFieldCell.m
+//  ALTextFieldOnlyTests.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 9/10/14.
+//  Created by Joshua Greene on 9/11/14.
+//  Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,30 +24,29 @@
 //  THE SOFTWARE.
 
 // Test Class
-#import "ALTextFieldCell.h"
+#import "ALTextFieldOnlyCell.h"
 
 // Collaborators
-#import "ALTextCellConstants.h"
-#import "ALCellDelegate.h"
 #import "ALTextFieldCellHelper.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
+#import "Test_ALTableViewCellNibFactory.h"
 
 #define EXP_SHORTHAND YES
 #import <Expecta/Expecta.h>
 
 #import <OCMock/OCMock.h>
 
-#import "Test_ALTableViewCellNibFactory.h"
 
-@interface ALTextFieldCellTests : XCTestCase
+@interface ALTextFieldOnlyTests : XCTestCase
 @end
 
-@implementation ALTextFieldCellTests
+@implementation ALTextFieldOnlyTests
 {
-  ALTextFieldCell *sut;
-
+  ALTextFieldOnlyCell *sut;
+  id partialMock;
+  
   id delegate;
   id textField;
   id textFieldHelper;
@@ -57,16 +57,10 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldCell" owner:self];
+  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldOnlyCell" owner:self];
 }
 
 #pragma mark - Given
-
-- (void)givenMockTextField
-{
-  textField = OCMClassMock([UITextField class]);
-  sut.textField = textField;
-}
 
 - (void)givenMockTextFieldHelper
 {
@@ -79,12 +73,7 @@
   sut.delegate = delegate;
 }
 
-#pragma mark - Outlet - Tests
-
-- (void)test_has___titleLabel
-{
-  expect(sut.titleLabel).toNot.beNil();
-}
+#pragma mark - Outlets - Tests
 
 - (void)test_has___textField
 {
@@ -96,7 +85,7 @@
 - (void)test___commonInit___configuresCell
 {
   // given
-  sut = [[ALTextFieldCell alloc] init];
+  sut = [[ALTextFieldOnlyCell alloc] init];
   
   // then
   expect(sut.selectionStyle).to.equal(UITableViewCellSelectionStyleNone);
@@ -133,22 +122,19 @@
   OCMVerifyAll(textFieldHelper);
 }
 
-#pragma mark - Dynamic Type Text
+#pragma mark - Dynamic Type Text - Tests
 
-- (void)test___refreshFonts___refreshes_textField
+- (void)test___contentSizeCategoryDidChange___calls_refreshFonts
 {
   // given
-  [self givenMockTextField];
-  
-  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-  
-  OCMExpect([textField setFont:font]);
+  partialMock = OCMPartialMock(sut);
+  OCMExpect([partialMock refreshFonts]);
   
   // when
-  [sut refreshFonts];
+  [sut contentSizeCategoryDidChange:nil];
   
   // then
-  OCMVerifyAll(textField);
+  OCMVerifyAll(partialMock);
 }
 
 #pragma mark - Set Values Dictionary - Tests
@@ -167,6 +153,5 @@
   // then
   OCMVerifyAll(textFieldHelper);
 }
-
 
 @end

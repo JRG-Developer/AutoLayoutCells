@@ -1,8 +1,8 @@
 //
-//  ALBooleanCell.m
+//  Test_ALTextCellDelegate.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,46 +22,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALBooleanCell.h"
-#import "ALCellConstants.h"
+#import "ALTextCellDelegate.h"
 
-#import "ALCellDelegate.h"
+@interface Test_ALTextCellDelegate : NSObject <ALTextCellDelegate>
 
-@implementation ALBooleanCell
+#pragma mark - ALCellDelegate
 
-#pragma mark - Object Lifecycle
+- (void)cellWillBeginEditing:(id)cell;
+- (void)cell:(id)cell valueChanged:(id)value;
+- (void)cell:(id)cell willEndEditing:(id)value;
+- (void)cell:(id)cell didEndEditing:(id)value;
 
-- (void)commonInit
-{
-  [super commonInit];
-  [self configureSelf];
-}
+#pragma mark - ALTextCellDelegate
 
-- (void)configureSelf
-{
-  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-}
-
-#pragma mark - Actions
-
-- (IBAction)didToggle:(UISwitch *)toggle
-{
-  if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
-    [self.delegate cell:self valueChanged:@([toggle isOn])];
-  }
-}
-
-#pragma mark - Set Values From Dictionary
-
-- (void)setValuesFromDictionary:(NSDictionary *)dictionary
-{
-  [super setValuesFromDictionary:dictionary];
-  [self setToggleValueFromDictionary:dictionary];
-}
-
-- (void)setToggleValueFromDictionary:(NSDictionary *)dictionary
-{
-  self.toggle.on = [dictionary[ALCellValueKey] boolValue];
-}
+- (void)cellHeightWillChange:(id)cell;
+- (void)cellHeightDidChange:(id)cell;
 
 @end

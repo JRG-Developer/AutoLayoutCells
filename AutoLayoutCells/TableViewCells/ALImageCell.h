@@ -26,8 +26,9 @@
 
 /**
  *  `ALImageCell` shows a title, subtitle, and optional "main" and "secondary" images.
- *  @see `ALImageCellConstants` for keys you can use to set the cell's values.
- *  @discussion It's highly recommended that you set the cell's values via `setValuesDictionary` instead of each property directly.
+ *
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALCellConstants` and `ALImageCellConstants`  for predefined dictionary value keys.
  */
 @interface ALImageCell : ALCell
 
@@ -48,9 +49,9 @@
 /**
  *  The style to be used to show a loading activity indicator.
  *
- *  @discussion This propert is set to `NSNotFound` by default, meaning a loading activity indicator shouldn't be shown.
+ *  @discussion This property is set to `NSNotFound` by default, meaning a loading activity indicator shouldn't be shown.
  */
-@property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle;
+@property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle UI_APPEARANCE_SELECTOR;
 
 ///--------------------------------------------------------------
 /// @name Main Image View Outlets
@@ -168,10 +169,11 @@
 
 @end
 
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
 @interface ALImageCell (Protected)
+
+///--------------------------------------------------------------
+/// @name Protected Methods
+///--------------------------------------------------------------
 
 /**
  *  This method first sets the `placeholderImage` on the `imageView`, asynchronously loads the image from the given url, and sets it on the image view.

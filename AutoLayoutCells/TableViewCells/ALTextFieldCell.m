@@ -24,24 +24,37 @@
 
 #import "ALTextFieldCell.h"
 
-#import "ALTextCellConstants.h"
-#import "ALCellDelegate.h"
+#import "ALTextFieldCellHelper.h"
+
+@interface ALTextFieldCell()
+@property (strong, nonatomic, readwrite) ALTextFieldCellHelper *textFieldHelper;
+@end
 
 @implementation ALTextFieldCell
 
 #pragma mark - Object Lifecycle
 
+- (void)commonInit
+{
+  [super commonInit];
+  [self configureSelf];
+}
+
+- (void)configureSelf
+{
+  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
+
 - (void)awakeFromNib
 {
   [super awakeFromNib];
-  [self configureTextField];
+  [self setupTextFieldHelper];
 }
 
-- (void)configureTextField
+- (void)setupTextFieldHelper
 {
-  [self.textField addTarget:self action:@selector(textFieldValueChanged:)
-           forControlEvents:UIControlEventEditingChanged];
-  self.textField.delegate = self;
+  self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+  self.textFieldHelper.delegate = self.delegate;
 }
 
 #pragma mark - Dynamic Type Text
@@ -52,183 +65,20 @@
   self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
+#pragma mark - Custom Accessors
+
+- (void)setDelegate:(id<ALCellDelegate>)delegate
+{
+  [super setDelegate:delegate];
+  self.textFieldHelper.delegate = delegate;
+}
+
 #pragma mark - Set Values Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self setTextFromDictionary:valuesDictionary];
-  [self setTextPlaceholderFromDictionary:valuesDictionary];
-  [self setTextInputStyleFromDictionary:valuesDictionary];
+  [super setValuesFromDictionary:dictionary];
+  [self.textFieldHelper setValuesFromDictionary:dictionary];
 }
-
-- (void)setTextFromDictionary:(NSDictionary *)dictionary
-{
-  if (dictionary[ALCellAttributedValueKey]) {
-    [self setTextFieldAttributedValueText:dictionary[ALCellAttributedValueKey]];
-    
-  } else {
-    [self setTextFieldValueText:dictionary[ALCellValueKey]];
-
-  }
-}
-
-- (void)setTextFieldAttributedValueText:(NSAttributedString *)text
-{
-  self.textField.attributedText = text.length > 0 ? text : nil;
-}
-
-- (void)setTextFieldValueText:(NSString *)text
-{
-  self.textField.text = text.length > 0 ? text : nil;
-}
-
-- (void)setTextPlaceholderFromDictionary:(NSDictionary *)dictionary
-{
-  self.textField.placeholder = dictionary[ALTextCellPlaceholderTextKey];
-}
-
-- (void)setTextInputStyleFromDictionary:(NSDictionary *)dictionary
-{
-  if (!dictionary[ALTextCellTypeKey]) {
-    return;
-  }
-  
-  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
-  
-  switch (type)
-  {
-    case ALTextCellTypeDefault:
-      [self setTextFieldTypeDefault:self.textField];
-      break;
-      
-    case ALTextCellTypeEmail:
-      [self setTextFieldTypeEmail:self.textField];
-      break;
-      
-    case ALTextCellTypeName:
-      [self setTextFieldTypeName:self.textField];
-      break;
-      
-    case ALTextCellTypeNoChecking:
-      [self setTextFieldTypeNoChecking:self.textField];
-      break;
-      
-    case ALTextCellTypePassword:
-      [self setTextFieldTypePassword:self.textField];
-      break;
-      
-    case ALTextCellTypeSentences:
-      [self setTextFieldTypeSentences:self.textField];
-      break;
-      
-    case ALTextCellTypeNumber:
-      [self setTextFieldTypeNumber:self.textField];
-      break;
-      
-    default:
-      break;
-  }
-}
-
-- (void)setTextFieldTypeEmail:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  textField.keyboardType = UIKeyboardTypeEmailAddress;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
-- (void)setTextFieldTypeName:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-  textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  textField.keyboardType = UIKeyboardTypeDefault;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
-- (void)setTextFieldTypeNoChecking:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  textField.keyboardType = UIKeyboardTypeDefault;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
-- (void)setTextFieldTypePassword:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeNone;;
-  textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  textField.keyboardType = UIKeyboardTypeDefault;
-  textField.secureTextEntry = YES;
-  textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
-- (void)setTextFieldTypeSentences:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-  textField.autocorrectionType = UITextAutocorrectionTypeYes;
-  textField.keyboardType = UIKeyboardTypeDefault;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeYes;
-}
-
-- (void)setTextFieldTypeNumber:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-  textField.autocorrectionType = UITextAutocorrectionTypeNo;
-  textField.keyboardType = UIKeyboardTypeNumberPad;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeNo;
-}
-
-- (void)setTextFieldTypeDefault:(UITextField *)textField
-{
-  textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-  textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-  textField.keyboardType = UIKeyboardTypeDefault;
-  textField.secureTextEntry = NO;
-  textField.spellCheckingType = UITextSpellCheckingTypeDefault;
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-  if ([self.delegate respondsToSelector:@selector(cellWillBeginEditing:)]) {
-    [self.delegate cellWillBeginEditing:self];
-  }
-  
-  return YES;
-}
-
-- (void)textFieldValueChanged:(UITextField *)textField
-{
-  if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
-    [self.delegate cell:self valueChanged:self.textField.text];
-  }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-  if ([self.delegate respondsToSelector:@selector(cell:willEndEditing:)]) {
-    [self.delegate cell:self willEndEditing:self.textField.text];
-  }
-  
-  [textField resignFirstResponder];
-  
-  return NO;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-  if ([self.delegate respondsToSelector:@selector(cell:didEndEditing:)]) {
-    [self.delegate cell:self didEndEditing:self.textField.text];
-  }
-}
-  
 
 @end

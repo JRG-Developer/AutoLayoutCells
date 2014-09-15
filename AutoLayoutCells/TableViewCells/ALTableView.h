@@ -30,13 +30,10 @@
 @interface ALTableView : UITableView
 @end
 
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
 @interface ALTableView (Protected)
 
 ///--------------------------------------------------------------
-/// @name Object Lifecycle
+/// @name Protected Methods
 ///--------------------------------------------------------------
 
 /**
@@ -45,10 +42,6 @@
  * @discussion The default implementation registers for `UIContentSizeCategoryDidChangeNotification` notifications. This method is called by all `init` methods after `self` has already been initialized.
  */
 - (void)commonInit __attribute((objc_requires_super));
-
-///--------------------------------------------------------------
-/// @name Notifications
-///--------------------------------------------------------------
 
 /**
  *  This method is called whenever the`UIContentSizeCategoryDidChangeNotification` notification is received.

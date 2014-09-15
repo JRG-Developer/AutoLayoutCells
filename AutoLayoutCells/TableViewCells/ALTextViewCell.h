@@ -1,5 +1,5 @@
 //
-//  ALTextCell.h
+//  ALTextViewCell.h
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 07/11/14.
@@ -23,29 +23,41 @@
 //  THE SOFTWARE.
 
 #import "ALImageCell.h"
-#import "ALTextViewHelperDelegate.h"
 
 @class ALAutoResizingTextView;
+@class ALTextViewCellHelper;
+
 @protocol ALTextCellDelegate;
 
 /**
  *  `ALTextCell` provides a means for text-input from the user. It shows a text view, title, subtitle, and optional image (depending on the nib).
- *  @see `ALTextCellConstants` for additional keys that may be specified in the `valuesDictionary`.
- *  @discussion The text view automatically resizes its height to fit the text input, and the cell notifies its `delegate` of such events so the table view can be updated appropriately.
+ *
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALTextCellConstants` for additional keys that may be specified in the dictionary.
+ *
+ *  @note The text view automatically resizes its height to fit the text input, and the cell notifies its `delegate` of such events so the table view can be updated appropriately.
+ *  @see `ALTextCellDelegate` for more info.
  */
-@interface ALTextCell : ALImageCell <ALTextViewHelperDelegate>
+@interface ALTextViewCell : ALImageCell
+
+///--------------------------------------------------------------
+/// @name Instance Preoperties
+///--------------------------------------------------------------
+
+/**
+*  The text view helper, which encapsulates commmon text view configuration, delegate handling, etc
+*/
+@property (strong, nonatomic, readonly) ALTextViewCellHelper *textViewHelper;
+
+///--------------------------------------------------------------
+/// @name Outlets
+///--------------------------------------------------------------
 
 /**
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
 @property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
-
-/**
- *  The text view helper, which takes care of configuring the text view
- *  @see `ALTextViewHelper` for more details
- */
-@property (strong, nonatomic) ALTextViewHelper *textViewHelper;
 
 /**
  *  The text view, which accepts user input and resizes itself as needed

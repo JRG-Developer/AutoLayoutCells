@@ -1,8 +1,8 @@
 //
-//  ALBooleanCell.m
+//  ALTextFieldOnlyCell.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,15 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALBooleanCell.h"
-#import "ALCellConstants.h"
+#import "ALTextFieldOnlyCell.h"
 
-#import "ALCellDelegate.h"
+#import "ALTextFieldCellHelper.h"
 
-@implementation ALBooleanCell
+@interface ALTextFieldOnlyCell()
+@property (strong, nonatomic, readwrite) ALTextFieldCellHelper *textFieldHelper;
+@end
+
+@implementation ALTextFieldOnlyCell
 
 #pragma mark - Object Lifecycle
 
@@ -42,26 +45,46 @@
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
-#pragma mark - Actions
-
-- (IBAction)didToggle:(UISwitch *)toggle
+- (void)awakeFromNib
 {
-  if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
-    [self.delegate cell:self valueChanged:@([toggle isOn])];
-  }
+  [super awakeFromNib];
+  [self setupTextFieldHelper];
 }
+
+- (void)setupTextFieldHelper
+{
+  self.textFieldHelper = [[ALTextFieldCellHelper alloc] initWithCell:self textField:self.textField];
+  self.textFieldHelper.delegate = self.delegate;
+}
+
+#pragma mark - Dynamic Type Text
+
+- (void)contentSizeCategoryDidChange:(NSNotification *)notification
+{
+  [super contentSizeCategoryDidChange:notification];
+  [self refreshFonts];
+}
+
+- (void)refreshFonts
+{
+  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setDelegate:(id<ALCellDelegate>)delegate
+{
+  [super setDelegate:delegate];
+  self.textFieldHelper.delegate = delegate;
+}
+
 
 #pragma mark - Set Values From Dictionary
 
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
   [super setValuesFromDictionary:dictionary];
-  [self setToggleValueFromDictionary:dictionary];
-}
-
-- (void)setToggleValueFromDictionary:(NSDictionary *)dictionary
-{
-  self.toggle.on = [dictionary[ALCellValueKey] boolValue];
+  [self.textFieldHelper setValuesFromDictionary:dictionary];
 }
 
 @end

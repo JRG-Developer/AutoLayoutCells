@@ -25,51 +25,44 @@
 @import UIKit;
 
 /**
- *  `ALTableViewCellNibFactory` makes it easy to get the `UINib` of any cell within `AutoLayoutCells`
+ *  `ALTableViewCellNibFactory` provides convenience methods to get the `UINib` of any cell within `AutoLayoutCells`.
  */
 @interface ALTableViewCellNibFactory : NSObject
 
 /**
- *  Use this method to get an `ALBooleanCell` nib
+ *  Use this method to get an `ALBooleanCell` nib.
  *
  *  @return `ALBooleanCell` nib
  */
 + (UINib *)booleanCellNib;
 
 /**
- *  Use this method to get an `ALCell` nib
+ *  Use this method to get an `ALCell` nib.
  *
  *  @return `ALCell` nib
  */
 + (UINib *)cellNib;
 
 /**
- *  Use this method to get an `ALGalleryCell` nib
+ *  Use this method to get an `ALGalleryCell` nib.
  *
  *  @return `ALGalleryCell` nib
  */
 + (UINib *)galleryCellNib;
 
 /**
- *  Use this method to get an `ALLeftLabelCell` nib
+ *  Use this method to get an `ALLeftLabelCell` nib.
  *
  *  @return `ALLeftLabelCell` nib
  */
 + (UINib *)leftLabelCellNib;
 
 /**
- *  Use this method to get an `ALMenuCell` nib
+ *  Use this method to get an `ALMenuCell` nib.
  *
  *  @return `ALMenuCell` nib
  */
 + (UINib *)menuCellNib;
-
-/**
- *  Use this method to get an `ALTextCell` nib
- *
- *  @return `ALTextCell` nib
- */
-+ (UINib *)textCellNib;
 
 /**
  *  Use this method to get an `ALTextFieldCell` nib.
@@ -79,16 +72,30 @@
 + (UINib *)textFieldCellNib;
 
 /**
- *  Use this method to get an `ALTextOnlyCell` nib
+ *  Use this method to get an `ALTextFieldOnlyCell` nib.
+ *
+ *  @return `ALTextFieldOnlyCell` nib
+ */
++ (UINib *)textFieldOnlyCellNib;
+
+/**
+ *  Use this method to get an `ALTextViewCell` nib.
+ *
+ *  @return `ALTextCell` nib
+ */
++ (UINib *)textViewCellNib;
+
+/**
+ *  Use this method to get an `ALTextViewOnlyCell` nib.
  *
  *  @return `ALTextOnlyCell` nib
  */
-+ (UINib *)textOnlyCellNib;
++ (UINib *)textViewOnlyCellNib;
 
 /**
- *  Use this method to get an table view cell instance
+ *  Use this method to get a cell from a `UINib` with the given name and owner.
  *
- *  @discussion In general, you should *not* use this method to instantiate cells that will be displayed within a table view. Instead, you should use `ALTableViewCellFactory` to create cells and calculate their height.
+ *  @discussion You should *not* use this method to instantiate cells that will be displayed within a table view (your app will likely crash if you try to do this). Instead, you should use `ALTableViewCellFactory` to create cells and calculate their height.
  *
  *  This method is primarily provided for unit testing.
  *

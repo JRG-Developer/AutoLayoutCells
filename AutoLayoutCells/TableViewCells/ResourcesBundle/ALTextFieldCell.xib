@@ -6,43 +6,48 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" id="NcJ-iK-aNT" customClass="ALTextFieldCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+        <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoginCell" id="YDl-De-j5Q" userLabel="emailCell" customClass="ALTextFieldCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" tableViewCell="NcJ-iK-aNT" id="m8f-2I-a9c">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" tableViewCell="YDl-De-j5Q" id="qkc-JJ-B0L">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="42" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="PWA-pc-DQb" customClass="ALLabel">
-                        <rect key="frame" x="20" y="0.0" width="120" height="41"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="172" placeholderIntrinsicHeight="41" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2q-85-ix8">
+                        <rect key="frame" x="138" y="8" width="172" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="30" id="mgV-Xl-vET"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                    </textField>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="950" verticalHuggingPriority="950" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-nk-FQ5" customClass="ALLabel">
+                        <rect key="frame" x="10" y="8" width="120" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="vaO-ij-FGQ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDV-y0-O51">
-                        <rect key="frame" x="148" y="0.0" width="152" height="41"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="41" id="Ahv-vZ-3n9"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="PWA-pc-DQb" firstAttribute="top" secondItem="m8f-2I-a9c" secondAttribute="top" id="9iV-Vz-iwY"/>
-                    <constraint firstItem="gDV-y0-O51" firstAttribute="top" secondItem="m8f-2I-a9c" secondAttribute="top" id="CmU-K3-pqZ"/>
-                    <constraint firstAttribute="trailing" secondItem="gDV-y0-O51" secondAttribute="trailing" constant="20" symbolic="YES" id="YwP-91-Fz3"/>
-                    <constraint firstItem="PWA-pc-DQb" firstAttribute="leading" secondItem="m8f-2I-a9c" secondAttribute="leading" constant="20" symbolic="YES" id="k2o-ze-up0"/>
-                    <constraint firstAttribute="bottom" secondItem="PWA-pc-DQb" secondAttribute="bottom" id="mPI-cE-r4y"/>
-                    <constraint firstItem="gDV-y0-O51" firstAttribute="leading" secondItem="PWA-pc-DQb" secondAttribute="trailing" constant="8" symbolic="YES" id="qXu-eg-sVF"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gDV-y0-O51" secondAttribute="bottom" id="rSC-ae-HQK"/>
+                    <constraint firstItem="HMa-nk-FQ5" firstAttribute="leading" secondItem="qkc-JJ-B0L" secondAttribute="leading" constant="10" id="1K3-uZ-YiY"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="h2q-85-ix8" secondAttribute="bottom" constant="8" id="8sd-vV-QOh"/>
+                    <constraint firstAttribute="bottom" secondItem="HMa-nk-FQ5" secondAttribute="bottom" constant="8" id="Htu-nI-CN3"/>
+                    <constraint firstItem="h2q-85-ix8" firstAttribute="top" secondItem="qkc-JJ-B0L" secondAttribute="top" constant="8" id="Te2-On-13z"/>
+                    <constraint firstItem="h2q-85-ix8" firstAttribute="leading" secondItem="HMa-nk-FQ5" secondAttribute="trailing" constant="8" symbolic="YES" id="bSo-gB-guc"/>
+                    <constraint firstAttribute="trailing" secondItem="h2q-85-ix8" secondAttribute="trailing" constant="10" id="j3k-Sx-mHX"/>
+                    <constraint firstItem="HMa-nk-FQ5" firstAttribute="top" secondItem="qkc-JJ-B0L" secondAttribute="top" constant="8" id="sR6-4Z-sQd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="textField" destination="gDV-y0-O51" id="med-3i-cRx"/>
-                <outlet property="titleLabel" destination="PWA-pc-DQb" id="HOI-Os-5h1"/>
+                <outlet property="textField" destination="h2q-85-ix8" id="JfC-Lb-YgC"/>
+                <outlet property="titleLabel" destination="HMa-nk-FQ5" id="mfp-PP-DvC"/>
             </connections>
-            <point key="canvasLocation" x="117" y="138"/>
+            <point key="canvasLocation" x="24" y="150.5"/>
         </tableViewCell>
     </objects>
 </document>

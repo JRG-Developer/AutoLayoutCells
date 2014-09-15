@@ -136,50 +136,50 @@ static UIImage *image;
 
 #pragma mark - Placeholder Image - Tests
 
-- (void)test___setValuesDictionary___sets_mainPlaceholderImage
+- (void)test___setValuesFromDictionary___sets_mainPlaceholderImage
 {
   // given
   [self givenTestImage];
   NSDictionary *dict = @{ALImageCellMainPlaceholderImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.mainImagePlaceholder).to.equal(image);
 }
 
-- (void)test___setValuesDictionary___sets_secondaryPlaceholderImage
+- (void)test___setValuesFromDictionary___sets_secondaryPlaceholderImage
 {
   // given
   [self givenTestImage];
   NSDictionary *dict = @{ALImageCellSecondaryPlaceholderImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   expect(sut.secondaryImagePlaceholder).to.equal(image);
 }
 
-#pragma mark - Set Constraint Constant - Tests
+#pragma mark - Custom Accessor - Tests
 
-#pragma mark - mainImageView Constraints - Tests
+#pragma mark - Main Image View Constraints
 
-- (void)test___setValuesDictionary___noImage_sets_mainImageViewLeadingConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_mainImageViewLeadingConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:8.0f];
   sut.mainImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   [[constraint verify] setConstant:0];
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_mainImageViewLeadingConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_mainImageViewLeadingConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:8.0f];
@@ -189,26 +189,26 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-- (void)test___setValuesDictionary___noImage_sets_mainImageViewTrailingConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_mainImageViewTrailingConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:8.0f];
   sut.mainImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_mainImageViewTrailingConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_mainImageViewTrailingConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:8.0f];
@@ -218,26 +218,26 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-- (void)test___setValuesDictionary___noImage_sets_mainImageViewWidthConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_mainImageViewWidthConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:50.0f];
   sut.mainImageViewWidthConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_mainImageViewWidthConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_mainImageViewWidthConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:50.0f];
@@ -247,26 +247,26 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-- (void)test___setValuesDictionary___noImage_sets_mainImageViewHeightConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_mainImageViewHeightConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:50.0f];
   sut.mainImageViewHeightConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_mainImageViewHeightConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_mainImageViewHeightConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:50.0f];
@@ -276,28 +276,28 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-#pragma mark - secondaryImageView Constraints - Tests
+#pragma mark - Secondardy Image View Constraints
 
-- (void)test___setValuesDictionary___noImage_sets_secondaryImageViewLeadingConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_secondaryImageViewLeadingConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:8.0f];
   sut.secondaryImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_secondaryImageViewLeadingConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_secondaryImageViewLeadingConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:8.0f];
@@ -307,26 +307,26 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-- (void)test___setValuesDictionary___noImage_sets_secondaryImageViewTrailingConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_secondaryImageViewTrailingConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:8.0f];
   sut.secondaryImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_secondaryImageViewTrailingConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_secondaryImageViewTrailingConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:8.0f];
@@ -336,26 +336,26 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-- (void)test___setValuesDictionary___noImage_sets_secondaryImageViewWidthConstraint_to_zero
+- (void)test___setValuesFromDictionary___noImage_sets_secondaryImageViewWidthConstraint_to_zero
 {
   // given
   [self givenMockConstraintWithConstant:50.0f];
   sut.secondaryImageViewWidthConstraint = constraint;
   
   // when
-  [sut setValuesDictionary:nil];
+  [sut setValuesFromDictionary:nil];
   
   // then
   OCMVerify([constraint setConstant:0]);
 }
 
-- (void)test___setValuesDictionary___hasImage_sets_secondaryImageViewWidthConstraint_to_initialValue
+- (void)test___setValuesFromDictionary___hasImage_sets_secondaryImageViewWidthConstraint_to_initialValue
 {
   // given
   [self givenMockConstraintWithExpecations:50.0f];
@@ -365,15 +365,15 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   [constraint verify];
 }
 
-#pragma mark - Set Main Image - Tests
+#pragma mark - Set Main Image
 
-- (void)test___setValuesDictionary___ALImageCellMainImageKey
+- (void)test___setValuesFromDictionary___ALImageCellMainImageKey
 {
   // given
   [self givenMockMainImageView];
@@ -381,13 +381,13 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
 }
 
-- (void)test___setValuesDictionary___ALImageCellMainImageNameKey
+- (void)test___setValuesFromDictionary___ALImageCellMainImageNameKey
 {
   // given
   [self givenMockMainImageView];
@@ -397,7 +397,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageNameKey: @"test_image"};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -406,7 +406,7 @@ static UIImage *image;
   [self swap___imageNamed___methods];
 }
 
-- (void)test___setValuesDictionary___ALImageCellMainImageURLStringKey
+- (void)test___setValuesFromDictionary___ALImageCellMainImageURLStringKey
 {
   // given
   [self givenMockMainImageView];
@@ -422,13 +422,13 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
 }
 
-- (void)test___setValuesDictionary___ALImageCellMainImageURLKey
+- (void)test___setValuesFromDictionary___ALImageCellMainImageURLKey
 {
   // given
   [self givenMockMainImageView];
@@ -444,13 +444,13 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
 }
 
-- (void)test___setValuesDictionary___doesNotSetMainImageFromURLIfSizingCell
+- (void)test___setValuesFromDictionary___doesNotSetMainImageFromURLIfSizingCell
 {
   // given
   [self givenMockMainImageView];
@@ -467,15 +467,15 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellMainImageURLKey: url};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
 }
 
-#pragma mark - Set Secondary Image - Tests
+#pragma mark - Set Secondary Image
 
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageKey
+- (void)test___setValuesFromDictionary___ALImageCellSecondaryImageKey
 {
   // given
   [self givenMockSecondaryImageView];
@@ -483,13 +483,13 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageKey: image};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
 }
 
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageNameKey
+- (void)test___setValuesFromDictionary___ALImageCellSecondaryImageNameKey
 {
   // given
   [self givenMockSecondaryImageView];
@@ -499,7 +499,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageNameKey: @"test_image"};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerify([imageView setImage:image]);
@@ -508,7 +508,7 @@ static UIImage *image;
   [self swap___imageNamed___methods];
 }
 
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageURLStringKey
+- (void)test___setValuesFromDictionary___ALImageCellSecondaryImageURLStringKey
 {
   // given
   [self givenMockSecondaryImageView];
@@ -524,13 +524,13 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
 }
 
-- (void)test___setValuesDictionary___ALImageCellSecondaryImageURLKey
+- (void)test___setValuesFromDictionary___ALImageCellSecondaryImageURLKey
 {
   // given
   [self givenMockSecondaryImageView];
@@ -546,13 +546,13 @@ static UIImage *image;
                    activityIndicatorStyle:sut.loadingActivityIndicatorStyle]);
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);
 }
 
-- (void)test___setValuesDictionary___doesNotSetMainSecondaryFromURLIfSizingCell
+- (void)test___setValuesFromDictionary___doesNotSetMainSecondaryFromURLIfSizingCell
 {
   // given
   [self givenMockSecondaryImageView];
@@ -569,7 +569,7 @@ static UIImage *image;
   NSDictionary *dict = @{ALImageCellSecondaryImageURLKey: url};
   
   // when
-  [sut setValuesDictionary:dict];
+  [sut setValuesFromDictionary:dict];
   
   // then
   OCMVerifyAll(imageView);

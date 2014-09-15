@@ -36,12 +36,12 @@
   self.leftLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
-#pragma mark - Public Instance Methods
+#pragma mark - Set Values Dictionary
 
-- (void)setValuesDictionary:(NSDictionary *)valuesDictionary
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
-  [super setValuesDictionary:valuesDictionary];
-  [self setLeftLabelTextFromDictionary:valuesDictionary];
+  [super setValuesFromDictionary:dictionary];
+  [self setLeftLabelTextFromDictionary:dictionary];
 }
 
 - (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary

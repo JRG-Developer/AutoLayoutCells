@@ -59,6 +59,13 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Set Values From Dictionary
+
+- (void)setValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super))
+{
+  // Intentionally left empty
+}
+
 #pragma mark - Dynamic Type Text
 
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification

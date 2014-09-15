@@ -32,25 +32,25 @@
 @optional
 
 /**
- *  This method is called to inform the delegate that the text view height will change.
+ *  This method is called to inform the delegate that the cell's height will change.
+  *
+ *  @discussion This method is called when the *text view's height* will change. It's possible that the cell height *may not* actually change (i.e. another label may be taller than the text view and determine the height should actually be larger than the height required by the text view).
+ *  
+ *  Regardless, you should implement this delegate method if you want to respond to height-will-change events on the cell.
  *
- *  @param cell      The cell whose text view will change its height
- *  @param textView  The text view that will change its height
- *  @param oldHeight The old height of the text view
- *  @param newHeight The new height of the text view
+ *  @param cell The cell whose height will change
  */
-- (void)cell:(id)cell textView:(UITextView *)textView
-        willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight;
+- (void)cellHeightWillChange:(id)cell;
 
 /**
- *  This method is called to inform the delegate that the text view height did change.
+ *  This method is called to inform the delegate that the cell's height did change.
  *
- *  @param cell      The cell whose text view did change its height
- *  @param textView  The text view that did change its height
- *  @param oldHeight The old height of the text view
- *  @param newHeight The new height of the text view
+ *  @discussion This method is called when the *text view's height* did change. It's possible that the cell height *may not* have actually changed (i.e. another label may be taller than the text view and determine the height should actually be larger than the height required by the text view).
+ *
+ *  Regardless, you should implement this delegate method if you want to respond to height-did-change events on the cell.
+ *
+ *  @param cell The cell whose height did change
  */
-- (void)cell:(id)cell textView:(UITextView *)textView
-        didChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight;
+- (void)cellHeightDidChange:(id)cell;
 
 @end

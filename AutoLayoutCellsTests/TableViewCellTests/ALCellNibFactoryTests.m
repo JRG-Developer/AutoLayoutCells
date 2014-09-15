@@ -30,9 +30,10 @@
 #import "ALBooleanCell.h"
 #import "ALImageCell.h"
 #import "ALLeftLabelCell.h"
-#import "ALTextCell.h"
 #import "ALTextFieldCell.h"
-#import "ALTextOnlyCell.h"
+#import "ALTextFieldOnlyCell.h"
+#import "ALTextViewCell.h"
+#import "ALTextViewOnlyCell.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -99,19 +100,24 @@
   [self verifySelector:@selector(menuCellNib) givesCellClass:[ALImageCell class]];
 }
 
-- (void)test___textCellNib___returnsCorrectNib
-{
-  [self verifySelector:@selector(textCellNib) givesCellClass:[ALTextCell class]];
-}
-
 - (void)test___textFieldCellNib___returnsCorrectNib
 {
   [self verifySelector:@selector(textFieldCellNib) givesCellClass:[ALTextFieldCell class]];
 }
 
-- (void)test___textOnlyCellNib___returnsCorrectNib
+- (void)test___textFieldOnlyCellNib___returnsCorrectNib
 {
-  [self verifySelector:@selector(textOnlyCellNib) givesCellClass:[ALTextOnlyCell class]];
+  [self verifySelector:@selector(textFieldOnlyCellNib) givesCellClass:[ALTextFieldOnlyCell class]];
+}
+
+- (void)test___textViewCellNib___returnsCorrectNib
+{
+  [self verifySelector:@selector(textViewCellNib) givesCellClass:[ALTextViewCell class]];
+}
+
+- (void)test___textViewOnlyCellNib___returnsCorrectNib
+{
+  [self verifySelector:@selector(textViewOnlyCellNib) givesCellClass:[ALTextViewOnlyCell class]];
 }
 
 @end

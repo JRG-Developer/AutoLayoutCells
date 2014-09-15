@@ -26,13 +26,24 @@
 
 /**
  *  `ALBooleanCell` shows a title, subtitle, toggle, and optional image (depending on the nib) to represent a `boolean` value.
+ *
+ *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
+ *  @see `ALCellConstants` for predefined dictionary value keys.
  */
 @interface ALBooleanCell : ALImageCell
+
+///--------------------------------------------------------------
+/// @name Outlets
+///--------------------------------------------------------------
 
 /**
  *  The toggle, representing the `boolean` value
  */
 @property (weak, nonatomic) IBOutlet UISwitch *toggle;
+
+///--------------------------------------------------------------
+/// @name Actions
+///--------------------------------------------------------------
 
 /**
  *  This method is called whenever the user toggles the `toggle`
@@ -42,20 +53,5 @@
  *  @param toggle The `toggle` which sent the event
  */
 - (IBAction)didToggle:(UISwitch *)toggle;
-
-@end
-
-/**
- *  These methods should be considered "protected" and should only be called within this class or by subclasses.
- */
-@interface ALBooleanCell (Protected)
-
-/**
- *  This method is called within `setValuesDictionary:` to set the `toggle` value
- *  @see `ALCellConstants.h` value keys
- *
- *  @param dictionary The dictionary to be set
- */
-- (void)setToggleValueFromDictionary:(NSDictionary *)dictionary;
 
 @end

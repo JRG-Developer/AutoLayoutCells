@@ -1,8 +1,8 @@
 //
-//  ALTextOnlyCell.h
+//  ALTextFieldOnlyCell.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/14/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,39 +23,35 @@
 //  THE SOFTWARE.
 
 #import "ALBaseCell.h"
-#import "ALTextViewHelperDelegate.h"
-
-#import "ALTextCellDelegate.h"
-
-@class ALAutoResizingTextView;
+@class ALTextFieldCellHelper;
 
 /**
- *  `ALTextOnlyCell` shows just a text view to get input from the user.
+ *  `ALTextFieldCell` shows just a `textField` to get input from the user.
+ *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined dictionary keys.
  */
-@interface ALTextOnlyCell : ALBaseCell <ALTextViewHelperDelegate>
+@interface ALTextFieldOnlyCell : ALBaseCell
+
+///--------------------------------------------------------------
+/// @name Instance Properties
+///--------------------------------------------------------------
+
+@property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
+
+///--------------------------------------------------------------
+/// @name Outlets
+///--------------------------------------------------------------
 
 /**
- *  The delegate to be notified of text view height changes and value-related events.
- *  @see `ALTextCellDelegate` for more details
+ *  The text field
  */
-@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+///--------------------------------------------------------------
+/// @name Dynamic Type Font
+///--------------------------------------------------------------
 
 /**
- *  The text view helper, which takes care of configuring the text view
- *  @see `ALTextViewHelper` for more details
- */
-@property (strong, nonatomic) ALTextViewHelper *textViewHelper;
-
-/**
- *  The text view, which accepts user input and resizes itself as needed
- *  @see `ALAutoResizingTextView` in `AutoLayoutTextViews` pod for more details
- */
-@property (weak, nonatomic) IBOutlet ALAutoResizingTextView *textView;
-
-/**
- *  This method is called within `contentSizeCategoryDidChange:` to refresh the text view's font.
- *
- *  @discussion The default implementation simply calls `AL_refreshPreferredFont` on the `textView`.
+ *  This method is called within `contentSizeCategoryDidChange:` to refresh the text field's font.
  *
  *  If your cell uses custom fonts and/or has additional text, label, etc views, you should subclass and override this method. Calling `[super refreshFonts]` is allowed  but is not required.
  */
