@@ -53,3 +53,23 @@
 - (void)refreshFonts;
 
 @end
+
+@interface ALCell (Protected)
+
+/**
+ *  This method is called within `setValuesDictionary:` to set the `titleLabel` text value.
+ *  @see `ALCellConstants.h` title keys
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+ */
+- (void)setTitleFromDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  This method is called within `setValuesDictionary:` to set the `subtitleLabel` text value.
+ *  @see `ALCellConstants.h` subtitle keys
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+ */
+- (void)setSubtitleFromDictionary:(NSDictionary *)dictionary;
+
+@end

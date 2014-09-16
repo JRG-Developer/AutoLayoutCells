@@ -59,7 +59,7 @@
  *  Use this method to set the cell's values from the given dictionary using pre-defined keys.
  *  @see `ALCellConstants` for predefined dictionary value keys.
  *
- *  @param dictionary The dictionary containing the values to be set on the cell.
+ *  @param dictionary The dictionary containing the values to be set on the cell
  */
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary __attribute((objc_requires_super));
 

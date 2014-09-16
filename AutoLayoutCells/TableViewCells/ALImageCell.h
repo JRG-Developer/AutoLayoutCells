@@ -176,6 +176,22 @@
 ///--------------------------------------------------------------
 
 /**
+ *  This method is called within `setValuesFromDictionary` to set the image of the `mainImageView`.
+ *  @see `ALImageCellConstants` for predefined dictionary keys.
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+*/
+- (void)setMainImageViewFromDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  This method is called within `setValuesFromDictionary` to set the image of the `secondaryImageView`.
+ *  @see `ALImageCellConstants` for predefined dictionary keys.
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+ */
+- (void)setSecondaryImageViewFromDictionary:(NSDictionary *)dictionary;
+
+/**
  *  This method first sets the `placeholderImage` on the `imageView`, asynchronously loads the image from the given url, and sets it on the image view.
  *
  *  @discussion This method uses the `sharedImageDownloadSession` to create an `NSURLSessionDownloadTask` and associates it with the image view. Before setting the placeholder image, the associated download session is cancelled.

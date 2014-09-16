@@ -55,3 +55,15 @@
 - (IBAction)didToggle:(UISwitch *)toggle;
 
 @end
+
+@interface ALBooleanCell (Protected)
+
+/**
+ *  This method is called within `setValuesDictionary:` to set the `toggle` value
+ *  @see `ALCellConstants.h` value keys
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+ */
+- (void)setToggleValueFromDictionary:(NSDictionary *)dictionary;
+
+@end

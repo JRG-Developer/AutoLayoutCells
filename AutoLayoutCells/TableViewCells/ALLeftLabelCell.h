@@ -38,3 +38,15 @@
 @property (weak, nonatomic) IBOutlet ALLabel *leftLabel;
 
 @end
+
+@interface ALLeftLabelCell (Protected)
+
+/**
+ *  This method is called within `setValuesDictionary:` to set the left label text value.
+ *  @see `ALLeftLabelCellConstants` left keys
+ *
+ *  @param dictionary The dictionary containing the values to be set on the cell
+ */
+- (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary;
+
+@end
