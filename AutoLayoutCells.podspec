@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = '7.0'
   s.name         = "AutoLayoutCells"
-  s.version      = "0.4.1"
+  s.version      = "0.4.2"
   s.summary      = "AutoLayoutCells makes working with dynamic table view cells easy."
   s.homepage     = "https://github.com/JRG-Developer/AutoLayoutCells"
   s.license      = { :type => "MIT", :file => "LICENSE" }
