@@ -37,8 +37,8 @@
   self = [super init];
   if (self) {
 
-    _cell = cell;
-    _textField = textField;
+    self.cell = cell;
+    self.textField = textField;
     
     [self configureTextField];
   }
@@ -219,6 +219,12 @@
     
     [textField resignFirstResponder];
     return NO;
+    
+  } else if ([self.delegate respondsToSelector:@selector(cell:shouldChangeValueFromValue:toNewValue:)]) {
+    
+    NSString *oldValue = self.textField.text;
+    NSString *newValue = [oldValue stringByReplacingCharactersInRange:range withString:string];
+    return [self.delegate cell:self.cell shouldChangeValueFromValue:oldValue toNewValue:newValue];
   }
   
   return YES;

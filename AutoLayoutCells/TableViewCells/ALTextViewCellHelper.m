@@ -238,6 +238,12 @@
 
     [textView resignFirstResponder];
     return NO;
+    
+  } else if ([self.delegate respondsToSelector:@selector(cell:shouldChangeValueFromValue:toNewValue:)]) {
+    
+    NSString *oldValue = self.textView.text;
+    NSString *newValue = [oldValue stringByReplacingCharactersInRange:range withString:text];
+    return [self.delegate cell:self.cell shouldChangeValueFromValue:oldValue toNewValue:newValue];
   }
   
   return YES;

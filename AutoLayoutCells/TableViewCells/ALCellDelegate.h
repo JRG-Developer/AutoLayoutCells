@@ -50,6 +50,17 @@
 - (void)cell:(id)cell valueChanged:(id)value;
 
 /**
+ *  This methis is called to give the delegate a change to indicate whether the cell should change it's value (e.g. validation may be done at this point).
+ *
+ *  @param cell     The cell whose value will change
+ *  @param oldValue The old value of the cell
+ *  @param newValue The new value of the cell
+ *
+ *  @return `YES` if the cell should be allowed to change or `NO` if not
+ */
+- (BOOL)cell:(id)cell shouldChangeValueFromValue:(id)oldValue toNewValue:(id)newValue;
+
+/**
  *  This method is called when a cell will end editing.
  *
  *  @note Not all cell types will call this method. In general, text-input cells (e.g. `ALTextCell`, etc) will call this method if their delegate implements it.
