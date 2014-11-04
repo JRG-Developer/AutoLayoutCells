@@ -111,7 +111,7 @@
   [sizingCell layoutIfNeeded];
   
   CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-  return size.height;
+  return size.height + 1;
 }
 
 @end
