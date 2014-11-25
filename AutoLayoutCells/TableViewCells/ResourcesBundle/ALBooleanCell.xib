@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,9 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QMr-BW-FpX">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QMr-BW-FpX" userLabel="mainImageView">
                         <rect key="frame" x="10" y="10" width="40" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="jUi-j1-Cmx"/>
                             <constraint firstAttribute="height" constant="40" id="tRE-iv-LDm"/>
@@ -23,21 +23,18 @@
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" placeholderIntrinsicWidth="173" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="173" translatesAutoresizingMaskIntoConstraints="NO" id="dsV-qu-afH" userLabel="titleLabel" customClass="ALLabel">
                         <rect key="frame" x="58" y="10" width="173" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" placeholderIntrinsicWidth="173" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="173" translatesAutoresizingMaskIntoConstraints="NO" id="7q9-Vd-M49" userLabel="subtitleLabel" customClass="ALLabel">
-                        <rect key="frame" x="58" y="31" width="173" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <rect key="frame" x="58" y="33" width="173" height="21"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-tV-nbe" userLabel="toggle">
                         <rect key="frame" x="251" y="10" width="51" height="31"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <connections>
                             <action selector="didToggle:" destination="mSu-6f-dZE" eventType="valueChanged" id="VBM-TP-che"/>
                         </connections>
@@ -56,7 +53,7 @@
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QMr-BW-FpX" secondAttribute="bottom" priority="990" constant="10" id="kET-nR-VIK"/>
                     <constraint firstItem="dsV-qu-afH" firstAttribute="leading" secondItem="7q9-Vd-M49" secondAttribute="leading" id="vwQ-ZQ-aDP"/>
                     <constraint firstItem="dsV-qu-afH" firstAttribute="leading" secondItem="QMr-BW-FpX" secondAttribute="trailing" constant="8" symbolic="YES" id="wNM-9R-5dl"/>
-                    <constraint firstItem="7q9-Vd-M49" firstAttribute="top" secondItem="dsV-qu-afH" secondAttribute="bottom" id="wia-ti-9fP"/>
+                    <constraint firstItem="7q9-Vd-M49" firstAttribute="top" secondItem="dsV-qu-afH" secondAttribute="bottom" constant="2" id="wia-ti-9fP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -68,6 +65,12 @@
                 <outlet property="titleLabel" destination="dsV-qu-afH" id="2rq-fm-gC9"/>
                 <outlet property="toggle" destination="Wl4-tV-nbe" id="0rt-al-YUp"/>
             </connections>
+            <point key="canvasLocation" x="102" y="259.5"/>
         </tableViewCell>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

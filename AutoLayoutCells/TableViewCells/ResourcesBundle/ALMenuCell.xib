@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,26 +14,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-gx-gp6" customClass="ALLabel">
-                        <rect key="frame" x="60" y="10" width="202" height="21"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="tOC-yh-dSg" customClass="ALLabel">
-                        <rect key="frame" x="60" y="31" width="202" height="21"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UMx-fO-tub">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UMx-fO-tub" userLabel="mainImageView">
                         <rect key="frame" x="10" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="999" constant="40" id="7Bf-hp-y7y"/>
                             <constraint firstAttribute="height" priority="999" constant="40" id="TMT-DQ-xMq"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uKi-qM-YJX">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-gx-gp6" userLabel="titleLabel" customClass="ALLabel">
+                        <rect key="frame" x="60" y="10" width="202" height="21"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="21" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="202" translatesAutoresizingMaskIntoConstraints="NO" id="tOC-yh-dSg" userLabel="subtitleLabel" customClass="ALLabel">
+                        <rect key="frame" x="60" y="33" width="202" height="21"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uKi-qM-YJX" userLabel="secondaryImageView">
                         <rect key="frame" x="270" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="999" constant="40" id="4SD-0X-NPV"/>
@@ -53,7 +53,7 @@
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UMx-fO-tub" secondAttribute="bottom" constant="10" id="f82-9s-svs"/>
                     <constraint firstItem="gfE-gx-gp6" firstAttribute="top" secondItem="4bT-KB-oS0" secondAttribute="top" constant="10" id="hZR-oM-Zoq"/>
                     <constraint firstItem="UMx-fO-tub" firstAttribute="leading" secondItem="4bT-KB-oS0" secondAttribute="leading" constant="10" id="lgj-Lg-eAd"/>
-                    <constraint firstItem="tOC-yh-dSg" firstAttribute="top" secondItem="gfE-gx-gp6" secondAttribute="bottom" id="w1x-Ya-4Y2"/>
+                    <constraint firstItem="tOC-yh-dSg" firstAttribute="top" secondItem="gfE-gx-gp6" secondAttribute="bottom" constant="2" id="w1x-Ya-4Y2"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tOC-yh-dSg" secondAttribute="bottom" constant="10" id="yIJ-ww-mDs"/>
                 </constraints>
             </tableViewCellContentView>
@@ -69,7 +69,7 @@
                 <outlet property="subtitleLabel" destination="tOC-yh-dSg" id="EJL-Sn-G5X"/>
                 <outlet property="titleLabel" destination="gfE-gx-gp6" id="LKN-aV-DEr"/>
             </connections>
-            <point key="canvasLocation" x="390" y="209.5"/>
+            <point key="canvasLocation" x="571" y="47.5"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
