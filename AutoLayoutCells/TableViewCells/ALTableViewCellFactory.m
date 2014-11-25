@@ -43,6 +43,8 @@
     _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dict.count];
     _identifiersToNibsDictionary = [dict mutableCopy];
     [self registerCellsFromDictionary:dict];
+    
+    _cellSeparatorHeight = 1.0f;
   }
   return self;
 }
@@ -111,7 +113,7 @@
   [sizingCell layoutIfNeeded];
   
   CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-  return size.height + 1;
+  return size.height + self.cellSeparatorHeight;
 }
 
 @end

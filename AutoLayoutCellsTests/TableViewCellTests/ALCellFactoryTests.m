@@ -71,9 +71,9 @@
 
 - (UITableView *)mockTableView
 {
-  UINib *nib = [Test_ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
+  UITableViewCell *cell = [Test_ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
   tableView = OCMClassMock([UITableView class]);
-  OCMStub([tableView dequeueReusableCellWithIdentifier:[OCMArg any]]).andReturn(nib);
+  OCMStub([tableView dequeueReusableCellWithIdentifier:[OCMArg any]]).andReturn(cell);
   
   return tableView;
 }
@@ -119,6 +119,11 @@
   [[tableView verify] registerNib:leftLabelCellNib forCellReuseIdentifier:leftCellIdentifier];
 }
 
+- (void)test_initWithTableView_identifiersToNibsDictionary_setsDefaultCellSeparatorHeight_to_1
+{
+  expect(sut.cellSeparatorHeight).to.equal(1.0f);
+}
+
 #pragma mark - Dequeuing Cells - Tests
 
 - (void)test_cellWithIdentifier_cellIdentifier_dequeuesCellWithIdentifier_cellIdentifier
@@ -158,6 +163,31 @@
   
   // then
   [[delegate verify] configureCell:cell atIndexPath:indexPath];
+}
+
+- (void)test_heightForCellWithIdentifier_cellIdentifier_addsCellSeparatorHeightToDeterminedContentViewHeight
+{
+  // given
+  tableView = OCMClassMock([UITableView class]);
+  sut.tableView = tableView;
+  
+  CGSize systemLayoutSize = CGSizeMake(320.0f, 50.0f);
+  id contentView = OCMClassMock([UIView class]);
+  OCMStub([contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize]).andReturn(systemLayoutSize);
+  
+  id cell = OCMClassMock([UITableViewCell class]);
+  OCMStub([cell contentView]).andReturn(contentView);
+  
+  OCMStub([tableView dequeueReusableCellWithIdentifier:[OCMArg any]]).andReturn(cell);
+  
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  CGFloat expected = systemLayoutSize.height + sut.cellSeparatorHeight;
+  
+  // when
+  CGFloat actual = [sut cellHeightForIdentifier:@"SomeOtherIdentifier" atIndexPath:indexPath];
+  
+  // then
+  expect(actual).to.equal(expected);  
 }
 
 @end

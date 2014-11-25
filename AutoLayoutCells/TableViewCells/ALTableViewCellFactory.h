@@ -48,6 +48,15 @@
 @property (nonatomic, strong) NSMutableDictionary *sizingCellDict;
 
 /**
+ *  The height of the cell separator, defaults to `1.0f`.
+ *
+ *  @discussion This height is added to the height determined from `systemLayoutSizeFittingSize` called on the cell's `contentView` to determine the overall height estimate for the cell.
+ *
+ *  @see `cellHeightForIdentifier:atIndexPath` method implementation
+ */
+@property (assign, nonatomic) CGFloat cellSeparatorHeight;
+
+/**
  *  This is the designated initializer
  *
  *  @param tableView The table view to use for displaying/dequeuing cells.
