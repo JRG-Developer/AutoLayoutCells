@@ -24,12 +24,13 @@
 
 #import <UIKit/UIKit.h>
 #import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+#import <AutoLayoutCells/ALTextCellDelegate.h>
 
 /**
  *  `TableViewController` is a simple `UITableViewController` subclass for showing how `AutoLayoutCells` works using an adapter pattern.
  */
 @interface TableViewController : UITableViewController
-  <ALTableViewCellFactoryDelegate, UITableViewDataSource, UITableViewDelegate>
+  <ALTableViewCellFactoryDelegate, UITableViewDataSource, UITableViewDelegate, ALTextCellDelegate>
 
 /**
  *  An array of `Model` objects

@@ -24,10 +24,18 @@
 
 #import "TableViewController.h"
 #import <AutoLayoutCells/AutoLayoutCells.h>
+#import <AutoLayoutCells/ALTextFieldCell.h>
+#import <AutoLayoutCells/ALTextFieldOnlyCell.h>
+#import <AutoLayoutCells/ALTextViewCell.h>
+#import <AutoLayoutCells/ALTextViewOnlyCell.h>
 
 #import "Model+ALCellAdapter.h"
 
 static NSString *CellIdentifier = @"ALDemoCell";
+static NSString *TextFieldCellIdentifier = @"ALTextFieldCell";
+static NSString *TextFieldOnlyCellIdentifier = @"ALTextFieldOnlyCell";
+static NSString *TextViewCellIdentifier = @"ALTextViewCell";
+static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 @interface TableViewController()
 @property (strong, nonatomic) ALTableViewCellFactory *cellFactory;
@@ -109,35 +117,148 @@ static NSString *CellIdentifier = @"ALDemoCell";
 
 - (NSDictionary *)identifiersToNibsDictionary
 {
-  return nil;
+  return @{TextFieldCellIdentifier: [ALTableViewCellNibFactory textFieldCellNib],
+           TextFieldOnlyCellIdentifier: [ALTableViewCellNibFactory textFieldOnlyCellNib],
+           TextViewCellIdentifier: [ALTableViewCellNibFactory textViewCellNib],
+           TextViewOnlyCellIdentifier: [ALTableViewCellNibFactory textViewOnlyCellNib]};
 }
 
 #pragma mark - ALTableViewCellFactoryDelegate
 
-- (void)configureCell:(ALImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ALBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.section == 0) {
+    [self configureBasicCell:(ALImageCell *)cell atIndexPath:indexPath];
+  } else {
+    switch (indexPath.row) {
+      case 0:
+        [self configureTextFieldCell:(ALTextFieldCell *)cell atIndexPath:indexPath];
+        break;
+        
+      case 1:
+        [self configureTextFieldOnlyCell:(ALTextFieldOnlyCell *)cell atIndexPath:indexPath];
+        break;
+        
+      case 2:
+        [self configureTextViewCell:(ALTextViewCell *)cell atIndexPath:indexPath];
+        break;
+        
+      case 3:
+        [self configureTextViewOnlyCell:(ALTextViewOnlyCell *)cell atIndexPath:indexPath];
+        break;
+        
+      default:
+        break;
+    }
+    
+  }
+
+}
+
+- (void)configureBasicCell:(ALImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
   Model *model = self.modelsArray[indexPath.row];
   NSDictionary *dictionary = [model valuesDictionary];
   [cell setValuesFromDictionary:dictionary];
 }
 
+- (void)configureTextFieldCell:(ALTextFieldCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  NSDictionary *dictionary = @{ALCellTitleKey: @"Text Field Cell Title",
+                               ALCellSubtitleKey: @"Text Field Cell Subtitle"};
+  [cell setValuesFromDictionary:dictionary];
+}
+
+- (void)configureTextFieldOnlyCell:(ALTextFieldOnlyCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  NSDictionary *dictionary = @{ALCellTitleKey: @"Text Field Only Cell Title",
+                               ALCellSubtitleKey: @"Text Field Only Cell Subtitle"};
+  [cell setValuesFromDictionary:dictionary];
+}
+
+- (void)configureTextViewCell:(ALTextViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  NSDictionary *dictionary = @{ALCellTitleKey: @"Text View Cell Title",
+                               ALCellSubtitleKey: @"Text View Cell Subtitle"};
+  [cell setValuesFromDictionary:dictionary];
+  cell.delegate = self;
+}
+
+- (void)configureTextViewOnlyCell:(ALTextViewOnlyCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  NSDictionary *dictionary = @{ALCellTitleKey: @"Text View Only Cell Title",
+                               ALCellSubtitleKey: @"Text View Only Cell Subtitle"};
+  [cell setValuesFromDictionary:dictionary];
+  cell.delegate = self;
+}
+
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return self.modelsArray.count;
+  if (section == 0) {
+    return self.modelsArray.count;
+    
+  } else {
+    return 4;
+  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [self.cellFactory cellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
+  return [self.cellFactory cellWithIdentifier:identifier forIndexPath:indexPath];
+}
+
+- (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.section == 0) {
+    return CellIdentifier;
+    
+  } else {
+    switch (indexPath.row) {
+      case 0:
+        return TextFieldCellIdentifier;
+        break;
+        
+      case 1:
+        return TextFieldOnlyCellIdentifier;
+        break;
+        
+      case 2:
+        return TextViewCellIdentifier;
+        break;
+        
+      case 3:
+        return TextViewOnlyCellIdentifier;
+        break;
+        
+      default:
+        return CellIdentifier;
+        break;
+    }
+  }
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [self.cellFactory cellHeightForIdentifier:CellIdentifier atIndexPath:indexPath];
+  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
+  return [self.cellFactory cellHeightForIdentifier:identifier atIndexPath:indexPath];
+}
+
+#pragma mark - ALTextCellDelegate
+
+- (void)cellHeightDidChange:(id)cell
+{
+  [self.tableView beginUpdates];
+  [self.tableView endUpdates];
 }
 
 @end

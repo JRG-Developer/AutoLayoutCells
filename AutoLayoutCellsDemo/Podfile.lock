@@ -7,7 +7,7 @@ PODS:
   - AutoLayoutCells/TableViewCells (0.5.0):
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
-    - AutoLayoutTextViews (~> 1.0)
+    - AutoLayoutTextViews (~> 1.1)
   - AutoLayoutTextViews (1.1.1)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 1648e80a140ce2727bd93a1fd8ead1939d5ce12b
-  AutoLayoutCells: f619eda9c6f0989bb8beca760fd5dc67519bd00c
+  AutoLayoutCells: ebecf1e1261745b12a5c969e9b032c0bba0e83ec
   AutoLayoutTextViews: 955f34ca57834fde02568390da36b6fb4163707d
 
 COCOAPODS: 0.35.0

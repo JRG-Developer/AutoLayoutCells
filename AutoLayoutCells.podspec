@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     ss.dependency 'AutoLayoutCells/SharedCategories'
 
     ss.dependency 'ALLabel', '~> 2.0'
-    ss.dependency 'AutoLayoutTextViews', '~> 1.0'
+    ss.dependency 'AutoLayoutTextViews', '~> 1.1'
 
     ss.resource_bundles = {'ALTableViewCellsBundle' => ['AutoLayoutCells/TableViewCells/ResourcesBundle/*']}
     ss.source_files = "AutoLayoutCells/TableViewCells/*.{h,m}"
