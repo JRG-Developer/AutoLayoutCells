@@ -37,6 +37,11 @@
  */
 @property (copy, nonatomic) NSArray *modelsArray;
 
+/**
+ *  An array of `TextCellModel` objects
+ */
+@property (strong, nonatomic) NSArray *textCellModelsArray;
+
 ///--------------------------------------------------------------
 /// @name Instance Methods
 ///--------------------------------------------------------------
@@ -46,8 +51,10 @@
  *
  *  @param name      The name of the plist to use to creates the `models` array
  *  @param bundle    The bundle containing the plist
+ *
+ *  @return An `NSArray` of model objects
  */
-- (void)setModelsFromPlistName:(NSString *)name bundle:(NSBundle *)bundle;
+- (NSArray *)modelsArrayFromPlistName:(NSString *)name bundle:(NSBundle *)bundle;
 
 ///--------------------------------------------------------------
 /// @name Actions

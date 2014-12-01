@@ -30,6 +30,7 @@
 #import <AutoLayoutCells/ALTextViewOnlyCell.h>
 
 #import "Model+ALCellAdapter.h"
+#import "TextCellModel+ALCellAdapter.h"
 
 static NSString *CellIdentifier = @"ALDemoCell";
 static NSString *TextFieldCellIdentifier = @"ALTextFieldCell";
@@ -65,20 +66,24 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (void)commonInit
 {
-  [self setModelsFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
+  [self setUpModels];
+
+  if ([self isViewLoaded]) {
+    [self.tableView reloadData];
+  }
 }
 
 #pragma mark - Instance Methods
 
-- (void)setModelsFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
+- (void)setUpModels
 {
-  NSString *path = [bundle pathForResource:name ofType:@"plist"];
-  NSData *data = [NSData dataWithContentsOfFile:path];
-  NSArray *modelDictionaries = [NSPropertyListSerialization propertyListWithData:data
-                                                             options:NSPropertyListImmutable
-                                                              format:nil
-                                                               error:nil];
-  
+  [self setUpBasicModelsArray];
+  [self setUpTextCellModelsArray];
+}
+
+- (void)setUpBasicModelsArray
+{
+  NSArray *modelDictionaries = [self modelsDictionariesFromPlistName:@"ModelsData" bundle:[NSBundle mainBundle]];
   NSMutableArray *models = [NSMutableArray arrayWithCapacity:modelDictionaries.count];
   
   [modelDictionaries enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger idx, BOOL *stop) {
@@ -86,10 +91,29 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   }];
   
   self.modelsArray = models;
+}
+
+- (NSArray *)modelsDictionariesFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
+{
+  NSString *path = [bundle pathForResource:name ofType:@"plist"];
+  NSData *data = [NSData dataWithContentsOfFile:path];
+  NSArray *modelDictionaries = [NSPropertyListSerialization propertyListWithData:data
+                                                                         options:NSPropertyListImmutable
+                                                                          format:nil
+                                                                           error:nil];
+  return modelDictionaries;
+}
+
+- (void)setUpTextCellModelsArray
+{
+  NSArray *modelDictionaries = [self modelsDictionariesFromPlistName:@"TextCellModelsData" bundle:[NSBundle mainBundle]];
+  NSMutableArray *models = [NSMutableArray arrayWithCapacity:modelDictionaries.count];
   
-  if ([self isViewLoaded]) {
-    [self.tableView reloadData];
-  }
+  [modelDictionaries enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger idx, BOOL *stop) {
+    models[idx] = [TextCellModel modelFromDictionary:dictionary];
+  }];
+  
+  self.textCellModelsArray = models;
 }
 
 #pragma mark - Actions
@@ -127,69 +151,20 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (void)configureCell:(ALBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 0) {
-    [self configureBasicCell:(ALImageCell *)cell atIndexPath:indexPath];
-  } else {
-    switch (indexPath.row) {
-      case 0:
-        [self configureTextFieldCell:(ALTextFieldCell *)cell atIndexPath:indexPath];
-        break;
-        
-      case 1:
-        [self configureTextFieldOnlyCell:(ALTextFieldOnlyCell *)cell atIndexPath:indexPath];
-        break;
-        
-      case 2:
-        [self configureTextViewCell:(ALTextViewCell *)cell atIndexPath:indexPath];
-        break;
-        
-      case 3:
-        [self configureTextViewOnlyCell:(ALTextViewOnlyCell *)cell atIndexPath:indexPath];
-        break;
-        
-      default:
-        break;
-    }
-    
-  }
-
-}
-
-- (void)configureBasicCell:(ALImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-  Model *model = self.modelsArray[indexPath.row];
+  Model *model = [self modelForIndexPath:indexPath];
   NSDictionary *dictionary = [model valuesDictionary];
   [cell setValuesFromDictionary:dictionary];
-}
-
-- (void)configureTextFieldCell:(ALTextFieldCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-  NSDictionary *dictionary = @{ALCellTitleKey: @"Text Field Cell Title",
-                               ALCellSubtitleKey: @"Text Field Cell Subtitle"};
-  [cell setValuesFromDictionary:dictionary];
-}
-
-- (void)configureTextFieldOnlyCell:(ALTextFieldOnlyCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-  NSDictionary *dictionary = @{ALCellTitleKey: @"Text Field Only Cell Title",
-                               ALCellSubtitleKey: @"Text Field Only Cell Subtitle"};
-  [cell setValuesFromDictionary:dictionary];
-}
-
-- (void)configureTextViewCell:(ALTextViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-  NSDictionary *dictionary = @{ALCellTitleKey: @"Text View Cell Title",
-                               ALCellSubtitleKey: @"Text View Cell Subtitle"};
-  [cell setValuesFromDictionary:dictionary];
   cell.delegate = self;
 }
 
-- (void)configureTextViewOnlyCell:(ALTextViewOnlyCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (Model *)modelForIndexPath:(NSIndexPath *)indexPath
 {
-  NSDictionary *dictionary = @{ALCellTitleKey: @"Text View Only Cell Title",
-                               ALCellSubtitleKey: @"Text View Only Cell Subtitle"};
-  [cell setValuesFromDictionary:dictionary];
-  cell.delegate = self;
+  if (indexPath.section == 0) {
+    return self.modelsArray[indexPath.row];
+    
+  } else {
+    return self.textCellModelsArray[indexPath.row];
+  }
 }
 
 #pragma mark - UITableViewDataSource
@@ -259,6 +234,16 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 {
   [self.tableView beginUpdates];
   [self.tableView endUpdates];
+}
+
+- (void)cell:(id)cell valueChanged:(id)value
+{
+  NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+  if (indexPath.section == 1) {
+    TextCellModel *model = self.textCellModelsArray[indexPath.row];
+    model.textFieldValue = value;
+    
+  }
 }
 
 @end

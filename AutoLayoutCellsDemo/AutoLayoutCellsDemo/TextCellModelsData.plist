@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Text Field Cell Title</string>
+	</dict>
+	<dict>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/508/508</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Text View Cell Title</string>
+		<key>subtitle</key>
+		<string>Text View Cell Subtitle</string>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/607/607</string>
+	</dict>
+	<dict>
+		<key>secondaryImageURL</key>
+		<string>http://placecreature.com/608/608</string>
+	</dict>
+</array>
+</plist>

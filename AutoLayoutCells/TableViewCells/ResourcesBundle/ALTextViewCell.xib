@@ -33,7 +33,7 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="23" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-FE-jJM" userLabel="subtitleLabel" customClass="ALLabel">
                         <rect key="frame" x="58" y="33" width="100" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="23" id="44R-zC-H0u"/>
+                            <constraint firstAttribute="height" constant="23" placeholder="YES" id="44R-zC-H0u"/>
                         </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
