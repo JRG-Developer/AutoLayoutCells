@@ -54,7 +54,7 @@
  *
  *  @return An `NSArray` of model objects
  */
-- (NSArray *)modelsArrayFromPlistName:(NSString *)name bundle:(NSBundle *)bundle;
+- (NSArray *)modelsDictionariesFromPlistName:(NSString *)name bundle:(NSBundle *)bundle;
 
 ///--------------------------------------------------------------
 /// @name Actions
