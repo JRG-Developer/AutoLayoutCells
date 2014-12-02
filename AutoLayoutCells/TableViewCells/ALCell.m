@@ -39,7 +39,7 @@
 - (void)refreshFonts
 {
   self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-  self.subtitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  self.subtitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
 }
 
 #pragma mark - Set Values From Dictionary

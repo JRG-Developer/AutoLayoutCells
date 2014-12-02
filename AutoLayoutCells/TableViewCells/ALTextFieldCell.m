@@ -62,7 +62,7 @@
 - (void)refreshFonts
 {
   [super refreshFonts];
-  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
 }
 
 #pragma mark - Custom Accessors
