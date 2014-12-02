@@ -68,7 +68,7 @@
 
 - (void)refreshFonts
 {
-  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
 }
 
 #pragma mark - Custom Accessors
