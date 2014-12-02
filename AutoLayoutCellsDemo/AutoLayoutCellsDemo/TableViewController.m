@@ -66,17 +66,6 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (void)commonInit
 {
-  [self setUpModels];
-
-  if ([self isViewLoaded]) {
-    [self.tableView reloadData];
-  }
-}
-
-#pragma mark - Instance Methods
-
-- (void)setUpModels
-{
   [self setUpBasicModelsArray];
   [self setUpTextCellModelsArray];
 }
@@ -93,17 +82,6 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   self.modelsArray = models;
 }
 
-- (NSArray *)modelsDictionariesFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
-{
-  NSString *path = [bundle pathForResource:name ofType:@"plist"];
-  NSData *data = [NSData dataWithContentsOfFile:path];
-  NSArray *modelDictionaries = [NSPropertyListSerialization propertyListWithData:data
-                                                                         options:NSPropertyListImmutable
-                                                                          format:nil
-                                                                           error:nil];
-  return modelDictionaries;
-}
-
 - (void)setUpTextCellModelsArray
 {
   NSArray *modelDictionaries = [self modelsDictionariesFromPlistName:@"TextCellModelsData" bundle:[NSBundle mainBundle]];
@@ -114,6 +92,17 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   }];
   
   self.textCellModelsArray = models;
+}
+
+- (NSArray *)modelsDictionariesFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
+{
+  NSString *path = [bundle pathForResource:name ofType:@"plist"];
+  NSData *data = [NSData dataWithContentsOfFile:path];
+  NSArray *modelDictionaries = [NSPropertyListSerialization propertyListWithData:data
+                                                                         options:NSPropertyListImmutable
+                                                                          format:nil
+                                                                           error:nil];
+  return modelDictionaries;
 }
 
 #pragma mark - Actions
@@ -135,7 +124,8 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 {
   NSDictionary *dict = [self identifiersToNibsDictionary];
 
-  self.cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView identifiersToNibsDictionary:dict];
+  self.cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView
+                                           identifiersToNibsDictionary:dict];
   self.cellFactory.delegate = self;
 }
 
@@ -159,73 +149,8 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (Model *)modelForIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 0) {
-    return self.modelsArray[indexPath.row];
-    
-  } else {
-    return self.textCellModelsArray[indexPath.row];
-  }
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  if (section == 0) {
-    return self.modelsArray.count;
-    
-  } else {
-    return 4;
-  }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
-  return [self.cellFactory cellWithIdentifier:identifier forIndexPath:indexPath];
-}
-
-- (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (indexPath.section == 0) {
-    return CellIdentifier;
-    
-  } else {
-    switch (indexPath.row) {
-      case 0:
-        return TextFieldCellIdentifier;
-        break;
-        
-      case 1:
-        return TextFieldOnlyCellIdentifier;
-        break;
-        
-      case 2:
-        return TextViewCellIdentifier;
-        break;
-        
-      case 3:
-        return TextViewOnlyCellIdentifier;
-        break;
-        
-      default:
-        return CellIdentifier;
-        break;
-    }
-  }
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
-  return [self.cellFactory cellHeightForIdentifier:identifier atIndexPath:indexPath];
+  return indexPath.section == 0 ? self.modelsArray[indexPath.row] :
+                                  self.textCellModelsArray[indexPath.row];
 }
 
 #pragma mark - ALTextCellDelegate
@@ -239,11 +164,49 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 - (void)cell:(id)cell valueChanged:(id)value
 {
   NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+  TextCellModel *model = self.textCellModelsArray[indexPath.row];
+  model.textFieldValue = value;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return section == 0 ? self.modelsArray.count : self.textCellModelsArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
+  return [self.cellFactory cellWithIdentifier:identifier forIndexPath:indexPath];
+}
+
+- (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   if (indexPath.section == 1) {
-    TextCellModel *model = self.textCellModelsArray[indexPath.row];
-    model.textFieldValue = value;
     
+    switch (indexPath.row % 4) {
+      case 0: return TextFieldCellIdentifier;
+      case 1: return TextFieldOnlyCellIdentifier;
+      case 2: return TextViewCellIdentifier;
+      case 3: return TextViewOnlyCellIdentifier;
+    }
   }
+
+  return CellIdentifier;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *identifier = [self cellIdentifierForRowAtIndexPath:indexPath];
+  return [self.cellFactory cellHeightForIdentifier:identifier atIndexPath:indexPath];
 }
 
 @end

@@ -29,7 +29,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="m80-pL-JDk" firstAttribute="leading" secondItem="let-Ew-reV" secondAttribute="leading" constant="10" id="AUf-sp-5H4"/>
-                    <constraint firstAttribute="bottom" secondItem="m80-pL-JDk" secondAttribute="bottom" constant="10" id="YTF-N1-WWc"/>
+                    <constraint firstAttribute="bottom" secondItem="m80-pL-JDk" secondAttribute="bottom" priority="999" constant="10" id="YTF-N1-WWc"/>
                     <constraint firstAttribute="trailing" secondItem="m80-pL-JDk" secondAttribute="trailing" constant="10" id="a8S-nF-71t"/>
                     <constraint firstItem="m80-pL-JDk" firstAttribute="top" secondItem="let-Ew-reV" secondAttribute="top" constant="10" id="eXW-Cw-D41"/>
                 </constraints>

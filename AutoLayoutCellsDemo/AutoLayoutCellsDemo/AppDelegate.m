@@ -39,7 +39,9 @@
 - (void)configureCells
 {
   [[ALImageCell appearance] setLoadingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//  [[ALImageCell appearance] setSecondaryImagePlaceholder:[UIImage imageNamed:@"maneki_neko"]];
+  
+  // Uncomment this line for an example of using a placeholder image instead of an activity indicator
+  // [[ALImageCell appearance] setSecondaryImagePlaceholder:[UIImage imageNamed:@"maneki_neko"]];
 }
 
 @end
