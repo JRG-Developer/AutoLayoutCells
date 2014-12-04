@@ -35,6 +35,9 @@
 /// @name Instance Properties
 ///--------------------------------------------------------------
 
+/**
+*  The text field helper, which encapsulates commmon text field configuration, delegate handling, etc
+*/
 @property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
 
 ///--------------------------------------------------------------

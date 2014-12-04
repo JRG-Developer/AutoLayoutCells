@@ -23,6 +23,8 @@
 //  THE SOFTWARE.
 
 #import "ALBaseCell.h"
+
+@protocol ALCellDelegate;
 @class ALTextFieldCellHelper;
 
 /**
@@ -35,6 +37,15 @@
 /// @name Instance Properties
 ///--------------------------------------------------------------
 
+/**
+*  The delegated that should be notified of value-related events.
+*  @see `ALCellDelegate` for more details.
+*/
+@property (weak, nonatomic) IBOutlet id<ALCellDelegate> delegate;
+
+/**
+ *  The text field helper, which encapsulates commmon text field configuration, delegate handling, etc
+ */
 @property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
 
 ///--------------------------------------------------------------

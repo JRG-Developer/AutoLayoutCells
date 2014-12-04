@@ -25,6 +25,8 @@
 #import "ALBaseCell.h"
 #import <ALLabel/ALLabel.h>
 
+@protocol ALCellDelegate;
+
 /**
  *  `ALCell` shows a title and subtitle. It is also the base class for most of the cells within `AutoLayoutCells`.
  *
@@ -32,6 +34,12 @@
  *  @see `ALCellConstants` for predefined dictionary value keys.
  */
 @interface ALCell : ALBaseCell
+
+/**
+ *  The delegated that should be notified of value-related events.
+ *  @see `ALCellDelegate` for more details.
+ */
+@property (weak, nonatomic) IBOutlet id<ALCellDelegate> delegate;
 
 /**
  *  The title label

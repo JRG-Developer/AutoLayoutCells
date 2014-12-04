@@ -24,8 +24,6 @@
 
 @import UIKit;
 
-@protocol ALCellDelegate;
-
 /**
  *  This is the base cell class for all table view cells within `AutoLayoutCells`.
  *
@@ -40,9 +38,10 @@
 
 /**
  *  The delegated that should be notified of value-related events.
- *  @see `ALCellDelegate` for more details.
+ *
+ *  @discussion Each cell will have a `delegate` object. While `ALCellDelegate` is the most commonly required delegate protocol, it doesn't strictly have to be.
  */
-@property (weak, nonatomic) IBOutlet id<ALCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id delegate;
 
 /**
  *  Whether this cell should be treated as a sizing cell. The default value is `NO`.
