@@ -1,10 +1,10 @@
 PODS:
   - ALLabel (2.0.0)
-  - AutoLayoutCells (0.5.0):
-    - AutoLayoutCells/SharedCategories (= 0.5.0)
-    - AutoLayoutCells/TableViewCells (= 0.5.0)
-  - AutoLayoutCells/SharedCategories (0.5.0)
-  - AutoLayoutCells/TableViewCells (0.5.0):
+  - AutoLayoutCells (0.5.2):
+    - AutoLayoutCells/SharedCategories (= 0.5.2)
+    - AutoLayoutCells/TableViewCells (= 0.5.2)
+  - AutoLayoutCells/SharedCategories (0.5.2)
+  - AutoLayoutCells/TableViewCells (0.5.2):
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.1)
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 1648e80a140ce2727bd93a1fd8ead1939d5ce12b
-  AutoLayoutCells: ebecf1e1261745b12a5c969e9b032c0bba0e83ec
+  AutoLayoutCells: 1ff6456d5eb692e3b0b7008dc63a2200dcfbadda
   AutoLayoutTextViews: 955f34ca57834fde02568390da36b6fb4163707d
 
 COCOAPODS: 0.35.0
