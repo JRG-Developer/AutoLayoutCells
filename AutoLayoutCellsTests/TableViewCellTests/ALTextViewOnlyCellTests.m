@@ -126,12 +126,12 @@
 
 #pragma mark - Dynamic Type Text - Tests
 
-- (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___textView
+- (void)test___contentSizeCategoryDidChange___calls___setFont___on___textView
 {
   // given
   [self givenMockTextView];
   
-  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
   OCMExpect([textView setFont:font]);
   
   // when
@@ -146,7 +146,7 @@
   // given
   [self givenMockTextView];
   
-  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
   OCMExpect([textView setFont:font]);
   
   // when

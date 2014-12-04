@@ -140,7 +140,7 @@
   // given
   [self givenMockTextField];
   
-  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
   
   OCMExpect([textField setFont:font]);
   

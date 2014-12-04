@@ -98,7 +98,7 @@
 
 #pragma mark - Dynamic Type Text - Tests
 
-- (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___titleLabel
+- (void)test___contentSizeCategoryDidChange___calls___setFont___on___titleLabel
 {
   // given
   id label = OCMClassMock([ALLabel class]);
@@ -120,7 +120,7 @@
   id label = OCMClassMock([ALLabel class]);
   sut.subtitleLabel = label;
   
-  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
   OCMExpect([label setFont:font]);
   
   // when

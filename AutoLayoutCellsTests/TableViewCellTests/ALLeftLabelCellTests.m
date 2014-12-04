@@ -62,7 +62,7 @@
 
 #pragma mark - Dynamic Type Text - Tests
 
-- (void)test___contentSizeCategoryDidChange___calls___AORefreshFont___on___leftLabel
+- (void)test___contentSizeCategoryDidChange___calls___setFont___on___leftLabel
 {
   // given
   id label = OCMClassMock([ALLabel class]);
