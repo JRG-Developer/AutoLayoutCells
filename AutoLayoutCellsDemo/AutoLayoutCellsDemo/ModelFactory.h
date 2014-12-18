@@ -1,8 +1,8 @@
 //
-//  ViewController.h
-//  AutoLayoutCellsExample
+//  ModelFactory.h
+//  AutoLayoutCellsDemo
 //
-//  Created by Joshua Greene on 9/5/14.
+//  Created by Joshua Greene on 12/17/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
-#import <AutoLayoutCells/ALTextCellDelegate.h>
+#import "PlistDictionaryArrayFactory.h"
+
+@interface ModelFactory : PlistDictionaryArrayFactory
 
 /**
- *  `TableViewController` is a simple `UITableViewController` subclass for showing how `AutoLayoutCells` works using an adapter pattern.
- */
-@interface TableViewController : UITableViewController <ALTableViewCellFactoryDelegate, ALTextCellDelegate>
-
-/**
- *  An array of `Model` objects
- */
-@property (copy, nonatomic) NSArray *models;
-
-/**
- *  An array of `TextCellModel` objects
- */
-@property (strong, nonatomic) NSArray *textModels;
-
-///--------------------------------------------------------------
-/// @name Actions
-///--------------------------------------------------------------
-
-/**
- *  This method is called whenever the user presses the "refresh" button.
+ *  This method returns an array of `Model` objects created from the plist with the given name in the bundle.
  *
- *  @discussion This method simply calls `[self.tableView reloadData]`
+ *  @param name   The name of the plist
+ *  @param bundle The bundle containing the plist
  *
- *  @param sender The button that sent the event
+ *  @return An array of `Model` objects
  */
-- (IBAction)refreshButtonPressed:(id)sender;
++ (NSArray *)modelsFromPlistNamed:(NSString *)name bundle:(NSBundle *)bundle;
+
+/**
+ *  This method returns an array of `TextCellModel` objects created from the plist with the given name in the bundle.
+ *
+ *  @param name   The name of the plist
+ *  @param bundle The bundle containing the plist
+ *
+ *  @return An array of `TextCellModel` objects
+ */
++ (NSArray *)textModelsFromPlistNamed:(NSString *)name bundle:(NSBundle *)bundle;
 
 @end

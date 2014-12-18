@@ -1,8 +1,8 @@
 //
-//  ViewController.h
-//  AutoLayoutCellsExample
+//  PlistDictionaryFactory.m
+//  AutoLayoutCellsDemo
 //
-//  Created by Joshua Greene on 9/5/14.
+//  Created by Joshua Greene on 12/17/14.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
-#import <AutoLayoutCells/ALTextCellDelegate.h>
+#import "PlistDictionaryArrayFactory.h"
 
-/**
- *  `TableViewController` is a simple `UITableViewController` subclass for showing how `AutoLayoutCells` works using an adapter pattern.
- */
-@interface TableViewController : UITableViewController <ALTableViewCellFactoryDelegate, ALTextCellDelegate>
+@implementation PlistDictionaryArrayFactory
 
-/**
- *  An array of `Model` objects
- */
-@property (copy, nonatomic) NSArray *models;
-
-/**
- *  An array of `TextCellModel` objects
- */
-@property (strong, nonatomic) NSArray *textModels;
-
-///--------------------------------------------------------------
-/// @name Actions
-///--------------------------------------------------------------
-
-/**
- *  This method is called whenever the user presses the "refresh" button.
- *
- *  @discussion This method simply calls `[self.tableView reloadData]`
- *
- *  @param sender The button that sent the event
- */
-- (IBAction)refreshButtonPressed:(id)sender;
++ (NSArray *)dictionaryArrayFromPlistName:(NSString *)name bundle:(NSBundle *)bundle
+{
+  NSString *path = [bundle pathForResource:name ofType:@"plist"];
+  NSData *data = [NSData dataWithContentsOfFile:path];
+  return [NSPropertyListSerialization propertyListWithData:data
+                                                   options:NSPropertyListImmutable
+                                                    format:nil
+                                                     error:nil];
+}
 
 @end

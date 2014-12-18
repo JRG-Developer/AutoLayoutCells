@@ -25,19 +25,64 @@
 @import Foundation;
 
 /**
- *  `ALTableViewCellFactoryDelegate` includes a required "configure" method to configure a cell prior to display/height calculation.
+ *  `ALTableViewCellFactoryDelegate` has required methods a delegate must implement for a `ALTableViewCellFactory` to work correctly.
+ *
+ *  @discussion In addition to these required methods, the delegate may also implement methods in either `UITableViewDataSource` or `UITableViewDelegate` that aren't implemented by `ALTableViewCellFactory`, and these methods *WILL* be called. 
+ 
+    The methods that `ALTableViewCellFactory` implement from `UITableViewDataSource` and `UITableViewDelegate` are the following (if the delegate implements any of these, they will *not* be called):
+ 
+    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+ 
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+    
+    - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
  */
-@protocol ALTableViewCellFactoryDelegate <NSObject>
+@protocol ALTableViewCellFactoryDelegate <NSObject /* UITableViewDataSource, UITableViewDelegate */>
 @required
+
+/**
+ *  This method is called in order for the delegate to determine the number of rows in the table view and section.
+ *
+ *  @param tableView The table view to add cells to
+ *  @param section   The section to add cells to
+ *  @return The number of rows for the section
+ */
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+
+/**
+ *  This method is called in order to dequeue/create a cell at the given index path.
+ *
+ *  @warning This method must *never* return `nil`. If it does, an exception will be thrown at runtime.
+ *
+ *  @param tableView The table view containing the cell to be dequeued/created
+ *  @param indexPath The index path for the cell
+ *
+ *  @return The identifier for the cell at the given index path
+ */
+- (NSString *)tableView:(UITableView *)tableView identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  This method is called prior to displaying a cell or calculating its height.
  *
  *  @discussion The `ALTableViewCellFactoryDelegate` should set the desired values on the cell within this method.
  *
+ *  @param tableView The table view containing the cell
  *  @param cell      The cell to be displayed or calculate the height.
  *  @param indexPath The index path of the cell in the table view
  */
-- (void)configureCell:(id)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView configureCell:(id)cell atIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+
+/**
+ *  This method is called in order for the delegate to determine the number of sections in the table view.
+ *
+ *  @discussion If the delegate doesn't implement this method, `1` will be returned.
+ *
+ *  @param tableView The table view
+ *
+ *  @return The number of sections in the table view
+ */
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 
 @end

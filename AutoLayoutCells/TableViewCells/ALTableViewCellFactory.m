@@ -28,6 +28,7 @@
 #import "ALBaseCell.h"
 
 @interface ALTableViewCellFactory ()
+@property (weak, nonatomic, readwrite) UITableView *tableView;
 @property (strong, nonatomic) NSMutableDictionary *identifiersToNibsDictionary;
 @end
 
@@ -40,6 +41,9 @@
   self = [super init];
   if (self) {
     _tableView = tableView;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
     _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dict.count];
     _identifiersToNibsDictionary = [dict mutableCopy];
     [self registerCellsFromDictionary:dict];
@@ -56,19 +60,39 @@
   }];
 }
 
+#pragma mark - NSObject
+
+- (BOOL)respondsToSelector:(SEL)selector
+{
+  if ([self.delegate respondsToSelector:selector]) {
+    return YES;
+  }
+  
+  return [super respondsToSelector:selector];
+}
+
+- (id)forwardingTargetForSelector:(SEL)selector
+{
+  if ([self.delegate respondsToSelector:selector]) {
+    return self.delegate;
+  }
+  
+  return [super forwardingTargetForSelector:selector];
+}
+
 #pragma mark - Cell Factory Methods
 
 - (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-  [self.delegate configureCell:cell atIndexPath:indexPath];
+  [self.delegate  tableView:self.tableView configureCell:cell atIndexPath:indexPath];
   return cell;
 }
 
 - (CGFloat)cellHeightForIdentifier:(NSString *)identifier atIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *sizingCell = [self sizingCellForIdentifier:identifier];
-  [self.delegate configureCell:sizingCell atIndexPath:indexPath];
+  [self.delegate tableView:self.tableView configureCell:sizingCell atIndexPath:indexPath];
   return [self calculateHeightForConfiguredSizingCell:sizingCell];
 }
 
@@ -114,6 +138,36 @@
   
   CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
   return size.height + self.cellSeparatorHeight;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  if ([self.delegate respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
+    return [self.delegate numberOfSectionsInTableView:tableView];
+  }
+  
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return [self.delegate tableView:tableView numberOfRowsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *identifier = [self.delegate tableView:tableView identifierForCellAtIndexPath:indexPath];
+  return [self cellWithIdentifier:identifier forIndexPath:indexPath];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *identifier = [self.delegate tableView:self.tableView identifierForCellAtIndexPath:indexPath];
+  return [self cellHeightForIdentifier:identifier atIndexPath:indexPath];
 }
 
 @end

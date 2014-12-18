@@ -29,7 +29,7 @@
 /**
  *  `ALTableViewCellFactory` encapsulates common cell creation/dequeuing and cell height calculation tasks.
  */
-@interface ALTableViewCellFactory : NSObject
+@interface ALTableViewCellFactory : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 /**
  *  The delegate that performs cell configuration
@@ -38,9 +38,9 @@
 @property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
 
 /**
- *  The table view that displays all of the cells
+ *  The table view that displays the cells
  */
-@property (weak, nonatomic) UITableView *tableView;
+@property (weak, nonatomic, readonly) UITableView *tableView;
 
 /**
  *  A dictionary of sizing cells (keys are cell identifiers, values are sizing cells)
@@ -66,26 +66,6 @@
  */
 - (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary;
 
-/**
- *  This method should be called within `tableView:cellForRowAtIndexPath:`
- *
- *  @param identifier The cell identifier
- *  @param indexPath  The index path for the cell
- *
- *  @return A configured `UITableViewCell`
- */
-- (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
-
-/**
- *  This method should be called within `tableView:heightForRowAtIndexPath:`
- *
- *  @param identifier The cell identifier
- *  @param indexPath  The index path for the cell
- *
- *  @return The height of the configured cell at the index path (based on a sizing cell)
- */
-- (CGFloat)cellHeightForIdentifier:(NSString *)identifier atIndexPath:(NSIndexPath *)indexPath;
-
 @end
 
 @interface ALTableViewCellFactory (Protected)
@@ -93,6 +73,30 @@
 ///--------------------------------------------------------------
 /// @name Protected Methods
 ///--------------------------------------------------------------
+
+/**
+*  This method is called within `tableView:cellForRowAtIndexPath:`
+*
+*  @discussion This method asks the delegate for `tableView:identifierForCellAtIndexPath:` to create/dequeue the cell.
+*
+*  @param identifier The cell identifier
+*  @param indexPath  The index path for the cell
+*
+*  @return A configured `UITableViewCell`
+*/
+- (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ *  This is called within `tableView:heightForRowAtIndexPath:`
+ *
+ *  @discussion This method asks the delegate for `tableView:identifierForCellAtIndexPath:` to create/dequeue the sizing cell.
+ *
+ *  @param identifier The cell identifier
+ *  @param indexPath  The index path for the cell
+ *
+ *  @return The height of the configured cell at the index path (based on a sizing cell)
+ */
+- (CGFloat)cellHeightForIdentifier:(NSString *)identifier atIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  This method is called to get the "sizingCell" from the `sizingCellDictionary` for the given cell identifier. If a sizing cell doesn't already exist within the `sizingCellDictionary`, one will be created and inserted into the dictionary.

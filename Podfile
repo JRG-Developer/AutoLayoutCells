@@ -1,7 +1,15 @@
 platform :ios, "7.0"
 
+workspace 'AutoLayoutCells'
+xcodeproj 'AutoLayoutCells'
+
+target "AutoLayoutCellsDemo" do
+  xcodeproj 'AutoLayoutCellsDemo/AutoLayoutCellsDemo'
+  pod 'AutoLayoutCells', :path => '.'
+end
+
 target "AutoLayoutCells" do
-  pod 'ALLabel', '~> 1.0'
+  pod 'ALLabel', '~> 2.0'
   pod 'AutoLayoutTextViews', '~> 1.0'
 end
 

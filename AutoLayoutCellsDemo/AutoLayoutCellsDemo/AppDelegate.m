@@ -25,14 +25,16 @@
 #import "AppDelegate.h"
 
 #import <AutoLayoutCells/ALImageCell.h>
-
 #import "TableViewController.h"
+#import "ModelFactory.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [self configureCells];
+  [self setupModelsArraysOnTableViewController];
+  
   return YES;
 }
 
@@ -42,6 +44,14 @@
   
   // Uncomment this line for an example of using a placeholder image instead of an activity indicator
   // [[ALImageCell appearance] setSecondaryImagePlaceholder:[UIImage imageNamed:@"maneki_neko"]];
+}
+
+- (void)setupModelsArraysOnTableViewController
+{
+  UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+  TableViewController *tableViewController = [navController.viewControllers firstObject];
+  tableViewController.models = [ModelFactory modelsFromPlistNamed:@"ModelsData" bundle:[NSBundle mainBundle]];
+  tableViewController.textModels = [ModelFactory modelsFromPlistNamed:@"TextCellModelsData" bundle:[NSBundle mainBundle]];
 }
 
 @end

@@ -45,6 +45,8 @@
 @implementation ALTableViewCellFactoryTests
 {
   ALTableViewCellFactory *sut;
+  
+  id partialMock;
   id delegate;
   id tableView;
   
@@ -108,6 +110,53 @@
   leftLabelCellNib = [UINib nibWithNibName:@"ALLeftLabelCell" bundle:bundle];
 }
 
+#pragma mark - Interface - Tests
+
+- (void)test_ALTableViewCellFactory_conformsTo_UITableViewDelegate
+{
+  expect(sut).to.conformTo(@protocol(UITableViewDelegate));
+}
+
+#pragma mark - NSObject - Tests
+
+- (void)test_respondsToSelector_ifDelegateRepondsToSelector_returnsYES
+{
+  // given
+  delegate = OCMProtocolMock(@protocol(UITableViewDelegate));
+  sut.delegate = delegate;
+  
+  // when
+  BOOL actual = [sut respondsToSelector:@selector(tableView:willBeginEditingRowAtIndexPath:)];
+  
+  // then
+  expect(actual).to.beTruthy();
+}
+
+- (void)test_respondsToSelector_ifNeitherDelegateOrSelfRespondsToSelector_returnsNO
+{
+  // given
+  sut.delegate = nil;
+  
+  // when
+  BOOL actual = [sut respondsToSelector:@selector(tableView:willBeginEditingRowAtIndexPath:)];
+  
+  // then
+  expect(actual).to.beFalsy();
+}
+
+- (void)test_forwardingTargetForSelector_ifDelegateRespondsToSelector_returnsDelegate
+{
+  // given
+  delegate = OCMProtocolMock(@protocol(UITableViewDelegate));
+  sut.delegate = delegate;
+  
+  // when
+  id actual = [sut forwardingTargetForSelector:@selector(tableView:willBeginEditingRowAtIndexPath:)];
+  
+  // then
+  expect(actual).to.equal(delegate);
+}
+
 #pragma mark - Register Cells - Tests
 
 - (void)test_initWithTableView_identifiersToNibsDictionary_registersNibDictionary
@@ -122,6 +171,16 @@
 - (void)test_initWithTableView_identifiersToNibsDictionary_setsDefaultCellSeparatorHeight_to_1
 {
   expect(sut.cellSeparatorHeight).to.equal(1.0f);
+}
+
+- (void)test_initWithTableView_setsTableView_dataSource
+{
+  OCMVerify([(UITableView *)tableView setDataSource:sut]);
+}
+
+- (void)test_initWithTableView_setsTableView_delegate
+{
+  OCMVerify([(UITableView *)tableView setDelegate:sut]);
 }
 
 #pragma mark - Dequeuing Cells - Tests
@@ -147,7 +206,7 @@
   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
   id cell = [sut cellWithIdentifier:cellIdentifer forIndexPath:indexPath];
   
-  [[delegate verify] configureCell:cell atIndexPath:indexPath];
+  [[delegate verify] tableView:sut.tableView configureCell:cell atIndexPath:indexPath];
 }
 
 #pragma mark - Cell Sizing - Tests
@@ -162,14 +221,14 @@
   [sut cellHeightForIdentifier:cellIdentifer atIndexPath:indexPath];
   
   // then
-  [[delegate verify] configureCell:cell atIndexPath:indexPath];
+  [[delegate verify] tableView:sut.tableView configureCell:cell atIndexPath:indexPath];
 }
 
 - (void)test_heightForCellWithIdentifier_cellIdentifier_addsCellSeparatorHeightToDeterminedContentViewHeight
 {
   // given
   tableView = OCMClassMock([UITableView class]);
-  sut.tableView = tableView;
+  sut = [[ALTableViewCellFactory alloc] initWithTableView:tableView identifiersToNibsDictionary:nil];
   
   CGSize systemLayoutSize = CGSizeMake(320.0f, 50.0f);
   id contentView = OCMClassMock([UIView class]);
@@ -184,10 +243,69 @@
   CGFloat expected = systemLayoutSize.height + sut.cellSeparatorHeight;
   
   // when
-  CGFloat actual = [sut cellHeightForIdentifier:@"SomeOtherIdentifier" atIndexPath:indexPath];
+  CGFloat actual = [sut cellHeightForIdentifier:@"identifier" atIndexPath:indexPath];
   
   // then
   expect(actual).to.equal(expected);  
+}
+
+#pragma mark - UITableViewDelegate - Tests
+
+- (void)test_numberOfSectionsInTableView_ifDelegateRespondsToSelector_asksDelegateForNumberOfSections
+{
+  // given
+  NSInteger expected = 5;
+  OCMStub([delegate numberOfSectionsInTableView:sut.tableView]).andReturn(expected);
+  
+  // when
+  NSInteger actual = [sut numberOfSectionsInTableView:sut.tableView];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
+- (void)test_tableView_numberOfRowsInSection_asksDelegateForNumberOfRowsInSection
+{
+  // given
+  NSInteger section = 0;
+  NSInteger expected = 4;
+  OCMStub([delegate tableView:sut.tableView numberOfRowsInSection:section]).andReturn(expected);
+  
+  // when
+  NSInteger actual = [sut tableView:sut.tableView numberOfRowsInSection:section];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
+- (void)test_tableView_cellForRowAtIndexPath_asksDelegateForCellIdentifier
+{
+  // given
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  
+  OCMExpect([delegate tableView:sut.tableView identifierForCellAtIndexPath:indexPath]);
+  
+  // when
+  [sut tableView:sut.tableView cellForRowAtIndexPath:indexPath];
+  
+  // then
+  OCMVerifyAll(delegate);
+}
+
+#pragma mark - UITableViewDelegate - Tests
+
+- (void)test_tableView_heightForRowAtIndexPath_asksDelegateForCellIdentifier
+{
+  // given
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  
+  OCMExpect([delegate tableView:sut.tableView identifierForCellAtIndexPath:indexPath]).andReturn(cellIdentifer);
+  
+  // when
+  [sut tableView:sut.tableView heightForRowAtIndexPath:indexPath];
+  
+  // then
+  OCMVerifyAll(delegate);
 }
 
 @end
