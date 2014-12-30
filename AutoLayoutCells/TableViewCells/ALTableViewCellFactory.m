@@ -80,6 +80,19 @@
   return [super forwardingTargetForSelector:selector];
 }
 
+#pragma mark - Custom Setters
+
+- (void)setDelegate:(id<ALTableViewCellFactoryDelegate>)delegate
+{
+  _delegate = delegate;
+  
+  _tableView.delegate = nil;
+  _tableView.delegate = self;
+  
+  _tableView.dataSource = nil;
+  _tableView.dataSource = self;
+}
+
 #pragma mark - Cell Factory Methods
 
 - (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
