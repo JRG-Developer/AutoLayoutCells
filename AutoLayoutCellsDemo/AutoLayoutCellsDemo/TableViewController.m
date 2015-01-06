@@ -61,10 +61,8 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (void)setupCellFactory
 {
-  NSDictionary *dict = [self identifiersToNibsDictionary];
-
   self.cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView
-                                           identifiersToNibsDictionary:dict];
+                                           identifiersToNibsDictionary:[self identifiersToNibsDictionary]];
   self.cellFactory.delegate = self;
 }
 
@@ -129,6 +127,12 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
   TextCellModel *model = self.textModels[indexPath.row];
   model.textFieldValue = value;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@"Selected: %@", indexPath);
 }
 
 @end

@@ -36,17 +36,19 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dict
+- (instancetype)initWithTableView:(UITableView *)tableView
+      identifiersToNibsDictionary:(NSDictionary *)dictionary
 {
   self = [super init];
   if (self) {
+    
     _tableView = tableView;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
-    _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dict.count];
-    _identifiersToNibsDictionary = [dict mutableCopy];
-    [self registerCellsFromDictionary:dict];
+    _sizingCellDict = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+    _identifiersToNibsDictionary = [dictionary mutableCopy];
+    [self registerCellsFromDictionary:dictionary];
     
     _cellSeparatorHeight = 1.0f;
   }
@@ -80,12 +82,31 @@
   return [super forwardingTargetForSelector:selector];
 }
 
+#pragma mark - Custom Accessors
+
+- (void)setDelegate:(id<ALTableViewCellFactoryDelegate>)delegate {
+  
+  if (_delegate == delegate) {
+    return;
+  }
+  
+  _delegate = delegate;
+  
+  //  The table view's data source and delegates have to be reset so that the `respondsToSelector` methods will be called again
+  //  `UITableView` must be caching the response from its `dataSource` and `delegate` calls to `respondsToSelector`
+  _tableView.dataSource = nil;
+  _tableView.delegate = nil;
+  
+  _tableView.dataSource = self;
+  _tableView.delegate = self;
+}
+
 #pragma mark - Cell Factory Methods
 
 - (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-  [self.delegate  tableView:self.tableView configureCell:cell atIndexPath:indexPath];
+  [self.delegate tableView:self.tableView configureCell:cell atIndexPath:indexPath];
   return cell;
 }
 

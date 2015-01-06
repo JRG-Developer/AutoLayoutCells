@@ -64,7 +64,8 @@
  *
  *  @return A new `ALTableViewCellFactory` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithTableView:(UITableView *)tableView
+      identifiersToNibsDictionary:(NSDictionary *)dictionary;
 
 @end
 

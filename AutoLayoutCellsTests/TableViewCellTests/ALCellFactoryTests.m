@@ -157,6 +157,38 @@
   expect(actual).to.equal(delegate);
 }
 
+#pragma mark - Custom Accessor - Tests
+
+- (void)test_setDelegate_resetsTableViewDataSource {
+  
+  // given
+  [sut setDelegate:nil];
+  
+  OCMExpect([(UITableView *)tableView setDataSource:nil]);
+  OCMExpect([(UITableView *)tableView setDataSource:sut]);
+  
+  // when
+  [sut setDelegate:delegate];
+  
+  // then
+  OCMVerifyAll(tableView);
+}
+
+- (void)test_setDelegate_resetsTableViewDelegate {
+  
+  // given
+  [sut setDelegate:nil];
+  
+  OCMExpect([(UITableView *)tableView setDelegate:nil]);
+  OCMExpect([(UITableView *)tableView setDelegate:sut]);
+  
+  // when
+  [sut setDelegate:delegate];
+  
+  // then
+  OCMVerifyAll(tableView);
+}
+
 #pragma mark - Register Cells - Tests
 
 - (void)test_initWithTableView_identifiersToNibsDictionary_registersNibDictionary
