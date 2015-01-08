@@ -106,7 +106,27 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   Model *model = [self modelForIndexPath:indexPath];
   NSDictionary *dictionary = [model valuesDictionary];
   [cell setValuesFromDictionary:dictionary];
+  
+  [self configureAccessoryViewForCell:cell atIndexPath:indexPath];
+  
   cell.delegate = self;
+}
+
+- (void)configureAccessoryViewForCell:(ALCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.row == 10) {
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    cell.accessoryView = nil;
+    
+  } else if (indexPath.row == 11) {
+    cell.accessoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 50.0f)];
+    cell.accessoryView.backgroundColor = [UIColor redColor];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+  } else {
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryView = nil;
+  }
 }
 
 - (Model *)modelForIndexPath:(NSIndexPath *)indexPath
