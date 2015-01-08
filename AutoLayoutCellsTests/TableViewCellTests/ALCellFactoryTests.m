@@ -281,6 +281,94 @@
   expect(actual).to.equal(expected);  
 }
 
+#pragma mark - Width For Sizing Cell - Tests
+
+- (void)test_widthForSizingCell_givenBeforeOS8_doesNotAdjustSizingCellWidth
+{
+  // given
+  partialMock = OCMPartialMock(sut);
+  OCMStub([partialMock delegate]).andReturn(delegate);
+  OCMStub([partialMock isOS8OrLater]).andReturn(NO);
+  
+  id cell = OCMClassMock([UITableViewCell class]);
+  
+  OCMStub([tableView bounds]).andReturn(CGRectMake(0.0f, 0.0f, 320.0f, 640.0f));
+  
+  CGFloat expected = CGRectGetWidth([tableView bounds]);
+  
+  // when
+  CGFloat actual = [sut widthForSizingCell:cell];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
+- (void)test_widthForSizingCell_givenOS8_noAccessory_doesNotAdjustSizingCellWidth
+{
+  // given
+  partialMock = OCMPartialMock(sut);
+  OCMStub([partialMock delegate]).andReturn(delegate);
+  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  
+  id cell = OCMClassMock([UITableViewCell class]);
+  OCMStub([cell accessoryView]).andReturn(nil);
+  OCMStub([cell accessoryType]).andReturn(UITableViewCellAccessoryNone);
+  
+  OCMStub([tableView bounds]).andReturn(CGRectMake(0.0f, 0.0f, 320.0f, 640.0f));
+  
+  CGFloat expected = CGRectGetWidth([tableView bounds]);
+  
+  // when
+  CGFloat actual = [sut widthForSizingCell:cell];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
+- (void)test_widthForSizingCell_givenOS8_accessoryView_adjustsSizingCellWidthForAccessoryView
+{
+  // given
+  partialMock = OCMPartialMock(sut);
+  OCMStub([partialMock delegate]).andReturn(delegate);
+  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  
+  id cell = OCMClassMock([UITableViewCell class]);
+  id accessoryView = OCMClassMock([UIView class]);
+  OCMStub([cell accessoryView]).andReturn(accessoryView);
+  
+  OCMStub([tableView bounds]).andReturn(CGRectMake(0.0f, 0.0f, 320.0f, 640.0f));
+  
+  CGFloat expected = CGRectGetWidth([tableView bounds]) - 15.0f;
+  
+  // when
+  CGFloat actual = [sut widthForSizingCell:cell];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
+- (void)test_widthForSizingCell_givenOS8_accessoryType_adjustsSizingCellWidthForAccessoryView
+{
+  // given
+  partialMock = OCMPartialMock(sut);
+  OCMStub([partialMock delegate]).andReturn(delegate);
+  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  
+  id cell = OCMClassMock([UITableViewCell class]);
+  OCMStub([cell accessoryView]).andReturn(nil);
+  OCMStub([cell accessoryType]).andReturn(UITableViewCellAccessoryDisclosureIndicator);
+  
+  OCMStub([tableView bounds]).andReturn(CGRectMake(0.0f, 0.0f, 320.0f, 640.0f));
+  
+  CGFloat expected = CGRectGetWidth([tableView bounds]) - 10.0f;
+  
+  // when
+  CGFloat actual = [sut widthForSizingCell:cell];
+  
+  // then
+  expect(actual).to.equal(expected);
+}
+
 #pragma mark - UITableViewDelegate - Tests
 
 - (void)test_numberOfSectionsInTableView_ifDelegateRespondsToSelector_asksDelegateForNumberOfSections

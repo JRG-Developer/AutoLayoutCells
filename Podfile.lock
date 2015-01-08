@@ -1,16 +1,16 @@
 PODS:
   - ALLabel (2.0.0)
-  - AutoLayoutCells (0.6.0):
-    - AutoLayoutCells/SharedCategories (= 0.6.0)
-    - AutoLayoutCells/TableViewCells (= 0.6.0)
-  - AutoLayoutCells/SharedCategories (0.6.0)
-  - AutoLayoutCells/TableViewCells (0.6.0):
+  - AutoLayoutCells (0.6.1):
+    - AutoLayoutCells/SharedCategories (= 0.6.1)
+    - AutoLayoutCells/TableViewCells (= 0.6.1)
+  - AutoLayoutCells/SharedCategories (0.6.1)
+  - AutoLayoutCells/TableViewCells (0.6.1):
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.1)
   - AutoLayoutTextViews (1.1.1)
   - Expecta (0.3.1)
-  - OCMock (3.1.1)
+  - OCMock (3.1.2)
 
 DEPENDENCIES:
   - ALLabel (~> 2.0)
@@ -25,9 +25,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 1648e80a140ce2727bd93a1fd8ead1939d5ce12b
-  AutoLayoutCells: 9917a2eac4ffff4a2cccfe74f621fee2d3d57067
+  AutoLayoutCells: a0f5e04d47ffaeb1857c817b2c15d2c7c5841d53
   AutoLayoutTextViews: 955f34ca57834fde02568390da36b6fb4163707d
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
+  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
 
 COCOAPODS: 0.35.0

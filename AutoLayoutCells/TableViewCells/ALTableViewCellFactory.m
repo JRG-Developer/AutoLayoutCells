@@ -176,6 +176,11 @@ const CGFloat kAccessoryViewTrailingMarginWidth = 15.0f;
   return width;
 }
 
+- (BOOL)isOS8OrLater
+{
+  return IS_OS_8_OR_LATER;
+}
+
 - (CGFloat)adjustWidth:(CGFloat)width forAccessoryViewOnSizingCell:(UITableViewCell *)sizingCell
 {
   if (sizingCell.accessoryView) {

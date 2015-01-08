@@ -108,4 +108,20 @@
  */
 - (UITableViewCell *)sizingCellForIdentifier:(NSString *)identifier;
 
+/**
+ *  This method is called to calculate the width of the "sizingCell" for use in height caluculations in `cellHeightForIdentifier:atIndexPath:`.
+ *
+ *  @param sizingCell The sizing cell to calculate the width for.
+ *
+ *  @return The width for the configured `sizingCell`
+ */
+- (CGFloat)widthForSizingCell:(UITableViewCell *)sizingCell;
+
+/**
+ *  This is called in `widthForSizingCell:` to determine if the cell's width should be adjusted for an accessory view.
+ *
+ *  @return A boolean indicating if the device is runnning an iOS version of 8.0 or later.
+ */
+- (BOOL)isOS8OrLater;
+
 @end
