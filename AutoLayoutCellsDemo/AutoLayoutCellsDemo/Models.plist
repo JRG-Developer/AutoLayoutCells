@@ -102,5 +102,13 @@
 		<key>secondaryImageURL</key>
 		<string>http://placecreature.com/202/202</string>
 	</dict>
+	<dict>
+		<key>subtitle</key>
+		<string>There are hundreds of community-based organizations in Santa Ana. They include our 64 associations, nearly 50 parent groups at schools, over 100 faith-based organizations, 25 service clubs and over 200 non-profit social service agencies not to mention the municipal agencies and private companies with an interest in civic engagement.</string>
+	</dict>
+	<dict>
+		<key>subtitle</key>
+		<string>There are hundreds of community-based organizations in Santa Ana. They include our 64 associations, nearly 50 parent groups at schools, over 100 faith-based organizations, 25 service clubs and over 200 non-profit social service agencies not to mention the municipal agencies and private companies with an interest in civic engagement.</string>
+	</dict>
 </array>
 </plist>

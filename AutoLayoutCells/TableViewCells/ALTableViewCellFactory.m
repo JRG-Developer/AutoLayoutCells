@@ -27,6 +27,10 @@
 
 #import "ALBaseCell.h"
 
+const CGFloat kAccessoryTypeTrailingMarginWidth = 10.0f;
+const CGFloat kAccessoryViewTrailingMarginWidth = 15.0f;
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
 @interface ALTableViewCellFactory ()
 @property (weak, nonatomic, readwrite) UITableView *tableView;
 @property (strong, nonatomic) NSMutableDictionary *identifiersToNibsDictionary;
@@ -82,22 +86,10 @@
   return [super forwardingTargetForSelector:selector];
 }
 
-#pragma mark - Custom Setters
+#pragma mark - Custom Accessors
 
 - (void)setDelegate:(id<ALTableViewCellFactoryDelegate>)delegate
 {
-  _delegate = delegate;
-  
-  _tableView.delegate = nil;
-  _tableView.delegate = self;
-  
-  _tableView.dataSource = nil;
-  _tableView.dataSource = self;
-
-#pragma mark - Custom Accessors
-
-- (void)setDelegate:(id<ALTableViewCellFactoryDelegate>)delegate {
-  
   if (_delegate == delegate) {
     return;
   }
@@ -163,7 +155,7 @@
 - (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell
 {
   sizingCell.bounds = CGRectMake(0.0f, 0.0f,
-                                 CGRectGetWidth(self.tableView.bounds),
+                                 [self widthForSizingCell:sizingCell],
                                  CGRectGetHeight(sizingCell.bounds));
   
   [sizingCell setNeedsLayout];
@@ -171,6 +163,30 @@
   
   CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
   return size.height + self.cellSeparatorHeight;
+}
+
+- (CGFloat)widthForSizingCell:(UITableViewCell *)sizingCell
+{
+  CGFloat width = CGRectGetWidth(self.tableView.bounds);
+  
+  if(IS_OS_8_OR_LATER) {
+    width = [self adjustWidth:width forAccessoryViewOnSizingCell:sizingCell];
+  }
+  
+  return width;
+}
+
+- (CGFloat)adjustWidth:(CGFloat)width forAccessoryViewOnSizingCell:(UITableViewCell *)sizingCell
+{
+  if (sizingCell.accessoryView) {
+    width -= kAccessoryViewTrailingMarginWidth;
+    
+  } else if (sizingCell.accessoryType != UITableViewCellAccessoryNone) {
+    width -= kAccessoryTypeTrailingMarginWidth;
+    
+  }
+  
+  return width;
 }
 
 #pragma mark - UITableViewDataSource
