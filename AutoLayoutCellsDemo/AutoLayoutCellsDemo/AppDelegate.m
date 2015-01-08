@@ -51,7 +51,7 @@
   UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
   TableViewController *tableViewController = [navController.viewControllers firstObject];
   tableViewController.models = [ModelFactory modelsFromPlistNamed:@"Models" bundle:[NSBundle mainBundle]];
-  tableViewController.textModels = [ModelFactory modelsFromPlistNamed:@"TextCellModels" bundle:[NSBundle mainBundle]];
+  tableViewController.textModels = [ModelFactory textModelsFromPlistNamed:@"TextCellModels" bundle:[NSBundle mainBundle]];
 }
 
 @end
