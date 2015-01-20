@@ -71,10 +71,6 @@
 
 @interface ALTableViewCellFactory (Protected)
 
-///--------------------------------------------------------------
-/// @name Protected Methods
-///--------------------------------------------------------------
-
 /**
 *  This method is called within `tableView:cellForRowAtIndexPath:`
 *

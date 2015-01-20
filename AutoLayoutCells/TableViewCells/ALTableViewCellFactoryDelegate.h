@@ -22,20 +22,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-@import Foundation;
+#import <UIKit/UIKit.h>
 
 /**
- *  `ALTableViewCellFactoryDelegate` has required methods a delegate must implement for a `ALTableViewCellFactory` to work correctly.
+ *  `ALTableViewCellFactoryDelegate` defines optional and required methods for a `ALTableViewCellFactory` delegate.
  *
- *  @discussion In addition to these required methods, the delegate may also implement methods in either `UITableViewDataSource` or `UITableViewDelegate` that aren't implemented by `ALTableViewCellFactory`, and these methods *WILL* be called. 
+ *  @discussion In addition to these delegate methods, the delegate may implement methods in either `UITableViewDataSource` or `UITableViewDelegate`, and these methods *WILL* be called. *UNLESS* it's one of the following:
  
-    The methods that `ALTableViewCellFactory` implement from `UITableViewDataSource` and `UITableViewDelegate` are the following (if the delegate implements any of these, they will *not* be called):
- 
-    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
- 
-    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+ *  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
     
-    - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ *  - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ *
+ *  These methods are *exclusively* implemented by `ALTableViewCellFactory` and *won't* be called, even if the delegate implements them.
  */
 @protocol ALTableViewCellFactoryDelegate <NSObject /* UITableViewDataSource, UITableViewDelegate */>
 @required
@@ -75,7 +73,7 @@
 @optional
 
 /**
- *  This method is called in order for the delegate to determine the number of sections in the table view.
+ *  This method allows the delegate to determine the number of sections in the table view.
  *
  *  @discussion If the delegate doesn't implement this method, `1` will be returned.
  *
