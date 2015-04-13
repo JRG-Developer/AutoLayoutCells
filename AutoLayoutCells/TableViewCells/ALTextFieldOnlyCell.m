@@ -31,6 +31,7 @@
 @end
 
 @implementation ALTextFieldOnlyCell
+@dynamic delegate;
 
 #pragma mark - Object Lifecycle
 

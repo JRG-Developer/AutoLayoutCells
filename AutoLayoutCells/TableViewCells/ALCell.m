@@ -27,6 +27,7 @@
 #import "ALCellConstants.h"
 
 @implementation ALCell
+@dynamic delegate;
 
 #pragma mark - Dynamic Type Text
 

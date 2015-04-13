@@ -27,6 +27,7 @@
 #import "ALTextFieldOnlyCell.h"
 
 // Collaborators
+#import "ALCellDelegate.h"
 #import "ALTextFieldCellHelper.h"
 
 // Test Support
