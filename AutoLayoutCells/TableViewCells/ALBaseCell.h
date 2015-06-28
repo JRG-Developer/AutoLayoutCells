@@ -33,6 +33,28 @@
 @interface ALBaseCell : UITableViewCell
 
 ///--------------------------------------------------------------
+/// @name Class Configuration
+///--------------------------------------------------------------
+
+/**
+ *  Use this method to set whether instances should register for `UIContentSizeCategoryDidChangeNotification` notifications. Defaults to `YES`.
+ *
+ *  @warning  You should set this *before* any cells are created.
+ *
+ *  @param  shouldRegister  `YES` to register for `UIContentSizeCategoryDidChangeNotification` notification or `NO` to not register
+ */
++ (void)setShouldRegisterForFontChanges:(BOOL)shouldRegister;
+
+/**
+ *  Whether instances should register for `UIContentSizeCategoryDidChangeNotification` notifications. Defaults to `YES`.
+ *
+ *  @discussion  You can change this value via `setShouldRegisterForFontChanges:`. However, you should set this *before* any cells are created.
+ *
+ *  @return `YES` to register for `UIContentSizeCategoryDidChangeNotification` notification or `NO` to not register
+ */
++ (BOOL)shouldRegisterForFontChanges;
+
+///--------------------------------------------------------------
 /// @name Instance Properties
 ///--------------------------------------------------------------
 
