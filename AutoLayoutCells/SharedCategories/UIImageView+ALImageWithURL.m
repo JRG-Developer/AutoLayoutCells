@@ -28,7 +28,6 @@
 #import <UIImageView+ALActivityIndicatorView/UIImageView+ALActivityIndicatorView.h>
 
 #import "ALImageCache.h"
-#import "UIImageView+ALActivityIndicatorView.h"
 
 @implementation UIImageView (ALImageWithURL)
 

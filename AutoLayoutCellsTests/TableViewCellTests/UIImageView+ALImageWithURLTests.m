@@ -27,7 +27,7 @@
 
 // Collaborators
 #import "ALImageCache.h"
-#import "UIImageView+ALActivityIndicatorView.h"
+#import <UIImageView+ALActivityIndicatorView/UIImageView+ALActivityIndicatorView.h>
 
 // Test Support
 #import <XCTest/XCTest.h>
