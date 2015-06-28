@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
-		420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */; };
 		42399F5C19C62F1A00E26A3E /* Test_ALTextCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5B19C62F1A00E26A3E /* Test_ALTextCellDelegate.m */; };
 		42399F5F19C651BE00E26A3E /* Test_ALCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */; };
 		42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */; };
@@ -20,7 +19,6 @@
 		42E2DF2D19C275BF00E3BA76 /* ALTextFieldCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E2DF2C19C275BF00E3BA76 /* ALTextFieldCellHelper.m */; };
 		42E2DF2F19C2767800E3BA76 /* ALTextFieldOnlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E2DF2E19C2767800E3BA76 /* ALTextFieldOnlyTests.m */; };
 		42E2DF3119C27ED700E3BA76 /* ALTextFieldOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E2DF3019C27BF700E3BA76 /* ALTextFieldOnlyCell.xib */; };
-		42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */; };
 		42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */; };
 		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
 		42FF946119C657A900263BE6 /* ALTextFieldOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF946019C657A900263BE6 /* ALTextFieldOnlyCell.m */; };
@@ -97,7 +95,6 @@
 		2FA8AB10325235D322D67CA1 /* Pods-AutoLayoutCellsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.release.xcconfig"; sourceTree = "<group>"; };
 		31990CC627A2D3B8129B9534 /* Pods-AutoLayoutCells.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.debug.xcconfig"; sourceTree = "<group>"; };
 		420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALImageCacheTests.m; path = TableViewCellTests/ALImageCacheTests.m; sourceTree = "<group>"; };
-		420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALActivityIndicatorViewTests.m"; path = "TableViewCellTests/UIImageView+ALActivityIndicatorViewTests.m"; sourceTree = "<group>"; };
 		42399F5A19C62F1A00E26A3E /* Test_ALTextCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALTextCellDelegate.h; sourceTree = "<group>"; };
 		42399F5B19C62F1A00E26A3E /* Test_ALTextCellDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALTextCellDelegate.m; sourceTree = "<group>"; };
 		42399F5D19C651BE00E26A3E /* Test_ALCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALCellDelegate.h; sourceTree = "<group>"; };
@@ -113,8 +110,6 @@
 		42E2DF2C19C275BF00E3BA76 /* ALTextFieldCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellHelper.m; sourceTree = "<group>"; };
 		42E2DF2E19C2767800E3BA76 /* ALTextFieldOnlyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldOnlyTests.m; sourceTree = "<group>"; };
 		42E2DF3019C27BF700E3BA76 /* ALTextFieldOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextFieldOnlyCell.xib; sourceTree = "<group>"; };
-		42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALActivityIndicatorView.h"; sourceTree = "<group>"; };
-		42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALActivityIndicatorView.m"; sourceTree = "<group>"; };
 		42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALImageWithURL.h"; sourceTree = "<group>"; };
 		42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALImageWithURL.m"; sourceTree = "<group>"; };
 		42FC099919BA725E0011D1FF /* ALTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableView.h; sourceTree = "<group>"; };
@@ -260,8 +255,6 @@
 				F903693419BDE5B80065AEB3 /* ALImageCache.m */,
 				F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */,
 				F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */,
-				42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */,
-				42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */,
 				42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */,
 				42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */,
 			);
@@ -531,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */,
-				420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */,
 				429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */,
 			);
 			name = TestCases;
@@ -712,7 +704,6 @@
 				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
 				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
 				42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */,
-				42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */,
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
 				4427F1161970590A00C3019E /* ALCell.m in Sources */,
 				4427F1371970594D00C3019E /* ALTextViewCellHelper.m in Sources */,
@@ -727,7 +718,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C281CF19C3C88E00C2F150 /* ALTextFieldCellHelperTests.m in Sources */,
-				420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */,
 				4427F160197062D800C3019E /* ALTextViewOnlyCellTests.m in Sources */,
 				4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */,
 				429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */,

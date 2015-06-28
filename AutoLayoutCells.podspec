@@ -13,12 +13,13 @@ Pod::Spec.new do |s|
   s.framework = "UIKit"
   
   s.subspec 'SharedCategories' do |ss|
+    ss.dependency 'UIImageView+ALActivityIndicatorView', '~> 1.0'
+
     ss.source_files = "AutoLayoutCells/SharedCategories/*{h,m}"
   end
 
   s.subspec 'TableViewCells' do |ss|
     ss.dependency 'AutoLayoutCells/SharedCategories'
-
     ss.dependency 'ALLabel', '~> 2.0'
     ss.dependency 'AutoLayoutTextViews', '~> 1.1'
 
