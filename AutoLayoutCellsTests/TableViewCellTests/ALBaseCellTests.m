@@ -73,7 +73,8 @@
 
 - (void)givenMockNotificationCenter
 {
-  notificationCenter = OCMPartialMock([NSNotificationCenter defaultCenter]);
+  notificationCenter = OCMClassMock([NSNotificationCenter class]);
+  OCMStub([notificationCenter defaultCenter]).andReturn(notificationCenter);
 }
 
 - (void)givenPartialMock
@@ -142,7 +143,6 @@
 - (void)test___commonInit___givenShouldRegisterForFontChanges_YES_thenRegistersFor___UIContentSizeCategoryDidChangeNotification
 {
   // given
-  sut = [ALBaseCell alloc];
   [self givenMockNotificationCenter];
   OCMExpect([notificationCenter addObserver:sut
                                    selector:@selector(contentSizeCategoryDidChange:)
@@ -150,7 +150,7 @@
                                      object:nil]);
   
   // when
-  sut = [sut init];
+  [sut commonInit];
   
   // then
   OCMVerifyAll(notificationCenter);
@@ -159,14 +159,13 @@
 - (void)test___commonInit___givenShouldRegisterForFontChanges_NO_doesNotRegisterFor____UIContentSizeCategoryDidChangeNotification
 {
   // given
-  sut = [ALBaseCell alloc];
   [ALBaseCell setShouldRegisterForFontChanges:NO];
   
   [self givenMockNotificationCenter];
   [[[notificationCenter reject] ignoringNonObjectArgs] addObserver:sut selector:NULL name:OCMOCK_ANY object:OCMOCK_ANY];
   
   // when
-  sut = [sut init];
+  [sut commonInit];
   
   // then
   OCMVerifyAll(notificationCenter);
