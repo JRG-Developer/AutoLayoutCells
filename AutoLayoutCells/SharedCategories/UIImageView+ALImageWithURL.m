@@ -33,11 +33,12 @@
 
 #pragma mark - Class Methods
 
-+ (void)initialize
++ (void)load
 {
-  if (self == [UIImageView class]) {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
     [self AL_swizzleSetImage];
-  }
+  });
 }
 
 + (void)AL_swizzleSetImage
