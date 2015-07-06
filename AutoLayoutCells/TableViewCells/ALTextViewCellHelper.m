@@ -260,6 +260,10 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
+  if (self.valueChangedBlock) {
+    self.valueChangedBlock(textView.text);
+  }
+  
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self.cell valueChanged:textView.text];
   }

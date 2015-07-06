@@ -47,6 +47,8 @@
 {
   ALTextViewCell *sut;
 
+  void (^valueChangedBlock)(id value);
+  
   id delegate;
   id textView;
   id textViewHelper;
@@ -63,6 +65,9 @@
 - (void)tearDown
 {
   [delegate stopMocking];
+  [textView stopMocking];
+  [textViewHelper stopMocking];
+  
   [super tearDown];
 }
 
@@ -193,6 +198,21 @@
   
   // when
   [sut setDelegate:delegate];
+  
+  // then
+  OCMVerifyAll(textViewHelper);
+}
+
+- (void)test___setValueChangedBlock___sets_textFieldHelper_valueChangedBlock
+{  
+  // given
+  valueChangedBlock = ^(id value) { };
+  
+  [self givenMockTextViewHelper];
+  OCMExpect([textViewHelper setValueChangedBlock:valueChangedBlock]);
+  
+  // when
+  sut.valueChangedBlock = valueChangedBlock;
   
   // then
   OCMVerifyAll(textViewHelper);

@@ -59,7 +59,7 @@
 ///--------------------------------------------------------------
 
 /**
- *  The delegated that should be notified of value-related events.
+ *  The delegate that should be notified of value-related events.
  *
  *  @discussion Each cell will have a `delegate` object. While `ALCellDelegate` is the most commonly required delegate protocol, it doesn't strictly have to be.
  */
@@ -71,6 +71,15 @@
  *  @discussion Cell subclasses may treat sizing cells slightly differently than normal cells. In example, image loading from URL may be skipped.
  */
 @property (assign, nonatomic) BOOL isSizingCell;
+
+/**
+ *  The block that should be called whenever the cell's value changes.
+ *
+ *  @discussion  This can be used in addition to, or as a replacement for, a `delegate`.
+ *
+ *  This block will be called *before* the `delegate` is messaged.
+ */
+@property (strong, nonatomic) void (^valueChangedBlock)(id value);
 
 ///--------------------------------------------------------------
 /// @name Instance Methods

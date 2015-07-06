@@ -64,10 +64,10 @@ static UIImage *image;
 @implementation ALImageCellTests
 {
   ALImageCell *sut;
-  id partialMock;
   
   id constraint;
   id imageView;
+  id partialMock;
 }
 
 #pragma mark - Test Lifecycle
@@ -82,9 +82,9 @@ static UIImage *image;
 {
   [[UIImageView AL_sharedImageDownloadCache] removeAllObjects];
   
-  [partialMock stopMocking];
   [constraint stopMocking];
   [imageView stopMocking];
+  [partialMock stopMocking];
   
   [super tearDown];
 }

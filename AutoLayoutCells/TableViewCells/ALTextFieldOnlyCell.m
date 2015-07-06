@@ -79,6 +79,11 @@
   self.textFieldHelper.delegate = delegate;
 }
 
+- (void)setValueChangedBlock:(void (^)(id))valueChangedBlock
+{
+  [super setValueChangedBlock:valueChangedBlock];
+  self.textFieldHelper.valueChangedBlock = valueChangedBlock;
+}
 
 #pragma mark - Set Values From Dictionary
 

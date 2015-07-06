@@ -47,6 +47,8 @@
 {
   ALTextViewOnlyCell *sut;
   
+  void (^valueChangedBlock)(id value);
+  
   id delegate;
   id textView;
   id textViewHelper;
@@ -58,6 +60,15 @@
 {
   [super setUp];
   sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextViewOnlyCell" owner:self];
+}
+
+- (void)tearDown
+{
+  [delegate stopMocking];
+  [textView stopMocking];
+  [textViewHelper stopMocking];
+  
+  [super tearDown];
 }
 
 #pragma mark - Utilities
@@ -158,19 +169,34 @@
 
 #pragma mark - Custom Accessors
 
-- (void)test___delegate___returns_textViewHelper_delegate
+- (void)test___setDelegate___sets_textViewHelper_delegate
 {
   // given
   [self givenMockTextViewHelper];
   [self givenMockDelegate];
   
-  OCMStub([textViewHelper delegate]).andReturn(delegate);
+  OCMExpect([textViewHelper setDelegate:delegate]);
   
   // when
-  id actual = [sut delegate];
+  [sut setDelegate:delegate];
   
   // then
-  XCTAssertEqual(actual, delegate);
+  OCMVerifyAll(textViewHelper);
+}
+
+- (void)test___setValueChangedBlock___sets_textFieldHelper_valueChangedBlock
+{  
+  // given
+  valueChangedBlock = ^(id value) { };
+  
+  [self givenMockTextViewHelper];
+  OCMExpect([textViewHelper setValueChangedBlock:valueChangedBlock]);
+  
+  // when
+  sut.valueChangedBlock = valueChangedBlock;
+  
+  // then
+  OCMVerifyAll(textViewHelper);
 }
 
 #pragma mark - Set Values Dictionary - Tests

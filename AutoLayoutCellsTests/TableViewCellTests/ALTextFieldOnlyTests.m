@@ -46,9 +46,11 @@
 @implementation ALTextFieldOnlyTests
 {
   ALTextFieldOnlyCell *sut;
-  id partialMock;
+  
+  void (^valueChangedBlock)(id value);
   
   id delegate;
+  id partialMock;
   id textField;
   id textFieldHelper;
 }
@@ -59,6 +61,16 @@
 {
   [super setUp];
   sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldOnlyCell" owner:self];
+}
+
+- (void)tearDown
+{
+  [delegate stopMocking];
+  [partialMock stopMocking];
+  [textField stopMocking];
+  [textFieldHelper stopMocking];
+  
+  [super tearDown];
 }
 
 #pragma mark - Given
@@ -118,6 +130,21 @@
   
   // when
   sut.delegate = delegate;
+  
+  // then
+  OCMVerifyAll(textFieldHelper);
+}
+
+- (void)test___setValueChangedBlock___sets_textFieldHelper_valueChangedBlock
+{  
+  // given
+  valueChangedBlock = ^(id value) { };
+  
+  [self givenMockTextFieldHelper];
+  OCMExpect([textFieldHelper setValueChangedBlock:valueChangedBlock]);
+  
+  // when
+  sut.valueChangedBlock = valueChangedBlock;
   
   // then
   OCMVerifyAll(textFieldHelper);

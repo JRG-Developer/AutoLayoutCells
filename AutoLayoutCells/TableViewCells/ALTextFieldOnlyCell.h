@@ -38,7 +38,7 @@
 ///--------------------------------------------------------------
 
 /**
-*  The delegated that should be notified of value-related events.
+*  The delegate that should be notified of value-related events.
 *  @see `ALCellDelegate` for more details.
 */
 @property (weak, nonatomic) IBOutlet id<ALCellDelegate> delegate;
