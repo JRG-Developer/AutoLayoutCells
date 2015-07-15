@@ -3,7 +3,6 @@
 //  AutoLayoutCells
 //
 //  Created by Joshua Greene on 7/13/15.
-//  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -50,11 +49,14 @@
   ALTableViewManager *sut;
   
   CGFloat estimatedRowHeight;
+  NSIndexPath *indexPath;
   UITableView *tableView;
   
   NSArray *mockViewModelArrays;
   id partialMock;
   id partialMockTableView;
+  
+  id viewModel;
 }
 
 #pragma mark - Test Lifecycle
@@ -74,8 +76,10 @@
 {
   [partialMock stopMocking];
   [partialMockTableView stopMocking];
+
+  [viewModel stopMocking];
+
   [self stopMockingViewMocks];
-  
   [super tearDown];
 }
 
@@ -87,6 +91,15 @@
 }
 
 #pragma mark - Given Mocks
+
+- (void)givenIndexPathWillReturnMockViewModel
+{
+  NSUInteger section = 2, row = 1;
+  [self givenMockViewModelsWithSections:(section + 2) rows:(row + 2)];
+  indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+  
+  viewModel = mockViewModelArrays[section][row];
+}
 
 - (void)givenMockViewModelsWithSections:(NSUInteger)sectionsCount
                                    rows:(NSUInteger)rowsCount
@@ -256,19 +269,13 @@
   expect(actual).to.equal(expected);
 }
 
-- (void)test___tableView_cellForRowAtIndexPath___returnsCellForViewModelAtIndexPath
+- (void)test___tableView_cellForRowAtIndexPath___returnsViewModel_cellForTableView
 {
   // given
-  [self givenMockViewModelsWithSections:3 rows:3];
-  
-  NSUInteger section = 2;
-  NSUInteger row = 1;
-  
-  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+  [self givenIndexPathWillReturnMockViewModel];
   
   UITableViewCell *expected = [UITableViewCell new];
-  id viewModel = mockViewModelArrays[section][row];
-  OCMStub([viewModel tableView:tableView cellForRowAtIndexPath:indexPath]).andReturn(expected);
+  OCMStub([viewModel cellForTableView:tableView]).andReturn(expected);
   
   // when
   UITableViewCell *actual = [sut tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -279,52 +286,32 @@
 
 #pragma mark - UITableViewDelegate - Tests
 
-- (void)test___tableView_didSelectRowAtIndexPath___givenALBaseCellHasDidSelectCellBlock_calls_didSelectCellBlock {
-  
+- (void)test___tableView_didSelectRowAtIndexPath___calls_viewModel_didSelectCell
+{  
   // given
-  __block BOOL didSelectCellBlockCalled = NO;
-  
-  ALBaseCell *cell = [ALBaseCell new];
-  cell.didSelectCellBlock = ^{
-    didSelectCellBlockCalled = YES;
-  };
-  
-  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-
-  [self givenPartialMockTableView];
-  OCMStub([partialMockTableView cellForRowAtIndexPath:indexPath]).andReturn(cell);
+  [self givenIndexPathWillReturnMockViewModel];
+  OCMExpect([viewModel didSelectCell]);
   
   // when
   [sut tableView:tableView didSelectRowAtIndexPath:indexPath];
   
   // then
-  expect(didSelectCellBlockCalled).to.beTruthy();
+  OCMVerifyAll(viewModel);
 }
 
-- (void)test___tableView_didSelectRowAtIndexPath___givenALBaseCellDoesntHaveDidSelectCellBlock_doesntCall {
-  
+- (void)test___tableView_editActionsForRowAtIndexPath___returns_viewModel_editActionsForCell
+{
   // given
-  ALBaseCell *cell = [ALBaseCell new];
-  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  [self givenIndexPathWillReturnMockViewModel];
   
-  [self givenPartialMockTableView];
-  OCMStub([partialMockTableView cellForRowAtIndexPath:indexPath]).andReturn(cell);
+  NSArray *expected = @[];
+  OCMStub([viewModel editActionsForCell]).andReturn(expected);
+  
+  // when
+  NSArray *actual = [sut tableView:tableView editActionsForRowAtIndexPath:indexPath];
   
   // then
-  XCTAssertNoThrow([sut tableView:tableView didSelectRowAtIndexPath:indexPath]);
-}
-
-- (void)test___tableView_didSelectRowAtIndexPath___givenCellDoesntRespondToDidSelectCellBlock_doesntCall {
-  
-  // given
-  UITableViewCell *cell = [UITableViewCell new];
-  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-  
-  [self givenPartialMockTableView];
-  OCMStub([partialMockTableView cellForRowAtIndexPath:indexPath]).andReturn(cell);
-  
-  // then
-  XCTAssertNoThrow([sut tableView:tableView didSelectRowAtIndexPath:indexPath]);
+  expect(actual).to.equal(expected);
 }
 
 @end

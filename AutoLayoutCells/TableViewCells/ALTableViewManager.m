@@ -24,7 +24,6 @@
 
 #import "ALTableViewManager.h"
 
-#import "ALBaseCell.h"
 #import "ALCellViewModel.h"
 
 @interface ALTableViewManager ()
@@ -37,7 +36,7 @@
 
 - (instancetype)init {
   
-  [NSException raise:@"method not supported" format:@"use initWithTableView: instead"];
+  [NSException raise:@"method not supported" format:@"use `initWithTableView: estimatedRowHeight:` instead"];
   return [self initWithTableView:nil estimatedRowHeight:0.0f];
 }
 
@@ -100,6 +99,15 @@
   [self.tableView reloadData];
 }
 
+#pragma mark - Utilities
+
+- (id<ALCellViewModel>)viewModelForIndexPath:(NSIndexPath *)indexPath {
+
+  NSArray *rows = self.viewModelArrays[indexPath.section];
+  id <ALCellViewModel> viewModel = rows[indexPath.row];
+  return viewModel;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -115,20 +123,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSArray *rows = self.viewModelArrays[indexPath.section];
-  id <ALCellViewModel> viewModel = rows[indexPath.row];
-  return [viewModel tableView:tableView cellForRowAtIndexPath:indexPath];
+  id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+  return [viewModel cellForTableView:tableView];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  ALBaseCell *cell = (ALBaseCell *)[tableView cellForRowAtIndexPath:indexPath];
-  
-  if ([cell respondsToSelector:@selector(didSelectCellBlock)] && cell.didSelectCellBlock) {
-    cell.didSelectCellBlock();
-  }
+    id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+    [viewModel didSelectCell];
+}
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+  return [viewModel editActionsForCell];
 }
 
 @end

@@ -27,7 +27,9 @@
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
  *
- *  @discussion  Concrete subclasses should set `viewModelArrays` to an array of array ("2D array") of `ALCellViewModel` objects. Subclasses should also override `registerCells` to register table view cells by class/nib to be dequeued.
+ *  @discussion  Concrete subclasses should set `viewModelArrays` to an array of arrays ("2D array") of `ALCellViewModel` objects. 
+ *
+ *  Subclasses should also override `registerCells` to register table view cells by class/nib to be dequeued.
  */
 @interface ALTableViewManager : NSObject <UITableViewDataSource, UITableViewDelegate>
 

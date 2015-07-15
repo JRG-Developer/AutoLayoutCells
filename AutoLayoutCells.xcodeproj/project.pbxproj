@@ -11,6 +11,8 @@
 		42399F5C19C62F1A00E26A3E /* Test_ALTextCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5B19C62F1A00E26A3E /* Test_ALTextCellDelegate.m */; };
 		42399F5F19C651BE00E26A3E /* Test_ALCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */; };
 		42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */; };
+		4261190B1B55DED20027A6DE /* ALSimpleCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */; };
+		4261190E1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */; };
 		429580951B54CE7600A23551 /* ALTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580941B54CE7600A23551 /* ALTableViewManager.m */; };
 		429580981B54CECA00A23551 /* ALTableViewManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580971B54CECA00A23551 /* ALTableViewManagerTests.m */; };
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
@@ -102,6 +104,9 @@
 		42399F5D19C651BE00E26A3E /* Test_ALCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALCellDelegate.h; sourceTree = "<group>"; };
 		42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALCellDelegate.m; sourceTree = "<group>"; };
 		42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellTests.m; sourceTree = "<group>"; };
+		426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSimpleCellViewModel.h; sourceTree = "<group>"; };
+		4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModel.m; sourceTree = "<group>"; };
+		4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModelTests.m; sourceTree = "<group>"; };
 		429580931B54CE7600A23551 /* ALTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewManager.h; sourceTree = "<group>"; };
 		429580941B54CE7600A23551 /* ALTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManager.m; sourceTree = "<group>"; };
 		429580971B54CECA00A23551 /* ALTableViewManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManagerTests.m; sourceTree = "<group>"; };
@@ -223,9 +228,27 @@
 				42A53A7919BAD9C10027ECA4 /* Categories */,
 				42A53A7A19BAD9CF0027ECA4 /* Factories */,
 				42A53A7B19BADA100027ECA4 /* Utilities */,
+				4261190C1B55E1D70027A6DE /* View-models */,
 				4427F163197062E500C3019E /* Views */,
 			);
 			name = Cases;
+			sourceTree = "<group>";
+		};
+		426119081B55DEA00027A6DE /* View-models */ = {
+			isa = PBXGroup;
+			children = (
+				426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */,
+				4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */,
+			);
+			name = "View-models";
+			sourceTree = "<group>";
+		};
+		4261190C1B55E1D70027A6DE /* View-models */ = {
+			isa = PBXGroup;
+			children = (
+				4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */,
+			);
+			name = "View-models";
 			sourceTree = "<group>";
 		};
 		42A53A7919BAD9C10027ECA4 /* Categories */ = {
@@ -343,9 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				4427F12F1970593F00C3019E /* ALCellDelegate.h */,
+				429580991B54DCC100A23551 /* ALCellViewModel.h */,
 				4427F1301970593F00C3019E /* ALTableViewCellFactoryDelegate.h */,
 				4427F1321970593F00C3019E /* ALTextCellDelegate.h */,
-				429580991B54DCC100A23551 /* ALCellViewModel.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -478,6 +501,7 @@
 				4427F12E1970593300C3019E /* Protocols */,
 				4427F1381970597A00C3019E /* ResourcesBundle */,
 				4427F1341970594400C3019E /* Utilities */,
+				426119081B55DEA00027A6DE /* View-models */,
 				44BBB99919704B1C00AB4596 /* Views */,
 			);
 			path = TableViewCells;
@@ -719,6 +743,7 @@
 				4427F1161970590A00C3019E /* ALCell.m in Sources */,
 				4427F1371970594D00C3019E /* ALTextViewCellHelper.m in Sources */,
 				42E2DF2D19C275BF00E3BA76 /* ALTextFieldCellHelper.m in Sources */,
+				4261190B1B55DED20027A6DE /* ALSimpleCellViewModel.m in Sources */,
 				4427F1241970591E00C3019E /* ALImageCellConstants.m in Sources */,
 				4427F1261970591E00C3019E /* ALTextCellConstants.m in Sources */,
 			);
@@ -733,6 +758,7 @@
 				4427F160197062D800C3019E /* ALTextViewOnlyCellTests.m in Sources */,
 				4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */,
 				429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */,
+				4261190E1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m in Sources */,
 				4427F15D197062D800C3019E /* ALLeftLabelCellTests.m in Sources */,
 				42399F5C19C62F1A00E26A3E /* Test_ALTextCellDelegate.m in Sources */,
 				4427F16A197062FD00C3019E /* Test_ALTableViewCellNibFactory.m in Sources */,

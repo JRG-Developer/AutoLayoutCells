@@ -81,15 +81,6 @@
  */
 @property (strong, nonatomic) void (^valueChangedBlock)(id value);
 
-/**
- *  The block that should be called whenever the cell is selected.
- *
- *  @discussion  This will be called automatically by `ALTableViewManager` within `tableView: didSelectRowAtIndexPath:`.
- *
- *  Otherwise, you can call this block yourself in your own implementation of `tableView: didSelectRowAtIndexPath:`, if desired.
- */
-@property (strong, nonatomic) void (^didSelectCellBlock)();
-
 ///--------------------------------------------------------------
 /// @name Instance Methods
 ///--------------------------------------------------------------

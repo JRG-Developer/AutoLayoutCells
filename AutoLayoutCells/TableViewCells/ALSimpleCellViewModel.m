@@ -1,8 +1,8 @@
 //
-//  ALCellViewModel.h
+//  ALSimpleCellViewModel.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 7/13/15.
+//  Created by Joshua Greene on 7/14/15.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,34 +22,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "ALSimpleCellViewModel.h"
 
-/**
- *  `ALCellViewModel` objects are used by `ALTableViewManager` to create and dequeue table view cells.
- *
- *  @discussion  `ALCellViewModel` should map
- */
-@protocol ALCellViewModel <NSObject>
+@implementation ALSimpleCellViewModel
 
-/**
- *  This method should dequeue and configure a cell associated with the view model.
- *
- *  @param tableView The table view to dequeue the cell from
- *
- *  @return A configured `UITableViewCell` associated with the view model
- */
-- (UITableViewCell *)cellForTableView:(UITableView *)tableView;
+#pragma mark - Object Lifecycle
 
-/**
- *  This method is called whenever the cell associated with the view model is selected.
- */
-- (void)didSelectCell;
+- (instancetype)initWithModel:(id)model
+        cellForTableViewBlock:(UITableViewCell *(^)(UITableView *tableView))cellForTableViewBlock
+           didSelectCellBlock:(void(^)())didSelectCellBlock
+           editActionsForCell:(NSArray *)editActionsForCell {
+  
+  self = [super init];
+  if (!self) {
+    return nil;
+  }
+  
+  NSParameterAssert(cellForTableViewBlock);
+  
+  _model = model;
+  _cellForTableViewBlock = cellForTableViewBlock;
+  _didSelectCellBlock = didSelectCellBlock;
+  _editActionsForCell = editActionsForCell;
+  
+  return self;
+}
 
-/**
- *  This method should return an array of `UITableViewRowAction` objects for the cell associated with the view model.
- *
- *  @return An array of `UITableViewRowAction` objects
- */
-- (NSArray *)editActionsForCell;
+#pragma mark - ALCellViewModel
+
+- (UITableViewCell *)cellForTableView:(UITableView *)tableView {
+  return self.cellForTableViewBlock(tableView);
+}
+
+- (void)didSelectCell {
+  
+  if (self.didSelectCellBlock) {
+    self.didSelectCellBlock();
+  }
+}
 
 @end
