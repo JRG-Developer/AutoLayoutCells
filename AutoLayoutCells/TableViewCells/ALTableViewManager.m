@@ -25,6 +25,7 @@
 #import "ALTableViewManager.h"
 
 #import "ALCellViewModel.h"
+#import "ALTableViewCellFactory.h"
 
 @interface ALTableViewManager ()
 @property (strong, nonatomic, readwrite) UITableView *tableView;
@@ -36,12 +37,11 @@
 
 - (instancetype)init {
   
-  [NSException raise:@"method not supported" format:@"use `initWithTableView: estimatedRowHeight:` instead"];
-  return [self initWithTableView:nil estimatedRowHeight:0.0f];
+  [NSException raise:@"method not supported" format:@"use `initWithTableView:` instead"];
+  return nil;
 }
 
 - (instancetype)initWithTableView:(UITableView *)tableView
-               estimatedRowHeight:(CGFloat)estimatedRowHeight
 {
   NSParameterAssert(tableView);
   
@@ -50,43 +50,32 @@
     return nil;
   }
   
-  [self setEstimatedRowHeight:estimatedRowHeight];
-  [self setTableView:tableView];
+  _tableView = tableView;
+
+  _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView identifiersToNibsDictionary:nil];
+  _cellFactory.delegate = self;
+  
+  [self configureTableView];
+  [self registerCells];
   
   return self;
 }
 
 #pragma mark - Custom Accessors
 
-- (void)setEstimatedRowHeight:(CGFloat)estimatedRowHeight
+- (void)configureTableView
 {
-  if (_estimatedRowHeight == estimatedRowHeight) {
-    return;
-  }
-  
-  _estimatedRowHeight = estimatedRowHeight;
-  self.tableView.estimatedRowHeight = estimatedRowHeight;
-}
-
-- (void)setTableView:(UITableView *)tableView
-{
-  if (_tableView == tableView) {
-    return;
-  }
-  
-  _tableView = tableView;
-  _tableView.dataSource = self;
-  _tableView.delegate = self;
-  
-  _tableView.estimatedRowHeight = self.estimatedRowHeight;
-  _tableView.rowHeight = UITableViewAutomaticDimension;
-  
-  [self registerCells];
+  // Empty by default
 }
 
 - (void)registerCells
 {
-  // empty by default
+  // Empty by default
+}
+
+- (void)reloadViewModels
+{
+  // Empty by default
 }
 
 - (void)setViewModelArrays:(NSArray *)viewModelArrays
@@ -108,7 +97,7 @@
   return viewModel;
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - ALTableViewCellFactoryDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -121,10 +110,16 @@
   return rows.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)tableView:(UITableView *)tableView identifierForCellAtIndexPath:(NSIndexPath *)indexPath
 {
   id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
-  return [viewModel cellForTableView:tableView];
+  return [viewModel cellIdentifier];
+}
+
+- (void)tableView:(UITableView *)tableView configureCell:(id)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+  [viewModel configureCell:cell];
 }
 
 #pragma mark - UITableViewDelegate
@@ -135,10 +130,21 @@
     [viewModel didSelectCell];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+  return [[viewModel editActionsForCell] count] > 0;
+}
+
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
   return [viewModel editActionsForCell];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  // Empty by default; required to use UITableViewRowActions
 }
 
 @end

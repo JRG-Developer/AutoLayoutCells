@@ -1,8 +1,9 @@
 //
-//  ALTableViewManagerTests.m
-//  AutoLayoutCells
+//  TextCellViewModel.m
+//  CityScavengerHunt
 //
-//  Created by Joshua Greene on 7/13/15.
+//  Created by Joshua Greene on 7/17/15.
+//  Copyright (c) 2015 JRG-Developer. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,43 +23,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-// Test Class
-#import "ALTableViewManager.h"
+#import "ALTextCellViewModel.h"
 
-// Collaborators
-#import "ALBaseCell.h"
-#import "ALCellViewModel.h"
+#import <AutoLayoutCells/ALTextViewCell.h>
+#import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
-// Test Support
-#import <XCTest/XCTest.h>
+@implementation ALTextCellViewModel
 
-#define EXP_SHORTHAND YES
-#import <Expecta/Expecta.h>
+#pragma mark - ALTextCellDelegate
 
-#import <OCMock/OCMock.h>
-
-@interface ALTableViewManager ()
-@property (strong, nonatomic, readwrite) UITableView *tableView;
-@end
-
-@interface ALTableViewManagerTests : XCTestCase
-@end
-
-@implementation ALTableViewManagerTests
-{
-  ALTableViewManager *sut;
-}
-
-#pragma mark - Test Lifecycle
-
-- (void)setUp
-{
-  [super setUp];
-}
-
-- (void)tearDown
-{
-  [super tearDown];
+- (void)cellHeightDidChange:(ALTextViewCell *)cell {
+  
+  NSParameterAssert(self.tableView);
+  
+  if (![cell.textView isFirstResponder]) {
+    return;
+  }
+  
+  [self.tableView beginUpdates];
+  [self.tableView endUpdates];
 }
 
 @end

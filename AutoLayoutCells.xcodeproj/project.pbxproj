@@ -13,6 +13,7 @@
 		42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */; };
 		4261190B1B55DED20027A6DE /* ALSimpleCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */; };
 		4261190E1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */; };
+		42942B891B58F368001FD7ED /* ALTextCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42942B881B58F368001FD7ED /* ALTextCellViewModel.m */; };
 		429580951B54CE7600A23551 /* ALTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580941B54CE7600A23551 /* ALTableViewManager.m */; };
 		429580981B54CECA00A23551 /* ALTableViewManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580971B54CECA00A23551 /* ALTableViewManagerTests.m */; };
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
@@ -107,6 +108,8 @@
 		426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSimpleCellViewModel.h; sourceTree = "<group>"; };
 		4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModel.m; sourceTree = "<group>"; };
 		4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModelTests.m; sourceTree = "<group>"; };
+		42942B871B58F368001FD7ED /* ALTextCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextCellViewModel.h; sourceTree = "<group>"; };
+		42942B881B58F368001FD7ED /* ALTextCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCellViewModel.m; sourceTree = "<group>"; };
 		429580931B54CE7600A23551 /* ALTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewManager.h; sourceTree = "<group>"; };
 		429580941B54CE7600A23551 /* ALTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManager.m; sourceTree = "<group>"; };
 		429580971B54CECA00A23551 /* ALTableViewManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManagerTests.m; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 			children = (
 				426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */,
 				4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */,
+				42942B871B58F368001FD7ED /* ALTextCellViewModel.h */,
+				42942B881B58F368001FD7ED /* ALTextCellViewModel.m */,
 			);
 			name = "View-models";
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 			files = (
 				F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */,
 				42FF946119C657A900263BE6 /* ALTextFieldOnlyCell.m in Sources */,
+				42942B891B58F368001FD7ED /* ALTextCellViewModel.m in Sources */,
 				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
 				42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */,
 				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,

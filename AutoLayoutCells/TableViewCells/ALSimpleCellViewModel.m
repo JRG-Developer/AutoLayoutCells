@@ -28,34 +28,28 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)initWithModel:(id)model
-        cellForTableViewBlock:(UITableViewCell *(^)(UITableView *tableView))cellForTableViewBlock
-           didSelectCellBlock:(void(^)())didSelectCellBlock
-           editActionsForCell:(NSArray *)editActionsForCell {
-  
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
+{
   self = [super init];
   if (!self) {
     return nil;
   }
   
-  NSParameterAssert(cellForTableViewBlock);
-  
-  _model = model;
-  _cellForTableViewBlock = cellForTableViewBlock;
-  _didSelectCellBlock = didSelectCellBlock;
-  _editActionsForCell = editActionsForCell;
-  
+  _cellIdentifier = cellIdentifier;
   return self;
 }
 
 #pragma mark - ALCellViewModel
 
-- (UITableViewCell *)cellForTableView:(UITableView *)tableView {
-  return self.cellForTableViewBlock(tableView);
+- (void)configureCell:(id)cell
+{
+  if (self.configureCellBlock) {
+    self.configureCellBlock(cell);
+  }
 }
 
-- (void)didSelectCell {
-  
+- (void)didSelectCell
+{
   if (self.didSelectCellBlock) {
     self.didSelectCellBlock();
   }

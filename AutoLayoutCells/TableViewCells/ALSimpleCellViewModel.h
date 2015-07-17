@@ -34,14 +34,23 @@
 @interface ALSimpleCellViewModel : NSObject <ALCellViewModel>
 
 /**
- *  The model backing the view model
+ *  @brief  This is the preferred way to create an `ALSimpleCellViewModel`.
+ *
+ *  @param cellIdentifier The cell identifier
+ *
+ *  @return A new `ALSimpleCellViewModel` instance
  */
-@property (strong, nonatomic) id model;
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier NS_DESIGNATED_INITIALIZER;
 
 /**
- *  The block to be called in response to `cellForTableView:` method call
+ *  The block to be called in response to `configureCell:` method call
  */
-@property (strong, nonatomic) UITableViewCell * (^cellForTableViewBlock)(UITableView *);
+@property (strong, nonatomic) void (^configureCellBlock)(id cell);
+
+/**
+ *  The cell identifier
+ */
+@property (copy, nonatomic) NSString *cellIdentifier;
 
 /**
  *  The block to be called in response to `didSelectCell` method call
@@ -52,22 +61,5 @@
  *  The edit actions for the cell
  */
 @property (strong, nonatomic) NSArray *editActionsForCell;
-
-/**
- *  This is the preferred way to instantiate an `ALSimpleCellViewModel` object.
- *
- *  @warning  `cellForTableViewBlock` is REQUIRED and MUST return a `UITableViewCell`. Otherwise, an assert will be failed at runtime.
- *
- *  @param model                 The associated model
- *  @param cellForTableViewBlock The block to be called in response to `cellForTableView:` method call, REQUIRED
- *  @param didSelectCellBlock    The block to be called in response to `didSelectCell` method call
- *  @param editActionsForCell    The edit actions for the cell
- *
- *  @return A new `ALSimpleCellViewModel` instance
- */
-- (instancetype)initWithModel:(id)model
-        cellForTableViewBlock:(UITableViewCell * (^)(UITableView *tableView))cellForTableViewBlock
-           didSelectCellBlock:(void(^)())didSelectCellBlock
-           editActionsForCell:(NSArray *)editActionsForCell NS_DESIGNATED_INITIALIZER;
 
 @end

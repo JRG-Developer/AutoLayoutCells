@@ -31,14 +31,21 @@
  */
 @protocol ALCellViewModel <NSObject>
 
+@required
+
 /**
- *  This method should dequeue and configure a cell associated with the view model.
+ *  This method should return the identifier for the cell associated with the view model.
  *
- *  @param tableView The table view to dequeue the cell from
- *
- *  @return A configured `UITableViewCell` associated with the view model
+ *  @return The identifier for the cell associated with the view model.
  */
-- (UITableViewCell *)cellForTableView:(UITableView *)tableView;
+- (NSString *)cellIdentifier;
+
+/**
+ *  This method should configure the cell associated with the view model.
+ *
+ *  @param cell The cell to be configured
+ */
+- (void)configureCell:(id)cell;
 
 /**
  *  This method is called whenever the cell associated with the view model is selected.

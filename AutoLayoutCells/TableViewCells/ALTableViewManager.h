@@ -22,7 +22,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "ALTableViewCellFactoryDelegate.h"
+
+@class ALTableViewCellFactory;
 
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
@@ -31,17 +33,15 @@
  *
  *  Subclasses should also override `registerCells` to register table view cells by class/nib to be dequeued.
  */
-@interface ALTableViewManager : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface ALTableViewManager : NSObject <ALTableViewCellFactoryDelegate, UITableViewDelegate>
 
 /**
- *  The estimated row height for table view cells
- *
- *  @discussion  Subclasses should either set this to a value greater than zero or implement `tableView:estimatedHeightForRowAtIndexPath:`.
+ *  The table view cell factory is responsible for creating/dequeuing cells and calculating cell height.
  */
-@property (assign, nonatomic, readonly) CGFloat estimatedRowHeight;
+@property (strong, nonatomic, readonly) ALTableViewCellFactory *cellFactory;
 
 /**
- *  The table view to provide the data source and delegate
+ *  The table view to be managed
  */
 @property (strong, nonatomic, readonly) UITableView *tableView;
 
@@ -58,16 +58,29 @@
  *
  *  @return A new `ALTableViewManager` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView
-               estimatedRowHeight:(CGFloat)estimatedRowHeight NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(UITableView *)tableView;
 
 /**
- *  This is an abstract method meant to be override by subclasses.
+ *  This is an abstract method meant to be overriden by subclasses.
+ *
+ *  @discusion  By default, this method sets the `dataSource`, `delegate`, `estimatedRowHeight` and `rowHeight` on on `self.tableView`. See implementation for more details.
+ */
+- (void)configureTableView __attribute((objc_requires_super));
+
+/**
+ *  This is an abstract method meant to be overriden by subclasses.
  *
  *  @discussion  By default, this method is empty. Subclasses should override this method to register cells on `self.tableView`.
  *
  *  This method is called right after the `tableView` has been set.
  */
 - (void)registerCells;
+
+/**
+ *  This is an abstract method meant to be override by subclasses.
+ *
+ *  @discussion  By default, this method is empty. Subclasses should override this method to setup/reload `viewModelArrays`.
+ */
+- (void)reloadViewModels;
 
 @end
