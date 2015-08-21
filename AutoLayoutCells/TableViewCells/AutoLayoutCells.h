@@ -39,6 +39,13 @@
 #import <AutoLayoutCells/ALTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellNibFactory.h>
 
+// Managers
+#import <AutoLayoutCells/ALTableViewManager.h>
+
 // Protocols
 #import <AutoLayoutCells/ALCellDelegate.h>
 #import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+
+// View-Models
+#import <AutoLayoutCells/ALSimpleCellViewModel.h>
+#import <AutoLayoutCells/ALTextCellViewModel.h>

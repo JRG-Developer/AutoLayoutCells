@@ -31,8 +31,10 @@
 #import <AutoLayoutCells/ALCell.h>
 #import <AutoLayoutCells/ALImageCell.h>
 #import <AutoLayoutCells/ALLeftLabelCell.h>
-#import <AutoLayoutCells/ALTextCell.h>
-#import <AutoLayoutCells/ALTextOnlyCell.h>
+#import <AutoLayoutCells/ALTextFieldCell.h>
+#import <AutoLayoutCells/ALTextFieldCell.h>
+#import <AutoLayoutCells/ALTextViewCell.h>
+#import <AutoLayoutCells/ALTextViewOnlyCell.h>
 
 // Constants
 #import <AutoLayoutCells/ALCellConstants.h>
@@ -43,6 +45,9 @@
 // Factories
 #import <AutoLayoutCells/ALTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+
+// Managers
+#import <AutoLayoutCells/ALTableViewManager.h>
 
 // Protocols
 #import <AutoLayoutCells/ALCellDelegate.h>
