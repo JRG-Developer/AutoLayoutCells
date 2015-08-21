@@ -48,10 +48,10 @@
   }
 }
 
-- (void)didSelectCell
+- (void)didSelectCell:(id)cell
 {
   if (self.didSelectCellBlock) {
-    self.didSelectCellBlock();
+    self.didSelectCellBlock(cell);
   }
 }
 

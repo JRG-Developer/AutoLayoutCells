@@ -55,7 +55,7 @@
 /**
  *  The block to be called in response to `didSelectCell` method call
  */
-@property (strong, nonatomic) void (^didSelectCellBlock)();
+@property (strong, nonatomic) void (^didSelectCellBlock)(id cell);
 
 /**
  *  The edit actions for the cell

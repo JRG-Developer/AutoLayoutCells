@@ -49,8 +49,10 @@
 
 /**
  *  This method is called whenever the cell associated with the view model is selected.
+ *
+ *  @param cell The cell that was selected
  */
-- (void)didSelectCell;
+- (void)didSelectCell:(id)cell;
 
 /**
  *  This method should return an array of `UITableViewRowAction` objects for the cell associated with the view model.

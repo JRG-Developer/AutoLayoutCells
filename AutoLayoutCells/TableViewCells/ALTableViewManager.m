@@ -126,8 +126,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
-    [viewModel didSelectCell];
+  
+  id cell = [tableView cellForRowAtIndexPath:indexPath];
+  id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
+  [viewModel didSelectCell:cell];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
