@@ -42,4 +42,16 @@
  */
 @property (weak, nonatomic) UITableView *tableView;
 
+
+/**
+ *  This is the preferred way to create an `ALTextCellViewModel`.
+ *
+ *  @param cellIdentifier The cell identifier
+ *  @param tableView      The table view associated with the cell
+ *
+ *  @return A new `ALTextCellViewModel` instance.
+ */
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
+                             tableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
+
 @end

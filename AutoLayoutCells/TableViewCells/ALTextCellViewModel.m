@@ -30,6 +30,25 @@
 
 @implementation ALTextCellViewModel
 
+#pragma mark - Object Lifecycle
+
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier {
+  return [self initWithCellIdentifier:cellIdentifier tableView:nil];
+}
+
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
+                             tableView:(UITableView *)tableView {
+  
+  self = [super initWithCellIdentifier:cellIdentifier];
+  if (!self) {
+    return nil;
+  }
+  
+  _tableView = tableView;
+
+  return self;
+}
+
 #pragma mark - ALTextCellDelegate
 
 - (void)cellHeightDidChange:(ALTextViewCell *)cell {
