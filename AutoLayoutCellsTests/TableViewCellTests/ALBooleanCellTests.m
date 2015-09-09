@@ -27,7 +27,7 @@
 #import "ALCellConstants.h"
 
 // Collaborators
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -52,7 +52,7 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
 }
 
 - (void)tearDown

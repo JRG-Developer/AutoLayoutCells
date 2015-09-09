@@ -38,7 +38,7 @@
 
 #import <OCMock/OCMock.h>
 
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 @interface ALTextFieldCellTests : XCTestCase
 @end
@@ -59,7 +59,7 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextFieldCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALTextFieldCell" owner:self];
 }
 
 - (void)tearDown

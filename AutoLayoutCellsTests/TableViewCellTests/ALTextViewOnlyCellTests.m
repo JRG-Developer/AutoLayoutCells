@@ -33,7 +33,7 @@
 
 // Test Support
 #import <XCTest/XCTest.h>
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 #define EXP_SHORTHAND YES
 #import <Expecta/Expecta.h>
@@ -59,7 +59,7 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALTextViewOnlyCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALTextViewOnlyCell" owner:self];
 }
 
 - (void)tearDown

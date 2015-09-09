@@ -134,9 +134,9 @@
 				42FC098419BA3D4A0011D1FF /* Controllers */,
 				42C6EA521A42A8C100AC6228 /* Factories */,
 				42FC098C19BA62260011D1FF /* Models */,
-				42FC098519BA3D620011D1FF /* Views */,
 				42FC098619BA3E410011D1FF /* Resources */,
 				42FC095619BA3C4A0011D1FF /* Supporting Files */,
+				42FC098519BA3D620011D1FF /* Views */,
 			);
 			path = AutoLayoutCellsDemo;
 			sourceTree = "<group>";

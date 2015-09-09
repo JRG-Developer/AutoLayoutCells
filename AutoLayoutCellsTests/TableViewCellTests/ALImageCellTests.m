@@ -29,7 +29,7 @@
 // Collaborators
 #import "ALImageCache.h"
 #import "NSBundle+ALTableViewCellsBundle.h"
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 #import "UIImageView+ALImageWithURL.h"
 
 // Test Support
