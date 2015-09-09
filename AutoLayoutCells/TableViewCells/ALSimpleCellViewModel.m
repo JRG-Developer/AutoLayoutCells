@@ -28,6 +28,10 @@
 
 #pragma mark - Object Lifecycle
 
+- (instancetype)init {
+    return [self initWithCellIdentifier:nil];
+}
+
 - (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
 {
   self = [super init];

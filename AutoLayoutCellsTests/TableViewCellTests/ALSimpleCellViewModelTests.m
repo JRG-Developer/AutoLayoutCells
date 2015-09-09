@@ -35,21 +35,118 @@
 
 #import <OCMock/OCMock.h>
 
-static NSString *ALSimpleCellIdentifier = @"SimpleCell";
-
 @interface ALSimpleCellViewModelTests : XCTestCase
 @end
 
-@implementation ALSimpleCellViewModelTests
-{
+@implementation ALSimpleCellViewModelTests {
+  
   ALSimpleCellViewModel *sut;
+  NSString *cellIdentifier;
+  
+  id partialMock;
 }
 
 #pragma mark - Test Lifecycle
 
-- (void)setUp
-{
-  [super setUp];  
+- (void)setUp {
+  
+  [super setUp];
+  cellIdentifier = @"Test_CellIdentifier";
+  sut = [[ALSimpleCellViewModel alloc] initWithCellIdentifier:cellIdentifier];
+}
+
+- (void)tearDown {
+  
+  [partialMock stopMocking];
+  [super tearDown];
+}
+
+#pragma mark - Given - Mocks
+
+- (void)givenPartialMock {
+  
+  partialMock = OCMPartialMock(sut);
+}
+
+#pragma mark - Class - Tests
+
+- (void)test___conformsTo___ALCellViewModel {
+  
+  expect(sut).to.conformTo(@protocol(ALCellViewModel));
+}
+
+#pragma mark - Object Lifecycle - Tests
+
+- (void)test___init___calls_initWithCellIdentifier {
+  
+  // given
+  sut = [ALSimpleCellViewModel alloc];
+  
+  [self givenPartialMock];
+  OCMExpect([partialMock initWithCellIdentifier:nil]);
+  
+  // when
+  sut = [sut init];
+  
+  // then
+  OCMVerifyAll(partialMock);
+}
+
+- (void)test___initWithCellIdentifier___sets_cellIdentifier {
+  
+  expect(sut.cellIdentifier).to.equal(cellIdentifier);
+}
+
+#pragma mark - ALCellViewModel - Tests
+
+- (void)test___configureCell___givenHasConfigureCellBlock_calls_configureCellBlock {
+  
+  // given
+  UITableViewCell *expected = [[UITableViewCell alloc] init];
+  __block BOOL configureCellBlockCalled = NO;
+  
+  void (^configureCellBlock)(id) = ^(id cell) {
+    
+    configureCellBlockCalled = YES;
+    expect(cell).to.equal(expected);
+  };
+  
+  sut.configureCellBlock = configureCellBlock;
+  
+  // when
+  [sut configureCell:expected];
+  
+  // then
+  expect(configureCellBlockCalled).to.beTruthy();
+}
+
+- (void)test___configureCellBlock___givenConfigureCellBlockIsNil_doesntCallBlock {
+  
+  // given
+  UITableViewCell *cell = [[UITableViewCell alloc] init];
+  
+  // then
+  XCTAssertNoThrow([sut configureCell:cell]);
+}
+
+- (void)test___didSelectCell___givenHasDidSelectCellBlock_calls_didSelectCellBlock {
+  
+  UITableViewCell *expected = [[UITableViewCell alloc] init];
+  __block BOOL didSelectCellBlockCalled = NO;
+  
+  void (^didSelectCellBlock)(id) = ^(id cell) {
+    
+    didSelectCellBlockCalled = YES;
+    expect(cell).to.equal(expected);
+  };
+  
+  sut.didSelectCellBlock = didSelectCellBlock;
+  
+  // when
+  [sut didSelectCell:expected];
+  
+  // then
+  expect(didSelectCellBlockCalled).to.beTruthy();
 }
 
 @end
