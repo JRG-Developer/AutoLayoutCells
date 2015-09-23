@@ -43,7 +43,7 @@
 /**
  *  The table view to be managed
  */
-@property (strong, nonatomic, readonly) UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 
 /**
  *  This should be set to an array of arrays containing `ALCellViewModel` objects.
@@ -51,14 +51,27 @@
 @property (strong, nonatomic) NSArray *viewModelArrays;
 
 /**
- *  Use this method to initialize a new `ALTableViewManager`.
+ *  Use this method to initialize a new `ALTableViewManager` without a `tableView`.
+ *
+ *  @discussion  In order to do anything useful, you'll need to actually set the `tableView` at some later point (likely, within a view controller's `viewDidLoad` method).
+ *
+ *  This method is useful, for example, if you need to inject other objects into your custom table view manager prior to a view controller's `viewDidLoad` method.
+ *
+ *  @return A new `ALTableViewManager` instance
+ */
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+/**
+ *  Use this method to initialize a new `ALTableViewManager` with a `tableView`.
+ *
+ *  @discussion  This is useful, for example, if you're creating an `ALTableViewManager` inside a view controller's `viewDidLoad` method.
  *
  *  @param tableView The table view to provide the data source and delegate
  *  @param estimatedRowHeight  The estimatedRowHeight
  *
  *  @return A new `ALTableViewManager` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView;
+- (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 /**
  *  This is an abstract method meant to be overriden by subclasses.

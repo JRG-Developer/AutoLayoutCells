@@ -37,28 +37,37 @@
 
 #import <OCMock/OCMock.h>
 
-@interface ALTableViewManager ()
-@property (strong, nonatomic, readwrite) UITableView *tableView;
-@end
-
 @interface ALTableViewManagerTests : XCTestCase
 @end
 
-@implementation ALTableViewManagerTests
-{
+@implementation ALTableViewManagerTests {
+  
   ALTableViewManager *sut;
+  
+  id tableView;
 }
 
 #pragma mark - Test Lifecycle
 
-- (void)setUp
-{
+- (void)setUp {
+
   [super setUp];
+
+  [self setupMockTableView];
+  sut = [[ALTableViewManager alloc] initWithTableView:tableView];
+  
+  #warning Write remaining unit tests here...
+  
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
   [super tearDown];
+}
+
+#pragma mark - Given - Mocks
+
+- (void)setupMockTableView {
+  tableView = OCMClassMock([UITableView class]);
 }
 
 @end

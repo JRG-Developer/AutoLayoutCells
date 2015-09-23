@@ -27,18 +27,13 @@
 #import "ALCellViewModel.h"
 #import "ALTableViewCellFactory.h"
 
-@interface ALTableViewManager ()
-@property (strong, nonatomic, readwrite) UITableView *tableView;
-@end
-
 @implementation ALTableViewManager
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)init {
-  
-  [NSException raise:@"method not supported" format:@"use `initWithTableView:` instead"];
-  return nil;
+- (instancetype)init
+{
+  return [super init];
 }
 
 - (instancetype)initWithTableView:(UITableView *)tableView
@@ -50,18 +45,27 @@
     return nil;
   }
   
-  _tableView = tableView;
+  [self setTableView:tableView];
+  return self;
+}
 
+#pragma mark - Custom Accessors
+
+- (void)setTableView:(UITableView *)tableView
+{
+  if (_tableView == tableView)
+  {
+    return;
+  }
+  
+  _tableView = tableView;
+  
   _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView identifiersToNibsDictionary:nil];
   _cellFactory.delegate = self;
   
   [self configureTableView];
   [self registerCells];
-  
-  return self;
 }
-
-#pragma mark - Custom Accessors
 
 - (void)configureTableView
 {
