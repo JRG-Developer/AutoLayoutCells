@@ -115,8 +115,10 @@
   [self givenPartialMock];
   OCMExpect([partialMock commonInit]);
   
+  NSCoder *coder = [NSCoder new];
+  
   // when
-  sut = [sut initWithCoder:nil];
+  sut = [sut initWithCoder:coder];
   
   // then
   OCMVerifyAll(partialMock);
@@ -162,7 +164,8 @@
   [ALBaseCell setShouldRegisterForFontChanges:NO];
   
   [self givenMockNotificationCenter];
-  [[[notificationCenter reject] ignoringNonObjectArgs] addObserver:sut selector:NULL name:OCMOCK_ANY object:OCMOCK_ANY];
+  SEL selector;
+  [[[notificationCenter reject] ignoringNonObjectArgs] addObserver:sut selector:selector name:OCMOCK_ANY object:OCMOCK_ANY]; // yeah, I hacked that... ;P
   
   // when
   [sut commonInit];
