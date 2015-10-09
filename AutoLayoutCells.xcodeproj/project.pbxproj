@@ -69,7 +69,6 @@
 		44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */; };
 		44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */; };
 		9EED687E134A458AAD877799 /* libPods-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */; };
-		A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */; };
 		F47D2863823AB923B59C38AA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C0BA5790561E9A60F87B8 /* libPods.a */; };
 		F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F903693419BDE5B80065AEB3 /* ALImageCache.m */; };
 		F95A786519BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */; };
@@ -212,7 +211,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */,
 				F47D2863823AB923B59C38AA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +604,7 @@
 				44BBB979197049C200AB4596 /* Frameworks */,
 				44BBB97A197049C200AB4596 /* Resources */,
 				3A0007203828412AA660B64C /* Copy Pods Resources */,
+				B22449FF97463B72DEDD3A2A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,6 +724,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B22449FF97463B72DEDD3A2A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -913,11 +927,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0CB68C2F5E9F3BDBD7CA002A /* Pods-AutoLayoutCellsTests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -935,11 +944,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 987867EC2F9EF6FCE4A2EC60 /* Pods-AutoLayoutCellsTests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
 				INFOPLIST_FILE = "AutoLayoutCellsTests/AutoLayoutCellsTests-Info.plist";
