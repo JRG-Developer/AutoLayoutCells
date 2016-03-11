@@ -134,9 +134,9 @@
 				42FC098419BA3D4A0011D1FF /* Controllers */,
 				42C6EA521A42A8C100AC6228 /* Factories */,
 				42FC098C19BA62260011D1FF /* Models */,
-				42FC098519BA3D620011D1FF /* Views */,
 				42FC098619BA3E410011D1FF /* Resources */,
 				42FC095619BA3C4A0011D1FF /* Supporting Files */,
+				42FC098519BA3D620011D1FF /* Views */,
 			);
 			path = AutoLayoutCellsDemo;
 			sourceTree = "<group>";
@@ -228,6 +228,7 @@
 				42FC094919BA3C4A0011D1FF /* Frameworks */,
 				42FC094A19BA3C4A0011D1FF /* Resources */,
 				7366569C62A4D69BB5638D88 /* Copy Pods Resources */,
+				DC1B798A714629EE1A6E52CB /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,7 +245,7 @@
 		42FC094419BA3C4A0011D1FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 42FC094719BA3C4A0011D1FF /* Build configuration list for PBXProject "AutoLayoutCellsDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -312,6 +313,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		DC1B798A714629EE1A6E52CB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AutoLayoutCellsDemo/Pods-AutoLayoutCellsDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -372,6 +388,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -433,6 +450,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCellsDemo/AutoLayoutCellsDemo-Prefix.pch";
 				INFOPLIST_FILE = "AutoLayoutCellsDemo/AutoLayoutCellsDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jrgdeveloper.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AutoLayoutCellsDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -447,6 +466,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCellsDemo/AutoLayoutCellsDemo-Prefix.pch";
 				INFOPLIST_FILE = "AutoLayoutCellsDemo/AutoLayoutCellsDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jrgdeveloper.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = AutoLayoutCellsDemo;
 				WRAPPER_EXTENSION = app;
 			};

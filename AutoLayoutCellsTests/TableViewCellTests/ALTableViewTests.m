@@ -57,11 +57,12 @@
 - (void)test___initWithCoder___calls_commonInit
 {
   // given
+  NSCoder *coder = [NSCoder new];
   sut = [ALTableView alloc];
   partialMock = OCMPartialMock(sut);
   
   // when
-  sut = [sut initWithCoder:nil];
+  sut = [sut initWithCoder:coder];
   
   // then
   OCMVerify([partialMock commonInit]);

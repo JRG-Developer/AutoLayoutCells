@@ -23,11 +23,10 @@
 //  THE SOFTWARE.
 
 #import "ALImageCell.h"
+#import "ALTextCellDelegate.h"
 
 @class ALAutoResizingTextView;
 @class ALTextViewCellHelper;
-
-@protocol ALTextCellDelegate;
 
 /**
  *  `ALTextCell` provides a means for text-input from the user. It shows a text view, title, subtitle, and optional image (depending on the nib).

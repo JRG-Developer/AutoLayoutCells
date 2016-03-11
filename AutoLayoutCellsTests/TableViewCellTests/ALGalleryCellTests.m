@@ -26,7 +26,7 @@
 #import "ALImageCell.h"
 
 // Collaborators
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -47,7 +47,7 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALGalleryCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALGalleryCell" owner:self];
 }
 
 #pragma mark - Class - Tests

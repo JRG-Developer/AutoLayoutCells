@@ -27,7 +27,7 @@
 #import "ALLeftLabelCellConstants.h"
 
 // Collaborators
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -50,7 +50,7 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALLeftLabelCell" owner:nil];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALLeftLabelCell" owner:nil];
 }
 
 #pragma mark - Class - Tests

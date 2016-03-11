@@ -1,8 +1,8 @@
 //
-//  AutoLayoutCells.h
+//  ALSimpleCellViewModel.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 7/13/14.
+//  Created by Joshua Greene on 7/14/15.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +22,41 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- *  In general, you should import this header along with whichever specific cells you need. This header gives you just the minimum imports you're likely to need.
- *
- *  You can, however, choose to import individual files one-by-one for specific needs. For example, you might want to import just `ALTableViewCellFactory` and `ALTableViewCellFactoryDelegate` if you're only custom cells created in your project.
- */
+#import "ALSimpleCellViewModel.h"
 
-// Cells
-#import <AutoLayoutCells/ALImageCell.h>
+@implementation ALSimpleCellViewModel
 
-// Constants
-#import <AutoLayoutCells/ALCellConstants.h>
-#import <AutoLayoutCells/ALImageCellConstants.h>
+#pragma mark - Object Lifecycle
 
-// Factories
-#import <AutoLayoutCells/ALTableViewCellFactory.h>
-#import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+- (instancetype)init {
+    return [self initWithCellIdentifier:nil];
+}
 
-// Managers
-#import <AutoLayoutCells/ALTableViewManager.h>
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
+{
+  self = [super init];
+  if (!self) {
+    return nil;
+  }
+  
+  _cellIdentifier = cellIdentifier;
+  return self;
+}
 
-// Protocols
-#import <AutoLayoutCells/ALCellDelegate.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+#pragma mark - ALCellViewModel
 
-// View-Models
-#import <AutoLayoutCells/ALSimpleCellViewModel.h>
-#import <AutoLayoutCells/ALTextCellViewModel.h>
+- (void)configureCell:(id)cell
+{
+  if (self.configureCellBlock) {
+    self.configureCellBlock(cell);
+  }
+}
+
+- (void)didSelectCell:(id)cell
+{
+  if (self.didSelectCellBlock) {
+    self.didSelectCellBlock(cell);
+  }
+}
+
+@end

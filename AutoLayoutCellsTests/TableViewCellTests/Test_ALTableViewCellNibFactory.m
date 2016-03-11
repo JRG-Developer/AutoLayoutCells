@@ -24,9 +24,25 @@
 
 #import "Test_ALTableViewCellNibFactory.h"
 
+#import <objc/runtime.h>
+
 @implementation Test_ALTableViewCellNibFactory
 
-+ (UINib *)nibWithName:(NSString *)name
++ (void)load {
+  
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    [self swizzleNibWithNameMethod];
+  });
+}
+
++ (void)swizzleNibWithNameMethod {
+  Method m1 = class_getClassMethod([super class], @selector(nibWithName:));
+  Method m2 = class_getClassMethod([super class], @selector(test_nibWithName:));
+  method_exchangeImplementations(m1, m2);
+}
+
++ (UINib *)test_nibWithName:(NSString *)name
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UINib *nib = [UINib nibWithNibName:name bundle:bundle];

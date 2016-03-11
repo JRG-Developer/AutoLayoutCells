@@ -37,15 +37,24 @@
 @property (weak, nonatomic) UITableViewCell *cell;
 
 /**
+ *  The delegate to inform of height change and value-related events.
+ *  @see `ALTextViewCellHelperDelegate` for more details
+ */
+@property (weak, nonatomic) id<ALCellDelegate>delegate;
+
+/**
  *  The text field that should be configured, set values of, delegated for, etc
  */
 @property (weak, nonatomic) UITextField *textField;
 
 /**
- *  The delegate to inform of height change and value-related events
- *  @see `ALTextViewCellHelperDelegate` for more details
+ *  The block that should be called whenever the text field's value changes.
+ *
+ *  @discussion  This can be used in addition to, or as a replacement for, a `delegate`.
+ *
+ *  This block will be called *before* the `delegate` is messaged.
  */
-@property (weak, nonatomic) id<ALCellDelegate>delegate;
+@property (strong, nonatomic) void (^valueChangedBlock)(id value);
 
 ///--------------------------------------------------------------
 /// @name Object Lifecycle

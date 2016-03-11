@@ -49,6 +49,8 @@
 @implementation ALBaseCellTests
 {
   ALBaseCell *sut;
+
+  id notificationCenter;
   id partialMock;
 }
 
@@ -60,11 +62,47 @@
   sut = [[ALBaseCell alloc] init];
 }
 
-#pragma mark - Given
+- (void)tearDown
+{
+  [notificationCenter stopMocking];
+  [partialMock stopMocking];
+  [super tearDown];
+}
+
+#pragma mark - Given - Mocks
+
+- (void)givenMockNotificationCenter
+{
+  notificationCenter = OCMClassMock([NSNotificationCenter class]);
+  OCMStub([notificationCenter defaultCenter]).andReturn(notificationCenter);
+}
 
 - (void)givenPartialMock
 {
   partialMock = OCMPartialMock(sut);
+}
+
+#pragma mark - Class Configuration - Tests
+
+- (void)test___shouldRegisterForFontChanges___defaultsTo_YES
+{
+  expect([ALBaseCell shouldRegisterForFontChanges]).to.beTruthy();
+}
+
+- (void)test___setShouldRegisterForFontChanges___sets_shouldRegisterForFontChanges {
+  
+  // given
+  BOOL expected = NO;
+  
+  // when
+  [ALBaseCell setShouldRegisterForFontChanges:expected];
+  BOOL actual = [ALBaseCell shouldRegisterForFontChanges];
+  
+  // then
+  expect(actual).to.equal(expected);
+  
+  // clean
+  [ALBaseCell setShouldRegisterForFontChanges:YES];
 }
 
 #pragma mark - Object Lifecycle - Tests
@@ -73,48 +111,70 @@
 {
   // given
   sut = [ALBaseCell alloc];
+
   [self givenPartialMock];
+  OCMExpect([partialMock commonInit]);
+  
+  NSCoder *coder = [NSCoder new];
   
   // when
-  sut = [sut initWithCoder:nil];
+  sut = [sut initWithCoder:coder];
   
   // then
-  [[partialMock verify] commonInit];
+  OCMVerifyAll(partialMock);
 }
 
 - (void)test___initWithStyle___calls___commonInit
 {
   // given
   sut = [ALBaseCell alloc];
+
   [self givenPartialMock];
+  OCMExpect([partialMock commonInit]);
   
   // when
   
   sut = [sut initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
   
   // then
-  [[partialMock verify] commonInit];
+  OCMVerifyAll(partialMock);
 }
 
 #pragma mark - Notification - Tests
 
-- (void)test___commonInit___registersFor___UIContentSizeCategoryDidChangeNotification
+- (void)test___commonInit___givenShouldRegisterForFontChanges_YES_thenRegistersFor___UIContentSizeCategoryDidChangeNotification
 {
   // given
-  [self givenPartialMock];
-  id mockCenter = OCMPartialMock([NSNotificationCenter defaultCenter]);
+  [self givenMockNotificationCenter];
+  OCMExpect([notificationCenter addObserver:sut
+                                   selector:@selector(contentSizeCategoryDidChange:)
+                                       name:UIContentSizeCategoryDidChangeNotification
+                                     object:nil]);
   
   // when
   [sut commonInit];
   
   // then
-  [[mockCenter verify] addObserver:sut
-                                  selector:@selector(contentSizeCategoryDidChange:)
-                                      name:UIContentSizeCategoryDidChangeNotification
-                                    object:nil];
+  OCMVerifyAll(notificationCenter);
+}
+
+- (void)test___commonInit___givenShouldRegisterForFontChanges_NO_doesNotRegisterFor____UIContentSizeCategoryDidChangeNotification
+{
+  // given
+  [ALBaseCell setShouldRegisterForFontChanges:NO];
+  
+  [self givenMockNotificationCenter];
+  SEL selector;
+  [[[notificationCenter reject] ignoringNonObjectArgs] addObserver:sut selector:selector name:OCMOCK_ANY object:OCMOCK_ANY]; // yeah, I hacked that... ;P
+  
+  // when
+  [sut commonInit];
+  
+  // then
+  OCMVerifyAll(notificationCenter);
   
   // clean up
-  [mockCenter stopMocking];
+  [ALBaseCell setShouldRegisterForFontChanges:YES];
 }
 
 @end

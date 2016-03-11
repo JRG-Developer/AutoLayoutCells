@@ -27,7 +27,7 @@
 #import "ALCellConstants.h"
 
 // Collaborators
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -49,7 +49,7 @@
 
 - (void)setUp
 {
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
   [super setUp];
 }
 

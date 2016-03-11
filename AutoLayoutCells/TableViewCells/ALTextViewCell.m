@@ -31,7 +31,7 @@
 @end
 
 @implementation ALTextViewCell
-@synthesize delegate = _delegate;
+@dynamic delegate;
 
 #pragma mark - Object Lifecycle
 
@@ -70,11 +70,14 @@
 
 - (void)setDelegate:(id<ALTextCellDelegate>)delegate
 {
-  if (_delegate == delegate) {
-    return;
-  }
-  _delegate = delegate;
+  [super setDelegate:delegate];
   self.textViewHelper.delegate = delegate;
+}
+
+- (void)setValueChangedBlock:(void (^)(id))valueChangedBlock
+{
+  [super setValueChangedBlock:valueChangedBlock];
+  self.textViewHelper.valueChangedBlock = valueChangedBlock;
 }
 
 #pragma mark - Set Values Dictionary

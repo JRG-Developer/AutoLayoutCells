@@ -1,8 +1,8 @@
 //
-//  AutoLayoutCells.h
+//  ALTableViewManagerTests.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 7/13/14.
+//  Created by Joshua Greene on 7/13/15.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +22,52 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- *  In general, you should import this header along with whichever specific cells you need. This header gives you just the minimum imports you're likely to need.
- *
- *  You can, however, choose to import individual files one-by-one for specific needs. For example, you might want to import just `ALTableViewCellFactory` and `ALTableViewCellFactoryDelegate` if you're only custom cells created in your project.
- */
+// Test Class
+#import "ALTableViewManager.h"
 
-// Cells
-#import <AutoLayoutCells/ALImageCell.h>
+// Collaborators
+#import "ALBaseCell.h"
+#import "ALCellViewModel.h"
 
-// Constants
-#import <AutoLayoutCells/ALCellConstants.h>
-#import <AutoLayoutCells/ALImageCellConstants.h>
+// Test Support
+#import <XCTest/XCTest.h>
 
-// Factories
-#import <AutoLayoutCells/ALTableViewCellFactory.h>
-#import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+#define EXP_SHORTHAND YES
+#import <Expecta/Expecta.h>
 
-// Managers
-#import <AutoLayoutCells/ALTableViewManager.h>
+#import <OCMock/OCMock.h>
 
-// Protocols
-#import <AutoLayoutCells/ALCellDelegate.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+@interface ALTableViewManagerTests : XCTestCase
+@end
 
-// View-Models
-#import <AutoLayoutCells/ALSimpleCellViewModel.h>
-#import <AutoLayoutCells/ALTextCellViewModel.h>
+@implementation ALTableViewManagerTests {
+  
+  ALTableViewManager *sut;
+  
+  id tableView;
+}
+
+#pragma mark - Test Lifecycle
+
+- (void)setUp {
+
+  [super setUp];
+
+  [self setupMockTableView];
+  sut = [[ALTableViewManager alloc] initWithTableView:tableView];
+  
+  #warning Write remaining unit tests here...
+  
+}
+
+- (void)tearDown {
+  [super tearDown];
+}
+
+#pragma mark - Given - Mocks
+
+- (void)setupMockTableView {
+  tableView = OCMClassMock([UITableView class]);
+}
+
+@end

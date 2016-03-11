@@ -46,6 +46,10 @@
 
 - (IBAction)didToggle:(UISwitch *)toggle
 {
+  if (self.valueChangedBlock) {
+    self.valueChangedBlock(@([toggle isOn]));
+  }
+  
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self valueChanged:@([toggle isOn])];
   }

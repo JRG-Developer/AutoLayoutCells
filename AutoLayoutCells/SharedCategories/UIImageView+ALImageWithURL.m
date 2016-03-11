@@ -25,19 +25,20 @@
 #import "UIImageView+ALImageWithURL.h"
 
 #import <objc/runtime.h>
+#import <UIImageView+ALActivityIndicatorView/UIImageView+ALActivityIndicatorView.h>
 
 #import "ALImageCache.h"
-#import "UIImageView+ALActivityIndicatorView.h"
 
 @implementation UIImageView (ALImageWithURL)
 
 #pragma mark - Class Methods
 
-+ (void)initialize
++ (void)load
 {
-  if (self == [UIImageView class]) {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
     [self AL_swizzleSetImage];
-  }
+  });
 }
 
 + (void)AL_swizzleSetImage

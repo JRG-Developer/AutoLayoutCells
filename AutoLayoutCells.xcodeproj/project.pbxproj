@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
-		420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */; };
 		42399F5C19C62F1A00E26A3E /* Test_ALTextCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5B19C62F1A00E26A3E /* Test_ALTextCellDelegate.m */; };
 		42399F5F19C651BE00E26A3E /* Test_ALCellDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */; };
 		42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */; };
+		4254CC721B9FD2C300BDEB7E /* ALTextCellViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4254CC711B9FD2C300BDEB7E /* ALTextCellViewModelTests.m */; };
+		4261190B1B55DED20027A6DE /* ALSimpleCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */; };
+		4261190E1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */; };
+		42942B891B58F368001FD7ED /* ALTextCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42942B881B58F368001FD7ED /* ALTextCellViewModel.m */; };
+		429580951B54CE7600A23551 /* ALTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580941B54CE7600A23551 /* ALTableViewManager.m */; };
+		429580981B54CECA00A23551 /* ALTableViewManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429580971B54CECA00A23551 /* ALTableViewManagerTests.m */; };
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
 		42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */; };
 		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
@@ -20,7 +25,6 @@
 		42E2DF2D19C275BF00E3BA76 /* ALTextFieldCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E2DF2C19C275BF00E3BA76 /* ALTextFieldCellHelper.m */; };
 		42E2DF2F19C2767800E3BA76 /* ALTextFieldOnlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E2DF2E19C2767800E3BA76 /* ALTextFieldOnlyTests.m */; };
 		42E2DF3119C27ED700E3BA76 /* ALTextFieldOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E2DF3019C27BF700E3BA76 /* ALTextFieldOnlyCell.xib */; };
-		42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */; };
 		42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */; };
 		42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC099A19BA725E0011D1FF /* ALTableView.m */; };
 		42FF946119C657A900263BE6 /* ALTextFieldOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF946019C657A900263BE6 /* ALTextFieldOnlyCell.m */; };
@@ -65,7 +69,7 @@
 		44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */; };
 		44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */; };
 		9EED687E134A458AAD877799 /* libPods-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */; };
-		A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */; };
+		F47D2863823AB923B59C38AA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2C0BA5790561E9A60F87B8 /* libPods.a */; };
 		F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F903693419BDE5B80065AEB3 /* ALImageCache.m */; };
 		F95A786519BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */; };
 /* End PBXBuildFile section */
@@ -93,16 +97,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0566D11A0ACF705D1C5C26F8 /* Pods-AutoLayoutCells.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.release.xcconfig"; sourceTree = "<group>"; };
-		2FA8AB10325235D322D67CA1 /* Pods-AutoLayoutCellsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.release.xcconfig"; sourceTree = "<group>"; };
-		31990CC627A2D3B8129B9534 /* Pods-AutoLayoutCells.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.debug.xcconfig"; sourceTree = "<group>"; };
+		0CB68C2F5E9F3BDBD7CA002A /* Pods-AutoLayoutCellsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALImageCacheTests.m; path = TableViewCellTests/ALImageCacheTests.m; sourceTree = "<group>"; };
-		420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALActivityIndicatorViewTests.m"; path = "TableViewCellTests/UIImageView+ALActivityIndicatorViewTests.m"; sourceTree = "<group>"; };
 		42399F5A19C62F1A00E26A3E /* Test_ALTextCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALTextCellDelegate.h; sourceTree = "<group>"; };
 		42399F5B19C62F1A00E26A3E /* Test_ALTextCellDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALTextCellDelegate.m; sourceTree = "<group>"; };
 		42399F5D19C651BE00E26A3E /* Test_ALCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_ALCellDelegate.h; sourceTree = "<group>"; };
 		42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_ALCellDelegate.m; sourceTree = "<group>"; };
 		42433D8A19C0FB1D004F2FC0 /* ALTextFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellTests.m; sourceTree = "<group>"; };
+		4254CC711B9FD2C300BDEB7E /* ALTextCellViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCellViewModelTests.m; sourceTree = "<group>"; };
+		426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSimpleCellViewModel.h; sourceTree = "<group>"; };
+		4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModel.m; sourceTree = "<group>"; };
+		4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSimpleCellViewModelTests.m; sourceTree = "<group>"; };
+		42942B871B58F368001FD7ED /* ALTextCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextCellViewModel.h; sourceTree = "<group>"; };
+		42942B881B58F368001FD7ED /* ALTextCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextCellViewModel.m; sourceTree = "<group>"; };
+		429580931B54CE7600A23551 /* ALTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewManager.h; sourceTree = "<group>"; };
+		429580941B54CE7600A23551 /* ALTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManager.m; sourceTree = "<group>"; };
+		429580971B54CECA00A23551 /* ALTableViewManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewManagerTests.m; sourceTree = "<group>"; };
+		429580991B54DCC100A23551 /* ALCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCellViewModel.h; sourceTree = "<group>"; };
 		429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+ALImageWithURLTests.m"; path = "TableViewCellTests/UIImageView+ALImageWithURLTests.m"; sourceTree = "<group>"; };
 		42A478C519C0E3DC00EDD725 /* ALTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextFieldCell.h; sourceTree = "<group>"; };
 		42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCell.m; sourceTree = "<group>"; };
@@ -113,8 +124,6 @@
 		42E2DF2C19C275BF00E3BA76 /* ALTextFieldCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellHelper.m; sourceTree = "<group>"; };
 		42E2DF2E19C2767800E3BA76 /* ALTextFieldOnlyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldOnlyTests.m; sourceTree = "<group>"; };
 		42E2DF3019C27BF700E3BA76 /* ALTextFieldOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextFieldOnlyCell.xib; sourceTree = "<group>"; };
-		42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALActivityIndicatorView.h"; sourceTree = "<group>"; };
-		42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALActivityIndicatorView.m"; sourceTree = "<group>"; };
 		42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ALImageWithURL.h"; sourceTree = "<group>"; };
 		42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ALImageWithURL.m"; sourceTree = "<group>"; };
 		42FC099919BA725E0011D1FF /* ALTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableView.h; sourceTree = "<group>"; };
@@ -185,13 +194,16 @@
 		44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ALTableViewCellsBundle.h"; sourceTree = "<group>"; };
 		44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundle.m"; sourceTree = "<group>"; };
 		44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundleTests.m"; sourceTree = "<group>"; };
+		4DFC51ECE0ED7AF562AD3411 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCellsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1D781F28030CD48BBD2C9E1 /* Pods-AutoLayoutCellsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		987867EC2F9EF6FCE4A2EC60 /* Pods-AutoLayoutCellsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.release.xcconfig"; sourceTree = "<group>"; };
+		E02C4596040DD85E77807C80 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F903693319BDE5B80065AEB3 /* ALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCache.h; sourceTree = "<group>"; };
 		F903693419BDE5B80065AEB3 /* ALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCache.m; sourceTree = "<group>"; };
 		F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ALCustomDynamicFont.h"; sourceTree = "<group>"; };
 		F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ALCustomDynamicFont.m"; sourceTree = "<group>"; };
+		FF2C0BA5790561E9A60F87B8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A94F1B3146B54DC19B02806B /* libPods-AutoLayoutCells.a in Frameworks */,
+				F47D2863823AB923B59C38AA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,15 +228,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		420DF88D19BBC2610045CAA3 /* Test Cases */ = {
+		420DF88D19BBC2610045CAA3 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
 				42A53A7919BAD9C10027ECA4 /* Categories */,
 				42A53A7A19BAD9CF0027ECA4 /* Factories */,
 				42A53A7B19BADA100027ECA4 /* Utilities */,
+				4261190C1B55E1D70027A6DE /* View-models */,
 				4427F163197062E500C3019E /* Views */,
 			);
-			name = "Test Cases";
+			name = Cases;
+			sourceTree = "<group>";
+		};
+		426119081B55DEA00027A6DE /* View-models */ = {
+			isa = PBXGroup;
+			children = (
+				426119091B55DED20027A6DE /* ALSimpleCellViewModel.h */,
+				4261190A1B55DED20027A6DE /* ALSimpleCellViewModel.m */,
+				42942B871B58F368001FD7ED /* ALTextCellViewModel.h */,
+				42942B881B58F368001FD7ED /* ALTextCellViewModel.m */,
+			);
+			name = "View-models";
+			sourceTree = "<group>";
+		};
+		4261190C1B55E1D70027A6DE /* View-models */ = {
+			isa = PBXGroup;
+			children = (
+				4261190D1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m */,
+				4254CC711B9FD2C300BDEB7E /* ALTextCellViewModelTests.m */,
+			);
+			name = "View-models";
 			sourceTree = "<group>";
 		};
 		42A53A7919BAD9C10027ECA4 /* Categories */ = {
@@ -240,6 +273,7 @@
 			children = (
 				4427F14B197062D800C3019E /* ALCellFactoryTests.m */,
 				4427F14C197062D800C3019E /* ALCellNibFactoryTests.m */,
+				429580971B54CECA00A23551 /* ALTableViewManagerTests.m */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -260,8 +294,6 @@
 				F903693419BDE5B80065AEB3 /* ALImageCache.m */,
 				F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */,
 				F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */,
-				42E30D4319BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.h */,
-				42E30D4419BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m */,
 				42E30D4519BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.h */,
 				42E30D4619BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m */,
 			);
@@ -333,6 +365,8 @@
 				4427F1291970592E00C3019E /* ALTableViewCellFactory.m */,
 				4427F12A1970592E00C3019E /* ALTableViewCellNibFactory.h */,
 				4427F12B1970592E00C3019E /* ALTableViewCellNibFactory.m */,
+				429580931B54CE7600A23551 /* ALTableViewManager.h */,
+				429580941B54CE7600A23551 /* ALTableViewManager.m */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -341,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				4427F12F1970593F00C3019E /* ALCellDelegate.h */,
+				429580991B54DCC100A23551 /* ALCellViewModel.h */,
 				4427F1301970593F00C3019E /* ALTableViewCellFactoryDelegate.h */,
 				4427F1321970593F00C3019E /* ALTextCellDelegate.h */,
 			);
@@ -383,7 +418,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		4427F164197062EC00C3019E /* Test Classes */ = {
+		4427F164197062EC00C3019E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				4427F167197062FD00C3019E /* Test_ALTableViewCellNibFactory.h */,
@@ -393,7 +428,7 @@
 				42399F5D19C651BE00E26A3E /* Test_ALCellDelegate.h */,
 				42399F5E19C651BE00E26A3E /* Test_ALCellDelegate.m */,
 			);
-			name = "Test Classes";
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		44BBB963197049C200AB4596 = {
@@ -422,6 +457,7 @@
 				44BBB97D197049C200AB4596 /* XCTest.framework */,
 				793BAC88DD324AAD9A8ACFE0 /* libPods-AutoLayoutCellsTests.a */,
 				930E7686554C4C73AC824406 /* libPods-AutoLayoutCells.a */,
+				FF2C0BA5790561E9A60F87B8 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -475,6 +511,7 @@
 				4427F12E1970593300C3019E /* Protocols */,
 				4427F1381970597A00C3019E /* ResourcesBundle */,
 				4427F1341970594400C3019E /* Utilities */,
+				426119081B55DEA00027A6DE /* View-models */,
 				44BBB99919704B1C00AB4596 /* Views */,
 			);
 			path = TableViewCells;
@@ -502,8 +539,8 @@
 		44BBB9A6197051DF00AB4596 /* TableViewCellTests */ = {
 			isa = PBXGroup;
 			children = (
-				420DF88D19BBC2610045CAA3 /* Test Cases */,
-				4427F164197062EC00C3019E /* Test Classes */,
+				420DF88D19BBC2610045CAA3 /* Cases */,
+				4427F164197062EC00C3019E /* Classes */,
 			);
 			path = TableViewCellTests;
 			sourceTree = "<group>";
@@ -511,10 +548,10 @@
 		F6BC50960AE93A2C50E4E511 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				31990CC627A2D3B8129B9534 /* Pods-AutoLayoutCells.debug.xcconfig */,
-				0566D11A0ACF705D1C5C26F8 /* Pods-AutoLayoutCells.release.xcconfig */,
-				A1D781F28030CD48BBD2C9E1 /* Pods-AutoLayoutCellsTests.debug.xcconfig */,
-				2FA8AB10325235D322D67CA1 /* Pods-AutoLayoutCellsTests.release.xcconfig */,
+				4DFC51ECE0ED7AF562AD3411 /* Pods.debug.xcconfig */,
+				E02C4596040DD85E77807C80 /* Pods.release.xcconfig */,
+				0CB68C2F5E9F3BDBD7CA002A /* Pods-AutoLayoutCellsTests.debug.xcconfig */,
+				987867EC2F9EF6FCE4A2EC60 /* Pods-AutoLayoutCellsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -531,7 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */,
-				420DF89319BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m */,
 				429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */,
 			);
 			name = TestCases;
@@ -568,6 +604,7 @@
 				44BBB979197049C200AB4596 /* Frameworks */,
 				44BBB97A197049C200AB4596 /* Resources */,
 				3A0007203828412AA660B64C /* Copy Pods Resources */,
+				B22449FF97463B72DEDD3A2A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -586,7 +623,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AL;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 44BBB967197049C200AB4596 /* Build configuration list for PBXProject "AutoLayoutCells" */;
@@ -686,7 +723,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B22449FF97463B72DEDD3A2A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -698,6 +750,7 @@
 			files = (
 				F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */,
 				42FF946119C657A900263BE6 /* ALTextFieldOnlyCell.m in Sources */,
+				42942B891B58F368001FD7ED /* ALTextCellViewModel.m in Sources */,
 				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
 				42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */,
 				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,
@@ -710,13 +763,14 @@
 				4427F1141970590A00C3019E /* ALImageCell.m in Sources */,
 				42FC099B19BA725E0011D1FF /* ALTableView.m in Sources */,
 				4427F12D1970592E00C3019E /* ALTableViewCellNibFactory.m in Sources */,
+				429580951B54CE7600A23551 /* ALTableViewManager.m in Sources */,
 				4427F1231970591E00C3019E /* ALCellConstants.m in Sources */,
 				42E30D4819BD1B8B00AD4DCA /* UIImageView+ALImageWithURL.m in Sources */,
-				42E30D4719BD1B8B00AD4DCA /* UIImageView+ALActivityIndicatorView.m in Sources */,
 				4427F1171970590A00C3019E /* ALLeftLabelCell.m in Sources */,
 				4427F1161970590A00C3019E /* ALCell.m in Sources */,
 				4427F1371970594D00C3019E /* ALTextViewCellHelper.m in Sources */,
 				42E2DF2D19C275BF00E3BA76 /* ALTextFieldCellHelper.m in Sources */,
+				4261190B1B55DED20027A6DE /* ALSimpleCellViewModel.m in Sources */,
 				4427F1241970591E00C3019E /* ALImageCellConstants.m in Sources */,
 				4427F1261970591E00C3019E /* ALTextCellConstants.m in Sources */,
 			);
@@ -727,10 +781,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C281CF19C3C88E00C2F150 /* ALTextFieldCellHelperTests.m in Sources */,
-				420DF89419BBC9780045CAA3 /* UIImageView+ALActivityIndicatorViewTests.m in Sources */,
+				429580981B54CECA00A23551 /* ALTableViewManagerTests.m in Sources */,
 				4427F160197062D800C3019E /* ALTextViewOnlyCellTests.m in Sources */,
 				4427F155197062D800C3019E /* ALBaseCellTests.m in Sources */,
 				429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */,
+				4261190E1B55E1E60027A6DE /* ALSimpleCellViewModelTests.m in Sources */,
 				4427F15D197062D800C3019E /* ALLeftLabelCellTests.m in Sources */,
 				42399F5C19C62F1A00E26A3E /* Test_ALTextCellDelegate.m in Sources */,
 				4427F16A197062FD00C3019E /* Test_ALTableViewCellNibFactory.m in Sources */,
@@ -747,6 +802,7 @@
 				42433D8B19C0FB1D004F2FC0 /* ALTextFieldCellTests.m in Sources */,
 				4427F159197062D800C3019E /* ALCellFactoryTests.m in Sources */,
 				4427F15E197062D800C3019E /* ALMenuCellTests.m in Sources */,
+				4254CC721B9FD2C300BDEB7E /* ALTextCellViewModelTests.m in Sources */,
 				44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */,
 				42399F5F19C651BE00E26A3E /* Test_ALCellDelegate.m in Sources */,
 			);
@@ -791,6 +847,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -844,7 +901,7 @@
 		};
 		44BBB990197049C200AB4596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31990CC627A2D3B8129B9534 /* Pods-AutoLayoutCells.debug.xcconfig */;
+			baseConfigurationReference = 4DFC51ECE0ED7AF562AD3411 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/AutoLayoutCells.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -856,7 +913,7 @@
 		};
 		44BBB991197049C200AB4596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0566D11A0ACF705D1C5C26F8 /* Pods-AutoLayoutCells.release.xcconfig */;
+			baseConfigurationReference = E02C4596040DD85E77807C80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/AutoLayoutCells.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -868,13 +925,8 @@
 		};
 		44BBB993197049C200AB4596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1D781F28030CD48BBD2C9E1 /* Pods-AutoLayoutCellsTests.debug.xcconfig */;
+			baseConfigurationReference = 0CB68C2F5E9F3BDBD7CA002A /* Pods-AutoLayoutCellsTests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -882,6 +934,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "AutoLayoutCellsTests/AutoLayoutCellsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jrgdeveloper.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -889,16 +942,12 @@
 		};
 		44BBB994197049C200AB4596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FA8AB10325235D322D67CA1 /* Pods-AutoLayoutCellsTests.release.xcconfig */;
+			baseConfigurationReference = 987867EC2F9EF6FCE4A2EC60 /* Pods-AutoLayoutCellsTests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
 				INFOPLIST_FILE = "AutoLayoutCellsTests/AutoLayoutCellsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jrgdeveloper.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};

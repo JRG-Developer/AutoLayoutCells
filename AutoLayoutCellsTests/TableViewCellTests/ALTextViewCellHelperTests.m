@@ -403,6 +403,28 @@
   OCMVerifyAll(delegate);
 }
 
+- (void)test___textViewDidChange___calls_valueChangedBlock
+{  
+  // given
+  [self givenTextInput];
+  
+  __block BOOL blockCalled = NO;
+  
+  void (^valueChangedBlock)(id) = ^(NSString *value) {
+    
+    expect(value).to.equal(textView.text);
+    blockCalled = YES;
+  };
+  
+  sut.valueChangedBlock = valueChangedBlock;
+  
+  // when
+  [sut textViewDidChange:textView];
+  
+  // then
+  expect(blockCalled).to.beTruthy();
+}
+
 - (void)test___textViewDidChange___notifiesDelegate
 {
   // given

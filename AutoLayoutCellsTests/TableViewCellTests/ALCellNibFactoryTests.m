@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 // Test Class
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Collaborators
 #import "ALCell.h"
@@ -52,7 +52,7 @@
 
 - (id)verifySelector:(SEL)selector givesCellClass:(Class)cellClass
 {
-  UINib *nib = [Test_ALTableViewCellNibFactory performSelector:selector];
+  UINib *nib = [ALTableViewCellNibFactory performSelector:selector];
   UIView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
   
   expect(view).to.beInstanceOf(cellClass);
@@ -63,13 +63,13 @@
 
 - (void)test___cellWithName___ALCell___returnsInstanceOf___ALCell
 {
-  id cell = [Test_ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
+  id cell = [ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
   expect(cell).to.beInstanceOf([ALCell class]);
 }
 
 - (void)test___cellWithName___ALBooleanCell___returnsInstanceOf___ALBooleanCell
 {
-  id boolCell = [Test_ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
+  id boolCell = [ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
   expect(boolCell).to.beInstanceOf([ALBooleanCell class]);
 }
 

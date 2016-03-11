@@ -24,7 +24,21 @@
 
 #import "ALBaseCell.h"
 
+static BOOL _ALShouldRegisterForFontChanges = YES;
+
 @implementation ALBaseCell
+
+#pragma mark - Class Configuration
+
++ (void)setShouldRegisterForFontChanges:(BOOL)shouldRegister
+{
+  _ALShouldRegisterForFontChanges = shouldRegister;
+}
+
++ (BOOL)shouldRegisterForFontChanges
+{
+  return _ALShouldRegisterForFontChanges;
+}
 
 #pragma mark - Object Lifecycle
 
@@ -47,11 +61,13 @@
 }
 
 - (void)commonInit
-{
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(contentSizeCategoryDidChange:)
-                                               name:UIContentSizeCategoryDidChangeNotification
-                                             object:nil];
+{  
+  if ([[self class] shouldRegisterForFontChanges]) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(contentSizeCategoryDidChange:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+  }
 }
 
 - (void)dealloc

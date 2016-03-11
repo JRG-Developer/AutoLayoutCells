@@ -1,8 +1,9 @@
 //
-//  AutoLayoutCells.h
+//  ALTextCellViewModel.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 7/13/14.
+//  Created by Joshua Greene on 7/17/15.
+//  Copyright (c) 2015 JRG-Developer. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +23,44 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- *  In general, you should import this header along with whichever specific cells you need. This header gives you just the minimum imports you're likely to need.
- *
- *  You can, however, choose to import individual files one-by-one for specific needs. For example, you might want to import just `ALTableViewCellFactory` and `ALTableViewCellFactoryDelegate` if you're only custom cells created in your project.
- */
+#import "ALTextCellViewModel.h"
 
-// Cells
-#import <AutoLayoutCells/ALImageCell.h>
+#import <AutoLayoutCells/ALTextViewCell.h>
+#import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
-// Constants
-#import <AutoLayoutCells/ALCellConstants.h>
-#import <AutoLayoutCells/ALImageCellConstants.h>
+@implementation ALTextCellViewModel
 
-// Factories
-#import <AutoLayoutCells/ALTableViewCellFactory.h>
-#import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+#pragma mark - Object Lifecycle
 
-// Managers
-#import <AutoLayoutCells/ALTableViewManager.h>
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier {
+  return [self initWithCellIdentifier:cellIdentifier tableView:nil];
+}
 
-// Protocols
-#import <AutoLayoutCells/ALCellDelegate.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+- (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
+                             tableView:(UITableView *)tableView {
+  
+  self = [super initWithCellIdentifier:cellIdentifier];
+  if (!self) {
+    return nil;
+  }
+  
+  _tableView = tableView;
 
-// View-Models
-#import <AutoLayoutCells/ALSimpleCellViewModel.h>
-#import <AutoLayoutCells/ALTextCellViewModel.h>
+  return self;
+}
+
+#pragma mark - ALTextCellDelegate
+
+- (void)cellHeightDidChange:(ALTextViewCell *)cell {
+  
+  NSParameterAssert(self.tableView);
+  
+  if (![cell.textView isFirstResponder]) {
+    return;
+  }
+  
+  [self.tableView beginUpdates];
+  [self.tableView endUpdates];
+}
+
+@end

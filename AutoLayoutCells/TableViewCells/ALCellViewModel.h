@@ -1,8 +1,8 @@
 //
-//  AutoLayoutCells.h
+//  ALCellViewModel.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 7/13/14.
+//  Created by Joshua Greene on 7/13/15.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +22,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import <UIKit/UIKit.h>
+
 /**
- *  In general, you should import this header along with whichever specific cells you need. This header gives you just the minimum imports you're likely to need.
+ *  `ALCellViewModel` objects are used by `ALTableViewManager` to create and dequeue table view cells.
  *
- *  You can, however, choose to import individual files one-by-one for specific needs. For example, you might want to import just `ALTableViewCellFactory` and `ALTableViewCellFactoryDelegate` if you're only custom cells created in your project.
+ *  @discussion  `ALCellViewModel` should map
  */
+@protocol ALCellViewModel <NSObject>
 
-// Cells
-#import <AutoLayoutCells/ALImageCell.h>
+@required
 
-// Constants
-#import <AutoLayoutCells/ALCellConstants.h>
-#import <AutoLayoutCells/ALImageCellConstants.h>
+/**
+ *  This method should return the identifier for the cell associated with the view model.
+ *
+ *  @return The identifier for the cell associated with the view model.
+ */
+- (NSString *)cellIdentifier;
 
-// Factories
-#import <AutoLayoutCells/ALTableViewCellFactory.h>
-#import <AutoLayoutCells/ALTableViewCellNibFactory.h>
+/**
+ *  This method should configure the cell associated with the view model.
+ *
+ *  @param cell The cell to be configured
+ */
+- (void)configureCell:(id)cell;
 
-// Managers
-#import <AutoLayoutCells/ALTableViewManager.h>
+/**
+ *  This method is called whenever the cell associated with the view model is selected.
+ *
+ *  @param cell The cell that was selected
+ */
+- (void)didSelectCell:(id)cell;
 
-// Protocols
-#import <AutoLayoutCells/ALCellDelegate.h>
-#import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+/**
+ *  This method should return an array of `UITableViewRowAction` objects for the cell associated with the view model.
+ *
+ *  @return An array of `UITableViewRowAction` objects
+ */
+- (NSArray *)editActionsForCell;
 
-// View-Models
-#import <AutoLayoutCells/ALSimpleCellViewModel.h>
-#import <AutoLayoutCells/ALTextCellViewModel.h>
+@end

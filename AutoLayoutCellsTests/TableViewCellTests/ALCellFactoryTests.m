@@ -29,7 +29,7 @@
 #import "ALCell.h"
 #import "ALLeftLabelCell.h"
 #import "ALTableViewCellFactoryDelegate.h"
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -73,7 +73,7 @@
 
 - (UITableView *)mockTableView
 {
-  UITableViewCell *cell = [Test_ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
+  UITableViewCell *cell = [ALTableViewCellNibFactory cellWithName:@"ALCell" owner:self];
   tableView = OCMClassMock([UITableView class]);
   OCMStub([tableView dequeueReusableCellWithIdentifier:[OCMArg any]]).andReturn(cell);
   

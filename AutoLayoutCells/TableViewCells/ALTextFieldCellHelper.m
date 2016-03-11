@@ -241,6 +241,10 @@
 
 - (void)textFieldDidChange:(UITextField *)textField
 {
+  if (self.valueChangedBlock) {
+    self.valueChangedBlock(textField.text);
+  }
+  
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self.cell valueChanged:textField.text];
   }

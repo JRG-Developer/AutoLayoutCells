@@ -51,6 +51,15 @@
  */
 @property (weak, nonatomic) ALAutoResizingTextView *textView;
 
+/**
+ *  The block that should be called whenever the text view's value changes.
+ *
+ *  @discussion  This can be used in addition to, or as a replacement for, a `delegate`.
+ *
+ *  This block will be called *before* the `delegate` is messaged.
+ */
+@property (strong, nonatomic) void (^valueChangedBlock)(id value);
+
 ///--------------------------------------------------------------
 /// @name Object Lifecycle
 ///--------------------------------------------------------------

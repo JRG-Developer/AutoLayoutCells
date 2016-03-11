@@ -27,7 +27,7 @@
 #import "ALCellConstants.h"
 
 // Collaborators
-#import "Test_ALTableViewCellNibFactory.h"
+#import "ALTableViewCellNibFactory.h"
 
 // Test Support
 #import <XCTest/XCTest.h>
@@ -52,7 +52,13 @@
 - (void)setUp
 {
   [super setUp];
-  sut = [Test_ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
+  sut = [ALTableViewCellNibFactory cellWithName:@"ALBooleanCell" owner:self];
+}
+
+- (void)tearDown
+{
+  [delegate stopMocking];
+  [super tearDown];
 }
 
 #pragma mark - Given
@@ -157,6 +163,29 @@
 }
 
 #pragma mark - Actions - Tests
+
+- (void)test___didToggle___calls_valueChangedBlock
+{  
+  // given
+  BOOL expected = YES;
+  __block BOOL blockCalled = NO;
+
+  void (^valueChangedBlock)(id) = ^(NSNumber *actual) {
+    
+    blockCalled = YES;
+    expect([actual boolValue]).to.equal(expected);
+  };
+  
+  sut.valueChangedBlock = valueChangedBlock;
+  
+  [sut.toggle setOn:expected animated:NO];
+  
+  // when
+  [sut didToggle:sut.toggle];
+  
+  // then
+  expect(blockCalled).to.beTruthy();
+}
 
 - (void)test___didToggle___notifiesDelegate
 {
