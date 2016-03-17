@@ -29,6 +29,8 @@
 
 #import "ALImageCache.h"
 
+char const ALImageDownloadTaskKey;
+
 @implementation UIImageView (ALImageWithURL)
 
 #pragma mark - Class Methods
