@@ -110,12 +110,14 @@
 - (void)test___initWithCoder___calls___commonInit
 {
   // given
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver finishEncoding];
+    NSCoder *coder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
   sut = [ALBaseCell alloc];
 
   [self givenPartialMock];
   OCMExpect([partialMock commonInit]);
-  
-  NSCoder *coder = [NSCoder new];
   
   // when
   sut = [sut initWithCoder:coder];

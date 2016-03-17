@@ -57,7 +57,10 @@
 - (void)test___initWithCoder___calls_commonInit
 {
   // given
-  NSCoder *coder = [NSCoder new];
+  NSMutableData *data = [[NSMutableData alloc] init];
+  NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+  [archiver finishEncoding];
+  NSCoder *coder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
   sut = [ALTableView alloc];
   partialMock = OCMPartialMock(sut);
   

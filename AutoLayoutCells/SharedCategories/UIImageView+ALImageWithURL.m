@@ -29,7 +29,7 @@
 
 #import "ALImageCache.h"
 
-//char const ALImageDownloadTaskKey;
+char const * const ALImageDownloadTaskKey = "ALImageDownloadTaskKey";
 
 @implementation UIImageView (ALImageWithURL)
 
