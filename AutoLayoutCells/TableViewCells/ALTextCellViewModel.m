@@ -24,8 +24,8 @@
 //  THE SOFTWARE.
 
 #import "ALTextCellViewModel.h"
+#import "ALTextViewCell.h"
 
-#import <AutoLayoutCells/ALTextViewCell.h>
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
 @implementation ALTextCellViewModel

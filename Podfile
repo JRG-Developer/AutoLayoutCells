@@ -12,6 +12,9 @@ target "AutoLayoutCellsDemo" do
   pod 'AutoLayoutCells', :path => '.'
 end
 
+target "AutoLayoutCells" do
+end
+
 target "AutoLayoutCellsTests" do
   pod 'Expecta', '~> 1.0'
   pod 'OCMock', '~> 3.0'
