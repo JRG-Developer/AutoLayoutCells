@@ -246,6 +246,22 @@
   expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
+- (void)test___setValuesFromDictionary___textCellType___ALTextCellTypeDecimalNumber
+{
+    // given
+    NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDecimalNumber)};
+    
+    // when
+    [sut setValuesFromDictionary:dict];
+    
+    // then
+    expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeNone);
+    expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeNo);
+    expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDecimalPad);
+    expect(sut.textField.secureTextEntry).to.beFalsy();
+    expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
+}
+
 - (void)test___setValuesFromDictionary___textCellType___ALTextCellTypePassword
 {
   // given

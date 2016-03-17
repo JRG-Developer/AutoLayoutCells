@@ -64,7 +64,13 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
    *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "number pad", and turns off spell checking.
    */
   ALTextCellTypeNumber,
-  
+    
+  /**
+   *  Use `ALTextCellTypeDecimalNumber` to specify that the expected input is a decimal number.
+   *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "decimal pad", and turns off spell checking.
+  */
+  ALTextCellTypeDecimalNumber,
+    
   /**
    *  Use `ALTextCellTypePassword` to specify that the expected input is a password.
    *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "default", turns off spell checking, and turns on secure text entry.

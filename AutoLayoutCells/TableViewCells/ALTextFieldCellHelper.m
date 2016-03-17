@@ -129,6 +129,10 @@
     case ALTextCellTypeNumber:
       [self setTextFieldTypeNumber];
       break;
+          
+    case ALTextCellTypeDecimalNumber:
+      [self setTextFieldTypeDecimalNumber];
+      break;
       
     case ALTextCellTypePassword:
       [self setTextFieldTypePassword];
@@ -188,6 +192,14 @@
   self.textField.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
+- (void)setTextFieldTypeDecimalNumber
+{
+    self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.textField.secureTextEntry = NO;
+    self.textField.spellCheckingType = UITextSpellCheckingTypeNo;
+}
 
 - (void)setTextFieldTypePassword
 {
