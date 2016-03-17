@@ -28,7 +28,7 @@
 /**
  *  The key used to associate the download task with the image view
  */
-extern char const ALImageDownloadTaskKey;
+static char ALImageDownloadTaskKey;
 
 /**
  *  `UIImageView+ALImageWithURL` provides a convenience methods for setting an image from a URL showing an optional placeholder and/or activity indicator view during loading. Basic image caching is provided too.
