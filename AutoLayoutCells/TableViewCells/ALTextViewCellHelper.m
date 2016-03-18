@@ -133,6 +133,10 @@
     case ALTextCellTypeNumber:
       [self setTextViewTypeNumber];
       break;
+          
+    case ALTextCellTypeDecimalNumber:
+      [self setTextViewTypeDecimalNumber];
+      break;
       
     case ALTextCellTypePassword:
       [self setTextViewTypePassword];
@@ -190,6 +194,15 @@
   self.textView.keyboardType = UIKeyboardTypeNumberPad;
   self.textView.secureTextEntry = NO;
   self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
+}
+
+- (void)setTextViewTypeDecimalNumber
+{
+    self.textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textView.keyboardType = UIKeyboardTypeDecimalPad;
+    self.textView.secureTextEntry = NO;
+    self.textView.spellCheckingType = UITextSpellCheckingTypeNo;
 }
 
 - (void)setTextViewTypePassword
