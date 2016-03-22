@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'SharedCategories' do |ss|
     ss.dependency 'UIImageView+ALActivityIndicatorView', '~> 1.0'
-    ss.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/UIImageView+ALActivityIndicatorView"}
+    ss.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/UIImageView+ALActivityIndicatorView" }
 
     ss.source_files = "AutoLayoutCells/SharedCategories/*{h,m}"
   end
