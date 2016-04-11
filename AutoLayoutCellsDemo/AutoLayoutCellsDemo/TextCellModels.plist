@@ -8,7 +8,7 @@
 	</dict>
 	<dict>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/508/508</string>
+		<string>https://placekitten.com/508/508</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -16,11 +16,11 @@
 		<key>subtitle</key>
 		<string>Text View Cell Subtitle</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/607/607</string>
+		<string>https://placekitten.com/607/607</string>
 	</dict>
 	<dict>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/608/608</string>
+		<string>https://placekitten.com/608/608</string>
 	</dict>
 </array>
 </plist>

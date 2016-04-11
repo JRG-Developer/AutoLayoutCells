@@ -44,12 +44,12 @@
 /**
  *  The title label
  */
-@property (weak, nonatomic) IBOutlet ALLabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 /**
  *  The subtitle label
  */
-@property (weak, nonatomic) IBOutlet ALLabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the label's fonts.

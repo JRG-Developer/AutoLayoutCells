@@ -29,6 +29,9 @@
 #import <AutoLayoutCells/ALTextViewCell.h>
 #import <AutoLayoutCells/ALTextViewOnlyCell.h>
 
+#import <AutoLayoutCells/UIImageView+ALImageWithURL.h>
+#import <AutoLayoutCells/ALImageCache.h>
+
 #import "Model+ALCellAdapter.h"
 #import "TextCellModel+ALCellAdapter.h"
 
@@ -48,6 +51,7 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (IBAction)refreshButtonPressed:(id)sender
 {
+  [[UIImageView AL_sharedImageDownloadCache] removeAllObjects];
   [self.tableView reloadData];
 }
 
@@ -152,6 +156,7 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
   NSLog(@"Selected: %@", indexPath);
 }
 

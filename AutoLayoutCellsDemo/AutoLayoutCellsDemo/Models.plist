@@ -10,7 +10,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon1</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/100/100</string>
+		<string>https://placekitten.com/100/100</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -20,7 +20,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon2</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/150/150</string>
+		<string>https://placekitten.com/150/150</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -30,7 +30,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon3</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/200/200</string>
+		<string>https://placekitten.com/200/200</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -40,7 +40,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon4</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/300/300</string>
+		<string>https://placekitten.com/300/300</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -50,7 +50,7 @@
 		<key>mainImageName</key>
 		<string>blue_icon5</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/101/101</string>
+		<string>https://placekitten.com/101/101</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -60,7 +60,7 @@
 		<key>mainImageName</key>
 		<string>red_icon6</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/201/201</string>
+		<string>https://placekitten.com/201/201</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -70,7 +70,7 @@
 		<key>mainImageName</key>
 		<string>red_icon7</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/301/301</string>
+		<string>https://placekitten.com/301/301</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -80,7 +80,7 @@
 		<key>mainImageName</key>
 		<string>red_icon8</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/401/401</string>
+		<string>https://placekitten.com/401/401</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -90,7 +90,7 @@
 		<key>mainImageName</key>
 		<string>red_icon9</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/102/102</string>
+		<string>https://placekitten.com/102/102</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -100,7 +100,7 @@
 		<key>mainImageName</key>
 		<string>red_icon10</string>
 		<key>secondaryImageURL</key>
-		<string>http://placecreature.com/202/202</string>
+		<string>https://placekitten.com/202/202</string>
 	</dict>
 	<dict>
 		<key>subtitle</key>

@@ -82,11 +82,16 @@ char const * const ALImageDownloadTaskKey = "ALImageDownloadTaskKey";
 
 - (void)AL_setImage:(UIImage *)image
 {
-  [[self AL_downloadTask] cancel];
-  [[self AL_activityIndicatorView] stopAnimating];
-  
   // This doesn't create a recursive loop because the method has been swizzled
   [self AL_setImage:image];
+  
+  [self cleanupDownloadTask];
+}
+
+- (void)cleanupDownloadTask {
+  [[self AL_downloadTask] cancel];
+  [self AL_setDownloadTask: nil];
+  [[self AL_activityIndicatorView] stopAnimating];
 }
 
 #pragma mark - AL_downloadTask
@@ -131,11 +136,10 @@ char const * const ALImageDownloadTaskKey = "ALImageDownloadTaskKey";
                                                                                         NSURLResponse *response,
                                                                                         NSError *error) {
     __strong typeof(self) strongSelf = weakSelf;
-    [self AL_setDownloadTask:nil];
     
     if (error) {
       dispatch_async(dispatch_get_main_queue(), ^{
-        [[strongSelf AL_activityIndicatorView] stopAnimating];
+        [strongSelf cleanupDownloadTask];
       });
       return;
     }
