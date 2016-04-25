@@ -107,6 +107,13 @@
   return [self cellWithIdentifier:identifier forIndexPath:indexPath];
 }
 
+- (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+  [self.delegate tableView:self.tableView configureCell:cell atIndexPath:indexPath];
+  return cell;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
