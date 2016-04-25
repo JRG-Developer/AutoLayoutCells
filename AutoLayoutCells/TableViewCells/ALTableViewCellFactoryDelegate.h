@@ -83,4 +83,19 @@
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 
+/**
+ *  This method allows the delegate to determine the estimnated height for the cell at the given index path.
+ *
+ *  @discussion  If you use `ALAutomaticTableViewCellFactory`, you should implement this method, as it can greatly improve table view performance.
+ *
+ *               If you don't, `ALAutomaticTableViewCellFactory` will dequeue a cell with the same identifier and use its height, without confirugation;
+ *               note this is done _only once_ per each cell identifier.
+ *
+ *  @param tableView The table view
+ *  @param indexPath The index path for the cell
+ *
+ *  @return The estimated height for the cell
+ */
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

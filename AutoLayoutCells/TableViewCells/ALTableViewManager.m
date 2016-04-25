@@ -24,7 +24,9 @@
 
 #import "ALTableViewManager.h"
 
+#import "ALAutomaticTableViewCellFactory.h"
 #import "ALCellViewModel.h"
+#import "ALSystemVersionDefines.h"
 #import "ALTableViewCellFactory.h"
 
 @implementation ALTableViewManager
@@ -53,18 +55,30 @@
 
 - (void)setTableView:(UITableView *)tableView
 {
-  if (_tableView == tableView)
-  {
+  if (_tableView == tableView) {
     return;
   }
   
   _tableView = tableView;
   
-  _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView identifiersToNibsDictionary:nil];
-  _cellFactory.delegate = self;
+  [self setupCellFactory];
   
   [self configureTableView];
   [self registerCells];
+}
+
+- (void)setupCellFactory {
+    
+    if (AL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+        _cellFactory = [[ALAutomaticTableViewCellFactory alloc] initWithTableView:_tableView
+                                                      identifiersToNibsDictionary:nil];
+        
+    } else {
+        _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:_tableView
+                                             identifiersToNibsDictionary:nil];
+    }
+    
+    _cellFactory.delegate = self;
 }
 
 - (void)configureTableView
@@ -148,8 +162,8 @@
   return [viewModel editActionsForCell];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{  
   // Empty by default; required to use UITableViewRowActions
 }
 

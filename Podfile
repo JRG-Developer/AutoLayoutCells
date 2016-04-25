@@ -1,10 +1,10 @@
 platform :ios, "7.0"
 
 workspace 'AutoLayoutCells'
-xcodeproj 'AutoLayoutCells'
+project 'AutoLayoutCells'
 
 target "AutoLayoutCellsDemo" do
-  xcodeproj 'AutoLayoutCellsDemo/AutoLayoutCellsDemo'
+  project 'AutoLayoutCellsDemo/AutoLayoutCellsDemo'
   pod 'AutoLayoutCells', :path => '.'
 end
 

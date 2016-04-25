@@ -24,7 +24,7 @@
 
 #import "ALTableViewCellFactoryDelegate.h"
 
-@class ALTableViewCellFactory;
+@protocol ALTableViewCellFactoryProtocol;
 
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
@@ -37,8 +37,10 @@
 
 /**
  *  The table view cell factory is responsible for creating/dequeuing cells and calculating cell height.
+ *
+ *  @discussion  If prior to iOS 9, this is set to `ALTableViewCellFactory`. Otherwise, it's set to `ALAutomaticTableViewCellFactory`.
  */
-@property (strong, nonatomic, readonly) ALTableViewCellFactory *cellFactory;
+@property (strong, nonatomic, readonly) id<ALTableViewCellFactoryProtocol> cellFactory;
 
 /**
  *  The table view to be managed

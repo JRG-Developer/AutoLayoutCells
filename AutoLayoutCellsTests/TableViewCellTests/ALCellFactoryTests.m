@@ -46,8 +46,9 @@
 {
   ALTableViewCellFactory *sut;
   
-  id partialMock;
   id delegate;
+  id device;
+  id partialMock;
   id tableView;
   
   NSString *cellIdentifer;
@@ -109,6 +110,28 @@
   cellNib = [UINib nibWithNibName:@"ALCell" bundle:bundle];
   leftLabelCellNib = [UINib nibWithNibName:@"ALLeftLabelCell" bundle:bundle];
 }
+
+- (void)tearDown
+{
+  
+  [delegate stopMocking];
+  [device stopMocking];
+  [partialMock stopMocking];
+  [tableView stopMocking];
+  
+  [super tearDown];
+}
+
+#pragma mark - Given
+
+- (void)givenMockDeviceWithVersion:(NSString *)version
+{
+  
+  device = OCMClassMock([UIDevice class]);
+  OCMStub([device currentDevice]).andReturn(device);
+  OCMStub([(UIDevice *)device systemVersion]).andReturn(version);
+}
+
 
 #pragma mark - Interface - Tests
 
@@ -286,12 +309,9 @@
 - (void)test_widthForSizingCell_givenBeforeOS8_doesNotAdjustSizingCellWidth
 {
   // given
-  partialMock = OCMPartialMock(sut);
-  OCMStub([partialMock delegate]).andReturn(delegate);
-  OCMStub([partialMock isOS8OrLater]).andReturn(NO);
+  [self givenMockDeviceWithVersion:@"7.0"];
   
   id cell = OCMClassMock([UITableViewCell class]);
-  
   OCMStub([tableView bounds]).andReturn(CGRectMake(0.0f, 0.0f, 320.0f, 640.0f));
   
   CGFloat expected = CGRectGetWidth([tableView bounds]);
@@ -306,9 +326,7 @@
 - (void)test_widthForSizingCell_givenOS8_noAccessory_doesNotAdjustSizingCellWidth
 {
   // given
-  partialMock = OCMPartialMock(sut);
-  OCMStub([partialMock delegate]).andReturn(delegate);
-  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  [self givenMockDeviceWithVersion:@"8.0"];
   
   id cell = OCMClassMock([UITableViewCell class]);
   OCMStub([cell accessoryView]).andReturn(nil);
@@ -328,9 +346,7 @@
 - (void)test_widthForSizingCell_givenOS8_accessoryView_adjustsSizingCellWidthForAccessoryView
 {
   // given
-  partialMock = OCMPartialMock(sut);
-  OCMStub([partialMock delegate]).andReturn(delegate);
-  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  [self givenMockDeviceWithVersion:@"8.0"];
   
   id cell = OCMClassMock([UITableViewCell class]);
   id accessoryView = OCMClassMock([UIView class]);
@@ -350,9 +366,7 @@
 - (void)test_widthForSizingCell_givenOS8_accessoryType_adjustsSizingCellWidthForAccessoryView
 {
   // given
-  partialMock = OCMPartialMock(sut);
-  OCMStub([partialMock delegate]).andReturn(delegate);
-  OCMStub([partialMock isOS8OrLater]).andReturn(YES);
+  [self givenMockDeviceWithVersion:@"8.0"];
   
   id cell = OCMClassMock([UITableViewCell class]);
   OCMStub([cell accessoryView]).andReturn(nil);

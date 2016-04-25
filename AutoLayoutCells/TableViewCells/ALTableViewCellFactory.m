@@ -26,10 +26,10 @@
 #import "ALTableViewCellFactoryDelegate.h"
 
 #import "ALBaseCell.h"
+#import "ALSystemVersionDefines.h"
 
 const CGFloat kAccessoryTypeTrailingMarginWidth = 10.0f;
 const CGFloat kAccessoryViewTrailingMarginWidth = 15.0f;
-#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface ALTableViewCellFactory ()
 @property (weak, nonatomic, readwrite) UITableView *tableView;
@@ -169,16 +169,11 @@ const CGFloat kAccessoryViewTrailingMarginWidth = 15.0f;
 {
   CGFloat width = CGRectGetWidth(self.tableView.bounds);
   
-  if(IS_OS_8_OR_LATER) {
+  if(AL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
     width = [self adjustWidth:width forAccessoryViewOnSizingCell:sizingCell];
   }
   
   return width;
-}
-
-- (BOOL)isOS8OrLater
-{
-  return IS_OS_8_OR_LATER;
 }
 
 - (CGFloat)adjustWidth:(CGFloat)width forAccessoryViewOnSizingCell:(UITableViewCell *)sizingCell

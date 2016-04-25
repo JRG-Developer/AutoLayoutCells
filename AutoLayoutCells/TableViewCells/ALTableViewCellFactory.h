@@ -22,14 +22,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-@import UIKit;
-
-@protocol ALTableViewCellFactoryDelegate;
+#import "ALTableViewCellFactoryProtocol.h"
 
 /**
  *  `ALTableViewCellFactory` encapsulates common cell creation/dequeuing and cell height calculation tasks.
+ *
+ *  @deprecated as of iOS 9.0. Use `ALAutomaticTableViewCellFactory` instead.
  */
-@interface ALTableViewCellFactory : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface ALTableViewCellFactory : NSObject <ALTableViewCellFactoryProtocol>
 
 /**
  *  The delegate that performs cell configuration
@@ -64,8 +64,7 @@
  *
  *  @return A new `ALTableViewCellFactory` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView
-      identifiersToNibsDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary;
 
 @end
 
