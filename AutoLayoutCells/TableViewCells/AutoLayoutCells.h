@@ -36,6 +36,7 @@
 #import <AutoLayoutCells/ALImageCellConstants.h>
 
 // Factories
+#import <AutoLayoutCells/ALAutomaticTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellNibFactory.h>
 
