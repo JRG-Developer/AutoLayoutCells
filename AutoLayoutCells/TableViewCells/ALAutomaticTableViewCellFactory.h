@@ -27,10 +27,10 @@
 /**
  *  @brief  `ALAutomaticTableViewCellFactory` encapsulates cell creation/dequeuing logic and cell height calculation tasts.
  *
- *  @discussion  This class deprecates `ALTableViewCellFactory` for iOS 9.0 and up, where Apple's logic for determining dynamic table view cell heights has greatly improved.
+ *  @discussion  This class deprecates `ALTableViewCellFactory` for iOS 8.0 and up, where Apple's logic for determining dynamic table view cell heights has greatly improved.
  */
 
-NS_AVAILABLE_IOS(9.0)
+NS_AVAILABLE_IOS(8.0)
 @interface ALAutomaticTableViewCellFactory : NSObject <ALTableViewCellFactoryProtocol>
 
 /**
