@@ -27,7 +27,7 @@
 /**
  *  `ALTableViewCellFactory` encapsulates common cell creation/dequeuing and cell height calculation tasks.
  *
- *  @deprecated as of iOS 9.0. Use `ALAutomaticTableViewCellFactory` instead.
+ *  @deprecated as of iOS 8.0. Use `ALAutomaticTableViewCellFactory` instead.
  */
 @interface ALTableViewCellFactory : NSObject <ALTableViewCellFactoryProtocol>
 
@@ -64,7 +64,7 @@
  *
  *  @return A new `ALTableViewCellFactory` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary __attribute__((deprecated("ALTableViewCellFactory is deprecated as of iOS 8.0.")));
 
 @end
 

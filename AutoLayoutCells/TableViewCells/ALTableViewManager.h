@@ -38,7 +38,7 @@
 /**
  *  The table view cell factory is responsible for creating/dequeuing cells and calculating cell height.
  *
- *  @discussion  If prior to iOS 9, this is set to `ALTableViewCellFactory`. Otherwise, it's set to `ALAutomaticTableViewCellFactory`.
+ *  @discussion  If prior to iOS 8, this is set to `ALTableViewCellFactory`. Otherwise, it's set to `ALAutomaticTableViewCellFactory`.
  */
 @property (strong, nonatomic, readonly) id<ALTableViewCellFactoryProtocol> cellFactory;
 
