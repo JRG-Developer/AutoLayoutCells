@@ -1,8 +1,8 @@
 //
-//  ALTableView.h
+//  UIView+ALRecursiveFirstResponder.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 9/5/14.
+//  Created by Joshua Greene on 9/4/16.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,22 +24,24 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
+@interface UIView (ALFirstResponder)
+
 /**
- *  `ALTableView` automatically "avoids" the keyboard.
+ *  Use this method to recurisvely resign the first responder.
+ *
+ *  @return `YES` if the first responder was found and resigned or `NO` otherwise
  */
-@interface ALTableView : UITableView
+- (BOOL)AL_recursivelyResignFirstResponder;
+
+/**
+ *  Use this method to recursively find the first responder view.
+ *
+ *  @return The first responder view or `nil` if not found.
+ */
+- (nullable UIView *)AL_recursivelyFindFirstResponder;
 
 @end
 
-@interface ALTableView (Protected)
-
-///--------------------------------------------------------------
-/// @name Protected Methods
-///--------------------------------------------------------------
-
-/**
- *  Subclasses should use this method for common setup (`init`) code.
- */
-- (void)commonInit __attribute((objc_requires_super));
-
-@end
+NS_ASSUME_NONNULL_END

@@ -21,6 +21,7 @@
 		429D1D7019BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D1D6F19BC1FA500793D2D /* UIImageView+ALImageWithURLTests.m */; };
 		42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */; };
 		42B057A119BA7D1800AB8C6F /* ALTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */; };
+		42C1FFBE1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1FFBD1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.m */; };
 		42C281CF19C3C88E00C2F150 /* ALTextFieldCellHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C281CE19C3C88E00C2F150 /* ALTextFieldCellHelperTests.m */; };
 		42C77AE019C11C83007F2F14 /* ALTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C77ADC19C108AC007F2F14 /* ALTextFieldCell.xib */; };
 		42E2DF2D19C275BF00E3BA76 /* ALTextFieldCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E2DF2C19C275BF00E3BA76 /* ALTextFieldCellHelper.m */; };
@@ -125,6 +126,8 @@
 		42A478C519C0E3DC00EDD725 /* ALTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextFieldCell.h; sourceTree = "<group>"; };
 		42A478C619C0E3DC00EDD725 /* ALTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCell.m; sourceTree = "<group>"; };
 		42B057A019BA7D1800AB8C6F /* ALTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTableViewTests.m; sourceTree = "<group>"; };
+		42C1FFBC1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ALRecursiveFirstResponder.h"; sourceTree = "<group>"; };
+		42C1FFBD1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ALRecursiveFirstResponder.m"; sourceTree = "<group>"; };
 		42C281CE19C3C88E00C2F150 /* ALTextFieldCellHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTextFieldCellHelperTests.m; sourceTree = "<group>"; };
 		42C77ADC19C108AC007F2F14 /* ALTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ALTextFieldCell.xib; sourceTree = "<group>"; };
 		42E2DF2B19C275BF00E3BA76 /* ALTextFieldCellHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTextFieldCellHelper.h; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 			children = (
 				44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */,
 				44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */,
+				42C1FFBC1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.h */,
+				42C1FFBD1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -759,6 +764,7 @@
 				42FF946119C657A900263BE6 /* ALTextFieldOnlyCell.m in Sources */,
 				42942B891B58F368001FD7ED /* ALTextCellViewModel.m in Sources */,
 				4427F12C1970592E00C3019E /* ALTableViewCellFactory.m in Sources */,
+				42C1FFBE1D7D2C5A0024A895 /* UIView+ALRecursiveFirstResponder.m in Sources */,
 				42A478C719C0E3DC00EDD725 /* ALTextFieldCell.m in Sources */,
 				44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */,
 				4427F1151970590A00C3019E /* ALBooleanCell.m in Sources */,
