@@ -23,6 +23,9 @@
 //  THE SOFTWARE.
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
+#import "ALTextCellConstants.h"
+
+@protocol ALCellDelegate;
 @protocol ALTextCellDelegate;
 
 /**
@@ -41,10 +44,16 @@
 @property (weak, nonatomic) UITableViewCell *cell;
 
 /**
- *  The delegate to inform of height change and value-related events
- *  @see `ALTextViewCellHelperDelegate` for more details
+ *  The delegate to inform of value change events
+ *  @see `ALCellDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) id<ALCellDelegate>delegate;
+
+/**
+ *  The delegate to inform of height change events
+ *  @see `ALTextCellDelegate` for more details
+ */
+@property (weak, nonatomic) id<ALTextCellDelegate>heightDelegate;
 
 /**
  *  The text view that should be configured, set values of, delegated for, etc
@@ -84,5 +93,12 @@
  *  @param dictionary The dictionary containing the text view values
  */
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  Use this method to set the text cell type.
+ *
+ *  @param textCellType The text cell type.
+ */
+- (void)setTextCellType:(ALTextCellType)textCellType;
 
 @end

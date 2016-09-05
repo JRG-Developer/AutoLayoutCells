@@ -25,6 +25,8 @@
 @import UIKit;
 @protocol ALCellDelegate;
 
+#import "ALTextCellConstants.h"
+
 /**
  *  `ALTextFieldCellHelper` encapsulates text field tasks common to `ALTextFieldCell` and `ALTextFieldOnlyCell`, such as text field configuration and setting text field values from a dictionary using pre-defined keys.
  *  @see `ALCellConstants` and `ALTextCellConstants` for pre-defined dictionary keys.
@@ -81,6 +83,13 @@
  *  @param dictionary The dictionary containing the text field values
  */
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  Use this method to set the text cell type.
+ *
+ *  @param textCellType The text cell type.
+ */
+- (void)setTextCellType:(ALTextCellType)textCellType;
 
 @end
 

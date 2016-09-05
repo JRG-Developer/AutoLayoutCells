@@ -32,6 +32,18 @@
 
 @implementation ALTextFieldCell
 
+#pragma mark - Custom Accessors
+
+- (void)setTextCellType:(ALTextCellType)textCellType {
+  
+  if (_textCellType == textCellType) {
+    return;
+  }
+  
+  _textCellType = textCellType;
+  [self.textFieldHelper setTextCellType:textCellType];
+}
+
 #pragma mark - Object Lifecycle
 
 - (void)commonInit

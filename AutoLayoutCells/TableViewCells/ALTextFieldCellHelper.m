@@ -26,7 +26,6 @@
 
 #import "ALCellConstants.h"
 #import "ALCellDelegate.h"
-#import "ALTextCellConstants.h"
 
 @implementation ALTextFieldCellHelper
 
@@ -48,7 +47,8 @@
 - (void)configureTextField
 {
   self.textField.delegate = self;
-  [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+  [self.textField addTarget:self action:@selector(textFieldDidChange:)
+           forControlEvents:UIControlEventEditingChanged];
 }
 
 #pragma mark - Set Values From Dictionary
@@ -68,7 +68,9 @@
     return;
   }
   
-  [self setPlaceholderTextString:dictionary[ALTextCellPlaceholderTextKey]];
+  if (dictionary[ALTextCellPlaceholderTextKey]) {
+    [self setPlaceholderTextString:dictionary[ALTextCellPlaceholderTextKey]];
+  }
 }
 
 - (void)setPlaceholderTextString:(NSString *)text
@@ -102,43 +104,47 @@
 
 - (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
-  if (!dictionary[ALTextCellTypeKey]) {
+  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
+  if (!type) {
     return;
   }
   
-  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
+  [self setTextCellType:type];
+}
+
+- (void)setTextCellType:(ALTextCellType)type {
   
   switch (type)
   {
-    case ALTextCellTypeDefault:
+      case ALTextCellTypeDefault:
       [self setTextFieldTypeDefault];
       break;
       
-    case ALTextCellTypeEmail:
+      case ALTextCellTypeEmail:
       [self setTextFieldTypeEmail];
       break;
       
-    case ALTextCellTypeName:
+      case ALTextCellTypeName:
       [self setTextFieldTypeName];
       break;
       
-    case ALTextCellTypeNoChecking:
+      case ALTextCellTypeNoChecking:
       [self setTextFieldTypeNoChecking];
       break;
       
-    case ALTextCellTypeNumber:
+      case ALTextCellTypeNumber:
       [self setTextFieldTypeNumber];
       break;
-          
-    case ALTextCellTypeDecimalNumber:
+      
+      case ALTextCellTypeDecimalNumber:
       [self setTextFieldTypeDecimalNumber];
       break;
       
-    case ALTextCellTypePassword:
+      case ALTextCellTypePassword:
       [self setTextFieldTypePassword];
       break;
       
-    case ALTextCellTypeSentences:
+      case ALTextCellTypeSentences:
       [self setTextFieldTypeSentences];
       break;
       

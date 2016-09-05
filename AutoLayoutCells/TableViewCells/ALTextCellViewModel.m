@@ -24,7 +24,11 @@
 //  THE SOFTWARE.
 
 #import "ALTextCellViewModel.h"
+
+#import "ALTextFieldCell.h"
+#import "ALTextFieldOnlyCell.h"
 #import "ALTextViewCell.h"
+#import "ALTextViewOnlyCell.h"
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
@@ -49,18 +53,57 @@
   return self;
 }
 
+- (void)configureCell:(id)tableViewCell {
+  
+  if ([tableViewCell isKindOfClass:[ALTextViewCell class]]) {
+    ALTextViewCell *cell = (ALTextViewCell *)tableViewCell;
+    cell.heightDelegate = self;
+  }
+  
+  [super configureCell:tableViewCell];
+}
+
+#pragma mark - ALCellViewModel
+
+- (void)didSelectCell:(id)tableViewCell {
+  
+  if (self.didSelectCellBlock) {
+    self.didSelectCellBlock(tableViewCell);
+  }
+  
+  if ([tableViewCell isKindOfClass:[ALTextViewCell class]]) {
+    ALTextViewCell *cell = tableViewCell;
+    [cell.textView becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextFieldCell class]]) {
+    ALTextFieldCell *cell = tableViewCell;
+    [cell.textField becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextViewOnlyCell class]]) {
+    ALTextViewOnlyCell *cell = tableViewCell;
+    [cell.textView becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextFieldOnlyCell class]]) {
+    ALTextFieldOnlyCell *cell = tableViewCell;
+    [cell.textField becomeFirstResponder];
+  }
+}
+
 #pragma mark - ALTextCellDelegate
 
-- (void)cellHeightDidChange:(ALTextViewCell *)cell {
+- (void)cellHeightWillChange:(ALTextViewCell *)cell delta:(CGFloat)delta {
+  NSParameterAssert(self.tableView);
+  
+  [UIView setAnimationsEnabled:NO];
+  [self.tableView beginUpdates];
+}
+
+- (void)cellHeightDidChange:(ALTextViewCell *)cell delta:(CGFloat)delta {
   
   NSParameterAssert(self.tableView);
   
-  if (![cell.textView isFirstResponder]) {
-    return;
-  }
-  
-  [self.tableView beginUpdates];
   [self.tableView endUpdates];
+  [UIView setAnimationsEnabled:YES];
 }
 
 @end

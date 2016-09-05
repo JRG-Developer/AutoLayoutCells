@@ -22,13 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALCellDelegate.h"
+@import Foundation;
 
 /**
  *  `ALTextCellDelegate` extends `ALCellDelegate` to add optional methods to inform the delegate of text view height changed events.
  *  @discussion While these methods are "optional", the delegate **should** implement at least one of these in order to update the cell height to correctly display the text view within the cell.
  */
-@protocol ALTextCellDelegate <ALCellDelegate>
+@protocol ALTextCellDelegate <NSObject>
 @optional
 
 /**
@@ -40,7 +40,7 @@
  *
  *  @param cell The cell whose height will change
  */
-- (void)cellHeightWillChange:(id)cell;
+- (void)cellHeightWillChange:(id)cell delta:(CGFloat)delta;
 
 /**
  *  This method is called to inform the delegate that the cell's height did change.
@@ -51,6 +51,6 @@
  *
  *  @param cell The cell whose height did change
  */
-- (void)cellHeightDidChange:(id)cell;
+- (void)cellHeightDidChange:(id)cell delta:(CGFloat)delta;
 
 @end

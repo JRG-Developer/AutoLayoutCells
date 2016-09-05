@@ -27,6 +27,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "ALCellConstants.h"
+#import "ALCellDelegate.h"
 #import "ALTextCellConstants.h"
 #import "ALTextCellDelegate.h"
 
@@ -111,38 +112,42 @@
   }
   
   ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
+  [self setTextCellType:type];
+}
+
+- (void)setTextCellType:(ALTextCellType)type {
   
   switch (type)
   {
-    case ALTextCellTypeDefault:
+      case ALTextCellTypeDefault:
       [self setTextViewTypeDefault];
       break;
       
-    case ALTextCellTypeEmail:
+      case ALTextCellTypeEmail:
       [self setTextViewTypeEmail];
       break;
       
-    case ALTextCellTypeName:
+      case ALTextCellTypeName:
       [self setTextViewTypeName];
       break;
       
-    case ALTextCellTypeNoChecking:
+      case ALTextCellTypeNoChecking:
       [self setTextViewTypeNoChecking];
       break;
       
-    case ALTextCellTypeNumber:
+      case ALTextCellTypeNumber:
       [self setTextViewTypeNumber];
       break;
-          
-    case ALTextCellTypeDecimalNumber:
+      
+      case ALTextCellTypeDecimalNumber:
       [self setTextViewTypeDecimalNumber];
       break;
       
-    case ALTextCellTypePassword:
+      case ALTextCellTypePassword:
       [self setTextViewTypePassword];
       break;
       
-    case ALTextCellTypeSentences:
+      case ALTextCellTypeSentences:
       [self setTextViewTypeSentences];
       break;
       
@@ -227,15 +232,19 @@
 
 - (void)textView:(ALAutoResizingTextView *)textView willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cellHeightWillChange:)]) {
-    [self.delegate cellHeightWillChange:self.cell];
+  if ([self.heightDelegate respondsToSelector:@selector(cellHeightWillChange:delta:)]) {
+    
+    CGFloat delta = newHeight - oldHeight;
+    [self.heightDelegate cellHeightWillChange:self.cell delta:delta];
   }
 }
 
 - (void)textView:(ALAutoResizingTextView *)textView didChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cellHeightDidChange:)]) {
-    [self.delegate cellHeightDidChange:self.cell];
+  if ([self.heightDelegate respondsToSelector:@selector(cellHeightDidChange:delta:)]) {
+    
+    CGFloat delta = newHeight - oldHeight;
+    [self.heightDelegate cellHeightDidChange:self.cell delta:delta];
   }
 }
 

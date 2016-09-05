@@ -28,8 +28,8 @@
 #import "ALTextCellConstants.h"
 
 // Collaborators
+#import "ALCellDelegate.h"
 #import "ALTextCellDelegate.h"
-
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
 // Test Support
@@ -84,8 +84,13 @@
 
 - (void)givenMockDelegate
 {
-  delegate = OCMClassMock([Test_ALTextCellDelegate class]);
+  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
   sut.delegate = delegate;
+}
+
+- (void)givenMockHeightDelegate {
+  delegate = OCMClassMock([Test_ALTextCellDelegate class]);
+  sut.heightDelegate = delegate;
 }
 
 - (void)givenMockTextView
@@ -342,7 +347,7 @@
 - (void)test___textView_willChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
-  [self givenMockDelegate];
+  [self givenMockHeightDelegate];
   OCMExpect([delegate cellHeightWillChange:cell]);
   
   // when
@@ -355,7 +360,7 @@
 - (void)test___textView_didChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
-  [self givenMockDelegate];
+  [self givenMockHeightDelegate];
   OCMExpect([delegate cellHeightDidChange:cell]);
   
   // when

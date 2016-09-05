@@ -55,6 +55,7 @@
 - (void)setupTextViewHelper
 {
   self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
+  self.textViewHelper.heightDelegate = self.heightDelegate;
   self.textViewHelper.delegate = self.delegate;
 }
 
@@ -73,10 +74,21 @@
 
 #pragma mark - Custom Accessors
 
-- (void)setDelegate:(id<ALTextCellDelegate>)delegate
+- (void)setDelegate:(id<ALCellDelegate>)delegate
 {
   [super setDelegate:delegate];
   self.textViewHelper.delegate = delegate;
+}
+
+- (void)setHeightDelegate:(id<ALTextCellDelegate>)heightDelegate {
+  
+  if (_heightDelegate == heightDelegate) {
+    return;
+  }
+  
+  _heightDelegate = heightDelegate;
+  self.textViewHelper.heightDelegate = heightDelegate;
+  
 }
 
 - (void)setValueChangedBlock:(void (^)(id))valueChangedBlock

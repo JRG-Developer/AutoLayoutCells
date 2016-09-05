@@ -66,8 +66,12 @@
 {
   [super setUp];
   
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
   sut = [[ALTableViewCellFactory alloc] initWithTableView:[self mockTableView]
                            identifiersToNibsDictionary:[self identifierToNibsDictionary]];
+  
+#pragma GCC diagnostic pop
   
   sut.delegate = [self mockDelegate];
 }
@@ -283,7 +287,11 @@
 {
   // given
   tableView = OCMClassMock([UITableView class]);
+  
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
   sut = [[ALTableViewCellFactory alloc] initWithTableView:tableView identifiersToNibsDictionary:nil];
+#pragma GCC diagnostic pop
   
   CGSize systemLayoutSize = CGSizeMake(320.0f, 50.0f);
   id contentView = OCMClassMock([UIView class]);

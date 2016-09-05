@@ -24,6 +24,7 @@
 
 #import "ALImageCell.h"
 #import "ALTextCellDelegate.h"
+#import "ALTextCellConstants.h"
 
 @class ALAutoResizingTextView;
 @class ALTextViewCellHelper;
@@ -44,6 +45,11 @@
 ///--------------------------------------------------------------
 
 /**
+*  The text field cell type
+*/
+@property (assign, nonatomic) ALTextCellType textCellType;
+
+/**
 *  The text view helper, which encapsulates commmon text view configuration, delegate handling, etc
 */
 @property (strong, nonatomic, readonly) ALTextViewCellHelper *textViewHelper;
@@ -56,7 +62,7 @@
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>heightDelegate;
 
 /**
  *  The text view, which accepts user input and resizes itself as needed
