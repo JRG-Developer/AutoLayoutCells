@@ -24,7 +24,9 @@
 
 #import "ALTableViewCellFactoryDelegate.h"
 
+@class ALCellViewModel;
 @protocol ALTableViewCellFactoryProtocol;
+
 
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
@@ -50,7 +52,7 @@
 /**
  *  This should be set to an array of arrays containing `ALCellViewModel` objects.
  */
-@property (strong, nonatomic) NSArray *viewModelArrays;
+@property (strong, nonatomic) NSArray<NSArray<ALCellViewModel *> *> *viewModelArrays;
 
 /**
  *  Use this method to initialize a new `ALTableViewManager` without a `tableView`.

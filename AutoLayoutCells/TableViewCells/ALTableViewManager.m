@@ -74,8 +74,12 @@
                                                       identifiersToNibsDictionary:nil];
         
     } else {
+      
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:_tableView
                                              identifiersToNibsDictionary:nil];
+#pragma GCC diagnostic pop
     }
     
     _cellFactory.delegate = self;
@@ -96,7 +100,7 @@
   // Empty by default
 }
 
-- (void)setViewModelArrays:(NSArray *)viewModelArrays
+- (void)setViewModelArrays:(NSArray<NSArray<ALCellViewModel *> *> *)viewModelArrays
 {
   if (_viewModelArrays == viewModelArrays) {
     return;
@@ -144,7 +148,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
   id cell = [tableView cellForRowAtIndexPath:indexPath];
   id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
   [viewModel didSelectCell:cell];
