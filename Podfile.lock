@@ -9,7 +9,7 @@ PODS:
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.1)
-  - AutoLayoutTextViews (1.2.4)
+  - AutoLayoutTextViews (1.2.5)
   - Expecta (1.0.5)
   - OCMock (3.3.1)
   - UIImageView+ALActivityIndicatorView (1.0.0)
@@ -29,7 +29,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ALLabel: 0f527f4f5445f4b9fac4d78bf28655f88908bd93
   AutoLayoutCells: 7fd5bd62cae53af26533eae7641da29629685c01
-  AutoLayoutTextViews: 736cf883739ff018dbcc5f99fb411936ec514be3
+  AutoLayoutTextViews: 4f8f7627ba239c0cc39858239ffbb2c2456ef36b
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   UIImageView+ALActivityIndicatorView: f38f2c19ed2927e0b359201c143f25628ce30711
