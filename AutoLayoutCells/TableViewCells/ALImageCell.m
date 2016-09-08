@@ -146,6 +146,8 @@
   
   [self setMainImageViewFromDictionary:dictionary];
   [self setSecondaryImageViewFromDictionary:dictionary];
+  
+  [self setMainImageTintColorFromDictionary:dictionary];
 }
 
 #pragma mark - Set Placeholder Images
@@ -248,6 +250,12 @@
   self.secondaryImageViewTrailingConstraint.constant = 0.0f;
   self.secondaryImageViewWidthConstraint.constant = 0.0f;
   self.secondaryImageViewHeightConstraint.constant = 0.0f;
+}
+
+#pragma mark - Set Tint Color
+
+- (void)setMainImageTintColorFromDictionary:(NSDictionary *)dictionary {
+  self.mainImageView.tintColor = dictionary[ALImageCellMainImageTintColorKey] ?: nil;
 }
 
 #pragma mark - Set Image From URL

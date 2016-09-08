@@ -43,6 +43,11 @@ extern NSString * const ALImageCellMainImageKey;                // mainImage
 extern NSString * const ALImageCellMainImageNameKey;            // mainImageName
 
 /**
+ *  Use this kety to specify a `UIColor` to be set as the `tintColor` on the cell's `mainImageView`.
+ */
+extern NSString * const ALImageCellMainImageTintColorKey;        // mainImageTintColor
+
+/**
  *  Use this key to specify a URL string to be used to load the image to be set on the cell's `mainImageView`.
  */
 extern NSString * const ALImageCellMainImageURLStringKey;       // mainImageURLString
@@ -56,6 +61,7 @@ extern NSString * const ALImageCellMainImageURLKey;             // mainImageURL
  *  Use this key to specify an image to be set on the cell's `mainPlaceholderImage` while the `mainImageView` is being loaded from a URL.
  */
 extern NSString * const ALImageCellMainPlaceholderImageKey;     // mainPlaceholderImage
+
 
 ///--------------------------------------------------------------
 /// @name Secondary Image Keys

@@ -24,6 +24,7 @@
 
 NSString * const ALImageCellMainImageKey =                  @"mainImage";
 NSString * const ALImageCellMainImageNameKey =              @"mainImageName";
+NSString * const ALImageCellMainImageTintColorKey =         @"mainImageTintColor";
 NSString * const ALImageCellMainImageURLStringKey =         @"mainImageURLString";
 NSString * const ALImageCellMainImageURLKey =               @"mainImageURL";
 NSString * const ALImageCellMainPlaceholderImageKey =       @"mainPlaceholderImage";
