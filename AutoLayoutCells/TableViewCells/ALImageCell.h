@@ -167,6 +167,26 @@
  */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewWidthConstraint;
 
+/**
+ *  Use this method to manually tell the cell to reset the original constraint values for its `mainImageView`
+ */
+- (void)resetMainImageViewConstraintConstants;
+
+/**
+ *  Use this method to manually tell the cell to set the constraint values for its `mainImageView` to zero.
+ */
+- (void)setMainImageViewConstraintsToZero;
+
+/**
+ *  Use this method to manually tell the cell to reset the original constraint values for its `secondaryImageView`
+ */
+- (void)resetSecondaryImageViewConstraintConstants;
+
+/**
+ *  Use this method to manually tell the cell to set the constraint values for its `secondaryImageView` to zero.
+ */
+- (void)setSecondaryImageViewConstraintsToZero;
+
 @end
 
 @interface ALImageCell (Protected)
