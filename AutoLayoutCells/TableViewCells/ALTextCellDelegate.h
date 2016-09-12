@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-@import Foundation;
+@import UIKit;
 
 /**
  *  `ALTextCellDelegate` extends `ALCellDelegate` to add optional methods to inform the delegate of text view height changed events.

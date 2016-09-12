@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 // Test Class
-#import "ALTableViewCellNibFactory.h"
+#import "Test_ALTableViewCellNibFactory.h"
 
 // Collaborators
 #import "ALCell.h"
@@ -52,7 +52,7 @@
 
 - (id)verifySelector:(SEL)selector givesCellClass:(Class)cellClass
 {
-  UINib *nib = [ALTableViewCellNibFactory performSelector:selector];
+  UINib *nib = [Test_ALTableViewCellNibFactory performSelector:selector];
   UIView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
   
   expect(view).to.beInstanceOf(cellClass);

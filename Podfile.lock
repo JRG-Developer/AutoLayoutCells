@@ -1,11 +1,11 @@
 PODS:
   - ALLabel (2.0.0)
-  - AutoLayoutCells (0.11.0-beta):
-    - AutoLayoutCells/SharedCategories (= 0.11.0-beta)
-    - AutoLayoutCells/TableViewCells (= 0.11.0-beta)
-  - AutoLayoutCells/SharedCategories (0.11.0-beta):
+  - AutoLayoutCells (0.11.0-beta2):
+    - AutoLayoutCells/SharedCategories (= 0.11.0-beta2)
+    - AutoLayoutCells/TableViewCells (= 0.11.0-beta2)
+  - AutoLayoutCells/SharedCategories (0.11.0-beta2):
     - UIImageView+ALActivityIndicatorView (~> 1.0)
-  - AutoLayoutCells/TableViewCells (0.11.0-beta):
+  - AutoLayoutCells/TableViewCells (0.11.0-beta2):
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.1)
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 0f527f4f5445f4b9fac4d78bf28655f88908bd93
-  AutoLayoutCells: 7fd5bd62cae53af26533eae7641da29629685c01
+  AutoLayoutCells: 1098f9f517fe8d677e2d6ee7b3cb360f6c331f35
   AutoLayoutTextViews: 4f8f7627ba239c0cc39858239ffbb2c2456ef36b
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
