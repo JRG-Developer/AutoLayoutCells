@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALCell.h"
+#import "ALImageCell.h"
 
 /**
  *  `ALLeftLabelCell` shows a title, subtitle, and "left" label.
@@ -30,7 +30,7 @@
  *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
  *  @see `ALCellConstants` and `ALLeftLabelCellConstants` for predefined dictionary value keys.
  */
-@interface ALLeftLabelCell : ALCell
+@interface ALLeftLabelCell : ALImageCell
 
 /**
  *  The left label (shown to the left of the title and subtitle labels)

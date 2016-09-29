@@ -22,9 +22,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "ALCellDelegate.h"
 #import "ALTextCellDelegate.h"
 
-@interface Test_ALTextCellDelegate : NSObject <ALTextCellDelegate>
+@interface Test_ALTextCellDelegate : NSObject <ALCellDelegate, ALTextCellDelegate>
 
 #pragma mark - ALCellDelegate
 
@@ -35,7 +36,7 @@
 
 #pragma mark - ALTextCellDelegate
 
-- (void)cellHeightWillChange:(id)cell;
-- (void)cellHeightDidChange:(id)cell;
+- (void)cellHeightWillChange:(id)cell delta:(CGFloat)delta;
+- (void)cellHeightDidChange:(id)cell delta:(CGFloat)delta;;
 
 @end

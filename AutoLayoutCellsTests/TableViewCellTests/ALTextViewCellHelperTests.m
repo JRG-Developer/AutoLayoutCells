@@ -347,11 +347,15 @@
 - (void)test___textView_willChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
+  CGFloat fromHeight = 10.0f;
+  CGFloat toHeight = 50.0f;
+  CGFloat delta = toHeight - fromHeight;
+  
   [self givenMockHeightDelegate];
-  OCMExpect([delegate cellHeightWillChange:cell]);
+  OCMExpect([delegate cellHeightWillChange:cell delta:delta]);
   
   // when
-  [sut textView:textView willChangeFromHeight:10.0f toHeight:50.0f];
+  [sut textView:textView willChangeFromHeight:fromHeight toHeight:toHeight];
   
   // then
   OCMVerifyAll(delegate);
@@ -360,11 +364,15 @@
 - (void)test___textView_didChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
+  CGFloat fromHeight = 10.0f;
+  CGFloat toHeight = 50.0f;
+  CGFloat delta = toHeight - fromHeight;
+  
   [self givenMockHeightDelegate];
-  OCMExpect([delegate cellHeightDidChange:cell]);
+  OCMExpect([delegate cellHeightDidChange:cell delta:delta]);
   
   // when
-  [sut textView:textView didChangeFromHeight:10.0f toHeight:50.0f];
+  [sut textView:textView didChangeFromHeight:fromHeight toHeight:toHeight];
   
   // then
   OCMVerifyAll(delegate);

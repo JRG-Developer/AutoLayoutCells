@@ -50,6 +50,7 @@
   
   id cellTextView;
   id tableView;
+  id view;
 }
 
 #pragma mark - Test Lifecycle
@@ -67,6 +68,7 @@
   
   [cellTextView stopMocking];
   [tableView stopMocking];
+  [view stopMocking];
   [super tearDown];
 }
 
@@ -87,6 +89,10 @@
   cell.textView = textView;
 }
 
+- (void)givenMockView {
+  view = OCMClassMock([UIView class]);
+}
+
 #pragma mark - Given
 
 - (void)givenTextViewCell {
@@ -103,31 +109,55 @@
 
 #pragma mark - ALTextCellDelegate - Tests
 
-- (void)test___cellHeightDidChange___ifTextViewCellTextViewIsntFirstResponder_doesntUpdateTableView {
+- (void)test___cellHeightWillChange___turnsOffAnimations {
   
   // given
-  [self givenTextViewCell];
+  [self givenMockView];
 
-  [[tableView reject] beginUpdates];
-  [[tableView reject] endUpdates];
+  OCMExpect([view setAnimationsEnabled:NO]);
   
   // when
-  [sut cellHeightDidChange:cell];
+  [sut cellHeightWillChange:cell delta:42];
+  
+  // then
+  OCMVerifyAll(view);
+}
+
+- (void)test___cellHeightWillChange___calls_tableView_beginUpdates {
+  
+  // given
+  [self givenMockTableView];
+  OCMExpect([tableView beginUpdates]);
+  
+  // when
+  [sut cellHeightWillChange:cell delta:42];
   
   // then
   OCMVerifyAll(tableView);
 }
 
-- (void)test___cellHeightDidChange___ifTextCellTextViewIsFirstResponder_updatesTableView {
+- (void)test___cellHeightDidChange___turnsOnAnimations {
   
   // given
-  [self givenTextViewCellWithMockTextView];
+  [self givenMockView];
   
-  OCMExpect([tableView beginUpdates]);
+  OCMExpect([view setAnimationsEnabled:YES]);
+  
+  // when
+  [sut cellHeightDidChange:cell delta:42];
+  
+  // then
+  OCMVerifyAll(view);
+}
+
+- (void)test___cellHeightDidlChange___calls_tableView_endUpdates {
+  
+  // given
+  [self givenMockTableView];
   OCMExpect([tableView endUpdates]);
   
   // when
-  [sut cellHeightDidChange:cell];
+  [sut cellHeightDidChange:cell delta:42];
   
   // then
   OCMVerifyAll(tableView);

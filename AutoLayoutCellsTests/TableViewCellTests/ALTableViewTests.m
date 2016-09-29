@@ -96,37 +96,7 @@
 //  OCMVerifyAll(partialMock);
 }
 
-- (void)test___commonInit___registersFor_UIContentSizeCategoryDidChangeNotification
-{
-  // given
-  id mockCenter = OCMPartialMock([NSNotificationCenter defaultCenter]);
-  
-  // when
-  sut = [[ALTableView alloc] init];
-  
-  // then
-  OCMVerify([mockCenter addObserver:sut
-                           selector:@selector(contentSizeCategoryDidChange:)
-                               name:UIContentSizeCategoryDidChangeNotification
-                             object:nil]);
-  
-  // clean up
-  [mockCenter stopMocking];
-}
-
 #pragma mark - Notifications - Tests
 
-- (void)test___contentSizeCategoryDidChange___calls_reloadData
-{
-  // given
-  partialMock = OCMPartialMock(sut);
-  OCMExpect([partialMock reloadData]);
-  
-  // when
-  [sut contentSizeCategoryDidChange:nil];
-  
-  // then
-  OCMVerifyAllWithDelay(partialMock, 0.01);
-}
 
 @end

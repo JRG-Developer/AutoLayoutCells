@@ -57,7 +57,7 @@
 
 - (void)test_isSubclassOf_ALCell
 {
-  expect([sut class]).to.beSubclassOf([ALCell class]);
+  expect([sut class]).to.beSubclassOf([ALImageCell class]);
 }
 
 #pragma mark - Dynamic Type Text - Tests
