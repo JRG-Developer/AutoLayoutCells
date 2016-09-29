@@ -53,6 +53,60 @@
  */
 @property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle UI_APPEARANCE_SELECTOR;
 
+
+///--------------------------------------------------------------
+/// @name Input Required Outlets
+///--------------------------------------------------------------
+
+/**
+ *  The "input required" label.
+ */
+@property (weak, nonatomic) IBOutlet UILabel *inputRequiredLabel;
+
+/**
+ *  The leading constraint on the `inputRequiredLabel`
+ *
+ *  @note Setting this outlet is *optional*.
+ *
+ *  @discussion This outlet is used to add/remove *leading* space before `inputRequiredLabel`, if it's hidden.
+ *
+ *  If you always want to show leading space, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredLeadingConstraint;
+
+/**
+ *  The trailing constraint on the `inputRequiredLabel`
+ *
+ *  @note Setting this outlet is *optional*.
+ *
+ *  @discussion This outlet is used to add/remove *trailing* space `inputRequiredLabel`, if it's hidden.
+ *
+ *  If you always want to show trailing space, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredTrailingConstraint;
+
+/**
+ *  The height constraint on the `inputRequiredLabel`
+ *
+ *  @note Setting this outlet is *optional*
+ *
+ *  @discussion This outlet is used to remove the height of the `inputRequiredLabel`, if it's hidden.
+ *
+ *  If you always want to show a constant height for the `inputRequiredLabel`, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredHeightConstraint;
+
+/**
+ *  The width constraint on the `inputRequiredLabel`
+ *
+ *  @note Setting this outlet is *optional*
+ *
+ *  @discussion This outlet is used to remove the width of the `inputRequiredLabel, if it's hidden.
+ *
+ *  If you always want to show a constant width for the `inputRequiredLabel`, you should *not* set this outlet.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredWidthConstraint;
+
 ///--------------------------------------------------------------
 /// @name Main Image View Outlets
 ///--------------------------------------------------------------

@@ -34,3 +34,5 @@ NSString * const ALImageCellSecondaryImageNameKey =          @"secondaryImageNam
 NSString * const ALImageCellSecondaryImageURLStringKey =     @"secondaryImageURLString";
 NSString * const ALImageCellSecondaryImageURLKey =           @"secondaryImageURL";
 NSString * const ALImageCellSecondaryPlaceholderImageKey =   @"secondaryPlaceholderImage";
+
+NSString * const ALInputRequiredKey = @"inputRequired";

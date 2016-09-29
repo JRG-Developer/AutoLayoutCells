@@ -62,6 +62,10 @@ extern NSString * const ALImageCellMainImageURLKey;             // mainImageURL
  */
 extern NSString * const ALImageCellMainPlaceholderImageKey;     // mainPlaceholderImage
 
+/**
+ *  Use this key to specify whether or not the input is required.
+ */
+extern NSString * const ALInputRequiredKey;   // requiredHidden
 
 ///--------------------------------------------------------------
 /// @name Secondary Image Keys
