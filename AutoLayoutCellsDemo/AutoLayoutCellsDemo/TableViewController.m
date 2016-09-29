@@ -112,8 +112,6 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   [cell setValuesFromDictionary:dictionary];
   
   [self configureAccessoryViewForCell:cell atIndexPath:indexPath];
-  
-  cell.delegate = self;
 }
 
 - (void)configureAccessoryViewForCell:(ALCell *)cell atIndexPath:(NSIndexPath *)indexPath
