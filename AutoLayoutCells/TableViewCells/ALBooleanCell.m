@@ -46,12 +46,14 @@
 
 - (IBAction)didToggle:(UISwitch *)toggle
 {
+  BOOL isOn = !toggle.isOn; // `isOn` is set via animation; this gives the value AFTER animation, which is what we want  
+  
   if (self.valueChangedBlock) {
-    self.valueChangedBlock(@([toggle isOn]));
+    self.valueChangedBlock(@(isOn));
   }
   
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
-    [self.delegate cell:self valueChanged:@([toggle isOn])];
+    [self.delegate cell:self valueChanged:@(isOn)];
   }
 }
 
