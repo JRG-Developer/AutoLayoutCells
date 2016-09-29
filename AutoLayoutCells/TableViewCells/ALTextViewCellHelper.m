@@ -49,10 +49,6 @@
 
 - (void)configureTextView
 {
-  CGColorRef colorRef = [[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor];
-  [self.textView.layer setBorderColor:colorRef];
-  [self.textView.layer setBorderWidth:2.0f];
-  
   [self.textView setDelegate:self];
 }
 
