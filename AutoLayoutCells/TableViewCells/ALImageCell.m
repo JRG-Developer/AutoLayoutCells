@@ -61,11 +61,9 @@
 
 - (void)setInputRequiredLeadingConstraint:(NSLayoutConstraint *)constraint
 {
-
   if (_inputRequiredLeadingConstraint == constraint) {
     return;
   }
-  
   
   _inputRequiredLeadingConstraint = constraint;
   self.inputRequiredLeadingConstraintConstant = constraint.constant;
@@ -143,7 +141,7 @@
   self.mainImageViewHeightConstraintConstant = constraint.constant;
 }
 
-#pragma mark - Secondardy Image View Constraints
+#pragma mark - Secondary Image View Constraints
 
 - (void)setSecondaryImageViewLeadingConstraint:(NSLayoutConstraint *)constraint
 {
@@ -190,6 +188,8 @@
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
   [super setValuesFromDictionary:dictionary];
+  
+  [self configureInputRequiredLabelFromDictionary:dictionary];
 
   [self setMainPlaceholderImageFromDictionary:dictionary];
   [self setSecondaryPlaceholderImageFromDictionary:dictionary];
