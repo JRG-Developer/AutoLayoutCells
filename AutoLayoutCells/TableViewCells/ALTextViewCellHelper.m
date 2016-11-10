@@ -104,6 +104,7 @@
 - (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
   if (!dictionary[ALTextCellTypeKey]) {
+    [self setTextViewTypeDefault];
     return;
   }
   

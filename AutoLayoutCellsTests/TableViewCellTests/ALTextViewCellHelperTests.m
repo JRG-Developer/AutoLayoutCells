@@ -171,7 +171,29 @@
 
 #pragma mark - Type - Tests
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeDefault
+- (void)test___setValuesFromDictionary___givenNoTextCellType_setTextCellType_ALTextCellTypeDefault
+{
+  // given
+  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  textView.keyboardType = UIKeyboardTypeEmailAddress;
+  textView.secureTextEntry = YES;
+  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  
+  NSDictionary *dict = @{};
+  
+  // when
+  [sut setValuesFromDictionary:dict];
+  
+  // then
+  expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
+  expect(textView.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
+  expect(textView.keyboardType).to.equal(UIKeyboardTypeDefault);
+  expect(textView.secureTextEntry).to.beFalsy();
+  expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+}
+
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeDefault
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
@@ -187,7 +209,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeEmail
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeEmail
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeEmail)};
@@ -203,7 +225,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeName
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeName
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeName)};
@@ -219,7 +241,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeNoChecking
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeNoChecking
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNoChecking)};
@@ -235,7 +257,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeNumber
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeNumber
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNumber)};
@@ -251,7 +273,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeDecimalNumber
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeDecimalNumber
 {
     // given
     NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDecimalNumber)};
@@ -267,7 +289,7 @@
     expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypePassword
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypePassword
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypePassword)};
@@ -283,7 +305,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeSentences
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeSentences
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeSentences)};
