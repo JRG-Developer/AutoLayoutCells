@@ -25,6 +25,8 @@
 
 #import "ALCellConstants.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextCell`, `ALTextFieldCell`, etc use these keys and enum to specify and format their `textView` or `textField`, respectively.
  */
@@ -101,3 +103,5 @@ extern NSString * const ALTextCellTypeKey;              // type
  *  Use this key to specify the `placeholder` text.
  */
 extern NSString * const ALTextCellPlaceholderTextKey;   // placeholderText
+
+NS_ASSUME_NONNULL_END

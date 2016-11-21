@@ -24,6 +24,8 @@
 
 #import "ALImageCell.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALLeftLabelCell` shows a title, subtitle, and "left" label.
  *
@@ -35,9 +37,10 @@
 /**
  *  The left label (shown to the left of the title and subtitle labels)
  */
-@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (weak, nonatomic, null_unspecified) IBOutlet UILabel *leftLabel;
 
 @end
+
 
 @interface ALLeftLabelCell (Protected)
 
@@ -50,3 +53,5 @@
 - (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

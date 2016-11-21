@@ -24,6 +24,8 @@
 
 #import "ALTableViewCellFactoryProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTableViewCellFactory` encapsulates common cell creation/dequeuing and cell height calculation tasks.
  *
@@ -35,12 +37,12 @@
  *  The delegate that performs cell configuration
  *  @see `ALTableViewCellFactoryDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
+@property (weak, nonatomic, nullable) id<ALTableViewCellFactoryDelegate> delegate;
 
 /**
  *  The table view that displays the cells
  */
-@property (weak, nonatomic, readonly) UITableView *tableView;
+@property (weak, nonatomic, readonly, nullable) UITableView *tableView;
 
 /**
  *  A dictionary of sizing cells (keys are cell identifiers, values are sizing cells)
@@ -64,7 +66,9 @@
  *
  *  @return A new `ALTableViewCellFactory` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView identifiersToNibsDictionary:(NSDictionary *)dictionary __attribute__((deprecated("ALTableViewCellFactory is deprecated as of iOS 8.0.")));
+- (instancetype)initWithTableView:(UITableView *)tableView
+      identifiersToNibsDictionary:(NSDictionary *)dictionary
+      __attribute__((deprecated("ALTableViewCellFactory is deprecated as of iOS 8.0.")));
 
 @end
 
@@ -120,3 +124,5 @@
 - (BOOL)isOS8OrLater;
 
 @end
+
+NS_ASSUME_NONNULL_END

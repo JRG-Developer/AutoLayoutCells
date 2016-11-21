@@ -24,6 +24,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextCellDelegate` extends `ALCellDelegate` to add optional methods to inform the delegate of text view height changed events.
  *  @discussion While these methods are "optional", the delegate **should** implement at least one of these in order to update the cell height to correctly display the text view within the cell.
@@ -54,3 +56,5 @@
 - (void)cellHeightDidChange:(id)cell delta:(CGFloat)delta;
 
 @end
+
+NS_ASSUME_NONNULL_END

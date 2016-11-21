@@ -24,6 +24,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  This is the base cell class for all table view cells within `AutoLayoutCells`.
  *
@@ -32,9 +34,32 @@
  */
 @interface ALBaseCell : UITableViewCell
 
-///--------------------------------------------------------------
-/// @name Class Configuration
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
+
+/**
+ *  The delegate that should be notified of value-related events.
+ *
+ *  @discussion Each cell will have a `delegate` object. While `ALCellDelegate` is the most commonly required delegate protocol, it doesn't strictly have to be.
+ */
+@property (weak, nonatomic, nullable) IBOutlet id delegate;
+
+/**
+ *  Whether this cell should be treated as a sizing cell. The default value is `NO`.
+ *
+ *  @discussion Cell subclasses may treat sizing cells slightly differently than normal cells. In example, image loading from URL may be skipped.
+ */
+@property (assign, nonatomic) BOOL isSizingCell;
+
+/**
+ *  The block that should be called whenever the cell's value changes.
+ *
+ *  @discussion  This can be used in addition to, or as a replacement for, a `delegate`.
+ *
+ *  This block will be called *before* the `delegate` is messaged.
+ */
+@property (strong, nonatomic, nullable) void (^valueChangedBlock)(id value);
+
+#pragma mark - Class Configuration
 
 /**
  *  Use this method to set whether instances should register for `UIContentSizeCategoryDidChangeNotification` notifications. Defaults to `YES`.
@@ -54,36 +79,7 @@
  */
 + (BOOL)shouldRegisterForFontChanges;
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
-
-/**
- *  The delegate that should be notified of value-related events.
- *
- *  @discussion Each cell will have a `delegate` object. While `ALCellDelegate` is the most commonly required delegate protocol, it doesn't strictly have to be.
- */
-@property (weak, nonatomic) IBOutlet id delegate;
-
-/**
- *  Whether this cell should be treated as a sizing cell. The default value is `NO`.
- *
- *  @discussion Cell subclasses may treat sizing cells slightly differently than normal cells. In example, image loading from URL may be skipped.
- */
-@property (assign, nonatomic) BOOL isSizingCell;
-
-/**
- *  The block that should be called whenever the cell's value changes.
- *
- *  @discussion  This can be used in addition to, or as a replacement for, a `delegate`.
- *
- *  This block will be called *before* the `delegate` is messaged.
- */
-@property (strong, nonatomic) void (^valueChangedBlock)(id value);
-
-///--------------------------------------------------------------
-/// @name Instance Methods
-///--------------------------------------------------------------
+#pragma mark - Instance Methods
 
 /**
  *  Use this method to set the cell's values from the given dictionary using pre-defined keys.
@@ -95,11 +91,8 @@
 
 @end
 
-@interface ALBaseCell (Protected)
 
-///--------------------------------------------------------------
-/// @name Protected Methods
-///--------------------------------------------------------------
+@interface ALBaseCell (Protected)
 
 /**
  *  Subclasses should use this method for common setup (`init`) code.
@@ -118,3 +111,5 @@
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification __attribute((objc_requires_super));
 
 @end
+
+NS_ASSUME_NONNULL_END

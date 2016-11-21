@@ -24,6 +24,8 @@
 
 #import "ALCellConstants.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Subclasses of `ALImageCell` use these keys to set the relevant text/values on their subviews.
  */
@@ -95,3 +97,5 @@ extern NSString * const ALImageCellSecondaryImageURLKey;             // secondar
  *  Use this key to specify an image to be set on the cell's `secondaryPlaceholderImage` while the `secondaryImageView` is being loaded from a URL.
  */
 extern NSString * const ALImageCellSecondaryPlaceholderImageKey;     // secondaryPlaceholderImage
+
+NS_ASSUME_NONNULL_END

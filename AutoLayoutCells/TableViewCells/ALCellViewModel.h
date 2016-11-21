@@ -24,6 +24,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALCellViewModel` objects are used by `ALTableViewManager` to create and dequeue table view cells.
  *
@@ -59,6 +61,8 @@
  *
  *  @return An array of `UITableViewRowAction` objects
  */
-- (NSArray *)editActionsForCell;
+- (nullable NSArray *)editActionsForCell;
 
 @end
+
+NS_ASSUME_NONNULL_END

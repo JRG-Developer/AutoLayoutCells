@@ -26,6 +26,8 @@
 #import "ALSimpleCellViewModel.h"
 #import "ALTextCellDelegate.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextCellViewModel` extends `ALSimpleCellViewModel` to automatically "resize" the text-view cell when the text view's height changes.
  *
@@ -40,8 +42,9 @@
  *
  *  For this reason, the table view must be set, or else cell resizing won't actually happen.
  */
-@property (weak, nonatomic) UITableView *tableView;
+@property (weak, nonatomic, nullable) UITableView *tableView;
 
+#pragma mark - Object Lifeycle
 
 /**
  *  This is the preferred way to create an `ALTextCellViewModel`.
@@ -55,3 +58,5 @@
                              tableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END

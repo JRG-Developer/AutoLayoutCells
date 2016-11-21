@@ -24,9 +24,13 @@
 
 #import "ALSimpleCellViewModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALBooleanCellViewModel` extends `ALSimpleCellViewModel` to automatically toggle its `ALBooleanCell` whenever the cell is tapped.
  */
 @interface ALBooleanCellViewModel : ALSimpleCellViewModel
 
 @end
+
+NS_ASSUME_NONNULL_END

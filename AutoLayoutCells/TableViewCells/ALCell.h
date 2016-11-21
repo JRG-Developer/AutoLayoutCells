@@ -27,6 +27,9 @@
 
 @protocol ALCellDelegate;
 
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALCell` shows a title and subtitle. It is also the base class for most of the cells within `AutoLayoutCells`.
  *
@@ -39,17 +42,17 @@
  *  The delegated that should be notified of value-related events.
  *  @see `ALCellDelegate` for more details.
  */
-@property (weak, nonatomic) IBOutlet id<ALCellDelegate> delegate;
+@property (weak, nonatomic, nullable) IBOutlet id<ALCellDelegate> delegate;
 
 /**
  *  The title label
  */
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic, null_unspecified) IBOutlet UILabel *titleLabel;
 
 /**
  *  The subtitle label
  */
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic, null_unspecified) IBOutlet UILabel *subtitleLabel;
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the label's fonts.
@@ -61,6 +64,7 @@
 - (void)refreshFonts;
 
 @end
+
 
 @interface ALCell (Protected)
 
@@ -81,3 +85,5 @@
 - (void)setSubtitleFromDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

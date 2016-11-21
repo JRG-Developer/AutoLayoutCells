@@ -24,6 +24,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString * const ALTableViewCellsBundleName;
 
 /**
@@ -62,3 +64,5 @@ extern NSString * const ALTableViewCellsBundleName;
 + (NSString *)_pathForALTableViewCellsBundle;
 
 @end
+
+NS_ASSUME_NONNULL_END

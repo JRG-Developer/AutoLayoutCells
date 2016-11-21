@@ -28,6 +28,8 @@
 @protocol ALTableViewCellFactoryProtocol;
 
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
  *
@@ -47,7 +49,7 @@
 /**
  *  The table view to be managed
  */
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic, nullable) UITableView *tableView;
 
 /**
  *  This should be set to an array of arrays containing `ALCellViewModel` objects.
@@ -75,7 +77,7 @@
  *
  *  @return A new `ALTableViewManager` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(nullable UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 /**
  *  This is an abstract method meant to be overriden by subclasses.
@@ -101,3 +103,5 @@
 - (void)reloadViewModels;
 
 @end
+
+NS_ASSUME_NONNULL_END

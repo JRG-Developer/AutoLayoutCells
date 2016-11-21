@@ -24,6 +24,8 @@
 
 #import "ALCellConstants.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALLeftLabelCell` uses these keys to set the values of its `leftLabel`.
  */
@@ -37,3 +39,5 @@ extern NSString * const ALLeftLabelTextKey;             // leftText
  *  Use this key to specify the attributed text to be set on the `leftLabel`.
  */
 extern NSString * const ALLeftLabelAttributedTextKey;   // attrLeftText
+
+NS_ASSUME_NONNULL_END

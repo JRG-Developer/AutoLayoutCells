@@ -24,12 +24,13 @@
 
 #import "ALTableViewCellFactoryProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  @brief  `ALAutomaticTableViewCellFactory` encapsulates cell creation/dequeuing logic and cell height calculation tasts.
  *
  *  @discussion  This class deprecates `ALTableViewCellFactory` for iOS 8.0 and up, where Apple's logic for determining dynamic table view cell heights has greatly improved.
  */
-
 NS_AVAILABLE_IOS(8.0)
 @interface ALAutomaticTableViewCellFactory : NSObject <ALTableViewCellFactoryProtocol>
 
@@ -37,12 +38,12 @@ NS_AVAILABLE_IOS(8.0)
  *  The delegate that performs cell configuration
  *  @see `ALTableViewCellFactoryDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
+@property (weak, nonatomic, nullable) id<ALTableViewCellFactoryDelegate> delegate;
 
 /**
  *  The table view that displays the cells
  */
-@property (weak, nonatomic, readonly) UITableView *tableView;
+@property (weak, nonatomic, readonly, nullable) UITableView *tableView;
 
 /**
  *  A dictionary of sizing cells (keys are cell identifiers, values are sizing cells).
@@ -78,3 +79,5 @@ NS_AVAILABLE_IOS(8.0)
 - (UITableViewCell *)cellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
 @end
+
+NS_ASSUME_NONNULL_END

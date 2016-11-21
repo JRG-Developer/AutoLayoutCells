@@ -26,6 +26,8 @@
 
 @protocol ALTableViewCellFactoryDelegate;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTableViewCellFactoryProtocol` defines required methods that a concreten table view cell factory must implement.
  */
@@ -38,3 +40,5 @@
 @property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
 
 @end
+
+NS_ASSUME_NONNULL_END

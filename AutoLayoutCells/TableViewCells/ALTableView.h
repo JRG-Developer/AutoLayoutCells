@@ -24,6 +24,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTableView` automatically "avoids" the keyboard.
  */
@@ -33,13 +35,11 @@
 
 @interface ALTableView (Protected)
 
-///--------------------------------------------------------------
-/// @name Protected Methods
-///--------------------------------------------------------------
-
 /**
  *  Subclasses should use this method for common setup (`init`) code.
  */
 - (void)commonInit __attribute((objc_requires_super));
 
 @end
+
+NS_ASSUME_NONNULL_END

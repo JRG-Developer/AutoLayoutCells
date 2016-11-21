@@ -30,6 +30,8 @@
 
 @protocol ALTextCellDelegate;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextViewOnlyCell` shows just a text view to get input from the user.
  *
@@ -41,34 +43,28 @@
  */
 @interface ALTextViewOnlyCell : ALBaseCell
 
-///--------------------------------------------------------------
-/// @name Instance Preoperties
-///--------------------------------------------------------------
+#pragma mark - Instance Preoperties
 
 /**
  *  The text view helper, which encapsulates commmon text view configuration, delegate handling, etc
  */
 @property (strong, nonatomic, readonly) ALTextViewCellHelper *textViewHelper;
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+#pragma mark - Outlets
 
 /**
  *  The delegate to be notified of text view height change events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>heightDelegate;
+@property (weak, nonatomic, nullable) IBOutlet id<ALTextCellDelegate>heightDelegate;
 
 /**
  *  The text view, which accepts user input and resizes itself as needed
  *  @see `ALAutoResizingTextView` in `AutoLayoutTextViews` pod for more details
  */
-@property (weak, nonatomic) IBOutlet ALAutoResizingTextView *textView;
+@property (weak, nonatomic, nullable) IBOutlet ALAutoResizingTextView *textView;
 
-///--------------------------------------------------------------
-/// @name Dynamic Type Font
-///--------------------------------------------------------------
+#pragma mark - Dynamic Type Font
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the text view's font.
@@ -78,3 +74,5 @@
 - (void)refreshFonts;
 
 @end
+
+NS_ASSUME_NONNULL_END

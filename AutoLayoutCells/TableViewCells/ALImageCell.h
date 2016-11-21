@@ -24,6 +24,8 @@
 
 #import "ALCell.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALImageCell` shows a title, subtitle, and optional "main" and "secondary" images.
  *
@@ -32,19 +34,17 @@
  */
 @interface ALImageCell : ALCell
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
 
 /**
  *  The placeholder image to show whenever the `mainImageView` is loading.
  */
-@property (strong, nonatomic) UIImage *mainImagePlaceholder UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic, nullable) UIImage *mainImagePlaceholder UI_APPEARANCE_SELECTOR;
 
 /**
  *  The placeholder image to show whenever the `secondaryImageView` is loading
  */
-@property (strong, nonatomic) UIImage *secondaryImagePlaceholder UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic, nullable) UIImage *secondaryImagePlaceholder UI_APPEARANCE_SELECTOR;
 
 /**
  *  The style to be used to show a loading activity indicator.
@@ -53,15 +53,12 @@
  */
 @property (assign, nonatomic) NSInteger loadingActivityIndicatorStyle UI_APPEARANCE_SELECTOR;
 
-
-///--------------------------------------------------------------
-/// @name Input Required Outlets
-///--------------------------------------------------------------
+#pragma mark - Input Required Outlets
 
 /**
  *  The "input required" label.
  */
-@property (weak, nonatomic) IBOutlet UILabel *inputRequiredLabel;
+@property (weak, nonatomic, null_unspecified) IBOutlet UILabel *inputRequiredLabel;
 
 /**
  *  The leading constraint on the `inputRequiredLabel`
@@ -72,7 +69,7 @@
  *
  *  If you always want to show leading space, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredLeadingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *inputRequiredLeadingConstraint;
 
 /**
  *  The trailing constraint on the `inputRequiredLabel`
@@ -83,7 +80,7 @@
  *
  *  If you always want to show trailing space, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredTrailingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *inputRequiredTrailingConstraint;
 
 /**
  *  The height constraint on the `inputRequiredLabel`
@@ -94,7 +91,7 @@
  *
  *  If you always want to show a constant height for the `inputRequiredLabel`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredHeightConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *inputRequiredHeightConstraint;
 
 /**
  *  The width constraint on the `inputRequiredLabel`
@@ -105,11 +102,9 @@
  *
  *  If you always want to show a constant width for the `inputRequiredLabel`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputRequiredWidthConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *inputRequiredWidthConstraint;
 
-///--------------------------------------------------------------
-/// @name Main Image View Outlets
-///--------------------------------------------------------------
+#pragma mark - Main Image View Outlets
 
 /**
  *  The "main" image view that the cell displays. This should be the first/focus/largest image view the cell displays.
@@ -118,7 +113,7 @@
  *
  *  @discussion Some cells inherit from this class but do *not* have a `mainImageView` in all of their `nibs` (e.g. `ALBooleanCell`, which has one nib that includes a `mainImageView` and another nib without it).
  */
-@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
+@property (weak, nonatomic, null_unspecified) IBOutlet UIImageView *mainImageView;
 
 /**
  *  The leading constraint on the `mainImageView`
@@ -129,7 +124,7 @@
  *
  *  If you always want to show leading space, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewLeadingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *mainImageViewLeadingConstraint;
 
 /**
  *  The trailing constraint on the `mainImageView`
@@ -140,7 +135,7 @@
  *
  *  If you always want to show trailing space, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewTrailingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *mainImageViewTrailingConstraint;
 
 /**
  *  The height constraint on the `mainImageView`
@@ -151,7 +146,7 @@
  *
  *  If you always want to show a constant height for the `mainImageView`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewHeightConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *mainImageViewHeightConstraint;
 
 /**
  *  The width constraint on the `mainImageView`
@@ -162,11 +157,9 @@
  *
  *  If you always want to show a constant width for the `mainImageView`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainImageViewWidthConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *mainImageViewWidthConstraint;
 
-///--------------------------------------------------------------
-/// @name Secondary Image View Constants
-///--------------------------------------------------------------
+#pragma mark - Secondary Image View Constants
 
 /**
  *  The "secondary" image view that the cell displays. This should be the second/smaller image view the cell displays.
@@ -175,7 +168,7 @@
  *
  *  @discussion Some cells inherit from this class but do *not* have a `secondaryImageView` in all of their `nibs`.
  */
-@property (weak, nonatomic) IBOutlet UIImageView *secondaryImageView;
+@property (weak, nonatomic, null_unspecified) IBOutlet UIImageView *secondaryImageView;
 
 /**
  *  The leading constraint on the `secondaryImageView`
@@ -186,7 +179,7 @@
  *
  *  If you always want to show leading space before `secondaryImageView`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewLeadingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *secondaryImageViewLeadingConstraint;
 
 /**
  *  The trailing constraint on the `secondaryImageView`
@@ -197,7 +190,7 @@
  *
  *  If you always want to show trailing space, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewTrailingConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *secondaryImageViewTrailingConstraint;
 
 /**
  *  The height constraint on the `secondaryImageView`
@@ -208,7 +201,7 @@
  *
  *  If you always want to show a constant height for the `secondaryImageView`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewHeightConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *secondaryImageViewHeightConstraint;
 
 /**
  *  The width constraint on the `secondaryImageView`
@@ -219,7 +212,9 @@
  *
  *  If you always want to show a constant width for the `secondaryImageView`, you should *not* set this outlet.
  */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondaryImageViewWidthConstraint;
+@property (weak, nonatomic, null_unspecified) IBOutlet NSLayoutConstraint *secondaryImageViewWidthConstraint;
+
+#pragma mark - Instance Methods
 
 /**
  *  Use this method to manually tell the cell to reset the original constraint values for its `mainImageView`
@@ -243,11 +238,8 @@
 
 @end
 
-@interface ALImageCell (Protected)
 
-///--------------------------------------------------------------
-/// @name Protected Methods
-///--------------------------------------------------------------
+@interface ALImageCell (Protected)
 
 /**
  *  This method is called within `setValuesFromDictionary` to set the image of the `mainImageView`.
@@ -276,6 +268,8 @@
  */
 - (void)setImageFromURL:(NSURL *)url
             onImageView:(UIImageView *)imageView
-       placeholderImage:(UIImage *)placeholder;
+       placeholderImage:(nullable UIImage *)placeholder;
 
 @end
+
+NS_ASSUME_NONNULL_END

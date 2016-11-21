@@ -35,9 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ALTextFieldCell : ALImageCell
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
 
 /**
 *  The text field helper, which encapsulates commmon text field configuration, delegate handling, etc
@@ -49,9 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (assign, nonatomic) ALTextCellType textCellType;
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+#pragma mark - Outlets
 
 /**
  *  The text field
