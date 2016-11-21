@@ -104,11 +104,7 @@
 
 - (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
-  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
-  if (!type) {
-    return;
-  }
-  
+  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue] ?: ALTextCellTypeDefault;
   [self setTextCellType:type];
 }
 
@@ -118,6 +114,9 @@
   {
       case ALTextCellTypeDefault:
       [self setTextFieldTypeDefault];
+      break;
+      
+      case ALTextCellTypeCustom:
       break;
       
       case ALTextCellTypeEmail:
@@ -146,10 +145,7 @@
       
       case ALTextCellTypeSentences:
       [self setTextFieldTypeSentences];
-      break;
-      
-    default:
-      break;
+      break;          
   }
 }
 

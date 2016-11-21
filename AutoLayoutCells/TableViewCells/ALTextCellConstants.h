@@ -42,6 +42,12 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
   ALTextCellTypeDefault = 0,
   
   /**
+   *  `ALTextCellTypeCustom` specifies custom formatting.
+   *  @discussion This does NOT set any formatting values. Instead, the caller is expected to handler this.
+   */
+  ALTextCellTypeCustom,
+  
+  /**
    *  Use `ALTextCellType` to specify that the expected input is an email.
    *  @discussion This sets auto capitalization to "none", turns off auto correction, sets the keyboard to "email address", and turns off spell checking.
    */

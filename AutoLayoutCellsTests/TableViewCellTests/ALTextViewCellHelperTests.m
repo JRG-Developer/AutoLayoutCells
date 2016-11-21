@@ -171,7 +171,7 @@
 
 #pragma mark - Type - Tests
 
-- (void)test___setValuesFromDictionary___givenNoTextCellType_setTextCellType_ALTextCellTypeDefault
+- (void)test___setValuesFromDictionary___ALTextCellType_missing_setsDefaultType
 {
   // given
   textView.autocapitalizationType = UITextAutocapitalizationTypeNone;

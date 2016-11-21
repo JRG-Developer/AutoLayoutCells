@@ -166,6 +166,22 @@
 
 #pragma mark - Type
 
+- (void)test___setValuesFromDictionary___textCellType___ALTextCellType_missing_setsDefaultType
+{
+  // given
+  NSDictionary *dict = @{ };
+  
+  // when
+  [sut setValuesFromDictionary:dict];
+  
+  // then
+  expect(sut.textField.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
+  expect(sut.textField.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
+  expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
+  expect(sut.textField.secureTextEntry).to.beFalsy();
+  expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+}
+
 - (void)test___setValuesFromDictionary___textCellType___ALTextCellTypeDefault
 {
   // given
@@ -180,6 +196,24 @@
   expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
   expect(sut.textField.secureTextEntry).to.beFalsy();
   expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+}
+
+- (void)test___setValuesFromDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
+{
+  // given
+  NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeCustom)};
+  
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
+  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
+  
+  // when
+  [sut setValuesFromDictionary:dict];
+  
+  // then
+  OCMVerifyAll(mockTextField);
 }
 
 - (void)test___setValuesFromDictionary___textCellType___ALTextCellTypeEmail
@@ -292,25 +326,6 @@
   expect(sut.textField.keyboardType).to.equal(UIKeyboardTypeDefault);
   expect(sut.textField.secureTextEntry).to.beFalsy();
   expect(sut.textField.spellCheckingType).to.equal(UITextSpellCheckingTypeYes);
-}
-
-- (void)test___setValuesFromDictionary___textCellType___ALTextCellType_missing_doesNotConfigureTextField
-{
-  // given
-  [self givenmockTextField];
-  NSDictionary *dict = nil;
-
-  [[[mockTextField reject] ignoringNonObjectArgs] setAutocapitalizationType:0];
-  [[[mockTextField reject] ignoringNonObjectArgs] setAutocorrectionType:0];
-  [[[mockTextField reject] ignoringNonObjectArgs] setKeyboardType:0];
-  [[[mockTextField reject] ignoringNonObjectArgs] setSecureTextEntry:NO];
-  [[[mockTextField reject] ignoringNonObjectArgs] setSpellCheckingType:0];
-
-  // when
-  [sut setValuesFromDictionary:dict];
-
-  // then
-  OCMVerifyAll(mockTextField);
 }
 
 - (void)test___setValuesFromDictionary___textCellType___ALTextCellType_invalidType_doesNotConfigureTextField
