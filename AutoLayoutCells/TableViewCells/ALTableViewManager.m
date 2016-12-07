@@ -25,7 +25,6 @@
 #import "ALTableViewManager.h"
 
 #import "ALAutomaticTableViewCellFactory.h"
-#import "ALCellViewModel.h"
 #import "ALSystemVersionDefines.h"
 #import "ALTableViewCellFactory.h"
 
@@ -100,7 +99,7 @@
   // Empty by default
 }
 
-- (void)setViewModelArrays:(NSArray<NSArray<ALCellViewModel *> *> *)viewModelArrays
+- (void)setViewModelArrays:(NSArray<NSArray<ALCellViewModel> *> *)viewModelArrays
 {
   if (_viewModelArrays == viewModelArrays) {
     return;
