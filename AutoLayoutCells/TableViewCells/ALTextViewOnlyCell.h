@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  The text view, which accepts user input and resizes itself as needed
  *  @see `ALAutoResizingTextView` in `AutoLayoutTextViews` pod for more details
  */
-@property (weak, nonatomic, nullable) IBOutlet ALAutoResizingTextView *textView;
+@property (weak, nonatomic, null_unspecified) IBOutlet ALAutoResizingTextView *textView;
 
 #pragma mark - Dynamic Type Font
 
