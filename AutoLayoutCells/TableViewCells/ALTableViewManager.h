@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  This should be set to an array of arrays containing `ALCellViewModel` objects.
  */
-@property (strong, nonatomic) NSArray<NSArray<ALCellViewModel> *> *viewModelArrays;
+@property (strong, nonatomic) NSArray<NSArray<id <ALCellViewModel>> *> *viewModelArrays;
 
 /**
  *  Use this method to initialize a new `ALTableViewManager` without a `tableView`.

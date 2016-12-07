@@ -99,7 +99,7 @@
   // Empty by default
 }
 
-- (void)setViewModelArrays:(NSArray<NSArray<ALCellViewModel> *> *)viewModelArrays
+- (void)setViewModelArrays:(NSArray<NSArray<id <ALCellViewModel>> *> *)viewModelArrays
 {
   if (_viewModelArrays == viewModelArrays) {
     return;
