@@ -173,7 +173,7 @@ static UIImage *image;
   sut.mainImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   [[constraint verify] setConstant:0];
@@ -202,7 +202,7 @@ static UIImage *image;
   sut.mainImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -231,7 +231,7 @@ static UIImage *image;
   sut.mainImageViewWidthConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -260,7 +260,7 @@ static UIImage *image;
   sut.mainImageViewHeightConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -291,7 +291,7 @@ static UIImage *image;
   sut.secondaryImageViewLeadingConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -320,7 +320,7 @@ static UIImage *image;
   sut.secondaryImageViewTrailingConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);
@@ -349,7 +349,7 @@ static UIImage *image;
   sut.secondaryImageViewWidthConstraint = constraint;
   
   // when
-  [sut setValuesFromDictionary:nil];
+  [sut setValuesFromDictionary:@{}];
   
   // then
   OCMVerify([constraint setConstant:0]);

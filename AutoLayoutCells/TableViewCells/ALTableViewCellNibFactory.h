@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return The table view cell with the given name or `nil` if not found
  */
-+ (null_unspecified id)cellWithName:(NSString *)name owner:(id)owner;
++ (null_unspecified id)cellWithName:(NSString *)name owner:(nullable id)owner;
 
 /**
  *  Use this method to get a `UINib` with the given name within the `ALTableViewCellsBundle`.

@@ -155,11 +155,14 @@
 - (void)test___contentSizeCategoryDidChange___calls_refreshFonts
 {
   // given
+  NSNotification *notification = [NSNotification notificationWithName:UIContentSizeCategoryDidChangeNotification
+                                                               object:nil];
+  
   partialMock = OCMPartialMock(sut);
   OCMExpect([partialMock refreshFonts]);
   
   // when
-  [sut contentSizeCategoryDidChange:nil];
+  [sut contentSizeCategoryDidChange:notification];
   
   // then
   OCMVerifyAll(partialMock);

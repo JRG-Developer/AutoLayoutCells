@@ -174,13 +174,15 @@
 - (void)test___contentSizeCategoryDidChange___calls___setFont___on___textView
 {
   // given
+  NSNotification *notification = [NSNotification notificationWithName:UIContentSizeCategoryDidChangeNotification
+                                                               object:nil];
   [self givenMockTextView];
   
   UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
   OCMExpect([textView setFont:font]);
   
   // when
-  [sut contentSizeCategoryDidChange:nil];
+  [sut contentSizeCategoryDidChange:notification];
   
   // then
   OCMVerifyAll(textView);

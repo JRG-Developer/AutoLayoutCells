@@ -83,7 +83,7 @@
   sut = [ALSimpleCellViewModel alloc];
   
   [self givenPartialMock];
-  OCMExpect([partialMock initWithCellIdentifier:nil]);
+  OCMExpect([partialMock initWithCellIdentifier:@""]);
   
   // when
   sut = [sut init];

@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return A new `ALTextCellViewModel` instance.
  */
 - (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier
-                             tableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
+                             tableView:(nullable UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 @end
 

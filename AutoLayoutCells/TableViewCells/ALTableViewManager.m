@@ -70,14 +70,14 @@
     
     if (AL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
         _cellFactory = [[ALAutomaticTableViewCellFactory alloc] initWithTableView:_tableView
-                                                      identifiersToNibsDictionary:nil];
+                                                      identifiersToNibsDictionary:@{}];
         
     } else {
       
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:_tableView
-                                             identifiersToNibsDictionary:nil];
+                                             identifiersToNibsDictionary:@{}];
 #pragma GCC diagnostic pop
     }
     

@@ -115,7 +115,7 @@
   OCMExpect([mockTextView setDelegate:(id)sut]);
   
   // when
-  sut = [sut initWithCell:nil textView:mockTextView];
+  sut = [sut initWithCell:cell textView:mockTextView];
   
   // then
   OCMVerifyAll(mockTextView);
