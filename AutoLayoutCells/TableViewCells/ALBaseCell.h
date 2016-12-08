@@ -59,6 +59,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic, nullable) void (^valueChangedBlock)(id value);
 
+
+/**
+ *  Whether or not this cell should have "view only" behavior. The default value is `NO`.
+ *
+ *  @discussion  Cell subclasses may override this setter to perform custom configuration (e.g. user interactions, etc) for when the cell is in "view only" mode.
+ */
+@property (assign, nonatomic) BOOL isViewOnly;
+
 #pragma mark - Class Configuration
 
 /**

@@ -34,6 +34,12 @@
 @dynamic delegate;
 
 #pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.textView.userInteractionEnabled = !isViewOnly;
+}
 
 - (void)setTextCellType:(ALTextCellType)textCellType {
   

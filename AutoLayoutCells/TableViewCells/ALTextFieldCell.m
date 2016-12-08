@@ -33,6 +33,12 @@
 @implementation ALTextFieldCell
 
 #pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.textField.userInteractionEnabled = !isViewOnly;  
+}
 
 - (void)setTextCellType:(ALTextCellType)textCellType {
   

@@ -71,6 +71,10 @@
     self.didSelectCellBlock(tableViewCell);
   }
   
+  if ([(ALBaseCell *)tableViewCell isViewOnly]) {
+    return;
+  }
+  
   if ([tableViewCell isKindOfClass:[ALTextViewCell class]]) {
     ALTextViewCell *cell = tableViewCell;
     [cell.textView becomeFirstResponder];

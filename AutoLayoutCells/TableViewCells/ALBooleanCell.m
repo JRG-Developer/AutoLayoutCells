@@ -29,6 +29,14 @@
 
 @implementation ALBooleanCell
 
+#pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.toggle.userInteractionEnabled = !isViewOnly;
+}
+    
 #pragma mark - Object Lifecycle
 
 - (void)commonInit

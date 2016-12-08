@@ -32,6 +32,11 @@
 - (void)didSelectCell:(ALBooleanCell *)cell {
   
   [super didSelectCell:cell];
+  
+  if (cell.isViewOnly) {
+    return;
+  }
+  
   [cell didToggle:cell.toggle];
   [cell.toggle setOn:!cell.toggle.isOn animated:YES];
 }
