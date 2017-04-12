@@ -23,7 +23,12 @@
 //  THE SOFTWARE.
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
+#import "ALTextCellConstants.h"
+
+@protocol ALCellDelegate;
 @protocol ALTextCellDelegate;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  `ALTextViewCellHelper` encapsulates text view tasks common to `ALTextViewCell` and `ALTextViewOnlyCell`, such as text view configuration and setting text view values from a dictionary using pre-defined keys.
@@ -31,25 +36,29 @@
  */
 @interface ALTextViewCellHelper : NSObject <ALAutoResizingTextViewDelegate>
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
 
 /**
  *  The cell that owns this text view helper (for transparently `ALTextCellDelegate` messages)
  */
-@property (weak, nonatomic) UITableViewCell *cell;
+@property (weak, nonatomic, nullable) UITableViewCell *cell;
 
 /**
- *  The delegate to inform of height change and value-related events
- *  @see `ALTextViewCellHelperDelegate` for more details
+ *  The delegate to inform of value change events
+ *  @see `ALCellDelegate` for more details
  */
-@property (weak, nonatomic) id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic, nullable) id<ALCellDelegate>delegate;
+
+/**
+ *  The delegate to inform of height change events
+ *  @see `ALTextCellDelegate` for more details
+ */
+@property (weak, nonatomic, nullable) id<ALTextCellDelegate>heightDelegate;
 
 /**
  *  The text view that should be configured, set values of, delegated for, etc
  */
-@property (weak, nonatomic) ALAutoResizingTextView *textView;
+@property (weak, nonatomic, nullable) ALAutoResizingTextView *textView;
 
 /**
  *  The block that should be called whenever the text view's value changes.
@@ -58,11 +67,9 @@
  *
  *  This block will be called *before* the `delegate` is messaged.
  */
-@property (strong, nonatomic) void (^valueChangedBlock)(id value);
+@property (strong, nonatomic, nullable) void (^valueChangedBlock)(id value);
 
-///--------------------------------------------------------------
-/// @name Object Lifecycle
-///--------------------------------------------------------------
+#pragma mark - Object Lifecycle
 
 /**
  *  This is the designated intializer.
@@ -73,9 +80,7 @@
  */
 - (instancetype)initWithCell:(UITableViewCell *)cell textView:(ALAutoResizingTextView *)textView;
 
-///--------------------------------------------------------------
-/// @name Instance Methods
-///--------------------------------------------------------------
+#pragma mark - Instance Methods
 
 /**
  *  Use this method to set the `textView` values a dictionary.
@@ -85,4 +90,13 @@
  */
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary;
 
+/**
+ *  Use this method to set the text cell type.
+ *
+ *  @param textCellType The text cell type.
+ */
+- (void)setTextCellType:(ALTextCellType)textCellType;
+
 @end
+
+NS_ASSUME_NONNULL_END

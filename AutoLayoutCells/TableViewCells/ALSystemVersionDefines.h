@@ -1,8 +1,8 @@
 //
-//  ALImageCellConstants.m
+//  ALSystemVersionDefines.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 4/25/16.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-NSString * const ALImageCellMainImageKey =                  @"mainImage";
-NSString * const ALImageCellMainImageNameKey =              @"mainImageName";
-NSString * const ALImageCellMainImageTintColorKey =         @"mainImageTintColor";
-NSString * const ALImageCellMainImageURLStringKey =         @"mainImageURLString";
-NSString * const ALImageCellMainImageURLKey =               @"mainImageURL";
-NSString * const ALImageCellMainPlaceholderImageKey =       @"mainPlaceholderImage";
+// Credit:  https://stackoverflow.com/questions/7848766/how-can-we-programmatically-detect-which-ios-version-is-device-running-on
 
-NSString * const ALImageCellSecondaryImageKey =              @"secondaryImage";
-NSString * const ALImageCellSecondaryImageNameKey =          @"secondaryImageName";
-NSString * const ALImageCellSecondaryImageURLStringKey =     @"secondaryImageURLString";
-NSString * const ALImageCellSecondaryImageURLKey =           @"secondaryImageURL";
-NSString * const ALImageCellSecondaryPlaceholderImageKey =   @"secondaryPlaceholderImage";
+#ifndef ALSystemVersionDefines_h
+#define ALSystemVersionDefines_h
 
-NSString * const ALInputRequiredKey = @"inputRequired";
+#define AL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)\
+    ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+#endif /* ALSystemVersionDefines_h */

@@ -24,9 +24,12 @@
 
 #import "ALImageCell.h"
 #import "ALTextCellDelegate.h"
+#import "ALTextCellConstants.h"
 
 @class ALAutoResizingTextView;
 @class ALTextViewCellHelper;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  `ALTextCell` provides a means for text-input from the user. It shows a text view, title, subtitle, and optional image (depending on the nib).
@@ -39,29 +42,32 @@
  */
 @interface ALTextViewCell : ALImageCell
 
-///--------------------------------------------------------------
-/// @name Instance Preoperties
-///--------------------------------------------------------------
+#pragma mark - Instance Preoperties
+
+/**
+*  The text field cell type
+*/
+@property (assign, nonatomic) ALTextCellType textCellType;
 
 /**
 *  The text view helper, which encapsulates commmon text view configuration, delegate handling, etc
 */
 @property (strong, nonatomic, readonly) ALTextViewCellHelper *textViewHelper;
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+#pragma mark - Outlets
 
 /**
  *  The delegate to be notified of text view height changes and value-related events.
  *  @see `ALTextCellDelegate` for more details
  */
-@property (weak, nonatomic) IBOutlet id<ALTextCellDelegate>delegate;
+@property (weak, nonatomic, nullable) IBOutlet id<ALTextCellDelegate>heightDelegate;
 
 /**
  *  The text view, which accepts user input and resizes itself as needed
  *  @see `ALAutoResizingTextView` in `AutoLayoutTextViews` pod for more details
  */
-@property (weak, nonatomic) IBOutlet ALAutoResizingTextView *textView;
+@property (weak, nonatomic, null_unspecified) IBOutlet ALAutoResizingTextView *textView;
 
 @end
+
+NS_ASSUME_NONNULL_END

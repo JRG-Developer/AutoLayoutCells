@@ -22,31 +22,38 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALCell.h"
+#import "ALImageCell.h"
+#import "ALTextCellConstants.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 @class ALTextFieldCellHelper;
 
 /**
- *  `ALTextFieldCell` shows a `title`, `subtitle`, and `textField` to get input from the user.
+ *  `ALTextFieldCell` shows a `textField` to get input from the user.
  *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined dictionary value keys.
  */
-@interface ALTextFieldCell : ALCell
+@interface ALTextFieldCell : ALImageCell
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
 
 /**
 *  The text field helper, which encapsulates commmon text field configuration, delegate handling, etc
 */
 @property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+/**
+ *  The text field cell type
+ */
+@property (assign, nonatomic) ALTextCellType textCellType;
+
+#pragma mark - Outlets
 
 /**
  *  The text field
  */
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic, null_unspecified) IBOutlet UITextField *textField;
 
 @end
+
+NS_ASSUME_NONNULL_END

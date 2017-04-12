@@ -28,6 +28,12 @@
 #import "UIImageView+ALImageWithURL.h"
 
 @interface ALImageCell()
+
+@property (assign, nonatomic) CGFloat inputRequiredLeadingConstraintConstant;
+@property (assign, nonatomic) CGFloat inputRequiredTrailingConstraintConstant;
+@property (assign, nonatomic) CGFloat inputRequiredWidthConstraintConstant;
+@property (assign, nonatomic) CGFloat inputRequiredHeightConstraintConstant;
+
 @property (assign, nonatomic) CGFloat mainImageViewLeadingConstraintConstant;
 @property (assign, nonatomic) CGFloat mainImageViewTrailingConstraintConstant;
 @property (assign, nonatomic) CGFloat mainImageViewWidthConstraintConstant;
@@ -50,6 +56,48 @@
 }
 
 #pragma mark - Custom Accessors
+
+#pragma mark - Input Required Constraints
+
+- (void)setInputRequiredLeadingConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_inputRequiredLeadingConstraint == constraint) {
+    return;
+  }
+  
+  _inputRequiredLeadingConstraint = constraint;
+  self.inputRequiredLeadingConstraintConstant = constraint.constant;
+}
+
+- (void)setInputRequiredTrailingConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_inputRequiredTrailingConstraint == constraint) {
+    return;
+  }
+  
+  _inputRequiredTrailingConstraint = constraint;
+  self.inputRequiredTrailingConstraintConstant = constraint.constant;
+}
+
+- (void)setInputRequiredWidthConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_inputRequiredWidthConstraint == constraint) {
+    return;
+  }
+  
+  _inputRequiredWidthConstraint = constraint;
+  self.inputRequiredWidthConstraintConstant = constraint.constant;
+}
+
+- (void)setInputRequiredHeightConstraint:(NSLayoutConstraint *)constraint
+{
+  if (_inputRequiredHeightConstraint == constraint) {
+    return;
+  }
+  
+  _inputRequiredHeightConstraint = constraint;
+  self.inputRequiredHeightConstraintConstant = constraint.constant;
+}
 
 #pragma mark - Main Image View Constraints
 
@@ -93,7 +141,7 @@
   self.mainImageViewHeightConstraintConstant = constraint.constant;
 }
 
-#pragma mark - Secondardy Image View Constraints
+#pragma mark - Secondary Image View Constraints
 
 - (void)setSecondaryImageViewLeadingConstraint:(NSLayoutConstraint *)constraint
 {
@@ -140,12 +188,51 @@
 - (void)setValuesFromDictionary:(NSDictionary *)dictionary
 {
   [super setValuesFromDictionary:dictionary];
+  
+  [self configureInputRequiredLabelFromDictionary:dictionary];
 
   [self setMainPlaceholderImageFromDictionary:dictionary];
   [self setSecondaryPlaceholderImageFromDictionary:dictionary];
   
   [self setMainImageViewFromDictionary:dictionary];
   [self setSecondaryImageViewFromDictionary:dictionary];
+  
+  [self setMainImageTintColorFromDictionary:dictionary];
+}
+
+#pragma mark - Input Required
+
+- (void)configureInputRequiredLabelFromDictionary:(NSDictionary *)dictionary
+{
+  if (dictionary[ALInputRequiredKey]) {
+    
+    BOOL inputRequired = [dictionary[ALInputRequiredKey] boolValue];
+    
+    if (inputRequired) {
+      self.inputRequiredLabel.hidden = NO;
+      [self resetInputRequiredLabelConstraints];
+      
+    } else {
+      self.inputRequiredLabel.hidden = YES;
+      [self setInputRequiredLabelConstraintsToZero];
+    }
+  }
+}
+
+- (void)resetInputRequiredLabelConstraints
+{
+  self.inputRequiredLeadingConstraint.constant = self.inputRequiredLeadingConstraintConstant;
+  self.inputRequiredTrailingConstraint.constant = self.inputRequiredTrailingConstraintConstant;
+  self.inputRequiredWidthConstraint.constant = self.inputRequiredWidthConstraintConstant;
+  self.inputRequiredHeightConstraint.constant = self.inputRequiredHeightConstraintConstant;
+}
+
+- (void)setInputRequiredLabelConstraintsToZero
+{
+  self.inputRequiredLeadingConstraint.constant = 0;
+  self.inputRequiredTrailingConstraint.constant = 0;
+  self.inputRequiredWidthConstraint.constant = 0;
+  self.inputRequiredHeightConstraint.constant = 0;
 }
 
 #pragma mark - Set Placeholder Images
@@ -248,6 +335,12 @@
   self.secondaryImageViewTrailingConstraint.constant = 0.0f;
   self.secondaryImageViewWidthConstraint.constant = 0.0f;
   self.secondaryImageViewHeightConstraint.constant = 0.0f;
+}
+
+#pragma mark - Set Tint Color
+
+- (void)setMainImageTintColorFromDictionary:(NSDictionary *)dictionary {
+  self.mainImageView.tintColor = dictionary[ALImageCellMainImageTintColorKey] ?: nil;
 }
 
 #pragma mark - Set Image From URL

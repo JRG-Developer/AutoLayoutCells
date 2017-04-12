@@ -24,6 +24,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTableViewCellNibFactory` provides convenience methods to get the `UINib` of any cell within `AutoLayoutCells`.
  */
@@ -104,7 +106,7 @@
  *
  *  @return The table view cell with the given name or `nil` if not found
  */
-+ (id)cellWithName:(NSString *)name owner:(id)owner;
++ (null_unspecified id)cellWithName:(NSString *)name owner:(nullable id)owner;
 
 /**
  *  Use this method to get a `UINib` with the given name within the `ALTableViewCellsBundle`.
@@ -115,6 +117,8 @@
  *
  *  @return The nib with the given name or `nil` if not found
  */
-+ (UINib *)nibWithName:(NSString *)name;
++ (null_unspecified UINib *)nibWithName:(NSString *)name;
 
 @end
+
+NS_ASSUME_NONNULL_END

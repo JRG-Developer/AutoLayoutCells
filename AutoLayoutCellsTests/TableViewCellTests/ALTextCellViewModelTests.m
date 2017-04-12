@@ -50,6 +50,9 @@
   
   id cellTextView;
   id tableView;
+  id view;
+  
+  NSString *newValue;
 }
 
 #pragma mark - Test Lifecycle
@@ -61,12 +64,15 @@
   [self givenMockTableView];
   sut = [[ALTextCellViewModel alloc] initWithCellIdentifier:@"Cell"
                                                   tableView:tableView];
+  
+  newValue = @"newValue";
 }
 
 - (void)tearDown {
   
   [cellTextView stopMocking];
   [tableView stopMocking];
+  [view stopMocking];
   [super tearDown];
 }
 
@@ -87,6 +93,10 @@
   cell.textView = textView;
 }
 
+- (void)givenMockView {
+  view = OCMClassMock([UIView class]);
+}
+
 #pragma mark - Given
 
 - (void)givenTextViewCell {
@@ -103,31 +113,55 @@
 
 #pragma mark - ALTextCellDelegate - Tests
 
-- (void)test___cellHeightDidChange___ifTextViewCellTextViewIsntFirstResponder_doesntUpdateTableView {
+- (void)test___cell_valueChanged___turnsOffAnimations {
   
   // given
-  [self givenTextViewCell];
+  [self givenMockView];
 
-  [[tableView reject] beginUpdates];
-  [[tableView reject] endUpdates];
+  OCMExpect([view setAnimationsEnabled:NO]);
   
   // when
-  [sut cellHeightDidChange:cell];
+  [sut cell:cell valueChanged:newValue];
+  
+  // then
+  OCMVerifyAll(view);
+}
+
+- (void)test___cell_valueChanged___calls_tableView_beginUpdates {
+  
+  // given
+  [self givenMockTableView];
+  OCMExpect([tableView beginUpdates]);
+  
+  // when
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(tableView);
 }
 
-- (void)test___cellHeightDidChange___ifTextCellTextViewIsFirstResponder_updatesTableView {
+- (void)test___cell_valueChanged___turnsOnAnimations {
   
   // given
-  [self givenTextViewCellWithMockTextView];
+  [self givenMockView];
   
-  OCMExpect([tableView beginUpdates]);
+  OCMExpect([view setAnimationsEnabled:YES]);
+  
+  // when
+  [sut cell:cell valueChanged:newValue];
+  
+  // then
+  OCMVerifyAll(view);
+}
+
+- (void)test___cell_valueChanged___calls_tableView_endUpdates {
+  
+  // given
+  [self givenMockTableView];
   OCMExpect([tableView endUpdates]);
   
   // when
-  [sut cellHeightDidChange:cell];
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(tableView);

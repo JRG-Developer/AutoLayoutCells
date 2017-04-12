@@ -1,8 +1,8 @@
 //
-//  ALImageCellConstants.m
+//  ALBooleanCellViewModel.m
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 9/5/16.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +22,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-NSString * const ALImageCellMainImageKey =                  @"mainImage";
-NSString * const ALImageCellMainImageNameKey =              @"mainImageName";
-NSString * const ALImageCellMainImageTintColorKey =         @"mainImageTintColor";
-NSString * const ALImageCellMainImageURLStringKey =         @"mainImageURLString";
-NSString * const ALImageCellMainImageURLKey =               @"mainImageURL";
-NSString * const ALImageCellMainPlaceholderImageKey =       @"mainPlaceholderImage";
+#import "ALBooleanCellViewModel.h"
+#import "ALBooleanCell.h"
 
-NSString * const ALImageCellSecondaryImageKey =              @"secondaryImage";
-NSString * const ALImageCellSecondaryImageNameKey =          @"secondaryImageName";
-NSString * const ALImageCellSecondaryImageURLStringKey =     @"secondaryImageURLString";
-NSString * const ALImageCellSecondaryImageURLKey =           @"secondaryImageURL";
-NSString * const ALImageCellSecondaryPlaceholderImageKey =   @"secondaryPlaceholderImage";
+@implementation ALBooleanCellViewModel
 
-NSString * const ALInputRequiredKey = @"inputRequired";
+#pragma mark - ALCellViewModel
+
+- (void)didSelectCell:(ALBooleanCell *)cell {
+  
+  [super didSelectCell:cell];
+  
+  if (cell.isViewOnly) {
+    return;
+  }
+  
+  [cell didToggle:cell.toggle];
+  [cell.toggle setOn:!cell.toggle.isOn animated:YES];
+}
+
+@end

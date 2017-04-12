@@ -24,6 +24,8 @@
 
 #import "ALCellViewModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALSimpleCellViewModel` is a very simple, block-based implementation of `ALCellViewModel`.
  *
@@ -32,6 +34,30 @@
  *  It's recommended that you first try to use this simple view-model, until you determine that more complex logic is required to fullfill your specific needs.
  */
 @interface ALSimpleCellViewModel : NSObject <ALCellViewModel>
+
+#pragma mark - Instance Properties
+
+/**
+ *  The cell identifier
+ */
+@property (copy, nonatomic, readonly) NSString *cellIdentifier;
+
+/**
+ *  The block to be called in response to `configureCell:` method call
+ */
+@property (strong, nonatomic, nullable) void (^configureCellBlock)(id cell);
+
+/**
+ *  The block to be called in response to `didSelectCell` method call
+ */
+@property (strong, nonatomic, nullable) void (^didSelectCellBlock)(id cell);
+
+/**
+ *  The edit actions for the cell
+ */
+@property (strong, nonatomic, nullable) NSArray *editActionsForCell;
+
+#pragma mark - Object Lifecycle
 
 /**
  *  @brief  This is the preferred way to create an `ALSimpleCellViewModel`.
@@ -42,24 +68,6 @@
  */
 - (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier NS_DESIGNATED_INITIALIZER;
 
-/**
- *  The block to be called in response to `configureCell:` method call
- */
-@property (strong, nonatomic) void (^configureCellBlock)(id cell);
-
-/**
- *  The cell identifier
- */
-@property (copy, nonatomic) NSString *cellIdentifier;
-
-/**
- *  The block to be called in response to `didSelectCell` method call
- */
-@property (strong, nonatomic) void (^didSelectCellBlock)(id cell);
-
-/**
- *  The edit actions for the cell
- */
-@property (strong, nonatomic) NSArray *editActionsForCell;
-
 @end
+
+NS_ASSUME_NONNULL_END

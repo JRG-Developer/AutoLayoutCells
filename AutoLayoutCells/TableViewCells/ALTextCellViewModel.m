@@ -24,7 +24,11 @@
 //  THE SOFTWARE.
 
 #import "ALTextCellViewModel.h"
+
+#import "ALTextFieldCell.h"
+#import "ALTextFieldOnlyCell.h"
 #import "ALTextViewCell.h"
+#import "ALTextViewOnlyCell.h"
 
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
@@ -49,18 +53,60 @@
   return self;
 }
 
-#pragma mark - ALTextCellDelegate
+- (void)configureCell:(id)tableViewCell {
+  
+  if ([tableViewCell isKindOfClass:[ALTextViewCell class]]) {
+    ALTextViewCell *cell = (ALTextViewCell *)tableViewCell;
+    cell.heightDelegate = self;
+  }
+  
+  [super configureCell:tableViewCell];
+}
 
-- (void)cellHeightDidChange:(ALTextViewCell *)cell {
+#pragma mark - ALCellViewModel
+
+- (void)didSelectCell:(id)tableViewCell {
   
-  NSParameterAssert(self.tableView);
+  if (self.didSelectCellBlock) {
+    self.didSelectCellBlock(tableViewCell);
+  }
   
-  if (![cell.textView isFirstResponder]) {
+  if ([(ALBaseCell *)tableViewCell isViewOnly]) {
     return;
   }
   
+  if ([tableViewCell isKindOfClass:[ALTextViewCell class]]) {
+    ALTextViewCell *cell = tableViewCell;
+    [cell.textView becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextFieldCell class]]) {
+    ALTextFieldCell *cell = tableViewCell;
+    [cell.textField becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextViewOnlyCell class]]) {
+    ALTextViewOnlyCell *cell = tableViewCell;
+    [cell.textView becomeFirstResponder];
+    
+  } else if ([tableViewCell isKindOfClass:[ALTextFieldOnlyCell class]]) {
+    ALTextFieldOnlyCell *cell = tableViewCell;
+    [cell.textField becomeFirstResponder];
+  }
+}
+
+#pragma mark - ALTextCellDelegate
+
+- (void)cell:(ALTextViewCell *)cell valueChanged:(id)value {
+  
+  CGPoint contentOffset = self.tableView.contentOffset;
+  [UIView setAnimationsEnabled:NO];
   [self.tableView beginUpdates];
   [self.tableView endUpdates];
+  [self.tableView setContentOffset:contentOffset animated:NO];
+  
+  CGRect rect = [self.tableView convertRect:cell.textView.bounds fromView:cell.textView];
+  [self.tableView scrollRectToVisible:rect animated:NO];
+  
+  [UIView setAnimationsEnabled:YES];
 }
 
 @end

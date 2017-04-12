@@ -22,7 +22,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "ALCell.h"
+#import "ALImageCell.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  `ALLeftLabelCell` shows a title, subtitle, and "left" label.
@@ -30,14 +32,15 @@
  *  @discussion You should set the cell's values via `setValuesFromDictionary` instead of each property directly.
  *  @see `ALCellConstants` and `ALLeftLabelCellConstants` for predefined dictionary value keys.
  */
-@interface ALLeftLabelCell : ALCell
+@interface ALLeftLabelCell : ALImageCell
 
 /**
  *  The left label (shown to the left of the title and subtitle labels)
  */
-@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (weak, nonatomic, null_unspecified) IBOutlet UILabel *leftLabel;
 
 @end
+
 
 @interface ALLeftLabelCell (Protected)
 
@@ -50,3 +53,5 @@
 - (void)setLeftLabelTextFromDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

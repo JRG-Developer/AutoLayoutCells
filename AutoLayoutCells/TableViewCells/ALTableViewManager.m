@@ -24,7 +24,8 @@
 
 #import "ALTableViewManager.h"
 
-#import "ALCellViewModel.h"
+#import "ALAutomaticTableViewCellFactory.h"
+#import "ALSystemVersionDefines.h"
 #import "ALTableViewCellFactory.h"
 
 @implementation ALTableViewManager
@@ -53,18 +54,34 @@
 
 - (void)setTableView:(UITableView *)tableView
 {
-  if (_tableView == tableView)
-  {
+  if (_tableView == tableView) {
     return;
   }
   
   _tableView = tableView;
   
-  _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView identifiersToNibsDictionary:nil];
-  _cellFactory.delegate = self;
+  [self setupCellFactory];
   
   [self configureTableView];
   [self registerCells];
+}
+
+- (void)setupCellFactory {
+    
+    if (AL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        _cellFactory = [[ALAutomaticTableViewCellFactory alloc] initWithTableView:_tableView
+                                                      identifiersToNibsDictionary:@{}];
+        
+    } else {
+      
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        _cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:_tableView
+                                             identifiersToNibsDictionary:@{}];
+#pragma GCC diagnostic pop
+    }
+    
+    _cellFactory.delegate = self;
 }
 
 - (void)configureTableView
@@ -82,7 +99,7 @@
   // Empty by default
 }
 
-- (void)setViewModelArrays:(NSArray *)viewModelArrays
+- (void)setViewModelArrays:(NSArray<NSArray<id <ALCellViewModel>> *> *)viewModelArrays
 {
   if (_viewModelArrays == viewModelArrays) {
     return;
@@ -130,7 +147,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
   id cell = [tableView cellForRowAtIndexPath:indexPath];
   id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
   [viewModel didSelectCell:cell];
@@ -148,8 +164,8 @@
   return [viewModel editActionsForCell];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{  
   // Empty by default; required to use UITableViewRowActions
 }
 

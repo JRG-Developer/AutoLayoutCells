@@ -22,6 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALCell` and subclasses look for these keys in order to set the relevant text/values on their cell subviews.
  */
@@ -59,3 +61,5 @@ extern NSString * const ALCellValueKey;                 // input
  *  @discussion Each cell type uses this value differently. In example, `ALTextViewCell` looks for an attributed string value to set its `textView` attributed text value, yet `ALBooleanCell` doesn't consider this value at all. If in doubt, use `ALCellValueKey` to set the value of a cell instead of this key.
  */
 extern NSString * const ALCellAttributedValueKey;       // attrInput
+
+NS_ASSUME_NONNULL_END

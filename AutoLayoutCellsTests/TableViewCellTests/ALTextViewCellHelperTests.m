@@ -28,8 +28,8 @@
 #import "ALTextCellConstants.h"
 
 // Collaborators
+#import "ALCellDelegate.h"
 #import "ALTextCellDelegate.h"
-
 #import <AutoLayoutTextViews/ALAutoResizingTextView.h>
 
 // Test Support
@@ -84,8 +84,13 @@
 
 - (void)givenMockDelegate
 {
-  delegate = OCMClassMock([Test_ALTextCellDelegate class]);
+  delegate = OCMProtocolMock(@protocol(ALCellDelegate));
   sut.delegate = delegate;
+}
+
+- (void)givenMockHeightDelegate {
+  delegate = OCMClassMock([Test_ALTextCellDelegate class]);
+  sut.heightDelegate = delegate;
 }
 
 - (void)givenMockTextView
@@ -110,7 +115,7 @@
   OCMExpect([mockTextView setDelegate:(id)sut]);
   
   // when
-  sut = [sut initWithCell:nil textView:mockTextView];
+  sut = [sut initWithCell:cell textView:mockTextView];
   
   // then
   OCMVerifyAll(mockTextView);
@@ -166,7 +171,29 @@
 
 #pragma mark - Type - Tests
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeDefault
+- (void)test___setValuesFromDictionary___ALTextCellType_missing_setsDefaultType
+{
+  // given
+  textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+  textView.autocorrectionType = UITextAutocorrectionTypeNo;
+  textView.keyboardType = UIKeyboardTypeEmailAddress;
+  textView.secureTextEntry = YES;
+  textView.spellCheckingType = UITextSpellCheckingTypeNo;
+  
+  NSDictionary *dict = @{};
+  
+  // when
+  [sut setValuesFromDictionary:dict];
+  
+  // then
+  expect(textView.autocapitalizationType).to.equal(UITextAutocapitalizationTypeSentences);
+  expect(textView.autocorrectionType).to.equal(UITextAutocorrectionTypeDefault);
+  expect(textView.keyboardType).to.equal(UIKeyboardTypeDefault);
+  expect(textView.secureTextEntry).to.beFalsy();
+  expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
+}
+
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeDefault
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDefault)};
@@ -182,7 +209,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeDefault);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeEmail
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeEmail
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeEmail)};
@@ -198,7 +225,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeName
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeName
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeName)};
@@ -214,7 +241,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeNoChecking
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeNoChecking
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNoChecking)};
@@ -230,7 +257,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeNumber
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeNumber
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeNumber)};
@@ -246,7 +273,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeDecimalNumber
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeDecimalNumber
 {
     // given
     NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeDecimalNumber)};
@@ -262,7 +289,7 @@
     expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypePassword
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypePassword
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypePassword)};
@@ -278,7 +305,7 @@
   expect(textView.spellCheckingType).to.equal(UITextSpellCheckingTypeNo);
 }
 
-- (void)test___setValuesFromDictionary___setSextCellType_ALTextCellTypeSentences
+- (void)test___setValuesFromDictionary___setTextCellType_ALTextCellTypeSentences
 {
   // given
   NSDictionary *dict = @{ALTextCellTypeKey: @(ALTextCellTypeSentences)};
@@ -342,11 +369,15 @@
 - (void)test___textView_willChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
-  [self givenMockDelegate];
-  OCMExpect([delegate cellHeightWillChange:cell]);
+  CGFloat fromHeight = 10.0f;
+  CGFloat toHeight = 50.0f;
+  CGFloat delta = toHeight - fromHeight;
+  
+  [self givenMockHeightDelegate];
+  OCMExpect([delegate cellHeightWillChange:cell delta:delta]);
   
   // when
-  [sut textView:textView willChangeFromHeight:10.0f toHeight:50.0f];
+  [sut textView:textView willChangeFromHeight:fromHeight toHeight:toHeight];
   
   // then
   OCMVerifyAll(delegate);
@@ -355,11 +386,15 @@
 - (void)test___textView_didChangeFromHeight_toHeight___notifiesDelegate
 {
   // given
-  [self givenMockDelegate];
-  OCMExpect([delegate cellHeightDidChange:cell]);
+  CGFloat fromHeight = 10.0f;
+  CGFloat toHeight = 50.0f;
+  CGFloat delta = toHeight - fromHeight;
+  
+  [self givenMockHeightDelegate];
+  OCMExpect([delegate cellHeightDidChange:cell delta:delta]);
   
   // when
-  [sut textView:textView didChangeFromHeight:10.0f toHeight:50.0f];
+  [sut textView:textView didChangeFromHeight:fromHeight toHeight:toHeight];
   
   // then
   OCMVerifyAll(delegate);

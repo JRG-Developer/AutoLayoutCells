@@ -33,6 +33,24 @@
 @implementation ALTextViewCell
 @dynamic delegate;
 
+#pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.textView.userInteractionEnabled = !isViewOnly;
+}
+
+- (void)setTextCellType:(ALTextCellType)textCellType {
+  
+  if (_textCellType == textCellType) {
+    return;
+  }
+  
+  _textCellType = textCellType;
+  [self.textViewHelper setTextCellType:textCellType];
+}
+
 #pragma mark - Object Lifecycle
 
 - (void)commonInit
@@ -56,6 +74,7 @@
 {
   self.textViewHelper = [[ALTextViewCellHelper alloc] initWithCell:self textView:self.textView];
   self.textViewHelper.delegate = self.delegate;
+  self.textViewHelper.heightDelegate = self.heightDelegate;
 }
 
 #pragma mark - Dynamic Type Text
@@ -68,10 +87,20 @@
 
 #pragma mark - Custom Accessors
 
-- (void)setDelegate:(id<ALTextCellDelegate>)delegate
+- (void)setDelegate:(id<ALCellDelegate>)delegate
 {
   [super setDelegate:delegate];
   self.textViewHelper.delegate = delegate;
+}
+
+- (void)setHeightDelegate:(id<ALTextCellDelegate>)heightDelegate {
+  
+  if (_heightDelegate == heightDelegate) {
+    return;
+  }
+  
+  _heightDelegate = heightDelegate;
+  self.textViewHelper.heightDelegate = heightDelegate;
 }
 
 - (void)setValueChangedBlock:(void (^)(id))valueChangedBlock

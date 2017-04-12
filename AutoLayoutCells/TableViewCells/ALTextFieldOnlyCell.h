@@ -27,39 +27,35 @@
 @protocol ALCellDelegate;
 @class ALTextFieldCellHelper;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextFieldCell` shows just a `textField` to get input from the user.
  *  @see `ALCellConstants` and  `ALTextCellConstants` for predefined dictionary keys.
  */
 @interface ALTextFieldOnlyCell : ALBaseCell
 
-///--------------------------------------------------------------
-/// @name Instance Properties
-///--------------------------------------------------------------
+#pragma mark - Instance Properties
 
 /**
 *  The delegate that should be notified of value-related events.
 *  @see `ALCellDelegate` for more details.
 */
-@property (weak, nonatomic) IBOutlet id<ALCellDelegate> delegate;
+@property (weak, nonatomic, nullable) IBOutlet id<ALCellDelegate> delegate;
 
 /**
  *  The text field helper, which encapsulates commmon text field configuration, delegate handling, etc
  */
 @property (strong, nonatomic, readonly) ALTextFieldCellHelper *textFieldHelper;
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+#pragma mark - Outlets
 
 /**
  *  The text field
  */
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic, null_unspecified) IBOutlet UITextField *textField;
 
-///--------------------------------------------------------------
-/// @name Dynamic Type Font
-///--------------------------------------------------------------
+#pragma mark - Dynamic Type Font
 
 /**
  *  This method is called within `contentSizeCategoryDidChange:` to refresh the text field's font.
@@ -69,3 +65,5 @@
 - (void)refreshFonts;
 
 @end
+
+NS_ASSUME_NONNULL_END

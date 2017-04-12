@@ -1,8 +1,8 @@
 //
-//  ALImageCellConstants.m
+//  ALTableViewCellFactoryProtocol.h
 //  AutoLayoutCells
 //
-//  Created by Joshua Greene on 07/11/14.
+//  Created by Joshua Greene on 4/25/16.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +22,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-NSString * const ALImageCellMainImageKey =                  @"mainImage";
-NSString * const ALImageCellMainImageNameKey =              @"mainImageName";
-NSString * const ALImageCellMainImageTintColorKey =         @"mainImageTintColor";
-NSString * const ALImageCellMainImageURLStringKey =         @"mainImageURLString";
-NSString * const ALImageCellMainImageURLKey =               @"mainImageURL";
-NSString * const ALImageCellMainPlaceholderImageKey =       @"mainPlaceholderImage";
+@import UIKit;
 
-NSString * const ALImageCellSecondaryImageKey =              @"secondaryImage";
-NSString * const ALImageCellSecondaryImageNameKey =          @"secondaryImageName";
-NSString * const ALImageCellSecondaryImageURLStringKey =     @"secondaryImageURLString";
-NSString * const ALImageCellSecondaryImageURLKey =           @"secondaryImageURL";
-NSString * const ALImageCellSecondaryPlaceholderImageKey =   @"secondaryPlaceholderImage";
+@protocol ALTableViewCellFactoryDelegate;
 
-NSString * const ALInputRequiredKey = @"inputRequired";
+NS_ASSUME_NONNULL_BEGIN
+
+/**
+ *  `ALTableViewCellFactoryProtocol` defines required methods that a concreten table view cell factory must implement.
+ */
+@protocol ALTableViewCellFactoryProtocol <UITableViewDataSource, UITableViewDelegate>
+
+/**
+ *  The delegate that performs cell configuration
+ *  @see `ALTableViewCellFactoryDelegate` for more details
+ */
+@property (weak, nonatomic) id<ALTableViewCellFactoryDelegate> delegate;
+
+@end
+
+NS_ASSUME_NONNULL_END

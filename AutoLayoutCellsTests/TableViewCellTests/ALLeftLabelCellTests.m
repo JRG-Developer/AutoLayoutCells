@@ -57,7 +57,7 @@
 
 - (void)test_isSubclassOf_ALCell
 {
-  expect([sut class]).to.beSubclassOf([ALCell class]);
+  expect([sut class]).to.beSubclassOf([ALImageCell class]);
 }
 
 #pragma mark - Dynamic Type Text - Tests
@@ -65,6 +65,8 @@
 - (void)test___contentSizeCategoryDidChange___calls___setFont___on___leftLabel
 {
   // given
+  NSNotification *notification = [NSNotification notificationWithName:UIContentSizeCategoryDidChangeNotification
+                                                               object:nil];
   id label = OCMClassMock([ALLabel class]);
   sut.leftLabel = label;
   
@@ -73,7 +75,7 @@
   OCMExpect([label setFont:font]);
   
   // when
-  [sut contentSizeCategoryDidChange:nil];
+  [sut contentSizeCategoryDidChange:notification];
   
   // then
   OCMVerifyAll(label);

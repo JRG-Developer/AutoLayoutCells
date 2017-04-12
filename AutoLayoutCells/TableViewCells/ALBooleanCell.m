@@ -29,6 +29,14 @@
 
 @implementation ALBooleanCell
 
+#pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.toggle.userInteractionEnabled = !isViewOnly;
+}
+    
 #pragma mark - Object Lifecycle
 
 - (void)commonInit
@@ -46,12 +54,14 @@
 
 - (IBAction)didToggle:(UISwitch *)toggle
 {
+  BOOL isOn = !toggle.isOn; // `isOn` is set via animation; this gives the value AFTER animation, which is what we want  
+  
   if (self.valueChangedBlock) {
-    self.valueChangedBlock(@([toggle isOn]));
+    self.valueChangedBlock(@(isOn));
   }
   
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
-    [self.delegate cell:self valueChanged:@([toggle isOn])];
+    [self.delegate cell:self valueChanged:@(isOn)];
   }
 }
 

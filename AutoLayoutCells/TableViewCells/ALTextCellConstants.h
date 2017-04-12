@@ -25,6 +25,8 @@
 
 #import "ALCellConstants.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALTextCell`, `ALTextFieldCell`, etc use these keys and enum to specify and format their `textView` or `textField`, respectively.
  */
@@ -40,6 +42,12 @@ typedef NS_ENUM(NSInteger, ALTextCellType) {
    *
    */
   ALTextCellTypeDefault = 0,
+  
+  /**
+   *  `ALTextCellTypeCustom` specifies custom formatting.
+   *  @discussion This does NOT set any formatting values. Instead, the caller is expected to handler this.
+   */
+  ALTextCellTypeCustom,
   
   /**
    *  Use `ALTextCellType` to specify that the expected input is an email.
@@ -95,3 +103,5 @@ extern NSString * const ALTextCellTypeKey;              // type
  *  Use this key to specify the `placeholder` text.
  */
 extern NSString * const ALTextCellPlaceholderTextKey;   // placeholderText
+
+NS_ASSUME_NONNULL_END

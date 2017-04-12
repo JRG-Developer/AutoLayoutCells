@@ -35,7 +35,7 @@
 
 #pragma mark - ALTextCellDelegate
 
-- (void)cellHeightWillChange:(id)cell {}
-- (void)cellHeightDidChange:(id)cell {}
+- (void)cellHeightWillChange:(id)cell delta:(CGFloat)delta {}
+- (void)cellHeightDidChange:(id)cell delta:(CGFloat)delta {}
 
 @end

@@ -27,6 +27,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "ALCellConstants.h"
+#import "ALCellDelegate.h"
 #import "ALTextCellConstants.h"
 #import "ALTextCellDelegate.h"
 
@@ -48,10 +49,6 @@
 
 - (void)configureTextView
 {
-  CGColorRef colorRef = [[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor];
-  [self.textView.layer setBorderColor:colorRef];
-  [self.textView.layer setBorderWidth:2.0f];
-  
   [self.textView setDelegate:self];
 }
 
@@ -106,47 +103,47 @@
 
 - (void)setTypeFromDictionary:(NSDictionary *)dictionary
 {
-  if (!dictionary[ALTextCellTypeKey]) {
-    return;
-  }
-  
-  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue];
+  ALTextCellType type = [dictionary[ALTextCellTypeKey] integerValue] ?: ALTextCellTypeDefault;
+  [self setTextCellType:type];
+}
+
+- (void)setTextCellType:(ALTextCellType)type {
   
   switch (type)
   {
-    case ALTextCellTypeDefault:
+      case ALTextCellTypeDefault:
       [self setTextViewTypeDefault];
       break;
       
-    case ALTextCellTypeEmail:
+      case ALTextCellTypeCustom:
+      break;
+      
+      case ALTextCellTypeEmail:
       [self setTextViewTypeEmail];
       break;
       
-    case ALTextCellTypeName:
+      case ALTextCellTypeName:
       [self setTextViewTypeName];
       break;
       
-    case ALTextCellTypeNoChecking:
+      case ALTextCellTypeNoChecking:
       [self setTextViewTypeNoChecking];
       break;
       
-    case ALTextCellTypeNumber:
+      case ALTextCellTypeNumber:
       [self setTextViewTypeNumber];
       break;
-          
-    case ALTextCellTypeDecimalNumber:
+      
+      case ALTextCellTypeDecimalNumber:
       [self setTextViewTypeDecimalNumber];
       break;
       
-    case ALTextCellTypePassword:
+      case ALTextCellTypePassword:
       [self setTextViewTypePassword];
       break;
       
-    case ALTextCellTypeSentences:
+      case ALTextCellTypeSentences:
       [self setTextViewTypeSentences];
-      break;
-      
-    default:
       break;
   }
 }
@@ -227,15 +224,19 @@
 
 - (void)textView:(ALAutoResizingTextView *)textView willChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cellHeightWillChange:)]) {
-    [self.delegate cellHeightWillChange:self.cell];
+  if ([self.heightDelegate respondsToSelector:@selector(cellHeightWillChange:delta:)]) {
+    
+    CGFloat delta = newHeight - oldHeight;
+    [self.heightDelegate cellHeightWillChange:self.cell delta:delta];
   }
 }
 
 - (void)textView:(ALAutoResizingTextView *)textView didChangeFromHeight:(CGFloat)oldHeight toHeight:(CGFloat)newHeight
 {
-  if ([self.delegate respondsToSelector:@selector(cellHeightDidChange:)]) {
-    [self.delegate cellHeightDidChange:self.cell];
+  if ([self.heightDelegate respondsToSelector:@selector(cellHeightDidChange:delta:)]) {
+    
+    CGFloat delta = newHeight - oldHeight;
+    [self.heightDelegate cellHeightDidChange:self.cell delta:delta];
   }
 }
 
@@ -279,6 +280,10 @@
   
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self.cell valueChanged:textView.text];
+  }
+  
+  if ([self.heightDelegate respondsToSelector:@selector(cell:valueChanged:)]) {
+    [self.heightDelegate cell:self.cell valueChanged:textView.text];
   }
 }
 

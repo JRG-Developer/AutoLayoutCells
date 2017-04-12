@@ -24,6 +24,8 @@
 
 #import "ALCellConstants.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Subclasses of `ALImageCell` use these keys to set the relevant text/values on their subviews.
  */
@@ -43,6 +45,11 @@ extern NSString * const ALImageCellMainImageKey;                // mainImage
 extern NSString * const ALImageCellMainImageNameKey;            // mainImageName
 
 /**
+ *  Use this kety to specify a `UIColor` to be set as the `tintColor` on the cell's `mainImageView`.
+ */
+extern NSString * const ALImageCellMainImageTintColorKey;        // mainImageTintColor
+
+/**
  *  Use this key to specify a URL string to be used to load the image to be set on the cell's `mainImageView`.
  */
 extern NSString * const ALImageCellMainImageURLStringKey;       // mainImageURLString
@@ -56,6 +63,11 @@ extern NSString * const ALImageCellMainImageURLKey;             // mainImageURL
  *  Use this key to specify an image to be set on the cell's `mainPlaceholderImage` while the `mainImageView` is being loaded from a URL.
  */
 extern NSString * const ALImageCellMainPlaceholderImageKey;     // mainPlaceholderImage
+
+/**
+ *  Use this key to specify whether or not the input is required.
+ */
+extern NSString * const ALInputRequiredKey;   // requiredHidden
 
 ///--------------------------------------------------------------
 /// @name Secondary Image Keys
@@ -85,3 +97,5 @@ extern NSString * const ALImageCellSecondaryImageURLKey;             // secondar
  *  Use this key to specify an image to be set on the cell's `secondaryPlaceholderImage` while the `secondaryImageView` is being loaded from a URL.
  */
 extern NSString * const ALImageCellSecondaryPlaceholderImageKey;     // secondaryPlaceholderImage
+
+NS_ASSUME_NONNULL_END

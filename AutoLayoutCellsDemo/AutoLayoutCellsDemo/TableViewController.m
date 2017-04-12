@@ -42,7 +42,7 @@ static NSString *TextViewCellIdentifier = @"ALTextViewCell";
 static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 @interface TableViewController()
-@property (strong, nonatomic) ALTableViewCellFactory *cellFactory;
+@property (strong, nonatomic) ALAutomaticTableViewCellFactory *cellFactory;
 @end
 
 @implementation TableViewController
@@ -65,7 +65,7 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
 
 - (void)setupCellFactory
 {
-  self.cellFactory = [[ALTableViewCellFactory alloc] initWithTableView:self.tableView
+  self.cellFactory = [[ALAutomaticTableViewCellFactory alloc] initWithTableView:self.tableView
                                            identifiersToNibsDictionary:[self identifiersToNibsDictionary]];
   self.cellFactory.delegate = self;
 }
@@ -112,8 +112,6 @@ static NSString *TextViewOnlyCellIdentifier = @"ALTextViewOnlyCell";
   [cell setValuesFromDictionary:dictionary];
   
   [self configureAccessoryViewForCell:cell atIndexPath:indexPath];
-  
-  cell.delegate = self;
 }
 
 - (void)configureAccessoryViewForCell:(ALCell *)cell atIndexPath:(NSIndexPath *)indexPath

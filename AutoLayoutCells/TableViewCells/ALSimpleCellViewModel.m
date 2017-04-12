@@ -29,7 +29,7 @@
 #pragma mark - Object Lifecycle
 
 - (instancetype)init {
-    return [self initWithCellIdentifier:nil];
+  return [self initWithCellIdentifier:@""];
 }
 
 - (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier

@@ -24,6 +24,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALCellDelegate` includes optional methods to notify the delegate of cell value-related events.
  */
@@ -83,3 +85,5 @@
 - (void)cell:(id)cell didEndEditing:(id)value;
 
 @end
+
+NS_ASSUME_NONNULL_END

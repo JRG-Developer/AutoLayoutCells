@@ -178,7 +178,7 @@
   
   sut.valueChangedBlock = valueChangedBlock;
   
-  [sut.toggle setOn:expected animated:NO];
+  [sut.toggle setOn:!expected animated:NO]; // note: `didToggle` toggles `isOn` value.
   
   // when
   [sut didToggle:sut.toggle];
@@ -190,11 +190,14 @@
 - (void)test___didToggle___notifiesDelegate
 {
   // given
+  BOOL expected = YES;
   delegate = OCMProtocolMock(@protocol(ALCellDelegate));
   sut.delegate = delegate;
   
-  NSNumber *value = @([sut.toggle isOn]);
+  NSNumber *value = @(expected);
   OCMExpect([delegate cell:sut valueChanged:value]);
+  
+  [sut.toggle setOn:!expected animated:NO]; // note: `didToggle` toggles `isOn` value.
   
   // when
   [sut didToggle:sut.toggle];

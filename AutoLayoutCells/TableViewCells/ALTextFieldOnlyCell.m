@@ -33,6 +33,14 @@
 @implementation ALTextFieldOnlyCell
 @dynamic delegate;
 
+#pragma mark - Custom Accessors
+  
+- (void)setIsViewOnly:(BOOL)isViewOnly {
+  
+  [super setIsViewOnly:isViewOnly];
+  self.textField.userInteractionEnabled = !isViewOnly;
+}
+  
 #pragma mark - Object Lifecycle
 
 - (void)commonInit

@@ -22,9 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "ALCellViewModel.h"
 #import "ALTableViewCellFactoryDelegate.h"
 
-@class ALTableViewCellFactory;
+@protocol ALTableViewCellFactoryProtocol;
+
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  `ALTableViewManager` is an abstract, base class meant to act as the data source and delegate for a table view.
@@ -37,18 +41,20 @@
 
 /**
  *  The table view cell factory is responsible for creating/dequeuing cells and calculating cell height.
+ *
+ *  @discussion  If prior to iOS 8, this is set to `ALTableViewCellFactory`. Otherwise, it's set to `ALAutomaticTableViewCellFactory`.
  */
-@property (strong, nonatomic, readonly) ALTableViewCellFactory *cellFactory;
+@property (strong, nonatomic, readonly) id<ALTableViewCellFactoryProtocol> cellFactory;
 
 /**
  *  The table view to be managed
  */
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic, nullable) UITableView *tableView;
 
 /**
  *  This should be set to an array of arrays containing `ALCellViewModel` objects.
  */
-@property (strong, nonatomic) NSArray *viewModelArrays;
+@property (strong, nonatomic) NSArray<NSArray<id <ALCellViewModel>> *> *viewModelArrays;
 
 /**
  *  Use this method to initialize a new `ALTableViewManager` without a `tableView`.
@@ -71,7 +77,7 @@
  *
  *  @return A new `ALTableViewManager` instance
  */
-- (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(nullable UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 /**
  *  This is an abstract method meant to be overriden by subclasses.
@@ -97,3 +103,5 @@
 - (void)reloadViewModels;
 
 @end
+
+NS_ASSUME_NONNULL_END

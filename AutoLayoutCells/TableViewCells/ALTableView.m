@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 
 #import "ALTableView.h"
+#import "UIView+ALRecursiveFirstResponder.h"
 
 @implementation ALTableView
 
@@ -48,10 +49,13 @@
 
 - (void)commonInit
 {
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(contentSizeCategoryDidChange:)
-                                               name:UIContentSizeCategoryDidChangeNotification
-                                             object:nil];
+  NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+  
+  [notificationCenter addObserver:self selector:@selector(keyboardWillShow:)
+                             name:UIKeyboardWillShowNotification object:nil];
+  
+  [notificationCenter addObserver:self selector:@selector(keyboardWillHide:)
+                             name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)dealloc
@@ -61,11 +65,65 @@
 
 #pragma mark - Notifications
 
-- (void)contentSizeCategoryDidChange:(NSNotification *)notification
+- (void)keyboardWillShow:(NSNotification *)notification
 {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self reloadData];
-  });
+  UIView *firstResponder = [self AL_recursivelyFindFirstResponder];
+  [self addBottomContentInset:notification firstResponder:firstResponder];
+  
+  UITableViewCell *cell = [self tableViewCellForFirstResponder:firstResponder];
+  if (cell == nil) { return; }
+  [self scrollRectToVisible:cell.frame animated:false];
+}
+
+- (void)addBottomContentInset:(NSNotification *)notification firstResponder:(UIView *)firstResponder {
+  
+  CGRect keyboardFrame = [self endKeyboardFrame:notification firstResponder:firstResponder];
+  
+  UIEdgeInsets contentInset = self.contentInset;
+  contentInset.bottom = CGRectGetHeight(keyboardFrame);
+  
+  [self setContentInset:contentInset];
+  [self setScrollIndicatorInsets:contentInset];
+}
+
+- (CGRect)endKeyboardFrame:(NSNotification *)notification firstResponder:(UIView *)firstResponder
+{
+  CGRect frame = CGRectZero;
+  UIScreen *mainScreen = [UIScreen mainScreen];
+  
+  if (firstResponder.inputView) {
+    frame = firstResponder.inputView.frame;
+    frame.size.height += CGRectGetHeight(firstResponder.inputAccessoryView.frame);
+    
+  } else {
+    NSDictionary *dictionary = notification.userInfo;
+    frame = [dictionary[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  }
+  
+  frame.origin.y = CGRectGetMaxY(mainScreen.bounds) - CGRectGetHeight(frame);
+  
+  return frame;
+}
+
+- (UITableViewCell *)tableViewCellForFirstResponder:(UIView *)firstResponder {
+  
+  UIView *superview = firstResponder.superview;
+  
+  while (superview != nil) {
+    if ([superview isKindOfClass:[UITableViewCell class]]) { return (UITableViewCell *)superview; }
+    superview = superview.superview;
+  }
+
+  return nil;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+  UIEdgeInsets contentInset = self.contentInset;
+  contentInset.bottom = 0;
+  
+  [self setContentInset:contentInset];
+  [self setScrollIndicatorInsets:contentInset];
 }
 
 @end

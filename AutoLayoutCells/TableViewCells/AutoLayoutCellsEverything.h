@@ -43,6 +43,7 @@
 #import <AutoLayoutCells/ALTextCellConstants.h>
 
 // Factories
+#import <AutoLayoutCells/ALAutomaticTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellFactory.h>
 #import <AutoLayoutCells/ALTableViewCellNibFactory.h>
 
@@ -52,4 +53,5 @@
 // Protocols
 #import <AutoLayoutCells/ALCellDelegate.h>
 #import <AutoLayoutCells/ALTableViewCellFactoryDelegate.h>
+#import <AutoLayoutCells/ALTableViewCellFactoryProtocol.h>
 #import <AutoLayoutCells/ALTextCellDelegate.h>

@@ -24,6 +24,8 @@
 
 #import "ALImageCell.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  `ALBooleanCell` shows a title, subtitle, toggle, and optional image (depending on the nib) to represent a `boolean` value.
  *
@@ -32,18 +34,14 @@
  */
 @interface ALBooleanCell : ALImageCell
 
-///--------------------------------------------------------------
-/// @name Outlets
-///--------------------------------------------------------------
+#pragma mark - Outlets
 
 /**
  *  The toggle, representing the `boolean` value
  */
-@property (weak, nonatomic) IBOutlet UISwitch *toggle;
+@property (weak, nonatomic, null_unspecified) IBOutlet UISwitch *toggle;
 
-///--------------------------------------------------------------
-/// @name Actions
-///--------------------------------------------------------------
+#pragma mark - Actions
 
 /**
  *  This method is called whenever the user toggles the `toggle`
@@ -52,7 +50,7 @@
  *
  *  @param toggle The `toggle` which sent the event
  */
-- (IBAction)didToggle:(UISwitch *)toggle;
+- (IBAction)didToggle:(null_unspecified UISwitch *)toggle;
 
 @end
 
@@ -67,3 +65,5 @@
 - (void)setToggleValueFromDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END
