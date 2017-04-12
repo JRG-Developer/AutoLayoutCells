@@ -95,18 +95,17 @@
 
 #pragma mark - ALTextCellDelegate
 
-- (void)cellHeightWillChange:(ALTextViewCell *)cell delta:(CGFloat)delta {
-  NSParameterAssert(self.tableView);
+- (void)cell:(ALTextViewCell *)cell valueChanged:(id)value {
   
+  CGPoint contentOffset = self.tableView.contentOffset;
   [UIView setAnimationsEnabled:NO];
   [self.tableView beginUpdates];
-}
-
-- (void)cellHeightDidChange:(ALTextViewCell *)cell delta:(CGFloat)delta {
-  
-  NSParameterAssert(self.tableView);
-  
   [self.tableView endUpdates];
+  [self.tableView setContentOffset:contentOffset animated:NO];
+  
+  CGRect rect = [self.tableView convertRect:cell.textView.bounds fromView:cell.textView];
+  [self.tableView scrollRectToVisible:rect animated:NO];
+  
   [UIView setAnimationsEnabled:YES];
 }
 

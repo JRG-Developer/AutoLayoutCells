@@ -55,6 +55,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)cellHeightDidChange:(id)cell delta:(CGFloat)delta;
 
+/**
+ *  This method is called to inform the delegate that the cell's value has changed.
+ *
+ *  @param cell  The cell whose value has changed
+ *  @param value The new cell value
+ */
+- (void)cell:(id)cell valueChanged:(id)value;
+
 @end
 
 NS_ASSUME_NONNULL_END

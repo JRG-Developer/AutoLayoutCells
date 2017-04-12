@@ -51,6 +51,8 @@
   id cellTextView;
   id tableView;
   id view;
+  
+  NSString *newValue;
 }
 
 #pragma mark - Test Lifecycle
@@ -62,6 +64,8 @@
   [self givenMockTableView];
   sut = [[ALTextCellViewModel alloc] initWithCellIdentifier:@"Cell"
                                                   tableView:tableView];
+  
+  newValue = @"newValue";
 }
 
 - (void)tearDown {
@@ -109,7 +113,7 @@
 
 #pragma mark - ALTextCellDelegate - Tests
 
-- (void)test___cellHeightWillChange___turnsOffAnimations {
+- (void)test___cell_valueChanged___turnsOffAnimations {
   
   // given
   [self givenMockView];
@@ -117,26 +121,26 @@
   OCMExpect([view setAnimationsEnabled:NO]);
   
   // when
-  [sut cellHeightWillChange:cell delta:42];
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(view);
 }
 
-- (void)test___cellHeightWillChange___calls_tableView_beginUpdates {
+- (void)test___cell_valueChanged___calls_tableView_beginUpdates {
   
   // given
   [self givenMockTableView];
   OCMExpect([tableView beginUpdates]);
   
   // when
-  [sut cellHeightWillChange:cell delta:42];
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(tableView);
 }
 
-- (void)test___cellHeightDidChange___turnsOnAnimations {
+- (void)test___cell_valueChanged___turnsOnAnimations {
   
   // given
   [self givenMockView];
@@ -144,20 +148,20 @@
   OCMExpect([view setAnimationsEnabled:YES]);
   
   // when
-  [sut cellHeightDidChange:cell delta:42];
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(view);
 }
 
-- (void)test___cellHeightDidlChange___calls_tableView_endUpdates {
+- (void)test___cell_valueChanged___calls_tableView_endUpdates {
   
   // given
   [self givenMockTableView];
   OCMExpect([tableView endUpdates]);
   
   // when
-  [sut cellHeightDidChange:cell delta:42];
+  [sut cell:cell valueChanged:newValue];
   
   // then
   OCMVerifyAll(tableView);

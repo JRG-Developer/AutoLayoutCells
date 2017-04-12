@@ -281,6 +281,10 @@
   if ([self.delegate respondsToSelector:@selector(cell:valueChanged:)]) {
     [self.delegate cell:self.cell valueChanged:textView.text];
   }
+  
+  if ([self.heightDelegate respondsToSelector:@selector(cell:valueChanged:)]) {
+    [self.heightDelegate cell:self.cell valueChanged:textView.text];
+  }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
