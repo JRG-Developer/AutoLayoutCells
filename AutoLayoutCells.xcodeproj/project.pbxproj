@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41540A50C51C58FAABE3BD50 /* libPods-AutoLayoutCells-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A27F7B7D0A016C64B3323D /* libPods-AutoLayoutCells-AutoLayoutCellsTests.a */; };
 		420DF88F19BBC2EC0045CAA3 /* ALImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */; };
 		4229EF311D7D7AED00F799C0 /* ALBooleanCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4229EF301D7D7AED00F799C0 /* ALBooleanCellViewModel.m */; };
 		4229EF341D7D7B4400F799C0 /* ALAutomaticTableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4229EF331D7D7B4400F799C0 /* ALAutomaticTableViewCellFactory.m */; };
@@ -71,8 +72,7 @@
 		44BBB98A197049C200AB4596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BBB988197049C200AB4596 /* InfoPlist.strings */; };
 		44BBB9A119704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */; };
 		44BBB9A8197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */; };
-		5FB259A7DCFEC68A434D08CD /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74AC6A971B09ACEAAF0C7D0 /* libPods-AutoLayoutCells.a */; };
-		D605E1BE76827CA79CE99229 /* libPods-AutoLayoutCellsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07973B78FAC6F946BF65DBCE /* libPods-AutoLayoutCellsTests.a */; };
+		89D6D867DAC1A56759805567 /* libPods-AutoLayoutCells.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D05E491CBAF037F5C468B6 /* libPods-AutoLayoutCells.a */; };
 		F903693519BDE5B80065AEB3 /* ALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F903693419BDE5B80065AEB3 /* ALImageCache.m */; };
 		F95A786519BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F95A786419BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.m */; };
 /* End PBXBuildFile section */
@@ -100,9 +100,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		07973B78FAC6F946BF65DBCE /* libPods-AutoLayoutCellsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCellsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3381926E710EBC5B6F26663C /* Pods-AutoLayoutCells.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.release.xcconfig"; sourceTree = "<group>"; };
-		3777CC479C1C911406DC5220 /* Pods-AutoLayoutCells.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.debug.xcconfig"; sourceTree = "<group>"; };
 		420DF88E19BBC2EC0045CAA3 /* ALImageCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALImageCacheTests.m; path = TableViewCellTests/ALImageCacheTests.m; sourceTree = "<group>"; };
 		4228C7711CCEB19D0096C182 /* ALSystemVersionDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALSystemVersionDefines.h; sourceTree = "<group>"; };
 		4228C7721CCEB29F0096C182 /* ALTableViewCellFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTableViewCellFactoryProtocol.h; sourceTree = "<group>"; };
@@ -207,9 +204,12 @@
 		44BBB99F19704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ALTableViewCellsBundle.h"; sourceTree = "<group>"; };
 		44BBB9A019704C4D00AB4596 /* NSBundle+ALTableViewCellsBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundle.m"; sourceTree = "<group>"; };
 		44BBB9A7197051EC00AB4596 /* NSBundle+ALTableViewCellsBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ALTableViewCellsBundleTests.m"; sourceTree = "<group>"; };
-		82138CD8155EDBB3DA687AC6 /* Pods-AutoLayoutCellsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C74AC6A971B09ACEAAF0C7D0 /* libPods-AutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D545B3D17B251A2D0C6CC40A /* Pods-AutoLayoutCellsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCellsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests.release.xcconfig"; sourceTree = "<group>"; };
+		72F97AA89A5A59895DF1D5E9 /* Pods-AutoLayoutCells.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.debug.xcconfig"; sourceTree = "<group>"; };
+		A7D05E491CBAF037F5C468B6 /* libPods-AutoLayoutCells.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A27F7B7D0A016C64B3323D /* libPods-AutoLayoutCells-AutoLayoutCellsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AutoLayoutCells-AutoLayoutCellsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD504E9BA4AA2A593ED45850 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells-AutoLayoutCellsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells-AutoLayoutCellsTests/Pods-AutoLayoutCells-AutoLayoutCellsTests.release.xcconfig"; sourceTree = "<group>"; };
+		CDC5A7686BFFC515667A9F0D /* Pods-AutoLayoutCells.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells.release.xcconfig"; sourceTree = "<group>"; };
+		D91C9AFE90E36F430489D670 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutCells-AutoLayoutCellsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutCells-AutoLayoutCellsTests/Pods-AutoLayoutCells-AutoLayoutCellsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F903693319BDE5B80065AEB3 /* ALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALImageCache.h; sourceTree = "<group>"; };
 		F903693419BDE5B80065AEB3 /* ALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALImageCache.m; sourceTree = "<group>"; };
 		F95A786319BD7D2400BD6AF8 /* UIFont+ALCustomDynamicFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ALCustomDynamicFont.h"; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FB259A7DCFEC68A434D08CD /* libPods-AutoLayoutCells.a in Frameworks */,
+				89D6D867DAC1A56759805567 /* libPods-AutoLayoutCells.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +231,7 @@
 			files = (
 				44BBB984197049C200AB4596 /* libAutoLayoutCells.a in Frameworks */,
 				44BBB97E197049C200AB4596 /* XCTest.framework in Frameworks */,
-				D605E1BE76827CA79CE99229 /* libPods-AutoLayoutCellsTests.a in Frameworks */,
+				41540A50C51C58FAABE3BD50 /* libPods-AutoLayoutCells-AutoLayoutCellsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +454,7 @@
 				44BBB985197049C200AB4596 /* AutoLayoutCellsTests */,
 				44BBB96E197049C200AB4596 /* Frameworks */,
 				44BBB96D197049C200AB4596 /* Products */,
-				87937C9C90E1F3070747A974 /* Pods */,
+				703248F5F7CFDBED79784105 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -471,8 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				44BBB97D197049C200AB4596 /* XCTest.framework */,
-				C74AC6A971B09ACEAAF0C7D0 /* libPods-AutoLayoutCells.a */,
-				07973B78FAC6F946BF65DBCE /* libPods-AutoLayoutCellsTests.a */,
+				A7D05E491CBAF037F5C468B6 /* libPods-AutoLayoutCells.a */,
+				B5A27F7B7D0A016C64B3323D /* libPods-AutoLayoutCells-AutoLayoutCellsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -562,13 +562,13 @@
 			path = TableViewCellTests;
 			sourceTree = "<group>";
 		};
-		87937C9C90E1F3070747A974 /* Pods */ = {
+		703248F5F7CFDBED79784105 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3777CC479C1C911406DC5220 /* Pods-AutoLayoutCells.debug.xcconfig */,
-				3381926E710EBC5B6F26663C /* Pods-AutoLayoutCells.release.xcconfig */,
-				82138CD8155EDBB3DA687AC6 /* Pods-AutoLayoutCellsTests.debug.xcconfig */,
-				D545B3D17B251A2D0C6CC40A /* Pods-AutoLayoutCellsTests.release.xcconfig */,
+				72F97AA89A5A59895DF1D5E9 /* Pods-AutoLayoutCells.debug.xcconfig */,
+				CDC5A7686BFFC515667A9F0D /* Pods-AutoLayoutCells.release.xcconfig */,
+				D91C9AFE90E36F430489D670 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.debug.xcconfig */,
+				CD504E9BA4AA2A593ED45850 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -597,11 +597,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44BBB98F197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCells" */;
 			buildPhases = (
-				15D01FFC1707C2C75F10DC64 /* [CP] Check Pods Manifest.lock */,
+				359C4CFC6D44EFAE13A39BEC /* [CP] Check Pods Manifest.lock */,
 				44BBB968197049C200AB4596 /* Sources */,
 				44BBB969197049C200AB4596 /* Frameworks */,
 				44BBB96A197049C200AB4596 /* CopyFiles */,
-				5616C31F21292070525F1B54 /* [CP] Copy Pods Resources */,
+				6676478BF72996FCE2B6B783 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -616,12 +616,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44BBB992197049C200AB4596 /* Build configuration list for PBXNativeTarget "AutoLayoutCellsTests" */;
 			buildPhases = (
-				CC621029A319033611723F27 /* [CP] Check Pods Manifest.lock */,
+				0310727BB276D55727A83493 /* [CP] Check Pods Manifest.lock */,
 				44BBB978197049C200AB4596 /* Sources */,
 				44BBB979197049C200AB4596 /* Frameworks */,
 				44BBB97A197049C200AB4596 /* Resources */,
-				7103EB39079EC58DC5F0EF00 /* [CP] Embed Pods Frameworks */,
-				4006AC238C955F4B73D0E1E2 /* [CP] Copy Pods Resources */,
+				92DA26A6DB952A32247C8E2D /* [CP] Embed Pods Frameworks */,
+				153BA2178B4BB35672AFFED2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -683,7 +683,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15D01FFC1707C2C75F10DC64 /* [CP] Check Pods Manifest.lock */ = {
+		0310727BB276D55727A83493 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -698,7 +698,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4006AC238C955F4B73D0E1E2 /* [CP] Copy Pods Resources */ = {
+		153BA2178B4BB35672AFFED2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -710,10 +710,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCells-AutoLayoutCellsTests/Pods-AutoLayoutCells-AutoLayoutCellsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5616C31F21292070525F1B54 /* [CP] Copy Pods Resources */ = {
+		359C4CFC6D44EFAE13A39BEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6676478BF72996FCE2B6B783 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -728,7 +743,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCells/Pods-AutoLayoutCells-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7103EB39079EC58DC5F0EF00 /* [CP] Embed Pods Frameworks */ = {
+		92DA26A6DB952A32247C8E2D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -740,22 +755,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCellsTests/Pods-AutoLayoutCellsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CC621029A319033611723F27 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutCells-AutoLayoutCellsTests/Pods-AutoLayoutCells-AutoLayoutCellsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -931,7 +931,7 @@
 		};
 		44BBB990197049C200AB4596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3777CC479C1C911406DC5220 /* Pods-AutoLayoutCells.debug.xcconfig */;
+			baseConfigurationReference = 72F97AA89A5A59895DF1D5E9 /* Pods-AutoLayoutCells.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/AutoLayoutCells.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -943,7 +943,7 @@
 		};
 		44BBB991197049C200AB4596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3381926E710EBC5B6F26663C /* Pods-AutoLayoutCells.release.xcconfig */;
+			baseConfigurationReference = CDC5A7686BFFC515667A9F0D /* Pods-AutoLayoutCells.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/AutoLayoutCells.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -955,7 +955,7 @@
 		};
 		44BBB993197049C200AB4596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82138CD8155EDBB3DA687AC6 /* Pods-AutoLayoutCellsTests.debug.xcconfig */;
+			baseConfigurationReference = D91C9AFE90E36F430489D670 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";
@@ -972,7 +972,7 @@
 		};
 		44BBB994197049C200AB4596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D545B3D17B251A2D0C6CC40A /* Pods-AutoLayoutCellsTests.release.xcconfig */;
+			baseConfigurationReference = CD504E9BA4AA2A593ED45850 /* Pods-AutoLayoutCells-AutoLayoutCellsTests.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoLayoutCells/AutoLayoutCells-Prefix.pch";

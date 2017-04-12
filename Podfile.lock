@@ -1,15 +1,15 @@
 PODS:
   - ALLabel (2.0.0)
-  - AutoLayoutCells (0.11.0-beta2):
-    - AutoLayoutCells/SharedCategories (= 0.11.0-beta2)
-    - AutoLayoutCells/TableViewCells (= 0.11.0-beta2)
-  - AutoLayoutCells/SharedCategories (0.11.0-beta2):
+  - AutoLayoutCells (0.11.0-beta5):
+    - AutoLayoutCells/SharedCategories (= 0.11.0-beta5)
+    - AutoLayoutCells/TableViewCells (= 0.11.0-beta5)
+  - AutoLayoutCells/SharedCategories (0.11.0-beta5):
     - UIImageView+ALActivityIndicatorView (~> 1.0)
-  - AutoLayoutCells/TableViewCells (0.11.0-beta2):
+  - AutoLayoutCells/TableViewCells (0.11.0-beta5):
     - ALLabel (~> 2.0)
     - AutoLayoutCells/SharedCategories
     - AutoLayoutTextViews (~> 1.1)
-  - AutoLayoutTextViews (1.2.5)
+  - AutoLayoutTextViews (1.2.7)
   - Expecta (1.0.5)
   - OCMock (3.3.1)
   - UIImageView+ALActivityIndicatorView (1.0.0)
@@ -17,7 +17,7 @@ PODS:
 DEPENDENCIES:
   - ALLabel (~> 2.0)
   - AutoLayoutCells (from `.`)
-  - AutoLayoutTextViews (~> 1.0)
+  - AutoLayoutTextViews (~> 1.2)
   - Expecta (~> 1.0)
   - OCMock (~> 3.0)
   - UIImageView+ALActivityIndicatorView (~> 1.0)
@@ -28,12 +28,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ALLabel: 0f527f4f5445f4b9fac4d78bf28655f88908bd93
-  AutoLayoutCells: 1098f9f517fe8d677e2d6ee7b3cb360f6c331f35
-  AutoLayoutTextViews: 4f8f7627ba239c0cc39858239ffbb2c2456ef36b
+  AutoLayoutCells: 1644bc00d90c62d08b33c71ae488b1769f857675
+  AutoLayoutTextViews: 26d2c9247ed219f69c471f609dfec986dd2701b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   UIImageView+ALActivityIndicatorView: f38f2c19ed2927e0b359201c143f25628ce30711
 
-PODFILE CHECKSUM: 5695d2bf7597abe752e45e39294ee8a205864763
+PODFILE CHECKSUM: a5570d8f2bf1ba180d78325fb9fa125236f85278
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
