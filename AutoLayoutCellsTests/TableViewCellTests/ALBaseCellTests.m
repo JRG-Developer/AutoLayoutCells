@@ -166,7 +166,7 @@
   [ALBaseCell setShouldRegisterForFontChanges:NO];
   
   [self givenMockNotificationCenter];
-  SEL selector;
+  SEL selector = NULL;
   [[[notificationCenter reject] ignoringNonObjectArgs] addObserver:sut selector:selector name:OCMOCK_ANY object:OCMOCK_ANY]; // yeah, I hacked that... ;P
   
   // when

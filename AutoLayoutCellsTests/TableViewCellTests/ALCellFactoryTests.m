@@ -290,7 +290,7 @@
   
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-  sut = [[ALTableViewCellFactory alloc] initWithTableView:tableView identifiersToNibsDictionary:nil];
+  sut = [[ALTableViewCellFactory alloc] initWithTableView:tableView identifiersToNibsDictionary:@{ }];
 #pragma GCC diagnostic pop
   
   CGSize systemLayoutSize = CGSizeMake(320.0f, 50.0f);
