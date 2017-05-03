@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The edit actions for the cell
  */
-@property (strong, nonatomic, nullable) NSArray *editActionsForCell;
+@property (strong, nonatomic, nullable) NSArray<UITableViewRowAction *> *editActionsForCell;
 
 #pragma mark - Object Lifecycle
 

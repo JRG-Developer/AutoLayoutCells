@@ -158,7 +158,7 @@
   return [[viewModel editActionsForCell] count] > 0;
 }
 
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   id <ALCellViewModel> viewModel = [self viewModelForIndexPath:indexPath];
   return [viewModel editActionsForCell];

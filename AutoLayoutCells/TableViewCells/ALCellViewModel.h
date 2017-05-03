@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return An array of `UITableViewRowAction` objects
  */
-- (nullable NSArray *)editActionsForCell;
+- (nullable NSArray<UITableViewRowAction *> *)editActionsForCell;
 
 @end
 
