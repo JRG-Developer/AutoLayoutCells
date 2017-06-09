@@ -73,7 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @discussion  This is useful, for example, if you're creating an `ALTableViewManager` inside a view controller's `viewDidLoad` method.
  *
  *  @param tableView The table view to provide the data source and delegate
- *  @param estimatedRowHeight  The estimatedRowHeight
  *
  *  @return A new `ALTableViewManager` instance
  */
