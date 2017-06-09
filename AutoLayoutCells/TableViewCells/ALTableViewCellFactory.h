@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @deprecated as of iOS 8.0. Use `ALAutomaticTableViewCellFactory` instead.
  */
+__attribute__((deprecated("Deprecated as of iOS 8.0. Use `ALAutomaticTableViewCellFactory` instead")))
 @interface ALTableViewCellFactory : NSObject <ALTableViewCellFactoryProtocol>
 
 /**
