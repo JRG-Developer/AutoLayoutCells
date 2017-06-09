@@ -171,14 +171,13 @@
   __block BOOL blockCalled = NO;
 
   void (^valueChangedBlock)(id) = ^(NSNumber *actual) {
-    
     blockCalled = YES;
     expect([actual boolValue]).to.equal(expected);
   };
   
   sut.valueChangedBlock = valueChangedBlock;
   
-  [sut.toggle setOn:!expected animated:NO]; // note: `didToggle` toggles `isOn` value.
+  [sut.toggle setOn:expected animated:NO];
   
   // when
   [sut didToggle:sut.toggle];
@@ -197,7 +196,7 @@
   NSNumber *value = @(expected);
   OCMExpect([delegate cell:sut valueChanged:value]);
   
-  [sut.toggle setOn:!expected animated:NO]; // note: `didToggle` toggles `isOn` value.
+  [sut.toggle setOn:expected animated:NO];
   
   // when
   [sut didToggle:sut.toggle];
