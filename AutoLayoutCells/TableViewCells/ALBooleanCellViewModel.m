@@ -29,6 +29,14 @@
 
 #pragma mark - ALCellViewModel
 
+- (void)configureCell:(ALBooleanCell *)cell {
+  [super configureCell:cell];
+  
+  if (self.valueChangedBlock) {
+    [cell setValueChangedBlock:self.valueChangedBlock];
+  }
+}
+
 - (void)didSelectCell:(ALBooleanCell *)cell {
   
   [super didSelectCell:cell];
@@ -36,9 +44,9 @@
   if (cell.isViewOnly) {
     return;
   }
-  
+
+  cell.toggle.on = !cell.toggle.isOn;
   [cell didToggle:cell.toggle];
-  [cell.toggle setOn:!cell.toggle.isOn animated:YES];
 }
 
 @end
