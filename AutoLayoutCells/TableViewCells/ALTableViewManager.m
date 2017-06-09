@@ -118,6 +118,23 @@
   return viewModel;
 }
 
+- (nullable NSIndexPath *)indexPathForViewModel:(nullable id <ALCellViewModel>)viewModel {
+  
+  if (viewModel == nil) {
+    return nil;
+  }
+  
+  for (NSInteger section = 0; section < self.viewModelArrays.count; section ++) {
+    NSArray<id <ALCellViewModel>> *viewModels = self.viewModelArrays[section];
+    for (NSInteger row = 0; row < viewModels.count; row ++) {
+      if (viewModels[row] == viewModel) {
+        return [NSIndexPath indexPathForRow:row inSection:section];
+      }
+    }
+  }
+  return nil;
+}
+
 #pragma mark - ALTableViewCellFactoryDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

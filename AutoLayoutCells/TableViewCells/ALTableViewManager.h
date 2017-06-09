@@ -101,6 +101,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)reloadViewModels;
 
+/**
+ * Use this method to get the index path within the `viewModelArrays` for a given view model.
+ *
+ * @warning This method uses pointer equality to determine if the view model matches those within the `viewModelArray`.
+ *
+ * Be careful about reloading the view models in conjunction with using this method! If you do, make sure your call this method 
+ * BEFORE reloading, or else this will return `nil`.
+ *
+ *
+ * @param viewModel The view model
+ * @return The index path if found or `nil` otherwise
+ */
+- (nullable NSIndexPath *)indexPathForViewModel:(nullable id <ALCellViewModel>)viewModel;
+
 @end
 
 NS_ASSUME_NONNULL_END
